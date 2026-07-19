@@ -9,9 +9,11 @@
     "start": "next start",
     "lint": "next lint",
     "scrape": "node script/scrapper.js",
-    "parse": "node script/parser.js"
+    "parse": "node script/parser.js",
+    "db:setup": "node script/transaction.js"
   },
   "dependencies": {
+    "better-sqlite3": "^12.11.1",
     "next": "^15.5.7",
     "react": "^19.2.0",
     "react-dom": "^19.2.0"
