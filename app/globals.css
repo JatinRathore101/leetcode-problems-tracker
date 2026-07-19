@@ -4,7 +4,7 @@
   --border: #262b38;
   --text: #e6e8ee;
   --muted: #8b93a7;
-  --accent: #ffa116;
+  --accent: #9fa8ff;
   --easy: #00b8a3;
   --medium: #ffb800;
   --hard: #ff375f;
@@ -23,20 +23,250 @@ body {
   font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
 }
 
-main {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 32px 20px 64px;
+/* ---------------------------------------------------------------------------
+   App shell: persistent sidebar + scrollable content
+--------------------------------------------------------------------------- */
+.shell {
+  display: flex;
+  min-height: 100vh;
 }
 
-.hero h1 {
-  margin: 0 0 8px;
-  font-size: 28px;
+.sidebar {
+  flex: 0 0 260px;
+  width: 260px;
+  height: 100vh;
+  position: sticky;
+  top: 0;
+  overflow-y: auto;
+  border-right: 1px solid var(--border);
+  background: var(--panel);
+  padding: 16px 0;
 }
 
-.hero p {
-  margin: 0 0 24px;
+.sidebar__brand {
+  padding: 4px 20px 12px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
   color: var(--muted);
+}
+
+.sidebar__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.sidebar__item {
+  display: block;
+  padding: 9px 20px;
+  color: var(--text);
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  border-left: 3px solid transparent;
+}
+
+.sidebar__item:hover {
+  background: #1c2130;
+}
+
+.sidebar__item--active {
+  color: var(--accent);
+  background: #1c2130;
+  border-left-color: var(--accent);
+  font-weight: 600;
+}
+
+.content {
+  flex: 1 1 auto;
+  min-width: 0;
+  max-width: 1100px;
+  padding: 32px 32px 64px;
+}
+
+/* ---------------------------------------------------------------------------
+   Breadcrumb
+--------------------------------------------------------------------------- */
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+.breadcrumb__dot {
+  color: var(--muted);
+  font-size: 9px;
+  line-height: 1;
+}
+
+.breadcrumb__chevron {
+  color: var(--muted);
+  font-size: 10px;
+  line-height: 1;
+}
+
+.breadcrumb__topic {
+  font-weight: 600;
+  color: var(--text);
+}
+
+.breadcrumb__difficulty {
+  font-weight: 600;
+}
+
+.breadcrumb__difficulty--easy {
+  color: var(--easy);
+}
+.breadcrumb__difficulty--medium {
+  color: var(--medium);
+}
+.breadcrumb__difficulty--hard {
+  color: var(--hard);
+}
+
+/* ---------------------------------------------------------------------------
+   Difficulty tabs
+--------------------------------------------------------------------------- */
+.tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.tab {
+  padding: 8px 20px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--panel);
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.tab:hover {
+  border-color: var(--accent);
+  color: var(--text);
+}
+
+.tab--active {
+  color: var(--bg);
+}
+
+.tab--easy.tab--active {
+  background: var(--easy);
+  border-color: var(--easy);
+}
+.tab--medium.tab--active {
+  background: var(--medium);
+  border-color: var(--medium);
+}
+.tab--hard.tab--active {
+  background: var(--hard);
+  border-color: var(--hard);
+  color: #fff;
+}
+
+/* ---------------------------------------------------------------------------
+   Topic + difficulty accordions
+--------------------------------------------------------------------------- */
+.accordions {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.accordion {
+  border: 1px solid var(--border);
+  border-left: none;
+  border-right: none;
+  border-bottom: none;
+  border-radius: 0;
+  background: transparent;
+  overflow: hidden;
+}
+
+.accordion__header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 16px;
+  background: transparent;
+  border: none;
+  color: var(--text);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  text-align: left;
+}
+
+.accordion__header:hover {
+  background: #1c2130;
+}
+
+.accordion__header[aria-expanded="true"] {
+  color: var(--accent);
+  border-bottom: 1px solid var(--border);
+}
+
+.accordion__title {
+  flex: 1;
+}
+
+.chevron {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.accordion__body {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 12px;
+}
+
+/* Difficulty sub-accordions */
+.sub-accordion {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--bg);
+  overflow: hidden;
+}
+
+.sub-accordion__header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 14px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.sub-accordion__header:hover {
+  background: #1c2130;
+}
+
+.sub-accordion__body {
+  padding: 12px 14px;
+  border-top: 1px solid var(--border);
+}
+
+.placeholder {
+  margin: 0;
+  color: var(--muted);
+  font-size: 13px;
 }
 
 .controls {

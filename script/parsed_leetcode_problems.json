@@ -16,7 +16,7 @@
   {
     "name": "Longest Substring Without Repeating Characters",
     "link": "https://leetcode.com/problems/longest-substring-without-repeating-characters/",
-    "topic": "SLIDING WINDOW",
+    "topic": "HASH TABLE",
     "difficulty": "MEDIUM",
     "popularity": 25007956
   },
@@ -205,7 +205,7 @@
   {
     "name": "Substring with Concatenation of All Words",
     "link": "https://leetcode.com/problems/substring-with-concatenation-of-all-words/",
-    "topic": "SLIDING WINDOW",
+    "topic": "HASH TABLE",
     "difficulty": "HARD",
     "popularity": 2138313
   },
@@ -513,7 +513,7 @@
   {
     "name": "Search a 2D Matrix",
     "link": "https://leetcode.com/problems/search-a-2d-matrix/",
-    "topic": "BINARY SEARCH",
+    "topic": "MATRIX",
     "difficulty": "MEDIUM",
     "popularity": 5549851
   },
@@ -527,7 +527,7 @@
   {
     "name": "Minimum Window Substring",
     "link": "https://leetcode.com/problems/minimum-window-substring/",
-    "topic": "SLIDING WINDOW",
+    "topic": "HASH TABLE",
     "difficulty": "HARD",
     "popularity": 4713336
   },
@@ -541,7 +541,7 @@
   {
     "name": "Subsets",
     "link": "https://leetcode.com/problems/subsets/",
-    "topic": "BACKTRACKING",
+    "topic": "BIT MANIPULATION",
     "difficulty": "MEDIUM",
     "popularity": 3820912
   },
@@ -618,14 +618,14 @@
   {
     "name": "Gray Code",
     "link": "https://leetcode.com/problems/gray-code/",
-    "topic": "BACKTRACKING",
+    "topic": "BIT MANIPULATION",
     "difficulty": "MEDIUM",
     "popularity": 676022
   },
   {
     "name": "Subsets II",
     "link": "https://leetcode.com/problems/subsets-ii/",
-    "topic": "BACKTRACKING",
+    "topic": "BIT MANIPULATION",
     "difficulty": "MEDIUM",
     "popularity": 2541351
   },
@@ -653,7 +653,7 @@
   {
     "name": "Binary Tree Inorder Traversal",
     "link": "https://leetcode.com/problems/binary-tree-inorder-traversal/",
-    "topic": "GRAPH THEORY",
+    "topic": "BINARY TREE",
     "difficulty": "EASY",
     "popularity": 4790558
   },
@@ -681,49 +681,49 @@
   {
     "name": "Validate Binary Search Tree",
     "link": "https://leetcode.com/problems/validate-binary-search-tree/",
-    "topic": "GRAPH THEORY",
+    "topic": "BINARY SEARCH TREE",
     "difficulty": "MEDIUM",
     "popularity": 9584357
   },
   {
     "name": "Recover Binary Search Tree",
     "link": "https://leetcode.com/problems/recover-binary-search-tree/",
-    "topic": "GRAPH THEORY",
+    "topic": "BINARY SEARCH TREE",
     "difficulty": "MEDIUM",
     "popularity": 1159123
   },
   {
     "name": "Same Tree",
     "link": "https://leetcode.com/problems/same-tree/",
-    "topic": "GRAPH THEORY",
+    "topic": "BINARY TREE",
     "difficulty": "EASY",
     "popularity": 5272685
   },
   {
     "name": "Symmetric Tree",
     "link": "https://leetcode.com/problems/symmetric-tree/",
-    "topic": "GRAPH THEORY",
+    "topic": "BINARY TREE",
     "difficulty": "EASY",
     "popularity": 4829302
   },
   {
     "name": "Binary Tree Level Order Traversal",
     "link": "https://leetcode.com/problems/binary-tree-level-order-traversal/",
-    "topic": "GRAPH THEORY",
+    "topic": "BINARY TREE",
     "difficulty": "MEDIUM",
     "popularity": 4856309
   },
   {
     "name": "Binary Tree Zigzag Level Order Traversal",
     "link": "https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal/",
-    "topic": "GRAPH THEORY",
+    "topic": "BINARY TREE",
     "difficulty": "MEDIUM",
     "popularity": 2890165
   },
   {
     "name": "Maximum Depth of Binary Tree",
     "link": "https://leetcode.com/problems/maximum-depth-of-binary-tree/",
-    "topic": "GRAPH THEORY",
+    "topic": "BINARY TREE",
     "difficulty": "EASY",
     "popularity": 6317599
   },
@@ -744,7 +744,7 @@
   {
     "name": "Binary Tree Level Order Traversal II",
     "link": "https://leetcode.com/problems/binary-tree-level-order-traversal-ii/",
-    "topic": "GRAPH THEORY",
+    "topic": "BINARY TREE",
     "difficulty": "MEDIUM",
     "popularity": 1250778
   },
@@ -765,21 +765,21 @@
   {
     "name": "Balanced Binary Tree",
     "link": "https://leetcode.com/problems/balanced-binary-tree/",
-    "topic": "GRAPH THEORY",
+    "topic": "BINARY TREE",
     "difficulty": "EASY",
     "popularity": 4385483
   },
   {
     "name": "Minimum Depth of Binary Tree",
     "link": "https://leetcode.com/problems/minimum-depth-of-binary-tree/",
-    "topic": "GRAPH THEORY",
+    "topic": "BINARY TREE",
     "difficulty": "EASY",
     "popularity": 3245495
   },
   {
     "name": "Path Sum",
     "link": "https://leetcode.com/problems/path-sum/",
-    "topic": "GRAPH THEORY",
+    "topic": "BINARY TREE",
     "difficulty": "EASY",
     "popularity": 4012746
   },
@@ -793,7 +793,7 @@
   {
     "name": "Flatten Binary Tree to Linked List",
     "link": "https://leetcode.com/problems/flatten-binary-tree-to-linked-list/",
-    "topic": "GRAPH THEORY",
+    "topic": "BINARY TREE",
     "difficulty": "MEDIUM",
     "popularity": 2040724
   },
@@ -807,14 +807,14 @@
   {
     "name": "Populating Next Right Pointers in Each Node",
     "link": "https://leetcode.com/problems/populating-next-right-pointers-in-each-node/",
-    "topic": "GRAPH THEORY",
+    "topic": "BINARY TREE",
     "difficulty": "MEDIUM",
     "popularity": 2023410
   },
   {
     "name": "Populating Next Right Pointers in Each Node II",
     "link": "https://leetcode.com/problems/populating-next-right-pointers-in-each-node-ii/",
-    "topic": "GRAPH THEORY",
+    "topic": "BINARY TREE",
     "difficulty": "MEDIUM",
     "popularity": 1492626
   },
@@ -898,7 +898,7 @@
   {
     "name": "Sum Root to Leaf Numbers",
     "link": "https://leetcode.com/problems/sum-root-to-leaf-numbers/",
-    "topic": "GRAPH THEORY",
+    "topic": "BINARY TREE",
     "difficulty": "MEDIUM",
     "popularity": 1869970
   },
@@ -1003,14 +1003,14 @@
   {
     "name": "Binary Tree Preorder Traversal",
     "link": "https://leetcode.com/problems/binary-tree-preorder-traversal/",
-    "topic": "GRAPH THEORY",
+    "topic": "BINARY TREE",
     "difficulty": "EASY",
     "popularity": 3345412
   },
   {
     "name": "Binary Tree Postorder Traversal",
     "link": "https://leetcode.com/problems/binary-tree-postorder-traversal/",
-    "topic": "GRAPH THEORY",
+    "topic": "BINARY TREE",
     "difficulty": "EASY",
     "popularity": 2615964
   },
@@ -1087,7 +1087,7 @@
   {
     "name": "Binary Tree Upside Down",
     "link": "https://leetcode.com/problems/binary-tree-upside-down/",
-    "topic": "GRAPH THEORY",
+    "topic": "BINARY TREE",
     "difficulty": "MEDIUM",
     "popularity": 183441
   },
@@ -1108,7 +1108,7 @@
   {
     "name": "Longest Substring with At Most Two Distinct Characters",
     "link": "https://leetcode.com/problems/longest-substring-with-at-most-two-distinct-characters/",
-    "topic": "SLIDING WINDOW",
+    "topic": "HASH TABLE",
     "difficulty": "MEDIUM",
     "popularity": 533879
   },
@@ -1206,7 +1206,7 @@
   {
     "name": "Binary Search Tree Iterator",
     "link": "https://leetcode.com/problems/binary-search-tree-iterator/",
-    "topic": "TREE",
+    "topic": "BINARY SEARCH TREE",
     "difficulty": "MEDIUM",
     "popularity": 1468677
   },
@@ -1325,14 +1325,14 @@
   {
     "name": "Reverse Bits",
     "link": "https://leetcode.com/problems/reverse-bits/",
-    "topic": "DIVIDE AND CONQUER",
+    "topic": "BIT MANIPULATION",
     "difficulty": "EASY",
     "popularity": 2020929
   },
   {
     "name": "Number of 1 Bits",
     "link": "https://leetcode.com/problems/number-of-1-bits/",
-    "topic": "DIVIDE AND CONQUER",
+    "topic": "BIT MANIPULATION",
     "difficulty": "EASY",
     "popularity": 2839734
   },
@@ -1388,7 +1388,7 @@
   {
     "name": "Binary Tree Right Side View",
     "link": "https://leetcode.com/problems/binary-tree-right-side-view/",
-    "topic": "GRAPH THEORY",
+    "topic": "BINARY TREE",
     "difficulty": "MEDIUM",
     "popularity": 3290239
   },
@@ -1528,14 +1528,14 @@
   {
     "name": "Contains Duplicate II",
     "link": "https://leetcode.com/problems/contains-duplicate-ii/",
-    "topic": "SLIDING WINDOW",
+    "topic": "HASH TABLE",
     "difficulty": "EASY",
     "popularity": 3610430
   },
   {
     "name": "Contains Duplicate III",
     "link": "https://leetcode.com/problems/contains-duplicate-iii/",
-    "topic": "SLIDING WINDOW",
+    "topic": "HASH TABLE",
     "difficulty": "HARD",
     "popularity": 1305053
   },
@@ -1549,7 +1549,7 @@
   {
     "name": "Count Complete Tree Nodes",
     "link": "https://leetcode.com/problems/count-complete-tree-nodes/",
-    "topic": "TREE",
+    "topic": "BIT MANIPULATION",
     "difficulty": "EASY",
     "popularity": 1675137
   },
@@ -1577,7 +1577,7 @@
   {
     "name": "Invert Binary Tree",
     "link": "https://leetcode.com/problems/invert-binary-tree/",
-    "topic": "GRAPH THEORY",
+    "topic": "BINARY TREE",
     "difficulty": "EASY",
     "popularity": 3900712
   },
@@ -1605,14 +1605,14 @@
   {
     "name": "Kth Smallest Element in a BST",
     "link": "https://leetcode.com/problems/kth-smallest-element-in-a-bst/",
-    "topic": "GRAPH THEORY",
+    "topic": "BINARY SEARCH TREE",
     "difficulty": "MEDIUM",
     "popularity": 3041133
   },
   {
     "name": "Power of Two",
     "link": "https://leetcode.com/problems/power-of-two/",
-    "topic": "RECURSION",
+    "topic": "BIT MANIPULATION",
     "difficulty": "EASY",
     "popularity": 4616644
   },
@@ -1640,14 +1640,14 @@
   {
     "name": "Lowest Common Ancestor of a Binary Search Tree",
     "link": "https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree/",
-    "topic": "GRAPH THEORY",
+    "topic": "BINARY SEARCH TREE",
     "difficulty": "MEDIUM",
     "popularity": 3318142
   },
   {
     "name": "Lowest Common Ancestor of a Binary Tree",
     "link": "https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/",
-    "topic": "GRAPH THEORY",
+    "topic": "BINARY TREE",
     "difficulty": "MEDIUM",
     "popularity": 3871125
   },
@@ -1668,7 +1668,7 @@
   {
     "name": "Sliding Window Maximum",
     "link": "https://leetcode.com/problems/sliding-window-maximum/",
-    "topic": "SLIDING WINDOW",
+    "topic": "HEAP (PRIORITY QUEUE)",
     "difficulty": "HARD",
     "popularity": 3590587
   },
@@ -1745,7 +1745,7 @@
   {
     "name": "Count Univalue Subtrees",
     "link": "https://leetcode.com/problems/count-univalue-subtrees/",
-    "topic": "GRAPH THEORY",
+    "topic": "BINARY TREE",
     "difficulty": "MEDIUM",
     "popularity": 298462
   },
@@ -1885,7 +1885,7 @@
   {
     "name": "Closest Binary Search Tree Value",
     "link": "https://leetcode.com/problems/closest-binary-search-tree-value/",
-    "topic": "GRAPH THEORY",
+    "topic": "BINARY SEARCH TREE",
     "difficulty": "EASY",
     "popularity": 927887
   },
@@ -1899,7 +1899,7 @@
   {
     "name": "Closest Binary Search Tree Value II",
     "link": "https://leetcode.com/problems/closest-binary-search-tree-value-ii/",
-    "topic": "GRAPH THEORY",
+    "topic": "BINARY SEARCH TREE",
     "difficulty": "HARD",
     "popularity": 230695
   },
@@ -1990,7 +1990,7 @@
   {
     "name": "Inorder Successor in BST",
     "link": "https://leetcode.com/problems/inorder-successor-in-bst/",
-    "topic": "GRAPH THEORY",
+    "topic": "BINARY SEARCH TREE",
     "difficulty": "MEDIUM",
     "popularity": 729219
   },
@@ -2004,7 +2004,7 @@
   {
     "name": "Find the Duplicate Number",
     "link": "https://leetcode.com/problems/find-the-duplicate-number/",
-    "topic": "TWO POINTERS",
+    "topic": "BIT MANIPULATION",
     "difficulty": "MEDIUM",
     "popularity": 4119193
   },
@@ -2074,14 +2074,14 @@
   {
     "name": "Serialize and Deserialize Binary Tree",
     "link": "https://leetcode.com/problems/serialize-and-deserialize-binary-tree/",
-    "topic": "GRAPH THEORY",
+    "topic": "BINARY TREE",
     "difficulty": "HARD",
     "popularity": 2029210
   },
   {
     "name": "Binary Tree Longest Consecutive Sequence",
     "link": "https://leetcode.com/problems/binary-tree-longest-consecutive-sequence/",
-    "topic": "GRAPH THEORY",
+    "topic": "BINARY TREE",
     "difficulty": "MEDIUM",
     "popularity": 304462
   },
@@ -2193,7 +2193,7 @@
   {
     "name": "Binary Tree Vertical Order Traversal",
     "link": "https://leetcode.com/problems/binary-tree-vertical-order-traversal/",
-    "topic": "GRAPH THEORY",
+    "topic": "BINARY TREE",
     "difficulty": "MEDIUM",
     "popularity": 1036329
   },
@@ -2235,7 +2235,7 @@
   {
     "name": "Generalized Abbreviation",
     "link": "https://leetcode.com/problems/generalized-abbreviation/",
-    "topic": "BACKTRACKING",
+    "topic": "BIT MANIPULATION",
     "difficulty": "MEDIUM",
     "popularity": 127206
   },
@@ -2312,7 +2312,7 @@
   {
     "name": "Verify Preorder Serialization of a Binary Tree",
     "link": "https://leetcode.com/problems/verify-preorder-serialization-of-a-binary-tree/",
-    "topic": "TREE",
+    "topic": "BINARY TREE",
     "difficulty": "MEDIUM",
     "popularity": 361079
   },
@@ -2361,7 +2361,7 @@
   {
     "name": "Counting Bits",
     "link": "https://leetcode.com/problems/counting-bits/",
-    "topic": "DYNAMIC PROGRAMMING",
+    "topic": "BIT MANIPULATION",
     "difficulty": "EASY",
     "popularity": 2065054
   },
@@ -2375,21 +2375,21 @@
   {
     "name": "Longest Substring with At Most K Distinct Characters",
     "link": "https://leetcode.com/problems/longest-substring-with-at-most-k-distinct-characters/",
-    "topic": "SLIDING WINDOW",
+    "topic": "HASH TABLE",
     "difficulty": "MEDIUM",
     "popularity": 804807
   },
   {
     "name": "Flatten Nested List Iterator",
     "link": "https://leetcode.com/problems/flatten-nested-list-iterator/",
-    "topic": "GRAPH THEORY",
+    "topic": "TREE",
     "difficulty": "MEDIUM",
     "popularity": 826839
   },
   {
     "name": "Power of Four",
     "link": "https://leetcode.com/problems/power-of-four/",
-    "topic": "RECURSION",
+    "topic": "BIT MANIPULATION",
     "difficulty": "EASY",
     "popularity": 2172062
   },
@@ -2452,14 +2452,14 @@
   {
     "name": "Android Unlock Patterns",
     "link": "https://leetcode.com/problems/android-unlock-patterns/",
-    "topic": "DYNAMIC PROGRAMMING",
+    "topic": "BIT MANIPULATION",
     "difficulty": "MEDIUM",
     "popularity": 157155
   },
   {
     "name": "Data Stream as Disjoint Intervals",
     "link": "https://leetcode.com/problems/data-stream-as-disjoint-intervals/",
-    "topic": "BINARY SEARCH",
+    "topic": "HASH TABLE",
     "difficulty": "HARD",
     "popularity": 230754
   },
@@ -2529,14 +2529,14 @@
   {
     "name": "Design Hit Counter",
     "link": "https://leetcode.com/problems/design-hit-counter/",
-    "topic": "BINARY SEARCH",
+    "topic": "QUEUE",
     "difficulty": "MEDIUM",
     "popularity": 495046
   },
   {
     "name": "Max Sum of Rectangle No Larger Than K",
     "link": "https://leetcode.com/problems/max-sum-of-rectangle-no-larger-than-k/",
-    "topic": "BINARY SEARCH",
+    "topic": "HASH TABLE",
     "difficulty": "HARD",
     "popularity": 320165
   },
@@ -2557,7 +2557,7 @@
   {
     "name": "Find Leaves of Binary Tree",
     "link": "https://leetcode.com/problems/find-leaves-of-binary-tree/",
-    "topic": "GRAPH THEORY",
+    "topic": "BINARY TREE",
     "difficulty": "MEDIUM",
     "popularity": 356972
   },
@@ -2641,7 +2641,7 @@
   {
     "name": "Kth Smallest Element in a Sorted Matrix",
     "link": "https://leetcode.com/problems/kth-smallest-element-in-a-sorted-matrix/",
-    "topic": "BINARY SEARCH",
+    "topic": "HEAP (PRIORITY QUEUE)",
     "difficulty": "MEDIUM",
     "popularity": 1277466
   },
@@ -2774,7 +2774,7 @@
   {
     "name": "Integer Replacement",
     "link": "https://leetcode.com/problems/integer-replacement/",
-    "topic": "DYNAMIC PROGRAMMING",
+    "topic": "BIT MANIPULATION",
     "difficulty": "MEDIUM",
     "popularity": 451415
   },
@@ -2802,7 +2802,7 @@
   {
     "name": "Binary Watch",
     "link": "https://leetcode.com/problems/binary-watch/",
-    "topic": "BACKTRACKING",
+    "topic": "BIT MANIPULATION",
     "difficulty": "EASY",
     "popularity": 442013
   },
@@ -2823,7 +2823,7 @@
   {
     "name": "Sum of Left Leaves",
     "link": "https://leetcode.com/problems/sum-of-left-leaves/",
-    "topic": "GRAPH THEORY",
+    "topic": "BINARY TREE",
     "difficulty": "EASY",
     "popularity": 1300048
   },
@@ -2872,7 +2872,7 @@
   {
     "name": "Minimum Unique Word Abbreviation",
     "link": "https://leetcode.com/problems/minimum-unique-word-abbreviation/",
-    "topic": "BACKTRACKING",
+    "topic": "BIT MANIPULATION",
     "difficulty": "HARD",
     "popularity": 39025
   },
@@ -2963,7 +2963,7 @@
   {
     "name": "Longest Repeating Character Replacement",
     "link": "https://leetcode.com/problems/longest-repeating-character-replacement/",
-    "topic": "SLIDING WINDOW",
+    "topic": "HASH TABLE",
     "difficulty": "MEDIUM",
     "popularity": 2779174
   },
@@ -2977,7 +2977,7 @@
   {
     "name": "Convert Binary Search Tree to Sorted Doubly Linked List",
     "link": "https://leetcode.com/problems/convert-binary-search-tree-to-sorted-doubly-linked-list/",
-    "topic": "GRAPH THEORY",
+    "topic": "BINARY SEARCH TREE",
     "difficulty": "MEDIUM",
     "popularity": 568885
   },
@@ -2991,14 +2991,14 @@
   {
     "name": "Serialize and Deserialize N-ary Tree",
     "link": "https://leetcode.com/problems/serialize-and-deserialize-n-ary-tree/",
-    "topic": "GRAPH THEORY",
+    "topic": "TREE",
     "difficulty": "HARD",
     "popularity": 146900
   },
   {
     "name": "N-ary Tree Level Order Traversal",
     "link": "https://leetcode.com/problems/n-ary-tree-level-order-traversal/",
-    "topic": "GRAPH THEORY",
+    "topic": "TREE",
     "difficulty": "MEDIUM",
     "popularity": 520793
   },
@@ -3012,7 +3012,7 @@
   {
     "name": "Encode N-ary Tree to Binary Tree",
     "link": "https://leetcode.com/problems/encode-n-ary-tree-to-binary-tree/",
-    "topic": "GRAPH THEORY",
+    "topic": "BINARY TREE",
     "difficulty": "HARD",
     "popularity": 31354
   },
@@ -3054,14 +3054,14 @@
   {
     "name": "Path Sum III",
     "link": "https://leetcode.com/problems/path-sum-iii/",
-    "topic": "GRAPH THEORY",
+    "topic": "BINARY TREE",
     "difficulty": "MEDIUM",
     "popularity": 1748565
   },
   {
     "name": "Find All Anagrams in a String",
     "link": "https://leetcode.com/problems/find-all-anagrams-in-a-string/",
-    "topic": "SLIDING WINDOW",
+    "topic": "HASH TABLE",
     "difficulty": "MEDIUM",
     "popularity": 2317070
   },
@@ -3138,14 +3138,14 @@
   {
     "name": "Serialize and Deserialize BST",
     "link": "https://leetcode.com/problems/serialize-and-deserialize-bst/",
-    "topic": "GRAPH THEORY",
+    "topic": "BINARY SEARCH TREE",
     "difficulty": "MEDIUM",
     "popularity": 470427
   },
   {
     "name": "Delete Node in a BST",
     "link": "https://leetcode.com/problems/delete-node-in-a-bst/",
-    "topic": "TREE",
+    "topic": "BINARY SEARCH TREE",
     "difficulty": "MEDIUM",
     "popularity": 1655990
   },
@@ -3187,7 +3187,7 @@
   {
     "name": "132 Pattern",
     "link": "https://leetcode.com/problems/132-pattern/",
-    "topic": "BINARY SEARCH",
+    "topic": "STACK",
     "difficulty": "MEDIUM",
     "popularity": 958598
   },
@@ -3243,14 +3243,14 @@
   {
     "name": "Can I Win",
     "link": "https://leetcode.com/problems/can-i-win/",
-    "topic": "DYNAMIC PROGRAMMING",
+    "topic": "BIT MANIPULATION",
     "difficulty": "MEDIUM",
     "popularity": 400857
   },
   {
     "name": "Optimal Account Balancing",
     "link": "https://leetcode.com/problems/optimal-account-balancing/",
-    "topic": "DYNAMIC PROGRAMMING",
+    "topic": "BIT MANIPULATION",
     "difficulty": "HARD",
     "popularity": 231265
   },
@@ -3306,7 +3306,7 @@
   {
     "name": "Matchsticks to Square",
     "link": "https://leetcode.com/problems/matchsticks-to-square/",
-    "topic": "DYNAMIC PROGRAMMING",
+    "topic": "BIT MANIPULATION",
     "difficulty": "MEDIUM",
     "popularity": 526110
   },
@@ -3355,7 +3355,7 @@
   {
     "name": "Sliding Window Median",
     "link": "https://leetcode.com/problems/sliding-window-median/",
-    "topic": "SLIDING WINDOW",
+    "topic": "HEAP (PRIORITY QUEUE)",
     "difficulty": "HARD",
     "popularity": 578637
   },
@@ -3432,7 +3432,7 @@
   {
     "name": "Non-decreasing Subsequences",
     "link": "https://leetcode.com/problems/non-decreasing-subsequences/",
-    "topic": "BACKTRACKING",
+    "topic": "BIT MANIPULATION",
     "difficulty": "MEDIUM",
     "popularity": 342695
   },
@@ -3474,7 +3474,7 @@
   {
     "name": "Random Point in Non-overlapping Rectangles",
     "link": "https://leetcode.com/problems/random-point-in-non-overlapping-rectangles/",
-    "topic": "BINARY SEARCH",
+    "topic": "HASH TABLE",
     "difficulty": "MEDIUM",
     "popularity": 136777
   },
@@ -3502,7 +3502,7 @@
   {
     "name": "Find Mode in Binary Search Tree",
     "link": "https://leetcode.com/problems/find-mode-in-binary-search-tree/",
-    "topic": "GRAPH THEORY",
+    "topic": "BINARY SEARCH TREE",
     "difficulty": "EASY",
     "popularity": 684825
   },
@@ -3551,7 +3551,7 @@
   {
     "name": "Most Frequent Subtree Sum",
     "link": "https://leetcode.com/problems/most-frequent-subtree-sum/",
-    "topic": "GRAPH THEORY",
+    "topic": "BINARY TREE",
     "difficulty": "MEDIUM",
     "popularity": 259497
   },
@@ -3565,7 +3565,7 @@
   {
     "name": "Inorder Successor in BST II",
     "link": "https://leetcode.com/problems/inorder-successor-in-bst-ii/",
-    "topic": "TREE",
+    "topic": "BINARY SEARCH TREE",
     "difficulty": "MEDIUM",
     "popularity": 125133
   },
@@ -3586,7 +3586,7 @@
   {
     "name": "Find Bottom Left Tree Value",
     "link": "https://leetcode.com/problems/find-bottom-left-tree-value/",
-    "topic": "GRAPH THEORY",
+    "topic": "BINARY TREE",
     "difficulty": "MEDIUM",
     "popularity": 627331
   },
@@ -3600,7 +3600,7 @@
   {
     "name": "Find Largest Value in Each Tree Row",
     "link": "https://leetcode.com/problems/find-largest-value-in-each-tree-row/",
-    "topic": "GRAPH THEORY",
+    "topic": "BINARY TREE",
     "difficulty": "MEDIUM",
     "popularity": 799856
   },
@@ -3677,7 +3677,7 @@
   {
     "name": "Beautiful Arrangement",
     "link": "https://leetcode.com/problems/beautiful-arrangement/",
-    "topic": "DYNAMIC PROGRAMMING",
+    "topic": "BIT MANIPULATION",
     "difficulty": "MEDIUM",
     "popularity": 341777
   },
@@ -3705,7 +3705,7 @@
   {
     "name": "Minimum Absolute Difference in BST",
     "link": "https://leetcode.com/problems/minimum-absolute-difference-in-bst/",
-    "topic": "GRAPH THEORY",
+    "topic": "BINARY SEARCH TREE",
     "difficulty": "EASY",
     "popularity": 1067079
   },
@@ -3747,7 +3747,7 @@
   {
     "name": "Construct Binary Tree from String",
     "link": "https://leetcode.com/problems/construct-binary-tree-from-string/",
-    "topic": "GRAPH THEORY",
+    "topic": "BINARY TREE",
     "difficulty": "MEDIUM",
     "popularity": 217121
   },
@@ -3761,7 +3761,7 @@
   {
     "name": "Convert BST to Greater Tree",
     "link": "https://leetcode.com/problems/convert-bst-to-greater-tree/",
-    "topic": "GRAPH THEORY",
+    "topic": "BINARY SEARCH TREE",
     "difficulty": "MEDIUM",
     "popularity": 504892
   },
@@ -3796,7 +3796,7 @@
   {
     "name": "Diameter of Binary Tree",
     "link": "https://leetcode.com/problems/diameter-of-binary-tree/",
-    "topic": "GRAPH THEORY",
+    "topic": "BINARY TREE",
     "difficulty": "EASY",
     "popularity": 3955468
   },
@@ -3810,7 +3810,7 @@
   {
     "name": "Boundary of Binary Tree",
     "link": "https://leetcode.com/problems/boundary-of-binary-tree/",
-    "topic": "GRAPH THEORY",
+    "topic": "BINARY TREE",
     "difficulty": "MEDIUM",
     "popularity": 369596
   },
@@ -3838,7 +3838,7 @@
   {
     "name": "Binary Tree Longest Consecutive Sequence II",
     "link": "https://leetcode.com/problems/binary-tree-longest-consecutive-sequence-ii/",
-    "topic": "GRAPH THEORY",
+    "topic": "BINARY TREE",
     "difficulty": "MEDIUM",
     "popularity": 126702
   },
@@ -3908,7 +3908,7 @@
   {
     "name": "Maximum Depth of N-ary Tree",
     "link": "https://leetcode.com/problems/maximum-depth-of-n-ary-tree/",
-    "topic": "GRAPH THEORY",
+    "topic": "TREE",
     "difficulty": "EASY",
     "popularity": 492706
   },
@@ -3936,7 +3936,7 @@
   {
     "name": "Binary Tree Tilt",
     "link": "https://leetcode.com/problems/binary-tree-tilt/",
-    "topic": "GRAPH THEORY",
+    "topic": "BINARY TREE",
     "difficulty": "EASY",
     "popularity": 417967
   },
@@ -3999,7 +3999,7 @@
   {
     "name": "Subtree of Another Tree",
     "link": "https://leetcode.com/problems/subtree-of-another-tree/",
-    "topic": "GRAPH THEORY",
+    "topic": "BINARY TREE",
     "difficulty": "EASY",
     "popularity": 2512734
   },
@@ -4069,7 +4069,7 @@
   {
     "name": "Kill Process",
     "link": "https://leetcode.com/problems/kill-process/",
-    "topic": "GRAPH THEORY",
+    "topic": "TREE",
     "difficulty": "MEDIUM",
     "popularity": 139354
   },
@@ -4118,14 +4118,14 @@
   {
     "name": "N-ary Tree Preorder Traversal",
     "link": "https://leetcode.com/problems/n-ary-tree-preorder-traversal/",
-    "topic": "GRAPH THEORY",
+    "topic": "TREE",
     "difficulty": "EASY",
     "popularity": 658399
   },
   {
     "name": "N-ary Tree Postorder Traversal",
     "link": "https://leetcode.com/problems/n-ary-tree-postorder-traversal/",
-    "topic": "GRAPH THEORY",
+    "topic": "TREE",
     "difficulty": "EASY",
     "popularity": 539896
   },
@@ -4153,7 +4153,7 @@
   {
     "name": "Longest Harmonious Subsequence",
     "link": "https://leetcode.com/problems/longest-harmonious-subsequence/",
-    "topic": "SLIDING WINDOW",
+    "topic": "HASH TABLE",
     "difficulty": "EASY",
     "popularity": 616664
   },
@@ -4237,7 +4237,7 @@
   {
     "name": "Construct String from Binary Tree",
     "link": "https://leetcode.com/problems/construct-string-from-binary-tree/",
-    "topic": "GRAPH THEORY",
+    "topic": "BINARY TREE",
     "difficulty": "MEDIUM",
     "popularity": 507716
   },
@@ -4314,7 +4314,7 @@
   {
     "name": "Merge Two Binary Trees",
     "link": "https://leetcode.com/problems/merge-two-binary-trees/",
-    "topic": "GRAPH THEORY",
+    "topic": "BINARY TREE",
     "difficulty": "EASY",
     "popularity": 1150495
   },
@@ -4356,7 +4356,7 @@
   {
     "name": "Add One Row to Tree",
     "link": "https://leetcode.com/problems/add-one-row-to-tree/",
-    "topic": "GRAPH THEORY",
+    "topic": "BINARY TREE",
     "difficulty": "MEDIUM",
     "popularity": 479906
   },
@@ -4454,14 +4454,14 @@
   {
     "name": "Average of Levels in Binary Tree",
     "link": "https://leetcode.com/problems/average-of-levels-in-binary-tree/",
-    "topic": "GRAPH THEORY",
+    "topic": "BINARY TREE",
     "difficulty": "EASY",
     "popularity": 1022722
   },
   {
     "name": "Shopping Offers",
     "link": "https://leetcode.com/problems/shopping-offers/",
-    "topic": "DYNAMIC PROGRAMMING",
+    "topic": "BIT MANIPULATION",
     "difficulty": "MEDIUM",
     "popularity": 162969
   },
@@ -4559,14 +4559,14 @@
   {
     "name": "Find Duplicate Subtrees",
     "link": "https://leetcode.com/problems/find-duplicate-subtrees/",
-    "topic": "GRAPH THEORY",
+    "topic": "BINARY TREE",
     "difficulty": "MEDIUM",
     "popularity": 527630
   },
   {
     "name": "Two Sum IV - Input is a BST",
     "link": "https://leetcode.com/problems/two-sum-iv-input-is-a-bst/",
-    "topic": "GRAPH THEORY",
+    "topic": "BINARY SEARCH TREE",
     "difficulty": "EASY",
     "popularity": 1251532
   },
@@ -4580,7 +4580,7 @@
   {
     "name": "Print Binary Tree",
     "link": "https://leetcode.com/problems/print-binary-tree/",
-    "topic": "GRAPH THEORY",
+    "topic": "BINARY TREE",
     "difficulty": "MEDIUM",
     "popularity": 132627
   },
@@ -4629,14 +4629,14 @@
   {
     "name": "Maximum Width of Binary Tree",
     "link": "https://leetcode.com/problems/maximum-width-of-binary-tree/",
-    "topic": "GRAPH THEORY",
+    "topic": "BINARY TREE",
     "difficulty": "MEDIUM",
     "popularity": 1367184
   },
   {
     "name": "Equal Tree Partition",
     "link": "https://leetcode.com/problems/equal-tree-partition/",
-    "topic": "GRAPH THEORY",
+    "topic": "BINARY TREE",
     "difficulty": "MEDIUM",
     "popularity": 87449
   },
@@ -4657,7 +4657,7 @@
   {
     "name": "Path Sum IV",
     "link": "https://leetcode.com/problems/path-sum-iv/",
-    "topic": "GRAPH THEORY",
+    "topic": "BINARY TREE",
     "difficulty": "MEDIUM",
     "popularity": 66556
   },
@@ -4678,7 +4678,7 @@
   {
     "name": "Trim a Binary Search Tree",
     "link": "https://leetcode.com/problems/trim-a-binary-search-tree/",
-    "topic": "GRAPH THEORY",
+    "topic": "BINARY SEARCH TREE",
     "difficulty": "MEDIUM",
     "popularity": 529032
   },
@@ -4692,14 +4692,14 @@
   {
     "name": "Second Minimum Node In a Binary Tree",
     "link": "https://leetcode.com/problems/second-minimum-node-in-a-binary-tree/",
-    "topic": "GRAPH THEORY",
+    "topic": "BINARY TREE",
     "difficulty": "EASY",
     "popularity": 539734
   },
   {
     "name": "Bulb Switcher II",
     "link": "https://leetcode.com/problems/bulb-switcher-ii/",
-    "topic": "GRAPH THEORY",
+    "topic": "BIT MANIPULATION",
     "difficulty": "MEDIUM",
     "popularity": 62576
   },
@@ -4804,7 +4804,7 @@
   {
     "name": "Longest Univalue Path",
     "link": "https://leetcode.com/problems/longest-univalue-path/",
-    "topic": "GRAPH THEORY",
+    "topic": "BINARY TREE",
     "difficulty": "MEDIUM",
     "popularity": 522810
   },
@@ -4825,14 +4825,14 @@
   {
     "name": "Employee Importance",
     "link": "https://leetcode.com/problems/employee-importance/",
-    "topic": "GRAPH THEORY",
+    "topic": "TREE",
     "difficulty": "MEDIUM",
     "popularity": 369930
   },
   {
     "name": "Stickers to Spell Word",
     "link": "https://leetcode.com/problems/stickers-to-spell-word/",
-    "topic": "DYNAMIC PROGRAMMING",
+    "topic": "BIT MANIPULATION",
     "difficulty": "HARD",
     "popularity": 192356
   },
@@ -4881,7 +4881,7 @@
   {
     "name": "Partition to K Equal Sum Subsets",
     "link": "https://leetcode.com/problems/partition-to-k-equal-sum-subsets/",
-    "topic": "DYNAMIC PROGRAMMING",
+    "topic": "BIT MANIPULATION",
     "difficulty": "MEDIUM",
     "popularity": 910838
   },
@@ -4895,14 +4895,14 @@
   {
     "name": "Search in a Binary Search Tree",
     "link": "https://leetcode.com/problems/search-in-a-binary-search-tree/",
-    "topic": "TREE",
+    "topic": "BINARY SEARCH TREE",
     "difficulty": "EASY",
     "popularity": 1748060
   },
   {
     "name": "Insert into a Binary Search Tree",
     "link": "https://leetcode.com/problems/insert-into-a-binary-search-tree/",
-    "topic": "TREE",
+    "topic": "BINARY SEARCH TREE",
     "difficulty": "MEDIUM",
     "popularity": 1245599
   },
@@ -4916,7 +4916,7 @@
   {
     "name": "Kth Largest Element in a Stream",
     "link": "https://leetcode.com/problems/kth-largest-element-in-a-stream/",
-    "topic": "TREE",
+    "topic": "BINARY SEARCH TREE",
     "difficulty": "EASY",
     "popularity": 1678753
   },
@@ -4965,7 +4965,7 @@
   {
     "name": "Random Pick with Blacklist",
     "link": "https://leetcode.com/problems/random-pick-with-blacklist/",
-    "topic": "BINARY SEARCH",
+    "topic": "HASH TABLE",
     "difficulty": "HARD",
     "popularity": 154382
   },
@@ -5189,7 +5189,7 @@
   {
     "name": "Closest Leaf in a Binary Tree",
     "link": "https://leetcode.com/problems/closest-leaf-in-a-binary-tree/",
-    "topic": "GRAPH THEORY",
+    "topic": "BINARY TREE",
     "difficulty": "MEDIUM",
     "popularity": 118886
   },
@@ -5287,7 +5287,7 @@
   {
     "name": "Pyramid Transition Matrix",
     "link": "https://leetcode.com/problems/pyramid-transition-matrix/",
-    "topic": "BACKTRACKING",
+    "topic": "BIT MANIPULATION",
     "difficulty": "MEDIUM",
     "popularity": 181281
   },
@@ -5448,7 +5448,7 @@
   {
     "name": "K-th Symbol in Grammar",
     "link": "https://leetcode.com/problems/k-th-symbol-in-grammar/",
-    "topic": "RECURSION",
+    "topic": "BIT MANIPULATION",
     "difficulty": "MEDIUM",
     "popularity": 547409
   },
@@ -5476,14 +5476,14 @@
   {
     "name": "Minimum Distance Between BST Nodes",
     "link": "https://leetcode.com/problems/minimum-distance-between-bst-nodes/",
-    "topic": "GRAPH THEORY",
+    "topic": "BINARY SEARCH TREE",
     "difficulty": "EASY",
     "popularity": 551161
   },
   {
     "name": "Letter Case Permutation",
     "link": "https://leetcode.com/problems/letter-case-permutation/",
-    "topic": "BACKTRACKING",
+    "topic": "BIT MANIPULATION",
     "difficulty": "MEDIUM",
     "popularity": 499800
   },
@@ -5630,7 +5630,7 @@
   {
     "name": "Split Array With Same Average",
     "link": "https://leetcode.com/problems/split-array-with-same-average/",
-    "topic": "DYNAMIC PROGRAMMING",
+    "topic": "BIT MANIPULATION",
     "difficulty": "HARD",
     "popularity": 179683
   },
@@ -5693,7 +5693,7 @@
   {
     "name": "Binary Tree Pruning",
     "link": "https://leetcode.com/problems/binary-tree-pruning/",
-    "topic": "GRAPH THEORY",
+    "topic": "BINARY TREE",
     "difficulty": "MEDIUM",
     "popularity": 401820
   },
@@ -5819,7 +5819,7 @@
   {
     "name": "Flipping an Image",
     "link": "https://leetcode.com/problems/flipping-an-image/",
-    "topic": "TWO POINTERS",
+    "topic": "BIT MANIPULATION",
     "difficulty": "EASY",
     "popularity": 685806
   },
@@ -5924,7 +5924,7 @@
   {
     "name": "Shortest Path Visiting All Nodes",
     "link": "https://leetcode.com/problems/shortest-path-visiting-all-nodes/",
-    "topic": "DYNAMIC PROGRAMMING",
+    "topic": "BIT MANIPULATION",
     "difficulty": "HARD",
     "popularity": 236187
   },
@@ -6022,35 +6022,35 @@
   {
     "name": "Score After Flipping Matrix",
     "link": "https://leetcode.com/problems/score-after-flipping-matrix/",
-    "topic": "GREEDY",
+    "topic": "BIT MANIPULATION",
     "difficulty": "MEDIUM",
     "popularity": 212455
   },
   {
     "name": "Shortest Subarray with Sum at Least K",
     "link": "https://leetcode.com/problems/shortest-subarray-with-sum-at-least-k/",
-    "topic": "SLIDING WINDOW",
+    "topic": "HEAP (PRIORITY QUEUE)",
     "difficulty": "HARD",
     "popularity": 661905
   },
   {
     "name": "All Nodes Distance K in Binary Tree",
     "link": "https://leetcode.com/problems/all-nodes-distance-k-in-binary-tree/",
-    "topic": "GRAPH THEORY",
+    "topic": "BINARY TREE",
     "difficulty": "MEDIUM",
     "popularity": 1060473
   },
   {
     "name": "Shortest Path to Get All Keys",
     "link": "https://leetcode.com/problems/shortest-path-to-get-all-keys/",
-    "topic": "GRAPH THEORY",
+    "topic": "BIT MANIPULATION",
     "difficulty": "HARD",
     "popularity": 181264
   },
   {
     "name": "Smallest Subtree with all the Deepest Nodes",
     "link": "https://leetcode.com/problems/smallest-subtree-with-all-the-deepest-nodes/",
-    "topic": "GRAPH THEORY",
+    "topic": "BINARY TREE",
     "difficulty": "MEDIUM",
     "popularity": 354963
   },
@@ -6099,7 +6099,7 @@
   {
     "name": "Leaf-Similar Trees",
     "link": "https://leetcode.com/problems/leaf-similar-trees/",
-    "topic": "GRAPH THEORY",
+    "topic": "BINARY TREE",
     "difficulty": "EASY",
     "popularity": 993572
   },
@@ -6211,7 +6211,7 @@
   {
     "name": "Fair Candy Swap",
     "link": "https://leetcode.com/problems/fair-candy-swap/",
-    "topic": "BINARY SEARCH",
+    "topic": "HASH TABLE",
     "difficulty": "EASY",
     "popularity": 272777
   },
@@ -6274,14 +6274,14 @@
   {
     "name": "Increasing Order Search Tree",
     "link": "https://leetcode.com/problems/increasing-order-search-tree/",
-    "topic": "GRAPH THEORY",
+    "topic": "BINARY SEARCH TREE",
     "difficulty": "EASY",
     "popularity": 435824
   },
   {
     "name": "Bitwise ORs of Subarrays",
     "link": "https://leetcode.com/problems/bitwise-ors-of-subarrays/",
-    "topic": "DYNAMIC PROGRAMMING",
+    "topic": "BIT MANIPULATION",
     "difficulty": "MEDIUM",
     "popularity": 238566
   },
@@ -6323,7 +6323,7 @@
   {
     "name": "Fruit Into Baskets",
     "link": "https://leetcode.com/problems/fruit-into-baskets/",
-    "topic": "SLIDING WINDOW",
+    "topic": "HASH TABLE",
     "difficulty": "MEDIUM",
     "popularity": 1732038
   },
@@ -6372,7 +6372,7 @@
   {
     "name": "Online Election",
     "link": "https://leetcode.com/problems/online-election/",
-    "topic": "BINARY SEARCH",
+    "topic": "HASH TABLE",
     "difficulty": "MEDIUM",
     "popularity": 151548
   },
@@ -6428,7 +6428,7 @@
   {
     "name": "Complete Binary Tree Inserter",
     "link": "https://leetcode.com/problems/complete-binary-tree-inserter/",
-    "topic": "GRAPH THEORY",
+    "topic": "BINARY TREE",
     "difficulty": "MEDIUM",
     "popularity": 104160
   },
@@ -6505,7 +6505,7 @@
   {
     "name": "Binary Subarrays With Sum",
     "link": "https://leetcode.com/problems/binary-subarrays-with-sum/",
-    "topic": "SLIDING WINDOW",
+    "topic": "HASH TABLE",
     "difficulty": "MEDIUM",
     "popularity": 810575
   },
@@ -6561,7 +6561,7 @@
   {
     "name": "Range Sum of BST",
     "link": "https://leetcode.com/problems/range-sum-of-bst/",
-    "topic": "GRAPH THEORY",
+    "topic": "BINARY SEARCH TREE",
     "difficulty": "EASY",
     "popularity": 1559666
   },
@@ -6596,7 +6596,7 @@
   {
     "name": "Find the Shortest Superstring",
     "link": "https://leetcode.com/problems/find-the-shortest-superstring/",
-    "topic": "DYNAMIC PROGRAMMING",
+    "topic": "BIT MANIPULATION",
     "difficulty": "HARD",
     "popularity": 80569
   },
@@ -6652,7 +6652,7 @@
   {
     "name": "Flip Equivalent Binary Trees",
     "link": "https://leetcode.com/problems/flip-equivalent-binary-trees/",
-    "topic": "GRAPH THEORY",
+    "topic": "BINARY TREE",
     "difficulty": "MEDIUM",
     "popularity": 392446
   },
@@ -6701,7 +6701,7 @@
   {
     "name": "Check Completeness of a Binary Tree",
     "link": "https://leetcode.com/problems/check-completeness-of-a-binary-tree/",
-    "topic": "GRAPH THEORY",
+    "topic": "BINARY TREE",
     "difficulty": "MEDIUM",
     "popularity": 552630
   },
@@ -6750,7 +6750,7 @@
   {
     "name": "Univalued Binary Tree",
     "link": "https://leetcode.com/problems/univalued-binary-tree/",
-    "topic": "GRAPH THEORY",
+    "topic": "BINARY TREE",
     "difficulty": "EASY",
     "popularity": 385732
   },
@@ -6792,7 +6792,7 @@
   {
     "name": "Flip Binary Tree To Match Preorder Traversal",
     "link": "https://leetcode.com/problems/flip-binary-tree-to-match-preorder-traversal/",
-    "topic": "GRAPH THEORY",
+    "topic": "BINARY TREE",
     "difficulty": "MEDIUM",
     "popularity": 96968
   },
@@ -6848,21 +6848,21 @@
   {
     "name": "Distribute Coins in Binary Tree",
     "link": "https://leetcode.com/problems/distribute-coins-in-binary-tree/",
-    "topic": "GRAPH THEORY",
+    "topic": "BINARY TREE",
     "difficulty": "MEDIUM",
     "popularity": 296846
   },
   {
     "name": "Unique Paths III",
     "link": "https://leetcode.com/problems/unique-paths-iii/",
-    "topic": "BACKTRACKING",
+    "topic": "BIT MANIPULATION",
     "difficulty": "HARD",
     "popularity": 320751
   },
   {
     "name": "Time Based Key-Value Store",
     "link": "https://leetcode.com/problems/time-based-key-value-store/",
-    "topic": "BINARY SEARCH",
+    "topic": "HASH TABLE",
     "difficulty": "MEDIUM",
     "popularity": 1529477
   },
@@ -6904,7 +6904,7 @@
   {
     "name": "Vertical Order Traversal of a Binary Tree",
     "link": "https://leetcode.com/problems/vertical-order-traversal-of-a-binary-tree/",
-    "topic": "GRAPH THEORY",
+    "topic": "BINARY TREE",
     "difficulty": "HARD",
     "popularity": 1378358
   },
@@ -6939,14 +6939,14 @@
   {
     "name": "Subarrays with K Different Integers",
     "link": "https://leetcode.com/problems/subarrays-with-k-different-integers/",
-    "topic": "SLIDING WINDOW",
+    "topic": "HASH TABLE",
     "difficulty": "HARD",
     "popularity": 626581
   },
   {
     "name": "Cousins in Binary Tree",
     "link": "https://leetcode.com/problems/cousins-in-binary-tree/",
-    "topic": "GRAPH THEORY",
+    "topic": "BINARY TREE",
     "difficulty": "EASY",
     "popularity": 601191
   },
@@ -6967,7 +6967,7 @@
   {
     "name": "Number of Squareful Arrays",
     "link": "https://leetcode.com/problems/number-of-squareful-arrays/",
-    "topic": "DYNAMIC PROGRAMMING",
+    "topic": "BIT MANIPULATION",
     "difficulty": "HARD",
     "popularity": 100052
   },
@@ -6981,7 +6981,7 @@
   {
     "name": "Maximum Binary Tree II",
     "link": "https://leetcode.com/problems/maximum-binary-tree-ii/",
-    "topic": "TREE",
+    "topic": "BINARY TREE",
     "difficulty": "MEDIUM",
     "popularity": 66022
   },
@@ -7051,7 +7051,7 @@
   {
     "name": "Construct Binary Search Tree from Preorder Traversal",
     "link": "https://leetcode.com/problems/construct-binary-search-tree-from-preorder-traversal/",
-    "topic": "TREE",
+    "topic": "BINARY SEARCH TREE",
     "difficulty": "MEDIUM",
     "popularity": 678549
   },
@@ -7149,7 +7149,7 @@
   {
     "name": "Sum of Root To Leaf Binary Numbers",
     "link": "https://leetcode.com/problems/sum-of-root-to-leaf-binary-numbers/",
-    "topic": "GRAPH THEORY",
+    "topic": "BINARY TREE",
     "difficulty": "EASY",
     "popularity": 477415
   },
@@ -7177,7 +7177,7 @@
   {
     "name": "Maximum Difference Between Node and Ancestor",
     "link": "https://leetcode.com/problems/maximum-difference-between-node-and-ancestor/",
-    "topic": "GRAPH THEORY",
+    "topic": "BINARY TREE",
     "difficulty": "MEDIUM",
     "popularity": 498421
   },
@@ -7191,7 +7191,7 @@
   {
     "name": "Recover a Tree From Preorder Traversal",
     "link": "https://leetcode.com/problems/recover-a-tree-from-preorder-traversal/",
-    "topic": "GRAPH THEORY",
+    "topic": "BINARY TREE",
     "difficulty": "HARD",
     "popularity": 202178
   },
@@ -7261,7 +7261,7 @@
   {
     "name": "Binary Search Tree to Greater Sum Tree",
     "link": "https://leetcode.com/problems/binary-search-tree-to-greater-sum-tree/",
-    "topic": "GRAPH THEORY",
+    "topic": "BINARY SEARCH TREE",
     "difficulty": "MEDIUM",
     "popularity": 396415
   },
@@ -7303,7 +7303,7 @@
   {
     "name": "Longest Duplicate Substring",
     "link": "https://leetcode.com/problems/longest-duplicate-substring/",
-    "topic": "SLIDING WINDOW",
+    "topic": "HASH TABLE",
     "difficulty": "HARD",
     "popularity": 279377
   },
@@ -7457,7 +7457,7 @@
   {
     "name": "Campus Bikes II",
     "link": "https://leetcode.com/problems/campus-bikes-ii/",
-    "topic": "DYNAMIC PROGRAMMING",
+    "topic": "BIT MANIPULATION",
     "difficulty": "MEDIUM",
     "popularity": 103223
   },
@@ -7555,7 +7555,7 @@
   {
     "name": "Insufficient Nodes in Root to Leaf Paths",
     "link": "https://leetcode.com/problems/insufficient-nodes-in-root-to-leaf-paths/",
-    "topic": "GRAPH THEORY",
+    "topic": "BINARY TREE",
     "difficulty": "MEDIUM",
     "popularity": 94828
   },
@@ -7695,7 +7695,7 @@
   {
     "name": "Find K-Length Substrings With No Repeated Characters",
     "link": "https://leetcode.com/problems/find-k-length-substrings-with-no-repeated-characters/",
-    "topic": "SLIDING WINDOW",
+    "topic": "HASH TABLE",
     "difficulty": "MEDIUM",
     "popularity": 74848
   },
@@ -7723,7 +7723,7 @@
   {
     "name": "Path In Zigzag Labelled Binary Tree",
     "link": "https://leetcode.com/problems/path-in-zigzag-labelled-binary-tree/",
-    "topic": "TREE",
+    "topic": "BINARY TREE",
     "difficulty": "MEDIUM",
     "popularity": 71851
   },
@@ -7765,7 +7765,7 @@
   {
     "name": "Delete Nodes And Return Forest",
     "link": "https://leetcode.com/problems/delete-nodes-and-return-forest/",
-    "topic": "GRAPH THEORY",
+    "topic": "BINARY TREE",
     "difficulty": "MEDIUM",
     "popularity": 550919
   },
@@ -7835,7 +7835,7 @@
   {
     "name": "Maximum Average Subtree",
     "link": "https://leetcode.com/problems/maximum-average-subtree/",
-    "topic": "GRAPH THEORY",
+    "topic": "BINARY TREE",
     "difficulty": "MEDIUM",
     "popularity": 111074
   },
@@ -7856,7 +7856,7 @@
   {
     "name": "Lowest Common Ancestor of Deepest Leaves",
     "link": "https://leetcode.com/problems/lowest-common-ancestor-of-deepest-leaves/",
-    "topic": "GRAPH THEORY",
+    "topic": "BINARY TREE",
     "difficulty": "MEDIUM",
     "popularity": 321459
   },
@@ -7870,7 +7870,7 @@
   {
     "name": "Smallest Sufficient Team",
     "link": "https://leetcode.com/problems/smallest-sufficient-team/",
-    "topic": "DYNAMIC PROGRAMMING",
+    "topic": "BIT MANIPULATION",
     "difficulty": "HARD",
     "popularity": 136562
   },
@@ -8010,14 +8010,14 @@
   {
     "name": "Binary Tree Coloring Game",
     "link": "https://leetcode.com/problems/binary-tree-coloring-game/",
-    "topic": "GRAPH THEORY",
+    "topic": "BINARY TREE",
     "difficulty": "MEDIUM",
     "popularity": 106186
   },
   {
     "name": "Snapshot Array",
     "link": "https://leetcode.com/problems/snapshot-array/",
-    "topic": "BINARY SEARCH",
+    "topic": "HASH TABLE",
     "difficulty": "MEDIUM",
     "popularity": 780301
   },
@@ -8087,7 +8087,7 @@
   {
     "name": "Swap For Longest Repeated Character Substring",
     "link": "https://leetcode.com/problems/swap-for-longest-repeated-character-substring/",
-    "topic": "SLIDING WINDOW",
+    "topic": "HASH TABLE",
     "difficulty": "MEDIUM",
     "popularity": 96643
   },
@@ -8122,7 +8122,7 @@
   {
     "name": "Maximum Level Sum of a Binary Tree",
     "link": "https://leetcode.com/problems/maximum-level-sum-of-a-binary-tree/",
-    "topic": "GRAPH THEORY",
+    "topic": "BINARY TREE",
     "difficulty": "MEDIUM",
     "popularity": 838249
   },
@@ -8185,7 +8185,7 @@
   {
     "name": "Compare Strings by Frequency of the Smallest Character",
     "link": "https://leetcode.com/problems/compare-strings-by-frequency-of-the-smallest-character/",
-    "topic": "BINARY SEARCH",
+    "topic": "HASH TABLE",
     "difficulty": "MEDIUM",
     "popularity": 149042
   },
@@ -8381,7 +8381,7 @@
   {
     "name": "Find Smallest Common Element in All Rows",
     "link": "https://leetcode.com/problems/find-smallest-common-element-in-all-rows/",
-    "topic": "BINARY SEARCH",
+    "topic": "HASH TABLE",
     "difficulty": "MEDIUM",
     "popularity": 73195
   },
@@ -8486,14 +8486,14 @@
   {
     "name": "Intersection of Three Sorted Arrays",
     "link": "https://leetcode.com/problems/intersection-of-three-sorted-arrays/",
-    "topic": "BINARY SEARCH",
+    "topic": "HASH TABLE",
     "difficulty": "EASY",
     "popularity": 129427
   },
   {
     "name": "Two Sum BSTs",
     "link": "https://leetcode.com/problems/two-sum-bsts/",
-    "topic": "GRAPH THEORY",
+    "topic": "BINARY SEARCH TREE",
     "difficulty": "MEDIUM",
     "popularity": 91097
   },
@@ -8661,14 +8661,14 @@
   {
     "name": "Circular Permutation in Binary Representation",
     "link": "https://leetcode.com/problems/circular-permutation-in-binary-representation/",
-    "topic": "BACKTRACKING",
+    "topic": "BIT MANIPULATION",
     "difficulty": "MEDIUM",
     "popularity": 35118
   },
   {
     "name": "Maximum Length of a Concatenated String with Unique Characters",
     "link": "https://leetcode.com/problems/maximum-length-of-a-concatenated-string-with-unique-characters/",
-    "topic": "BACKTRACKING",
+    "topic": "BIT MANIPULATION",
     "difficulty": "MEDIUM",
     "popularity": 599870
   },
@@ -8710,7 +8710,7 @@
   {
     "name": "Tree Diameter",
     "link": "https://leetcode.com/problems/tree-diameter/",
-    "topic": "GRAPH THEORY",
+    "topic": "TREE",
     "difficulty": "MEDIUM",
     "popularity": 93365
   },
@@ -8731,7 +8731,7 @@
   {
     "name": "Count Number of Nice Subarrays",
     "link": "https://leetcode.com/problems/count-number-of-nice-subarrays/",
-    "topic": "SLIDING WINDOW",
+    "topic": "HASH TABLE",
     "difficulty": "MEDIUM",
     "popularity": 700601
   },
@@ -8780,7 +8780,7 @@
   {
     "name": "Maximum Score Words Formed by Letters",
     "link": "https://leetcode.com/problems/maximum-score-words-formed-by-letters/",
-    "topic": "DYNAMIC PROGRAMMING",
+    "topic": "BIT MANIPULATION",
     "difficulty": "HARD",
     "popularity": 169582
   },
@@ -8794,7 +8794,7 @@
   {
     "name": "Smallest Common Region",
     "link": "https://leetcode.com/problems/smallest-common-region/",
-    "topic": "GRAPH THEORY",
+    "topic": "TREE",
     "difficulty": "MEDIUM",
     "popularity": 56653
   },
@@ -8822,7 +8822,7 @@
   {
     "name": "Find Elements in a Contaminated Binary Tree",
     "link": "https://leetcode.com/problems/find-elements-in-a-contaminated-binary-tree/",
-    "topic": "GRAPH THEORY",
+    "topic": "BINARY TREE",
     "difficulty": "MEDIUM",
     "popularity": 244972
   },
@@ -8871,7 +8871,7 @@
   {
     "name": "Search Suggestions System",
     "link": "https://leetcode.com/problems/search-suggestions-system/",
-    "topic": "BINARY SEARCH",
+    "topic": "TRIE",
     "difficulty": "MEDIUM",
     "popularity": 693734
   },
@@ -8906,7 +8906,7 @@
   {
     "name": "Delete Tree Nodes",
     "link": "https://leetcode.com/problems/delete-tree-nodes/",
-    "topic": "GRAPH THEORY",
+    "topic": "TREE",
     "difficulty": "MEDIUM",
     "popularity": 18954
   },
@@ -8983,7 +8983,7 @@
   {
     "name": "Minimum Number of Flips to Convert Binary Matrix to Zero Matrix",
     "link": "https://leetcode.com/problems/minimum-number-of-flips-to-convert-binary-matrix-to-zero-matrix/",
-    "topic": "GRAPH THEORY",
+    "topic": "BIT MANIPULATION",
     "difficulty": "HARD",
     "popularity": 55976
   },
@@ -9039,7 +9039,7 @@
   {
     "name": "Maximum Side Length of a Square with Sum Less than or Equal to Threshold",
     "link": "https://leetcode.com/problems/maximum-side-length-of-a-square-with-sum-less-than-or-equal-to-threshold/",
-    "topic": "BINARY SEARCH",
+    "topic": "MATRIX",
     "difficulty": "MEDIUM",
     "popularity": 194668
   },
@@ -9074,7 +9074,7 @@
   {
     "name": "Maximum Number of Occurrences of a Substring",
     "link": "https://leetcode.com/problems/maximum-number-of-occurrences-of-a-substring/",
-    "topic": "SLIDING WINDOW",
+    "topic": "HASH TABLE",
     "difficulty": "MEDIUM",
     "popularity": 159813
   },
@@ -9109,7 +9109,7 @@
   {
     "name": "Deepest Leaves Sum",
     "link": "https://leetcode.com/problems/deepest-leaves-sum/",
-    "topic": "GRAPH THEORY",
+    "topic": "BINARY TREE",
     "difficulty": "MEDIUM",
     "popularity": 477502
   },
@@ -9130,7 +9130,7 @@
   {
     "name": "All Elements in Two Binary Search Trees",
     "link": "https://leetcode.com/problems/all-elements-in-two-binary-search-trees/",
-    "topic": "GRAPH THEORY",
+    "topic": "BINARY SEARCH TREE",
     "difficulty": "MEDIUM",
     "popularity": 333550
   },
@@ -9200,7 +9200,7 @@
   {
     "name": "Sum of Nodes with Even-Valued Grandparent",
     "link": "https://leetcode.com/problems/sum-of-nodes-with-even-valued-grandparent/",
-    "topic": "GRAPH THEORY",
+    "topic": "BINARY TREE",
     "difficulty": "MEDIUM",
     "popularity": 218466
   },
@@ -9270,7 +9270,7 @@
   {
     "name": "Delete Leaves With a Given Value",
     "link": "https://leetcode.com/problems/delete-leaves-with-a-given-value/",
-    "topic": "GRAPH THEORY",
+    "topic": "BINARY TREE",
     "difficulty": "MEDIUM",
     "popularity": 340250
   },
@@ -9354,7 +9354,7 @@
   {
     "name": "The K Weakest Rows in a Matrix",
     "link": "https://leetcode.com/problems/the-k-weakest-rows-in-a-matrix/",
-    "topic": "BINARY SEARCH",
+    "topic": "HEAP (PRIORITY QUEUE)",
     "difficulty": "EASY",
     "popularity": 577394
   },
@@ -9368,7 +9368,7 @@
   {
     "name": "Maximum Product of Splitted Binary Tree",
     "link": "https://leetcode.com/problems/maximum-product-of-splitted-binary-tree/",
-    "topic": "GRAPH THEORY",
+    "topic": "BINARY TREE",
     "difficulty": "MEDIUM",
     "popularity": 470306
   },
@@ -9431,14 +9431,14 @@
   {
     "name": "Tweet Counts Per Frequency",
     "link": "https://leetcode.com/problems/tweet-counts-per-frequency/",
-    "topic": "BINARY SEARCH",
+    "topic": "HASH TABLE",
     "difficulty": "MEDIUM",
     "popularity": 87818
   },
   {
     "name": "Maximum Students Taking Exam",
     "link": "https://leetcode.com/problems/maximum-students-taking-exam/",
-    "topic": "DYNAMIC PROGRAMMING",
+    "topic": "BIT MANIPULATION",
     "difficulty": "HARD",
     "popularity": 45290
   },
@@ -9452,7 +9452,7 @@
   {
     "name": "Count Negative Numbers in a Sorted Matrix",
     "link": "https://leetcode.com/problems/count-negative-numbers-in-a-sorted-matrix/",
-    "topic": "BINARY SEARCH",
+    "topic": "MATRIX",
     "difficulty": "EASY",
     "popularity": 857569
   },
@@ -9501,7 +9501,7 @@
   {
     "name": "Number of Substrings Containing All Three Characters",
     "link": "https://leetcode.com/problems/number-of-substrings-containing-all-three-characters/",
-    "topic": "SLIDING WINDOW",
+    "topic": "HASH TABLE",
     "difficulty": "MEDIUM",
     "popularity": 806883
   },
@@ -9522,7 +9522,7 @@
   {
     "name": "Validate Binary Tree Nodes",
     "link": "https://leetcode.com/problems/validate-binary-tree-nodes/",
-    "topic": "GRAPH THEORY",
+    "topic": "BINARY TREE",
     "difficulty": "MEDIUM",
     "popularity": 312430
   },
@@ -9564,7 +9564,7 @@
   {
     "name": "Linked List in Binary Tree",
     "link": "https://leetcode.com/problems/linked-list-in-binary-tree/",
-    "topic": "GRAPH THEORY",
+    "topic": "BINARY TREE",
     "difficulty": "MEDIUM",
     "popularity": 407623
   },
@@ -9627,14 +9627,14 @@
   {
     "name": "Time Needed to Inform All Employees",
     "link": "https://leetcode.com/problems/time-needed-to-inform-all-employees/",
-    "topic": "GRAPH THEORY",
+    "topic": "TREE",
     "difficulty": "MEDIUM",
     "popularity": 435532
   },
   {
     "name": "Frog Position After T Seconds",
     "link": "https://leetcode.com/problems/frog-position-after-t-seconds/",
-    "topic": "GRAPH THEORY",
+    "topic": "TREE",
     "difficulty": "HARD",
     "popularity": 115962
   },
@@ -9648,7 +9648,7 @@
   {
     "name": "Find a Corresponding Node of a Binary Tree in a Clone of That Tree",
     "link": "https://leetcode.com/problems/find-a-corresponding-node-of-a-binary-tree-in-a-clone-of-that-tree/",
-    "topic": "GRAPH THEORY",
+    "topic": "BINARY TREE",
     "difficulty": "EASY",
     "popularity": 312900
   },
@@ -9697,7 +9697,7 @@
   {
     "name": "Cinema Seat Allocation",
     "link": "https://leetcode.com/problems/cinema-seat-allocation/",
-    "topic": "GREEDY",
+    "topic": "BIT MANIPULATION",
     "difficulty": "MEDIUM",
     "popularity": 150756
   },
@@ -9991,7 +9991,7 @@
   {
     "name": "Leftmost Column with at Least a One",
     "link": "https://leetcode.com/problems/leftmost-column-with-at-least-a-one/",
-    "topic": "BINARY SEARCH",
+    "topic": "MATRIX",
     "difficulty": "MEDIUM",
     "popularity": 360552
   },
@@ -10005,7 +10005,7 @@
   {
     "name": "Check If a String Is a Valid Sequence from Root to Leaves Path in a Binary Tree",
     "link": "https://leetcode.com/problems/check-if-a-string-is-a-valid-sequence-from-root-to-leaves-path-in-a-binary-tree/",
-    "topic": "GRAPH THEORY",
+    "topic": "BINARY TREE",
     "difficulty": "MEDIUM",
     "popularity": 98102
   },
@@ -10033,7 +10033,7 @@
   {
     "name": "Number of Ways to Wear Different Hats to Each Other",
     "link": "https://leetcode.com/problems/number-of-ways-to-wear-different-hats-to-each-other/",
-    "topic": "DYNAMIC PROGRAMMING",
+    "topic": "BIT MANIPULATION",
     "difficulty": "HARD",
     "popularity": 51048
   },
@@ -10061,14 +10061,14 @@
   {
     "name": "Longest Continuous Subarray With Absolute Diff Less Than or Equal to Limit",
     "link": "https://leetcode.com/problems/longest-continuous-subarray-with-absolute-diff-less-than-or-equal-to-limit/",
-    "topic": "SLIDING WINDOW",
+    "topic": "HEAP (PRIORITY QUEUE)",
     "difficulty": "MEDIUM",
     "popularity": 560815
   },
   {
     "name": "Find the Kth Smallest Sum of a Matrix With Sorted Rows",
     "link": "https://leetcode.com/problems/find-the-kth-smallest-sum-of-a-matrix-with-sorted-rows/",
-    "topic": "BINARY SEARCH",
+    "topic": "HEAP (PRIORITY QUEUE)",
     "difficulty": "HARD",
     "popularity": 71574
   },
@@ -10096,7 +10096,7 @@
   {
     "name": "Minimum Time to Collect All Apples in a Tree",
     "link": "https://leetcode.com/problems/minimum-time-to-collect-all-apples-in-a-tree/",
-    "topic": "GRAPH THEORY",
+    "topic": "TREE",
     "difficulty": "MEDIUM",
     "popularity": 247998
   },
@@ -10131,7 +10131,7 @@
   {
     "name": "Count Good Nodes in Binary Tree",
     "link": "https://leetcode.com/problems/count-good-nodes-in-binary-tree/",
-    "topic": "GRAPH THEORY",
+    "topic": "BINARY TREE",
     "difficulty": "MEDIUM",
     "popularity": 1235464
   },
@@ -10194,7 +10194,7 @@
   {
     "name": "Pseudo-Palindromic Paths in a Binary Tree",
     "link": "https://leetcode.com/problems/pseudo-palindromic-paths-in-a-binary-tree/",
-    "topic": "GRAPH THEORY",
+    "topic": "BIT MANIPULATION",
     "difficulty": "MEDIUM",
     "popularity": 349104
   },
@@ -10278,7 +10278,7 @@
   {
     "name": "Find All The Lonely Nodes",
     "link": "https://leetcode.com/problems/find-all-the-lonely-nodes/",
-    "topic": "GRAPH THEORY",
+    "topic": "BINARY TREE",
     "difficulty": "EASY",
     "popularity": 73597
   },
@@ -10376,7 +10376,7 @@
   {
     "name": "Kth Ancestor of a Tree Node",
     "link": "https://leetcode.com/problems/kth-ancestor-of-a-tree-node/",
-    "topic": "DYNAMIC PROGRAMMING",
+    "topic": "BIT MANIPULATION",
     "difficulty": "HARD",
     "popularity": 151552
   },
@@ -10390,7 +10390,7 @@
   {
     "name": "Clone Binary Tree With Random Pointer",
     "link": "https://leetcode.com/problems/clone-binary-tree-with-random-pointer/",
-    "topic": "GRAPH THEORY",
+    "topic": "BINARY TREE",
     "difficulty": "MEDIUM",
     "popularity": 47087
   },
@@ -10425,7 +10425,7 @@
   {
     "name": "Clone N-ary Tree",
     "link": "https://leetcode.com/problems/clone-n-ary-tree/",
-    "topic": "GRAPH THEORY",
+    "topic": "TREE",
     "difficulty": "MEDIUM",
     "popularity": 43679
   },
@@ -10453,7 +10453,7 @@
   {
     "name": "Parallel Courses II",
     "link": "https://leetcode.com/problems/parallel-courses-ii/",
-    "topic": "DYNAMIC PROGRAMMING",
+    "topic": "BIT MANIPULATION",
     "difficulty": "HARD",
     "popularity": 91457
   },
@@ -10488,7 +10488,7 @@
   {
     "name": "Max Value of Equation",
     "link": "https://leetcode.com/problems/max-value-of-equation/",
-    "topic": "SLIDING WINDOW",
+    "topic": "HEAP (PRIORITY QUEUE)",
     "difficulty": "HARD",
     "popularity": 126369
   },
@@ -10537,7 +10537,7 @@
   {
     "name": "Find Root of N-Ary Tree",
     "link": "https://leetcode.com/problems/find-root-of-n-ary-tree/",
-    "topic": "GRAPH THEORY",
+    "topic": "BIT MANIPULATION",
     "difficulty": "MEDIUM",
     "popularity": 53454
   },
@@ -10607,7 +10607,7 @@
   {
     "name": "Move Sub-Tree of N-Ary Tree",
     "link": "https://leetcode.com/problems/move-sub-tree-of-n-ary-tree/",
-    "topic": "GRAPH THEORY",
+    "topic": "TREE",
     "difficulty": "HARD",
     "popularity": 4600
   },
@@ -10628,7 +10628,7 @@
   {
     "name": "Number of Nodes in the Sub-Tree With the Same Label",
     "link": "https://leetcode.com/problems/number-of-nodes-in-the-sub-tree-with-the-same-label/",
-    "topic": "GRAPH THEORY",
+    "topic": "TREE",
     "difficulty": "MEDIUM",
     "popularity": 172838
   },
@@ -10642,14 +10642,14 @@
   {
     "name": "Find a Value of a Mysterious Function Closest to Target",
     "link": "https://leetcode.com/problems/find-a-value-of-a-mysterious-function-closest-to-target/",
-    "topic": "TREE",
+    "topic": "BIT MANIPULATION",
     "difficulty": "HARD",
     "popularity": 30574
   },
   {
     "name": "Diameter of N-Ary Tree",
     "link": "https://leetcode.com/problems/diameter-of-n-ary-tree/",
-    "topic": "GRAPH THEORY",
+    "topic": "TREE",
     "difficulty": "MEDIUM",
     "popularity": 83047
   },
@@ -10670,7 +10670,7 @@
   {
     "name": "Number of Good Ways to Split a String",
     "link": "https://leetcode.com/problems/number-of-good-ways-to-split-a-string/",
-    "topic": "DYNAMIC PROGRAMMING",
+    "topic": "BIT MANIPULATION",
     "difficulty": "MEDIUM",
     "popularity": 184542
   },
@@ -10705,7 +10705,7 @@
   {
     "name": "Number of Good Leaf Nodes Pairs",
     "link": "https://leetcode.com/problems/number-of-good-leaf-nodes-pairs/",
-    "topic": "GRAPH THEORY",
+    "topic": "BINARY TREE",
     "difficulty": "MEDIUM",
     "popularity": 227747
   },
@@ -10901,7 +10901,7 @@
   {
     "name": "Minimum Numbers of Function Calls to Make Target Array",
     "link": "https://leetcode.com/problems/minimum-numbers-of-function-calls-to-make-target-array/",
-    "topic": "GREEDY",
+    "topic": "BIT MANIPULATION",
     "difficulty": "MEDIUM",
     "popularity": 42368
   },
@@ -10929,7 +10929,7 @@
   {
     "name": "Find Latest Group of Size M",
     "link": "https://leetcode.com/problems/find-latest-group-of-size-m/",
-    "topic": "BINARY SEARCH",
+    "topic": "HASH TABLE",
     "difficulty": "MEDIUM",
     "popularity": 52136
   },
@@ -11097,7 +11097,7 @@
   {
     "name": "Binary Search Tree Iterator II",
     "link": "https://leetcode.com/problems/binary-search-tree-iterator-ii/",
-    "topic": "TREE",
+    "topic": "BINARY SEARCH TREE",
     "difficulty": "MEDIUM",
     "popularity": 27547
   },
@@ -11160,7 +11160,7 @@
   {
     "name": "Minimum Cost to Connect Two Groups of Points",
     "link": "https://leetcode.com/problems/minimum-cost-to-connect-two-groups-of-points/",
-    "topic": "DYNAMIC PROGRAMMING",
+    "topic": "BIT MANIPULATION",
     "difficulty": "HARD",
     "popularity": 25379
   },
@@ -11174,7 +11174,7 @@
   {
     "name": "Build Binary Expression Tree From Infix Expression",
     "link": "https://leetcode.com/problems/build-binary-expression-tree-from-infix-expression/",
-    "topic": "TREE",
+    "topic": "BINARY TREE",
     "difficulty": "HARD",
     "popularity": 23813
   },
@@ -11195,21 +11195,21 @@
   {
     "name": "Throne Inheritance",
     "link": "https://leetcode.com/problems/throne-inheritance/",
-    "topic": "GRAPH THEORY",
+    "topic": "TREE",
     "difficulty": "MEDIUM",
     "popularity": 45113
   },
   {
     "name": "Maximum Number of Achievable Transfer Requests",
     "link": "https://leetcode.com/problems/maximum-number-of-achievable-transfer-requests/",
-    "topic": "BACKTRACKING",
+    "topic": "BIT MANIPULATION",
     "difficulty": "HARD",
     "popularity": 100965
   },
   {
     "name": "Find Nearest Right Node in Binary Tree",
     "link": "https://leetcode.com/problems/find-nearest-right-node-in-binary-tree/",
-    "topic": "GRAPH THEORY",
+    "topic": "BINARY TREE",
     "difficulty": "MEDIUM",
     "popularity": 33538
   },
@@ -11258,7 +11258,7 @@
   {
     "name": "Even Odd Tree",
     "link": "https://leetcode.com/problems/even-odd-tree/",
-    "topic": "GRAPH THEORY",
+    "topic": "BINARY TREE",
     "difficulty": "MEDIUM",
     "popularity": 295091
   },
@@ -11272,14 +11272,14 @@
   {
     "name": "Minimum One Bit Operations to Make Integers Zero",
     "link": "https://leetcode.com/problems/minimum-one-bit-operations-to-make-integers-zero/",
-    "topic": "DYNAMIC PROGRAMMING",
+    "topic": "BIT MANIPULATION",
     "difficulty": "HARD",
     "popularity": 156204
   },
   {
     "name": "Check If Two Expression Trees are Equivalent",
     "link": "https://leetcode.com/problems/check-if-two-expression-trees-are-equivalent/",
-    "topic": "GRAPH THEORY",
+    "topic": "BINARY TREE",
     "difficulty": "MEDIUM",
     "popularity": 12274
   },
@@ -11314,7 +11314,7 @@
   {
     "name": "Count Subtrees With Max Distance Between Cities",
     "link": "https://leetcode.com/problems/count-subtrees-with-max-distance-between-cities/",
-    "topic": "DYNAMIC PROGRAMMING",
+    "topic": "BIT MANIPULATION",
     "difficulty": "HARD",
     "popularity": 22917
   },
@@ -11391,7 +11391,7 @@
   {
     "name": "Design an Expression Tree With Evaluate Function",
     "link": "https://leetcode.com/problems/design-an-expression-tree-with-evaluate-function/",
-    "topic": "TREE",
+    "topic": "BINARY TREE",
     "difficulty": "MEDIUM",
     "popularity": 36444
   },
@@ -11503,7 +11503,7 @@
   {
     "name": "Lowest Common Ancestor of a Binary Tree II",
     "link": "https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree-ii/",
-    "topic": "GRAPH THEORY",
+    "topic": "BINARY TREE",
     "difficulty": "MEDIUM",
     "popularity": 175077
   },
@@ -11545,7 +11545,7 @@
   {
     "name": "Lowest Common Ancestor of a Binary Tree III",
     "link": "https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree-iii/",
-    "topic": "TREE",
+    "topic": "BINARY TREE",
     "difficulty": "MEDIUM",
     "popularity": 492706
   },
@@ -11580,7 +11580,7 @@
   {
     "name": "Distribute Repeating Integers",
     "link": "https://leetcode.com/problems/distribute-repeating-integers/",
-    "topic": "DYNAMIC PROGRAMMING",
+    "topic": "BIT MANIPULATION",
     "difficulty": "HARD",
     "popularity": 54568
   },
@@ -11601,21 +11601,21 @@
   {
     "name": "Minimum Operations to Reduce X to Zero",
     "link": "https://leetcode.com/problems/minimum-operations-to-reduce-x-to-zero/",
-    "topic": "SLIDING WINDOW",
+    "topic": "HASH TABLE",
     "difficulty": "MEDIUM",
     "popularity": 589007
   },
   {
     "name": "Maximize Grid Happiness",
     "link": "https://leetcode.com/problems/maximize-grid-happiness/",
-    "topic": "DYNAMIC PROGRAMMING",
+    "topic": "BIT MANIPULATION",
     "difficulty": "HARD",
     "popularity": 18898
   },
   {
     "name": "Correct a Binary Tree",
     "link": "https://leetcode.com/problems/correct-a-binary-tree/",
-    "topic": "GRAPH THEORY",
+    "topic": "BINARY TREE",
     "difficulty": "MEDIUM",
     "popularity": 31751
   },
@@ -11657,7 +11657,7 @@
   {
     "name": "Change the Root of a Binary Tree",
     "link": "https://leetcode.com/problems/change-the-root-of-a-binary-tree/",
-    "topic": "GRAPH THEORY",
+    "topic": "BINARY TREE",
     "difficulty": "MEDIUM",
     "popularity": 8071
   },
@@ -11727,7 +11727,7 @@
   {
     "name": "Lowest Common Ancestor of a Binary Tree IV",
     "link": "https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree-iv/",
-    "topic": "GRAPH THEORY",
+    "topic": "BINARY TREE",
     "difficulty": "MEDIUM",
     "popularity": 80503
   },
@@ -11762,7 +11762,7 @@
   {
     "name": "Minimum Incompatibility",
     "link": "https://leetcode.com/problems/minimum-incompatibility/",
-    "topic": "DYNAMIC PROGRAMMING",
+    "topic": "BIT MANIPULATION",
     "difficulty": "HARD",
     "popularity": 27854
   },
@@ -11860,7 +11860,7 @@
   {
     "name": "Maximum Erasure Value",
     "link": "https://leetcode.com/problems/maximum-erasure-value/",
-    "topic": "SLIDING WINDOW",
+    "topic": "HASH TABLE",
     "difficulty": "MEDIUM",
     "popularity": 472135
   },
@@ -12028,7 +12028,7 @@
   {
     "name": "Number Of Ways To Reconstruct A Tree",
     "link": "https://leetcode.com/problems/number-of-ways-to-reconstruct-a-tree/",
-    "topic": "GRAPH THEORY",
+    "topic": "TREE",
     "difficulty": "HARD",
     "popularity": 15752
   },
@@ -12056,7 +12056,7 @@
   {
     "name": "Find Minimum Time to Finish All Jobs",
     "link": "https://leetcode.com/problems/find-minimum-time-to-finish-all-jobs/",
-    "topic": "DYNAMIC PROGRAMMING",
+    "topic": "BIT MANIPULATION",
     "difficulty": "HARD",
     "popularity": 99291
   },
@@ -12161,7 +12161,7 @@
   {
     "name": "Find Kth Largest XOR Coordinate Value",
     "link": "https://leetcode.com/problems/find-kth-largest-xor-coordinate-value/",
-    "topic": "DIVIDE AND CONQUER",
+    "topic": "BIT MANIPULATION",
     "difficulty": "MEDIUM",
     "popularity": 48954
   },
@@ -12175,7 +12175,7 @@
   {
     "name": "Find Distance in a Binary Tree",
     "link": "https://leetcode.com/problems/find-distance-in-a-binary-tree/",
-    "topic": "GRAPH THEORY",
+    "topic": "BINARY TREE",
     "difficulty": "MEDIUM",
     "popularity": 48485
   },
@@ -12280,7 +12280,7 @@
   {
     "name": "Closest Subsequence Sum",
     "link": "https://leetcode.com/problems/closest-subsequence-sum/",
-    "topic": "DYNAMIC PROGRAMMING",
+    "topic": "BIT MANIPULATION",
     "difficulty": "HARD",
     "popularity": 67125
   },
@@ -12336,7 +12336,7 @@
   {
     "name": "Longest Nice Substring",
     "link": "https://leetcode.com/problems/longest-nice-substring/",
-    "topic": "DIVIDE AND CONQUER",
+    "topic": "BIT MANIPULATION",
     "difficulty": "EASY",
     "popularity": 156486
   },
@@ -12357,7 +12357,7 @@
   {
     "name": "Tree of Coprimes",
     "link": "https://leetcode.com/problems/tree-of-coprimes/",
-    "topic": "GRAPH THEORY",
+    "topic": "TREE",
     "difficulty": "HARD",
     "popularity": 33130
   },
@@ -12504,7 +12504,7 @@
   {
     "name": "Make the XOR of All Segments Equal to Zero",
     "link": "https://leetcode.com/problems/make-the-xor-of-all-segments-equal-to-zero/",
-    "topic": "DYNAMIC PROGRAMMING",
+    "topic": "BIT MANIPULATION",
     "difficulty": "HARD",
     "popularity": 17891
   },
@@ -12588,7 +12588,7 @@
   {
     "name": "Maximize Score After N Operations",
     "link": "https://leetcode.com/problems/maximize-score-after-n-operations/",
-    "topic": "DYNAMIC PROGRAMMING",
+    "topic": "BIT MANIPULATION",
     "difficulty": "HARD",
     "popularity": 123316
   },
@@ -12700,7 +12700,7 @@
   {
     "name": "Maximum Number of Groups Getting Fresh Donuts",
     "link": "https://leetcode.com/problems/maximum-number-of-groups-getting-fresh-donuts/",
-    "topic": "DYNAMIC PROGRAMMING",
+    "topic": "BIT MANIPULATION",
     "difficulty": "HARD",
     "popularity": 21104
   },
@@ -12721,7 +12721,7 @@
   {
     "name": "Minimum Absolute Sum Difference",
     "link": "https://leetcode.com/problems/minimum-absolute-sum-difference/",
-    "topic": "BINARY SEARCH",
+    "topic": "HASH TABLE",
     "difficulty": "MEDIUM",
     "popularity": 103278
   },
@@ -12924,7 +12924,7 @@
   {
     "name": "Closest Room",
     "link": "https://leetcode.com/problems/closest-room/",
-    "topic": "BINARY SEARCH",
+    "topic": "HASH TABLE",
     "difficulty": "HARD",
     "popularity": 30886
   },
@@ -12952,14 +12952,14 @@
   {
     "name": "Minimum Interval to Include Each Query",
     "link": "https://leetcode.com/problems/minimum-interval-to-include-each-query/",
-    "topic": "BINARY SEARCH",
+    "topic": "HEAP (PRIORITY QUEUE)",
     "difficulty": "HARD",
     "popularity": 139215
   },
   {
     "name": "Distinct Numbers in Each Subarray",
     "link": "https://leetcode.com/problems/distinct-numbers-in-each-subarray/",
-    "topic": "SLIDING WINDOW",
+    "topic": "HASH TABLE",
     "difficulty": "MEDIUM",
     "popularity": 22070
   },
@@ -13036,7 +13036,7 @@
   {
     "name": "Sum of All Subset XOR Totals",
     "link": "https://leetcode.com/problems/sum-of-all-subset-xor-totals/",
-    "topic": "BACKTRACKING",
+    "topic": "BIT MANIPULATION",
     "difficulty": "EASY",
     "popularity": 409763
   },
@@ -13127,7 +13127,7 @@
   {
     "name": "Substrings of Size Three with Distinct Characters",
     "link": "https://leetcode.com/problems/substrings-of-size-three-with-distinct-characters/",
-    "topic": "SLIDING WINDOW",
+    "topic": "HASH TABLE",
     "difficulty": "EASY",
     "popularity": 297287
   },
@@ -13148,7 +13148,7 @@
   {
     "name": "Minimum XOR Sum of Two Arrays",
     "link": "https://leetcode.com/problems/minimum-xor-sum-of-two-arrays/",
-    "topic": "DYNAMIC PROGRAMMING",
+    "topic": "BIT MANIPULATION",
     "difficulty": "HARD",
     "popularity": 42283
   },
@@ -13302,14 +13302,14 @@
   {
     "name": "Find a Peak Element II",
     "link": "https://leetcode.com/problems/find-a-peak-element-ii/",
-    "topic": "BINARY SEARCH",
+    "topic": "MATRIX",
     "difficulty": "MEDIUM",
     "popularity": 363610
   },
   {
     "name": "Depth of BST Given Insertion Order",
     "link": "https://leetcode.com/problems/depth-of-bst-given-insertion-order/",
-    "topic": "TREE",
+    "topic": "BINARY SEARCH TREE",
     "difficulty": "MEDIUM",
     "popularity": 7184
   },
@@ -13351,7 +13351,7 @@
   {
     "name": "Game of Nim",
     "link": "https://leetcode.com/problems/game-of-nim/",
-    "topic": "DYNAMIC PROGRAMMING",
+    "topic": "BIT MANIPULATION",
     "difficulty": "MEDIUM",
     "popularity": 8529
   },
@@ -13456,7 +13456,7 @@
   {
     "name": "Longest Common Subpath",
     "link": "https://leetcode.com/problems/longest-common-subpath/",
-    "topic": "BINARY SEARCH",
+    "topic": "HASH TABLE",
     "difficulty": "HARD",
     "popularity": 36088
   },
@@ -13519,7 +13519,7 @@
   {
     "name": "Merge BSTs to Create Single BST",
     "link": "https://leetcode.com/problems/merge-bsts-to-create-single-bst/",
-    "topic": "GRAPH THEORY",
+    "topic": "BINARY SEARCH TREE",
     "difficulty": "HARD",
     "popularity": 44095
   },
@@ -13561,7 +13561,7 @@
   {
     "name": "Maximum Genetic Difference Query",
     "link": "https://leetcode.com/problems/maximum-genetic-difference-query/",
-    "topic": "GRAPH THEORY",
+    "topic": "BIT MANIPULATION",
     "difficulty": "HARD",
     "popularity": 17669
   },
@@ -13624,7 +13624,7 @@
   {
     "name": "Maximum Compatibility Score Sum",
     "link": "https://leetcode.com/problems/maximum-compatibility-score-sum/",
-    "topic": "DYNAMIC PROGRAMMING",
+    "topic": "BIT MANIPULATION",
     "difficulty": "MEDIUM",
     "popularity": 54227
   },
@@ -13687,7 +13687,7 @@
   {
     "name": "Minimum Time For K Virus Variants to Spread",
     "link": "https://leetcode.com/problems/minimum-time-for-k-virus-variants-to-spread/",
-    "topic": "SLIDING WINDOW",
+    "topic": "HASH TABLE",
     "difficulty": "HARD",
     "popularity": 2757
   },
@@ -13757,7 +13757,7 @@
   {
     "name": "Binary Searchable Numbers in an Unsorted Array",
     "link": "https://leetcode.com/problems/binary-searchable-numbers-in-an-unsorted-array/",
-    "topic": "BINARY SEARCH",
+    "topic": "STACK",
     "difficulty": "MEDIUM",
     "popularity": 6597
   },
@@ -13806,7 +13806,7 @@
   {
     "name": "Count Nodes Equal to Sum of Descendants",
     "link": "https://leetcode.com/problems/count-nodes-equal-to-sum-of-descendants/",
-    "topic": "GRAPH THEORY",
+    "topic": "BINARY TREE",
     "difficulty": "MEDIUM",
     "popularity": 20705
   },
@@ -13897,7 +13897,7 @@
   {
     "name": "Minimum Number of Work Sessions to Finish the Tasks",
     "link": "https://leetcode.com/problems/minimum-number-of-work-sessions-to-finish-the-tasks/",
-    "topic": "DYNAMIC PROGRAMMING",
+    "topic": "BIT MANIPULATION",
     "difficulty": "MEDIUM",
     "popularity": 103298
   },
@@ -13946,14 +13946,14 @@
   {
     "name": "Operations on Tree",
     "link": "https://leetcode.com/problems/operations-on-tree/",
-    "topic": "GRAPH THEORY",
+    "topic": "TREE",
     "difficulty": "MEDIUM",
     "popularity": 56623
   },
   {
     "name": "The Number of Good Subsets",
     "link": "https://leetcode.com/problems/the-number-of-good-subsets/",
-    "topic": "DYNAMIC PROGRAMMING",
+    "topic": "BIT MANIPULATION",
     "difficulty": "HARD",
     "popularity": 31649
   },
@@ -14009,7 +14009,7 @@
   {
     "name": "Maximum Product of the Length of Two Palindromic Subsequences",
     "link": "https://leetcode.com/problems/maximum-product-of-the-length-of-two-palindromic-subsequences/",
-    "topic": "DYNAMIC PROGRAMMING",
+    "topic": "BIT MANIPULATION",
     "difficulty": "MEDIUM",
     "popularity": 64269
   },
@@ -14058,7 +14058,7 @@
   {
     "name": "Minimum Number of Operations to Make Array Continuous",
     "link": "https://leetcode.com/problems/minimum-number-of-operations-to-make-array-continuous/",
-    "topic": "SLIDING WINDOW",
+    "topic": "HASH TABLE",
     "difficulty": "HARD",
     "popularity": 172232
   },
@@ -14240,7 +14240,7 @@
   {
     "name": "Partition Array Into Two Arrays to Minimize Sum Difference",
     "link": "https://leetcode.com/problems/partition-array-into-two-arrays-to-minimize-sum-difference/",
-    "topic": "DYNAMIC PROGRAMMING",
+    "topic": "BIT MANIPULATION",
     "difficulty": "HARD",
     "popularity": 270659
   },
@@ -14303,7 +14303,7 @@
   {
     "name": "Count Number of Maximum Bitwise-OR Subsets",
     "link": "https://leetcode.com/problems/count-number-of-maximum-bitwise-or-subsets/",
-    "topic": "BACKTRACKING",
+    "topic": "BIT MANIPULATION",
     "difficulty": "MEDIUM",
     "popularity": 282058
   },
@@ -14338,7 +14338,7 @@
   {
     "name": "Count Nodes With the Highest Score",
     "link": "https://leetcode.com/problems/count-nodes-with-the-highest-score/",
-    "topic": "GRAPH THEORY",
+    "topic": "BINARY TREE",
     "difficulty": "MEDIUM",
     "popularity": 81329
   },
@@ -14464,7 +14464,7 @@
   {
     "name": "Number of Equal Count Substrings",
     "link": "https://leetcode.com/problems/number-of-equal-count-substrings/",
-    "topic": "SLIDING WINDOW",
+    "topic": "HASH TABLE",
     "difficulty": "MEDIUM",
     "popularity": 9211
   },
@@ -14667,7 +14667,7 @@
   {
     "name": "Step-By-Step Directions From a Binary Tree Node to Another",
     "link": "https://leetcode.com/problems/step-by-step-directions-from-a-binary-tree-node-to-another/",
-    "topic": "GRAPH THEORY",
+    "topic": "BINARY TREE",
     "difficulty": "MEDIUM",
     "popularity": 429747
   },
@@ -14744,7 +14744,7 @@
   {
     "name": "Number of Unique Flavors After Sharing K Candies",
     "link": "https://leetcode.com/problems/number-of-unique-flavors-after-sharing-k-candies/",
-    "topic": "SLIDING WINDOW",
+    "topic": "HASH TABLE",
     "difficulty": "MEDIUM",
     "popularity": 19521
   },
@@ -15052,14 +15052,14 @@
   {
     "name": "Maximum Good People Based on Statements",
     "link": "https://leetcode.com/problems/maximum-good-people-based-on-statements/",
-    "topic": "BACKTRACKING",
+    "topic": "BIT MANIPULATION",
     "difficulty": "HARD",
     "popularity": 33571
   },
   {
     "name": "Minimum Number of Lines to Cover Points",
     "link": "https://leetcode.com/problems/minimum-number-of-lines-to-cover-points/",
-    "topic": "DYNAMIC PROGRAMMING",
+    "topic": "BIT MANIPULATION",
     "difficulty": "MEDIUM",
     "popularity": 6616
   },
@@ -15087,7 +15087,7 @@
   {
     "name": "Find Substring With Given Hash Value",
     "link": "https://leetcode.com/problems/find-substring-with-given-hash-value/",
-    "topic": "SLIDING WINDOW",
+    "topic": "HASH TABLE",
     "difficulty": "HARD",
     "popularity": 65594
   },
@@ -15199,7 +15199,7 @@
   {
     "name": "Maximum AND Sum of Array",
     "link": "https://leetcode.com/problems/maximum-and-sum-of-array/",
-    "topic": "DYNAMIC PROGRAMMING",
+    "topic": "BIT MANIPULATION",
     "difficulty": "HARD",
     "popularity": 36586
   },
@@ -15213,7 +15213,7 @@
   {
     "name": "Remove All Ones With Row and Column Flips II",
     "link": "https://leetcode.com/problems/remove-all-ones-with-row-and-column-flips-ii/",
-    "topic": "GRAPH THEORY",
+    "topic": "BIT MANIPULATION",
     "difficulty": "MEDIUM",
     "popularity": 8542
   },
@@ -15283,7 +15283,7 @@
   {
     "name": "Number of Ways to Build Sturdy Brick Wall",
     "link": "https://leetcode.com/problems/number-of-ways-to-build-sturdy-brick-wall/",
-    "topic": "DYNAMIC PROGRAMMING",
+    "topic": "BIT MANIPULATION",
     "difficulty": "MEDIUM",
     "popularity": 20647
   },
@@ -15367,7 +15367,7 @@
   {
     "name": "Create Binary Tree From Descriptions",
     "link": "https://leetcode.com/problems/create-binary-tree-from-descriptions/",
-    "topic": "TREE",
+    "topic": "BINARY TREE",
     "difficulty": "MEDIUM",
     "popularity": 320476
   },
@@ -15479,7 +15479,7 @@
   {
     "name": "Maximum Points in an Archery Competition",
     "link": "https://leetcode.com/problems/maximum-points-in-an-archery-competition/",
-    "topic": "BACKTRACKING",
+    "topic": "BIT MANIPULATION",
     "difficulty": "MEDIUM",
     "popularity": 39777
   },
@@ -15556,7 +15556,7 @@
   {
     "name": "Sum of Scores of Built Strings",
     "link": "https://leetcode.com/problems/sum-of-scores-of-built-strings/",
-    "topic": "BINARY SEARCH",
+    "topic": "HASH TABLE",
     "difficulty": "HARD",
     "popularity": 34564
   },
@@ -15647,7 +15647,7 @@
   {
     "name": "Root Equals Sum of Children",
     "link": "https://leetcode.com/problems/root-equals-sum-of-children/",
-    "topic": "TREE",
+    "topic": "BINARY TREE",
     "difficulty": "EASY",
     "popularity": 426562
   },
@@ -15717,14 +15717,14 @@
   {
     "name": "Longest Path With Different Adjacent Characters",
     "link": "https://leetcode.com/problems/longest-path-with-different-adjacent-characters/",
-    "topic": "GRAPH THEORY",
+    "topic": "TREE",
     "difficulty": "HARD",
     "popularity": 176325
   },
   {
     "name": "Maximum Cost of Trip With K Highways",
     "link": "https://leetcode.com/problems/maximum-cost-of-trip-with-k-highways/",
-    "topic": "DYNAMIC PROGRAMMING",
+    "topic": "BIT MANIPULATION",
     "difficulty": "HARD",
     "popularity": 4867
   },
@@ -15752,7 +15752,7 @@
   {
     "name": "Number of Flowers in Full Bloom",
     "link": "https://leetcode.com/problems/number-of-flowers-in-full-bloom/",
-    "topic": "BINARY SEARCH",
+    "topic": "HASH TABLE",
     "difficulty": "HARD",
     "popularity": 192764
   },
@@ -15815,7 +15815,7 @@
   {
     "name": "Minimum Consecutive Cards to Pick Up",
     "link": "https://leetcode.com/problems/minimum-consecutive-cards-to-pick-up/",
-    "topic": "SLIDING WINDOW",
+    "topic": "HASH TABLE",
     "difficulty": "MEDIUM",
     "popularity": 230472
   },
@@ -15850,7 +15850,7 @@
   {
     "name": "Count Nodes Equal to Average of Subtree",
     "link": "https://leetcode.com/problems/count-nodes-equal-to-average-of-subtree/",
-    "topic": "GRAPH THEORY",
+    "topic": "BINARY TREE",
     "difficulty": "MEDIUM",
     "popularity": 233060
   },
@@ -15934,7 +15934,7 @@
   {
     "name": "Closest Node to Path in Tree",
     "link": "https://leetcode.com/problems/closest-node-to-path-in-tree/",
-    "topic": "GRAPH THEORY",
+    "topic": "TREE",
     "difficulty": "HARD",
     "popularity": 10897
   },
@@ -16130,7 +16130,7 @@
   {
     "name": "Fair Distribution of Cookies",
     "link": "https://leetcode.com/problems/fair-distribution-of-cookies/",
-    "topic": "DYNAMIC PROGRAMMING",
+    "topic": "BIT MANIPULATION",
     "difficulty": "MEDIUM",
     "popularity": 177423
   },
@@ -16249,7 +16249,7 @@
   {
     "name": "Minimum Score After Removals on a Tree",
     "link": "https://leetcode.com/problems/minimum-score-after-removals-on-a-tree/",
-    "topic": "GRAPH THEORY",
+    "topic": "BIT MANIPULATION",
     "difficulty": "HARD",
     "popularity": 92229
   },
@@ -16312,7 +16312,7 @@
   {
     "name": "Evaluate Boolean Binary Tree",
     "link": "https://leetcode.com/problems/evaluate-boolean-binary-tree/",
-    "topic": "GRAPH THEORY",
+    "topic": "BINARY TREE",
     "difficulty": "EASY",
     "popularity": 278429
   },
@@ -16571,7 +16571,7 @@
   {
     "name": "Reachable Nodes With Restrictions",
     "link": "https://leetcode.com/problems/reachable-nodes-with-restrictions/",
-    "topic": "GRAPH THEORY",
+    "topic": "TREE",
     "difficulty": "MEDIUM",
     "popularity": 149765
   },
@@ -16690,7 +16690,7 @@
   {
     "name": "Amount of Time for Binary Tree to Be Infected",
     "link": "https://leetcode.com/problems/amount-of-time-for-binary-tree-to-be-infected/",
-    "topic": "GRAPH THEORY",
+    "topic": "BINARY TREE",
     "difficulty": "MEDIUM",
     "popularity": 329830
   },
@@ -16704,7 +16704,7 @@
   {
     "name": "Median of a Row Wise Sorted Matrix",
     "link": "https://leetcode.com/problems/median-of-a-row-wise-sorted-matrix/",
-    "topic": "BINARY SEARCH",
+    "topic": "MATRIX",
     "difficulty": "MEDIUM",
     "popularity": 8772
   },
@@ -16774,14 +16774,14 @@
   {
     "name": "Maximum Rows Covered by Columns",
     "link": "https://leetcode.com/problems/maximum-rows-covered-by-columns/",
-    "topic": "BACKTRACKING",
+    "topic": "BIT MANIPULATION",
     "difficulty": "MEDIUM",
     "popularity": 35523
   },
   {
     "name": "Maximum Number of Robots Within Budget",
     "link": "https://leetcode.com/problems/maximum-number-of-robots-within-budget/",
-    "topic": "SLIDING WINDOW",
+    "topic": "HEAP (PRIORITY QUEUE)",
     "difficulty": "HARD",
     "popularity": 95754
   },
@@ -16816,7 +16816,7 @@
   {
     "name": "Minimum Time to Kill All Monsters",
     "link": "https://leetcode.com/problems/minimum-time-to-kill-all-monsters/",
-    "topic": "DYNAMIC PROGRAMMING",
+    "topic": "BIT MANIPULATION",
     "difficulty": "HARD",
     "popularity": 3341
   },
@@ -16900,7 +16900,7 @@
   {
     "name": "Reverse Odd Levels of Binary Tree",
     "link": "https://leetcode.com/problems/reverse-odd-levels-of-binary-tree/",
-    "topic": "GRAPH THEORY",
+    "topic": "BINARY TREE",
     "difficulty": "MEDIUM",
     "popularity": 222489
   },
@@ -16942,7 +16942,7 @@
   {
     "name": "Number of Good Paths",
     "link": "https://leetcode.com/problems/number-of-good-paths/",
-    "topic": "GRAPH THEORY",
+    "topic": "TREE",
     "difficulty": "HARD",
     "popularity": 118401
   },
@@ -16998,7 +16998,7 @@
   {
     "name": "Minimize XOR",
     "link": "https://leetcode.com/problems/minimize-xor/",
-    "topic": "GREEDY",
+    "topic": "BIT MANIPULATION",
     "difficulty": "MEDIUM",
     "popularity": 225412
   },
@@ -17075,7 +17075,7 @@
   {
     "name": "Create Components With Same Value",
     "link": "https://leetcode.com/problems/create-components-with-same-value/",
-    "topic": "GRAPH THEORY",
+    "topic": "TREE",
     "difficulty": "HARD",
     "popularity": 21706
   },
@@ -17103,14 +17103,14 @@
   {
     "name": "Count Subarrays With Fixed Bounds",
     "link": "https://leetcode.com/problems/count-subarrays-with-fixed-bounds/",
-    "topic": "SLIDING WINDOW",
+    "topic": "QUEUE",
     "difficulty": "HARD",
     "popularity": 341735
   },
   {
     "name": "Number of Nodes With Value One",
     "link": "https://leetcode.com/problems/number-of-nodes-with-value-one/",
-    "topic": "GRAPH THEORY",
+    "topic": "BINARY TREE",
     "difficulty": "MEDIUM",
     "popularity": 4539
   },
@@ -17173,7 +17173,7 @@
   {
     "name": "Next Greater Element IV",
     "link": "https://leetcode.com/problems/next-greater-element-iv/",
-    "topic": "BINARY SEARCH",
+    "topic": "HEAP (PRIORITY QUEUE)",
     "difficulty": "HARD",
     "popularity": 47259
   },
@@ -17201,7 +17201,7 @@
   {
     "name": "Height of Binary Tree After Subtree Removal Queries",
     "link": "https://leetcode.com/problems/height-of-binary-tree-after-subtree-removal-queries/",
-    "topic": "GRAPH THEORY",
+    "topic": "BINARY TREE",
     "difficulty": "HARD",
     "popularity": 193434
   },
@@ -17222,7 +17222,7 @@
   {
     "name": "Maximum Sum of Distinct Subarrays With Length K",
     "link": "https://leetcode.com/problems/maximum-sum-of-distinct-subarrays-with-length-k/",
-    "topic": "SLIDING WINDOW",
+    "topic": "HASH TABLE",
     "difficulty": "MEDIUM",
     "popularity": 676937
   },
@@ -17264,7 +17264,7 @@
   {
     "name": "Most Profitable Path in a Tree",
     "link": "https://leetcode.com/problems/most-profitable-path-in-a-tree/",
-    "topic": "GRAPH THEORY",
+    "topic": "TREE",
     "difficulty": "MEDIUM",
     "popularity": 164531
   },
@@ -17292,7 +17292,7 @@
   {
     "name": "Minimum Number of Operations to Sort a Binary Tree by Level",
     "link": "https://leetcode.com/problems/minimum-number-of-operations-to-sort-a-binary-tree-by-level/",
-    "topic": "GRAPH THEORY",
+    "topic": "BINARY TREE",
     "difficulty": "MEDIUM",
     "popularity": 156658
   },
@@ -17327,14 +17327,14 @@
   {
     "name": "Closest Nodes Queries in a Binary Search Tree",
     "link": "https://leetcode.com/problems/closest-nodes-queries-in-a-binary-search-tree/",
-    "topic": "GRAPH THEORY",
+    "topic": "BINARY SEARCH TREE",
     "difficulty": "MEDIUM",
     "popularity": 91559
   },
   {
     "name": "Minimum Fuel Cost to Report to the Capital",
     "link": "https://leetcode.com/problems/minimum-fuel-cost-to-report-to-the-capital/",
-    "topic": "GRAPH THEORY",
+    "topic": "TREE",
     "difficulty": "MEDIUM",
     "popularity": 141043
   },
@@ -17348,7 +17348,7 @@
   {
     "name": "Maximum XOR of Two Non-Overlapping Subtrees",
     "link": "https://leetcode.com/problems/maximum-xor-of-two-non-overlapping-subtrees/",
-    "topic": "GRAPH THEORY",
+    "topic": "TREE",
     "difficulty": "HARD",
     "popularity": 1910
   },
@@ -17558,7 +17558,7 @@
   {
     "name": "Cycle Length Queries in a Tree",
     "link": "https://leetcode.com/problems/cycle-length-queries-in-a-tree/",
-    "topic": "TREE",
+    "topic": "BINARY TREE",
     "difficulty": "HARD",
     "popularity": 33495
   },
@@ -17607,7 +17607,7 @@
   {
     "name": "Take K of Each Character From Left and Right",
     "link": "https://leetcode.com/problems/take-k-of-each-character-from-left-and-right/",
-    "topic": "SLIDING WINDOW",
+    "topic": "HASH TABLE",
     "difficulty": "MEDIUM",
     "popularity": 227729
   },
@@ -17663,7 +17663,7 @@
   {
     "name": "Maximum Frequency Score of a Subarray",
     "link": "https://leetcode.com/problems/maximum-frequency-score-of-a-subarray/",
-    "topic": "SLIDING WINDOW",
+    "topic": "STACK",
     "difficulty": "HARD",
     "popularity": 4731
   },
@@ -17754,7 +17754,7 @@
   {
     "name": "Count the Number of Good Subarrays",
     "link": "https://leetcode.com/problems/count-the-number-of-good-subarrays/",
-    "topic": "SLIDING WINDOW",
+    "topic": "HASH TABLE",
     "difficulty": "MEDIUM",
     "popularity": 203570
   },
@@ -17992,14 +17992,14 @@
   {
     "name": "Minimum Operations to Reduce an Integer to 0",
     "link": "https://leetcode.com/problems/minimum-operations-to-reduce-an-integer-to-0/",
-    "topic": "DYNAMIC PROGRAMMING",
+    "topic": "BIT MANIPULATION",
     "difficulty": "MEDIUM",
     "popularity": 95787
   },
   {
     "name": "Count the Number of Square-Free Subsets",
     "link": "https://leetcode.com/problems/count-the-number-of-square-free-subsets/",
-    "topic": "DYNAMIC PROGRAMMING",
+    "topic": "BIT MANIPULATION",
     "difficulty": "MEDIUM",
     "popularity": 53985
   },
@@ -18076,7 +18076,7 @@
   {
     "name": "Kth Largest Sum in a Binary Tree",
     "link": "https://leetcode.com/problems/kth-largest-sum-in-a-binary-tree/",
-    "topic": "GRAPH THEORY",
+    "topic": "BINARY TREE",
     "difficulty": "MEDIUM",
     "popularity": 315768
   },
@@ -18216,7 +18216,7 @@
   {
     "name": "Collect Coins in a Tree",
     "link": "https://leetcode.com/problems/collect-coins-in-a-tree/",
-    "topic": "GRAPH THEORY",
+    "topic": "TREE",
     "difficulty": "HARD",
     "popularity": 46563
   },
@@ -18321,140 +18321,140 @@
   {
     "name": "Check if Object Instance of Class",
     "link": "https://leetcode.com/problems/check-if-object-instance-of-class/",
-    "topic": null,
+    "topic": "MISCELLANEOUS",
     "difficulty": "MEDIUM",
     "popularity": 140506
   },
   {
     "name": "Array Prototype Last",
     "link": "https://leetcode.com/problems/array-prototype-last/",
-    "topic": null,
+    "topic": "MISCELLANEOUS",
     "difficulty": "EASY",
     "popularity": 337643
   },
   {
     "name": "Counter",
     "link": "https://leetcode.com/problems/counter/",
-    "topic": null,
+    "topic": "MISCELLANEOUS",
     "difficulty": "EASY",
     "popularity": 888651
   },
   {
     "name": "Sleep",
     "link": "https://leetcode.com/problems/sleep/",
-    "topic": null,
+    "topic": "MISCELLANEOUS",
     "difficulty": "EASY",
     "popularity": 299295
   },
   {
     "name": "Cache With Time Limit",
     "link": "https://leetcode.com/problems/cache-with-time-limit/",
-    "topic": null,
+    "topic": "MISCELLANEOUS",
     "difficulty": "MEDIUM",
     "popularity": 115593
   },
   {
     "name": "Memoize",
     "link": "https://leetcode.com/problems/memoize/",
-    "topic": null,
+    "topic": "MISCELLANEOUS",
     "difficulty": "MEDIUM",
     "popularity": 293307
   },
   {
     "name": "Snail Traversal",
     "link": "https://leetcode.com/problems/snail-traversal/",
-    "topic": null,
+    "topic": "MISCELLANEOUS",
     "difficulty": "MEDIUM",
     "popularity": 30453
   },
   {
     "name": "Flatten Deeply Nested Array",
     "link": "https://leetcode.com/problems/flatten-deeply-nested-array/",
-    "topic": null,
+    "topic": "MISCELLANEOUS",
     "difficulty": "MEDIUM",
     "popularity": 129181
   },
   {
     "name": "Array Reduce Transformation",
     "link": "https://leetcode.com/problems/array-reduce-transformation/",
-    "topic": null,
+    "topic": "MISCELLANEOUS",
     "difficulty": "EASY",
     "popularity": 354261
   },
   {
     "name": "Debounce",
     "link": "https://leetcode.com/problems/debounce/",
-    "topic": null,
+    "topic": "MISCELLANEOUS",
     "difficulty": "MEDIUM",
     "popularity": 106312
   },
   {
     "name": "JSON Deep Equal",
     "link": "https://leetcode.com/problems/json-deep-equal/",
-    "topic": null,
+    "topic": "MISCELLANEOUS",
     "difficulty": "MEDIUM",
     "popularity": 38423
   },
   {
     "name": "Function Composition",
     "link": "https://leetcode.com/problems/function-composition/",
-    "topic": null,
+    "topic": "MISCELLANEOUS",
     "difficulty": "EASY",
     "popularity": 292123
   },
   {
     "name": "Memoize II",
     "link": "https://leetcode.com/problems/memoize-ii/",
-    "topic": null,
+    "topic": "MISCELLANEOUS",
     "difficulty": "HARD",
     "popularity": 32293
   },
   {
     "name": "Group By",
     "link": "https://leetcode.com/problems/group-by/",
-    "topic": null,
+    "topic": "MISCELLANEOUS",
     "difficulty": "MEDIUM",
     "popularity": 100315
   },
   {
     "name": "Curry",
     "link": "https://leetcode.com/problems/curry/",
-    "topic": null,
+    "topic": "MISCELLANEOUS",
     "difficulty": "MEDIUM",
     "popularity": 21287
   },
   {
     "name": "Convert Object to JSON String",
     "link": "https://leetcode.com/problems/convert-object-to-json-string/",
-    "topic": null,
+    "topic": "MISCELLANEOUS",
     "difficulty": "MEDIUM",
     "popularity": 18147
   },
   {
     "name": "Filter Elements from Array",
     "link": "https://leetcode.com/problems/filter-elements-from-array/",
-    "topic": null,
+    "topic": "MISCELLANEOUS",
     "difficulty": "EASY",
     "popularity": 374998
   },
   {
     "name": "Apply Transform Over Each Element in Array",
     "link": "https://leetcode.com/problems/apply-transform-over-each-element-in-array/",
-    "topic": null,
+    "topic": "MISCELLANEOUS",
     "difficulty": "EASY",
     "popularity": 407251
   },
   {
     "name": "Promise Pool",
     "link": "https://leetcode.com/problems/promise-pool/",
-    "topic": null,
+    "topic": "MISCELLANEOUS",
     "difficulty": "MEDIUM",
     "popularity": 19223
   },
   {
     "name": "Promise Time Limit",
     "link": "https://leetcode.com/problems/promise-time-limit/",
-    "topic": null,
+    "topic": "MISCELLANEOUS",
     "difficulty": "MEDIUM",
     "popularity": 122037
   },
@@ -18482,7 +18482,7 @@
   {
     "name": "Cousins in Binary Tree II",
     "link": "https://leetcode.com/problems/cousins-in-binary-tree-ii/",
-    "topic": "GRAPH THEORY",
+    "topic": "BINARY TREE",
     "difficulty": "MEDIUM",
     "popularity": 173201
   },
@@ -18531,21 +18531,21 @@
   {
     "name": "Generate Fibonacci Sequence",
     "link": "https://leetcode.com/problems/generate-fibonacci-sequence/",
-    "topic": null,
+    "topic": "MISCELLANEOUS",
     "difficulty": "EASY",
     "popularity": 63280
   },
   {
     "name": "Nested Array Generator",
     "link": "https://leetcode.com/problems/nested-array-generator/",
-    "topic": null,
+    "topic": "MISCELLANEOUS",
     "difficulty": "MEDIUM",
     "popularity": 25839
   },
   {
     "name": "Design Cancellable Function",
     "link": "https://leetcode.com/problems/design-cancellable-function/",
-    "topic": null,
+    "topic": "MISCELLANEOUS",
     "difficulty": "HARD",
     "popularity": 9116
   },
@@ -18566,7 +18566,7 @@
   {
     "name": "Sliding Subarray Beauty",
     "link": "https://leetcode.com/problems/sliding-subarray-beauty/",
-    "topic": "SLIDING WINDOW",
+    "topic": "HASH TABLE",
     "difficulty": "MEDIUM",
     "popularity": 98254
   },
@@ -18650,21 +18650,21 @@
   {
     "name": "Counter II",
     "link": "https://leetcode.com/problems/counter-ii/",
-    "topic": null,
+    "topic": "MISCELLANEOUS",
     "difficulty": "EASY",
     "popularity": 486148
   },
   {
     "name": "Allow One Function Call",
     "link": "https://leetcode.com/problems/allow-one-function-call/",
-    "topic": null,
+    "topic": "MISCELLANEOUS",
     "difficulty": "EASY",
     "popularity": 233021
   },
   {
     "name": "Create Hello World Function",
     "link": "https://leetcode.com/problems/create-hello-world-function/",
-    "topic": null,
+    "topic": "MISCELLANEOUS",
     "difficulty": "EASY",
     "popularity": 1053490
   },
@@ -18720,21 +18720,21 @@
   {
     "name": "Array of Objects to Matrix",
     "link": "https://leetcode.com/problems/array-of-objects-to-matrix/",
-    "topic": null,
+    "topic": "MISCELLANEOUS",
     "difficulty": "HARD",
     "popularity": 9139
   },
   {
     "name": "Throttle",
     "link": "https://leetcode.com/problems/throttle/",
-    "topic": null,
+    "topic": "MISCELLANEOUS",
     "difficulty": "MEDIUM",
     "popularity": 14155
   },
   {
     "name": "Chunk Array",
     "link": "https://leetcode.com/problems/chunk-array/",
-    "topic": null,
+    "topic": "MISCELLANEOUS",
     "difficulty": "EASY",
     "popularity": 142476
   },
@@ -18755,7 +18755,7 @@
   {
     "name": "Maximum OR",
     "link": "https://leetcode.com/problems/maximum-or/",
-    "topic": "GREEDY",
+    "topic": "BIT MANIPULATION",
     "difficulty": "MEDIUM",
     "popularity": 46540
   },
@@ -18818,49 +18818,49 @@
   {
     "name": "Extract Kth Character From The Rope Tree",
     "link": "https://leetcode.com/problems/extract-kth-character-from-the-rope-tree/",
-    "topic": "GRAPH THEORY",
+    "topic": "BINARY TREE",
     "difficulty": "EASY",
     "popularity": 6945
   },
   {
     "name": "Infinite Method Object",
     "link": "https://leetcode.com/problems/infinite-method-object/",
-    "topic": null,
+    "topic": "MISCELLANEOUS",
     "difficulty": "EASY",
     "popularity": 2367
   },
   {
     "name": "Immutability Helper",
     "link": "https://leetcode.com/problems/immutability-helper/",
-    "topic": null,
+    "topic": "MISCELLANEOUS",
     "difficulty": "HARD",
     "popularity": 1020
   },
   {
     "name": "Make Object Immutable",
     "link": "https://leetcode.com/problems/make-object-immutable/",
-    "topic": null,
+    "topic": "MISCELLANEOUS",
     "difficulty": "MEDIUM",
     "popularity": 1217
   },
   {
     "name": "Call Function with Custom Context",
     "link": "https://leetcode.com/problems/call-function-with-custom-context/",
-    "topic": null,
+    "topic": "MISCELLANEOUS",
     "difficulty": "MEDIUM",
     "popularity": 19791
   },
   {
     "name": "Event Emitter",
     "link": "https://leetcode.com/problems/event-emitter/",
-    "topic": null,
+    "topic": "MISCELLANEOUS",
     "difficulty": "MEDIUM",
     "popularity": 65219
   },
   {
     "name": "Array Wrapper",
     "link": "https://leetcode.com/problems/array-wrapper/",
-    "topic": null,
+    "topic": "MISCELLANEOUS",
     "difficulty": "EASY",
     "popularity": 86013
   },
@@ -18895,7 +18895,7 @@
   {
     "name": "Differences Between Two Objects",
     "link": "https://leetcode.com/problems/differences-between-two-objects/",
-    "topic": null,
+    "topic": "MISCELLANEOUS",
     "difficulty": "MEDIUM",
     "popularity": 10628
   },
@@ -18916,21 +18916,21 @@
   {
     "name": "Return Length of Arguments Passed",
     "link": "https://leetcode.com/problems/return-length-of-arguments-passed/",
-    "topic": null,
+    "topic": "MISCELLANEOUS",
     "difficulty": "EASY",
     "popularity": 329258
   },
   {
     "name": "To Be Or Not To Be",
     "link": "https://leetcode.com/problems/to-be-or-not-to-be/",
-    "topic": null,
+    "topic": "MISCELLANEOUS",
     "difficulty": "EASY",
     "popularity": 579280
   },
   {
     "name": "Compact Object",
     "link": "https://leetcode.com/problems/compact-object/",
-    "topic": null,
+    "topic": "MISCELLANEOUS",
     "difficulty": "MEDIUM",
     "popularity": 72741
   },
@@ -18951,7 +18951,7 @@
   {
     "name": "Maximum Strength of a Group",
     "link": "https://leetcode.com/problems/maximum-strength-of-a-group/",
-    "topic": "DYNAMIC PROGRAMMING",
+    "topic": "BIT MANIPULATION",
     "difficulty": "MEDIUM",
     "popularity": 152662
   },
@@ -19000,7 +19000,7 @@
   {
     "name": "Timeout Cancellation",
     "link": "https://leetcode.com/problems/timeout-cancellation/",
-    "topic": null,
+    "topic": "MISCELLANEOUS",
     "difficulty": "EASY",
     "popularity": 118407
   },
@@ -19042,49 +19042,49 @@
   {
     "name": "Execute Asynchronous Functions in Parallel",
     "link": "https://leetcode.com/problems/execute-asynchronous-functions-in-parallel/",
-    "topic": null,
+    "topic": "MISCELLANEOUS",
     "difficulty": "MEDIUM",
     "popularity": 73078
   },
   {
     "name": "Join Two Arrays by ID",
     "link": "https://leetcode.com/problems/join-two-arrays-by-id/",
-    "topic": null,
+    "topic": "MISCELLANEOUS",
     "difficulty": "MEDIUM",
     "popularity": 110221
   },
   {
     "name": "Add Two Promises",
     "link": "https://leetcode.com/problems/add-two-promises/",
-    "topic": null,
+    "topic": "MISCELLANEOUS",
     "difficulty": "EASY",
     "popularity": 212029
   },
   {
     "name": "Sort By",
     "link": "https://leetcode.com/problems/sort-by/",
-    "topic": null,
+    "topic": "MISCELLANEOUS",
     "difficulty": "EASY",
     "popularity": 102075
   },
   {
     "name": "Interval Cancellation",
     "link": "https://leetcode.com/problems/interval-cancellation/",
-    "topic": null,
+    "topic": "MISCELLANEOUS",
     "difficulty": "EASY",
     "popularity": 103465
   },
   {
     "name": "Calculator with Method Chaining",
     "link": "https://leetcode.com/problems/calculator-with-method-chaining/",
-    "topic": null,
+    "topic": "MISCELLANEOUS",
     "difficulty": "EASY",
     "popularity": 76118
   },
   {
     "name": "Is Object Empty",
     "link": "https://leetcode.com/problems/is-object-empty/",
-    "topic": null,
+    "topic": "MISCELLANEOUS",
     "difficulty": "EASY",
     "popularity": 151929
   },
@@ -19182,7 +19182,7 @@
   {
     "name": "Special Permutations",
     "link": "https://leetcode.com/problems/special-permutations/",
-    "topic": "DYNAMIC PROGRAMMING",
+    "topic": "BIT MANIPULATION",
     "difficulty": "MEDIUM",
     "popularity": 61399
   },
@@ -19196,7 +19196,7 @@
   {
     "name": "Count Substrings Without Repeating Character",
     "link": "https://leetcode.com/problems/count-substrings-without-repeating-character/",
-    "topic": "SLIDING WINDOW",
+    "topic": "HASH TABLE",
     "difficulty": "MEDIUM",
     "popularity": 12527
   },
@@ -19224,7 +19224,7 @@
   {
     "name": "Count Zero Request Servers",
     "link": "https://leetcode.com/problems/count-zero-request-servers/",
-    "topic": "SLIDING WINDOW",
+    "topic": "HASH TABLE",
     "difficulty": "MEDIUM",
     "popularity": 36908
   },
@@ -19266,49 +19266,49 @@
   {
     "name": "Count Houses in a Circular Street II",
     "link": "https://leetcode.com/problems/count-houses-in-a-circular-street-ii/",
-    "topic": null,
+    "topic": "MISCELLANEOUS",
     "difficulty": "HARD",
     "popularity": 1587
   },
   {
     "name": "Bind Function to Context",
     "link": "https://leetcode.com/problems/bind-function-to-context/",
-    "topic": null,
+    "topic": "MISCELLANEOUS",
     "difficulty": "MEDIUM",
     "popularity": 1343
   },
   {
     "name": "Deep Merge of Two Objects",
     "link": "https://leetcode.com/problems/deep-merge-of-two-objects/",
-    "topic": null,
+    "topic": "MISCELLANEOUS",
     "difficulty": "MEDIUM",
     "popularity": 1465
   },
   {
     "name": "Query Batching",
     "link": "https://leetcode.com/problems/query-batching/",
-    "topic": null,
+    "topic": "MISCELLANEOUS",
     "difficulty": "HARD",
     "popularity": 878
   },
   {
     "name": "Generate Circular Array Values",
     "link": "https://leetcode.com/problems/generate-circular-array-values/",
-    "topic": null,
+    "topic": "MISCELLANEOUS",
     "difficulty": "MEDIUM",
     "popularity": 975
   },
   {
     "name": "Next Day",
     "link": "https://leetcode.com/problems/next-day/",
-    "topic": null,
+    "topic": "MISCELLANEOUS",
     "difficulty": "EASY",
     "popularity": 1947
   },
   {
     "name": "Convert JSON String to Object",
     "link": "https://leetcode.com/problems/convert-json-string-to-object/",
-    "topic": null,
+    "topic": "MISCELLANEOUS",
     "difficulty": "HARD",
     "popularity": 1573
   },
@@ -19329,7 +19329,7 @@
   {
     "name": "Continuous Subarrays",
     "link": "https://leetcode.com/problems/continuous-subarrays/",
-    "topic": "SLIDING WINDOW",
+    "topic": "HEAP (PRIORITY QUEUE)",
     "difficulty": "MEDIUM",
     "popularity": 209600
   },
@@ -19343,7 +19343,7 @@
   {
     "name": "Is Array a Preorder of Some ‌Binary Tree",
     "link": "https://leetcode.com/problems/is-array-a-preorder-of-some-binary-tree/",
-    "topic": "GRAPH THEORY",
+    "topic": "BINARY TREE",
     "difficulty": "MEDIUM",
     "popularity": 3020
   },
@@ -19406,35 +19406,35 @@
   {
     "name": "Height of Special Binary Tree",
     "link": "https://leetcode.com/problems/height-of-special-binary-tree/",
-    "topic": "GRAPH THEORY",
+    "topic": "BINARY TREE",
     "difficulty": "MEDIUM",
     "popularity": 2038
   },
   {
     "name": "Array Upper Bound",
     "link": "https://leetcode.com/problems/array-upper-bound/",
-    "topic": null,
+    "topic": "MISCELLANEOUS",
     "difficulty": "EASY",
     "popularity": 2897
   },
   {
     "name": "Undefined to Null",
     "link": "https://leetcode.com/problems/undefined-to-null/",
-    "topic": null,
+    "topic": "MISCELLANEOUS",
     "difficulty": "MEDIUM",
     "popularity": 1453
   },
   {
     "name": "Convert Callback Based Function to Promise Based Function",
     "link": "https://leetcode.com/problems/convert-callback-based-function-to-promise-based-function/",
-    "topic": null,
+    "topic": "MISCELLANEOUS",
     "difficulty": "MEDIUM",
     "popularity": 1488
   },
   {
     "name": "Date Range Generator",
     "link": "https://leetcode.com/problems/date-range-generator/",
-    "topic": null,
+    "topic": "MISCELLANEOUS",
     "difficulty": "MEDIUM",
     "popularity": 903
   },
@@ -19462,7 +19462,7 @@
   {
     "name": "Length of the Longest Valid Substring",
     "link": "https://leetcode.com/problems/length-of-the-longest-valid-substring/",
-    "topic": "SLIDING WINDOW",
+    "topic": "HASH TABLE",
     "difficulty": "HARD",
     "popularity": 102428
   },
@@ -19532,7 +19532,7 @@
   {
     "name": "Count Paths That Can Form a Palindrome in a Tree",
     "link": "https://leetcode.com/problems/count-paths-that-can-form-a-palindrome-in-a-tree/",
-    "topic": "GRAPH THEORY",
+    "topic": "BIT MANIPULATION",
     "difficulty": "HARD",
     "popularity": 29793
   },
@@ -19546,35 +19546,35 @@
   {
     "name": "Status of Flight Tickets",
     "link": "https://leetcode.com/problems/status-of-flight-tickets/",
-    "topic": null,
+    "topic": "MISCELLANEOUS",
     "difficulty": "HARD",
     "popularity": 4789
   },
   {
     "name": "Create Object from Two Arrays",
     "link": "https://leetcode.com/problems/create-object-from-two-arrays/",
-    "topic": null,
+    "topic": "MISCELLANEOUS",
     "difficulty": "EASY",
     "popularity": 2883
   },
   {
     "name": "Parallel Execution of Promises for Individual Results Retrieval",
     "link": "https://leetcode.com/problems/parallel-execution-of-promises-for-individual-results-retrieval/",
-    "topic": null,
+    "topic": "MISCELLANEOUS",
     "difficulty": "MEDIUM",
     "popularity": 1299
   },
   {
     "name": "Repeat String",
     "link": "https://leetcode.com/problems/repeat-string/",
-    "topic": null,
+    "topic": "MISCELLANEOUS",
     "difficulty": "EASY",
     "popularity": 4268
   },
   {
     "name": "Partial Function with Placeholders",
     "link": "https://leetcode.com/problems/partial-function-with-placeholders/",
-    "topic": null,
+    "topic": "MISCELLANEOUS",
     "difficulty": "EASY",
     "popularity": 2026
   },
@@ -19588,7 +19588,7 @@
   {
     "name": "Count Complete Subarrays in an Array",
     "link": "https://leetcode.com/problems/count-complete-subarrays-in-an-array/",
-    "topic": "SLIDING WINDOW",
+    "topic": "HASH TABLE",
     "difficulty": "MEDIUM",
     "popularity": 230530
   },
@@ -19616,21 +19616,21 @@
   {
     "name": "Factorial Generator",
     "link": "https://leetcode.com/problems/factorial-generator/",
-    "topic": null,
+    "topic": "MISCELLANEOUS",
     "difficulty": "EASY",
     "popularity": 1958
   },
   {
     "name": "Array Prototype ForEach",
     "link": "https://leetcode.com/problems/array-prototype-foreach/",
-    "topic": null,
+    "topic": "MISCELLANEOUS",
     "difficulty": "EASY",
     "popularity": 1831
   },
   {
     "name": "Custom Interval",
     "link": "https://leetcode.com/problems/custom-interval/",
-    "topic": null,
+    "topic": "MISCELLANEOUS",
     "difficulty": "MEDIUM",
     "popularity": 949
   },
@@ -19714,7 +19714,7 @@
   {
     "name": "Minimum Absolute Difference Between Elements With Constraint",
     "link": "https://leetcode.com/problems/minimum-absolute-difference-between-elements-with-constraint/",
-    "topic": "BINARY SEARCH",
+    "topic": "HASH TABLE",
     "difficulty": "MEDIUM",
     "popularity": 113491
   },
@@ -19735,28 +19735,28 @@
   {
     "name": "Election Results",
     "link": "https://leetcode.com/problems/election-results/",
-    "topic": null,
+    "topic": "MISCELLANEOUS",
     "difficulty": "MEDIUM",
     "popularity": 6770
   },
   {
     "name": "Delay the Resolution of Each Promise",
     "link": "https://leetcode.com/problems/delay-the-resolution-of-each-promise/",
-    "topic": null,
+    "topic": "MISCELLANEOUS",
     "difficulty": "MEDIUM",
     "popularity": 1499
   },
   {
     "name": "Inversion of Object",
     "link": "https://leetcode.com/problems/inversion-of-object/",
-    "topic": null,
+    "topic": "MISCELLANEOUS",
     "difficulty": "EASY",
     "popularity": 2528
   },
   {
     "name": "Deep Object Filter",
     "link": "https://leetcode.com/problems/deep-object-filter/",
-    "topic": null,
+    "topic": "MISCELLANEOUS",
     "difficulty": "MEDIUM",
     "popularity": 1354
   },
@@ -19812,7 +19812,7 @@
   {
     "name": "Find the Longest Equal Subarray",
     "link": "https://leetcode.com/problems/find-the-longest-equal-subarray/",
-    "topic": "SLIDING WINDOW",
+    "topic": "HASH TABLE",
     "difficulty": "MEDIUM",
     "popularity": 83480
   },
@@ -19840,14 +19840,14 @@
   {
     "name": "Minimum Operations to Form Subsequence With Target Sum",
     "link": "https://leetcode.com/problems/minimum-operations-to-form-subsequence-with-target-sum/",
-    "topic": "GREEDY",
+    "topic": "BIT MANIPULATION",
     "difficulty": "HARD",
     "popularity": 44526
   },
   {
     "name": "Maximize Value of Function in a Ball Passing Game",
     "link": "https://leetcode.com/problems/maximize-value-of-function-in-a-ball-passing-game/",
-    "topic": "DYNAMIC PROGRAMMING",
+    "topic": "BIT MANIPULATION",
     "difficulty": "HARD",
     "popularity": 22320
   },
@@ -19882,7 +19882,7 @@
   {
     "name": "Maximum Sum of Almost Unique Subarray",
     "link": "https://leetcode.com/problems/maximum-sum-of-almost-unique-subarray/",
-    "topic": "SLIDING WINDOW",
+    "topic": "HASH TABLE",
     "difficulty": "MEDIUM",
     "popularity": 89975
   },
@@ -19917,7 +19917,7 @@
   {
     "name": "Minimum Edge Weight Equilibrium Queries in a Tree",
     "link": "https://leetcode.com/problems/minimum-edge-weight-equilibrium-queries-in-a-tree/",
-    "topic": "DYNAMIC PROGRAMMING",
+    "topic": "BIT MANIPULATION",
     "difficulty": "HARD",
     "popularity": 22301
   },
@@ -19945,7 +19945,7 @@
   {
     "name": "Minimum Moves to Spread Stones Over Grid",
     "link": "https://leetcode.com/problems/minimum-moves-to-spread-stones-over-grid/",
-    "topic": "DYNAMIC PROGRAMMING",
+    "topic": "BIT MANIPULATION",
     "difficulty": "MEDIUM",
     "popularity": 67282
   },
@@ -20092,14 +20092,14 @@
   {
     "name": "Split Array Into Maximum Number of Subarrays",
     "link": "https://leetcode.com/problems/split-array-into-maximum-number-of-subarrays/",
-    "topic": "GREEDY",
+    "topic": "BIT MANIPULATION",
     "difficulty": "MEDIUM",
     "popularity": 46675
   },
   {
     "name": "Maximum Number of K-Divisible Components",
     "link": "https://leetcode.com/problems/maximum-number-of-k-divisible-components/",
-    "topic": "GRAPH THEORY",
+    "topic": "TREE",
     "difficulty": "HARD",
     "popularity": 198292
   },
@@ -20120,7 +20120,7 @@
   {
     "name": "Minimum Size Subarray in Infinite Array",
     "link": "https://leetcode.com/problems/minimum-size-subarray-in-infinite-array/",
-    "topic": "SLIDING WINDOW",
+    "topic": "HASH TABLE",
     "difficulty": "MEDIUM",
     "popularity": 82770
   },
@@ -20134,105 +20134,105 @@
   {
     "name": "Create a DataFrame from List",
     "link": "https://leetcode.com/problems/create-a-dataframe-from-list/",
-    "topic": null,
+    "topic": "MISCELLANEOUS",
     "difficulty": "EASY",
     "popularity": 324490
   },
   {
     "name": "Get the Size of a DataFrame",
     "link": "https://leetcode.com/problems/get-the-size-of-a-dataframe/",
-    "topic": null,
+    "topic": "MISCELLANEOUS",
     "difficulty": "EASY",
     "popularity": 242212
   },
   {
     "name": "Display the First Three Rows",
     "link": "https://leetcode.com/problems/display-the-first-three-rows/",
-    "topic": null,
+    "topic": "MISCELLANEOUS",
     "difficulty": "EASY",
     "popularity": 236660
   },
   {
     "name": "Select Data",
     "link": "https://leetcode.com/problems/select-data/",
-    "topic": null,
+    "topic": "MISCELLANEOUS",
     "difficulty": "EASY",
     "popularity": 223193
   },
   {
     "name": "Create a New Column",
     "link": "https://leetcode.com/problems/create-a-new-column/",
-    "topic": null,
+    "topic": "MISCELLANEOUS",
     "difficulty": "EASY",
     "popularity": 181365
   },
   {
     "name": "Drop Duplicate Rows",
     "link": "https://leetcode.com/problems/drop-duplicate-rows/",
-    "topic": null,
+    "topic": "MISCELLANEOUS",
     "difficulty": "EASY",
     "popularity": 173015
   },
   {
     "name": "Drop Missing Data",
     "link": "https://leetcode.com/problems/drop-missing-data/",
-    "topic": null,
+    "topic": "MISCELLANEOUS",
     "difficulty": "EASY",
     "popularity": 213030
   },
   {
     "name": "Modify Columns",
     "link": "https://leetcode.com/problems/modify-columns/",
-    "topic": null,
+    "topic": "MISCELLANEOUS",
     "difficulty": "EASY",
     "popularity": 164919
   },
   {
     "name": "Rename Columns",
     "link": "https://leetcode.com/problems/rename-columns/",
-    "topic": null,
+    "topic": "MISCELLANEOUS",
     "difficulty": "EASY",
     "popularity": 152709
   },
   {
     "name": "Change Data Type",
     "link": "https://leetcode.com/problems/change-data-type/",
-    "topic": null,
+    "topic": "MISCELLANEOUS",
     "difficulty": "EASY",
     "popularity": 147274
   },
   {
     "name": "Fill Missing Data",
     "link": "https://leetcode.com/problems/fill-missing-data/",
-    "topic": null,
+    "topic": "MISCELLANEOUS",
     "difficulty": "EASY",
     "popularity": 169088
   },
   {
     "name": "Reshape Data: Concatenate",
     "link": "https://leetcode.com/problems/reshape-data-concatenate/",
-    "topic": null,
+    "topic": "MISCELLANEOUS",
     "difficulty": "EASY",
     "popularity": 143142
   },
   {
     "name": "Reshape Data: Pivot",
     "link": "https://leetcode.com/problems/reshape-data-pivot/",
-    "topic": null,
+    "topic": "MISCELLANEOUS",
     "difficulty": "EASY",
     "popularity": 130910
   },
   {
     "name": "Reshape Data: Melt",
     "link": "https://leetcode.com/problems/reshape-data-melt/",
-    "topic": null,
+    "topic": "MISCELLANEOUS",
     "difficulty": "EASY",
     "popularity": 119333
   },
   {
     "name": "Method Chaining",
     "link": "https://leetcode.com/problems/method-chaining/",
-    "topic": null,
+    "topic": "MISCELLANEOUS",
     "difficulty": "EASY",
     "popularity": 138585
   },
@@ -20274,7 +20274,7 @@
   {
     "name": "Apply Operations on Array to Maximize Sum of Squares",
     "link": "https://leetcode.com/problems/apply-operations-on-array-to-maximize-sum-of-squares/",
-    "topic": "GREEDY",
+    "topic": "BIT MANIPULATION",
     "difficulty": "HARD",
     "popularity": 19666
   },
@@ -20435,7 +20435,7 @@
   {
     "name": "Maximum Points After Collecting Coins From All Nodes",
     "link": "https://leetcode.com/problems/maximum-points-after-collecting-coins-from-all-nodes/",
-    "topic": "DYNAMIC PROGRAMMING",
+    "topic": "BIT MANIPULATION",
     "difficulty": "HARD",
     "popularity": 31742
   },
@@ -20568,7 +20568,7 @@
   {
     "name": "Maximum Xor Product",
     "link": "https://leetcode.com/problems/maximum-xor-product/",
-    "topic": "GREEDY",
+    "topic": "BIT MANIPULATION",
     "difficulty": "MEDIUM",
     "popularity": 55018
   },
@@ -20666,7 +20666,7 @@
   {
     "name": "Count Complete Substrings",
     "link": "https://leetcode.com/problems/count-complete-substrings/",
-    "topic": "SLIDING WINDOW",
+    "topic": "HASH TABLE",
     "difficulty": "HARD",
     "popularity": 38279
   },
@@ -20701,14 +20701,14 @@
   {
     "name": "Length of Longest Subarray With at Most K Frequency",
     "link": "https://leetcode.com/problems/length-of-longest-subarray-with-at-most-k-frequency/",
-    "topic": "SLIDING WINDOW",
+    "topic": "HASH TABLE",
     "difficulty": "MEDIUM",
     "popularity": 348385
   },
   {
     "name": "Number of Possible Sets of Closing Branches",
     "link": "https://leetcode.com/problems/number-of-possible-sets-of-closing-branches/",
-    "topic": "GRAPH THEORY",
+    "topic": "BIT MANIPULATION",
     "difficulty": "HARD",
     "popularity": 22498
   },
@@ -20862,14 +20862,14 @@
   {
     "name": "Find Longest Special Substring That Occurs Thrice I",
     "link": "https://leetcode.com/problems/find-longest-special-substring-that-occurs-thrice-i/",
-    "topic": "SLIDING WINDOW",
+    "topic": "HASH TABLE",
     "difficulty": "MEDIUM",
     "popularity": 215431
   },
   {
     "name": "Find Longest Special Substring That Occurs Thrice II",
     "link": "https://leetcode.com/problems/find-longest-special-substring-that-occurs-thrice-ii/",
-    "topic": "SLIDING WINDOW",
+    "topic": "HASH TABLE",
     "difficulty": "MEDIUM",
     "popularity": 83264
   },
@@ -20939,7 +20939,7 @@
   {
     "name": "Number of Self-Divisible Permutations",
     "link": "https://leetcode.com/problems/number-of-self-divisible-permutations/",
-    "topic": "DYNAMIC PROGRAMMING",
+    "topic": "BIT MANIPULATION",
     "difficulty": "MEDIUM",
     "popularity": 3266
   },
@@ -21016,7 +21016,7 @@
   {
     "name": "Maximize the Number of Partitions After Operations",
     "link": "https://leetcode.com/problems/maximize-the-number-of-partitions-after-operations/",
-    "topic": "DYNAMIC PROGRAMMING",
+    "topic": "BIT MANIPULATION",
     "difficulty": "HARD",
     "popularity": 103406
   },
@@ -21044,7 +21044,7 @@
   {
     "name": "Maximum Number That Sum of the Prices Is Less Than or Equal to K",
     "link": "https://leetcode.com/problems/maximum-number-that-sum-of-the-prices-is-less-than-or-equal-to-k/",
-    "topic": "DYNAMIC PROGRAMMING",
+    "topic": "BIT MANIPULATION",
     "difficulty": "MEDIUM",
     "popularity": 34924
   },
@@ -21086,7 +21086,7 @@
   {
     "name": "Divide an Array Into Subarrays With Minimum Cost II",
     "link": "https://leetcode.com/problems/divide-an-array-into-subarrays-with-minimum-cost-ii/",
-    "topic": "SLIDING WINDOW",
+    "topic": "HEAP (PRIORITY QUEUE)",
     "difficulty": "HARD",
     "popularity": 136675
   },
@@ -21149,14 +21149,14 @@
   {
     "name": "Minimize OR of Remaining Elements Using Operations",
     "link": "https://leetcode.com/problems/minimize-or-of-remaining-elements-using-operations/",
-    "topic": "GREEDY",
+    "topic": "BIT MANIPULATION",
     "difficulty": "HARD",
     "popularity": 14803
   },
   {
     "name": "Find Pattern in Infinite Stream I",
     "link": "https://leetcode.com/problems/find-pattern-in-infinite-stream-i/",
-    "topic": "SLIDING WINDOW",
+    "topic": "HASH TABLE",
     "difficulty": "MEDIUM",
     "popularity": 3617
   },
@@ -21254,7 +21254,7 @@
   {
     "name": "Find Pattern in Infinite Stream II",
     "link": "https://leetcode.com/problems/find-pattern-in-infinite-stream-ii/",
-    "topic": "SLIDING WINDOW",
+    "topic": "HASH TABLE",
     "difficulty": "HARD",
     "popularity": 2158
   },
@@ -21464,14 +21464,14 @@
   {
     "name": "Count Pairs of Connectable Servers in a Weighted Tree Network",
     "link": "https://leetcode.com/problems/count-pairs-of-connectable-servers-in-a-weighted-tree-network/",
-    "topic": "GRAPH THEORY",
+    "topic": "TREE",
     "difficulty": "MEDIUM",
     "popularity": 30442
   },
   {
     "name": "Find the Maximum Sum of Node Values",
     "link": "https://leetcode.com/problems/find-the-maximum-sum-of-node-values/",
-    "topic": "DYNAMIC PROGRAMMING",
+    "topic": "BIT MANIPULATION",
     "difficulty": "HARD",
     "popularity": 200728
   },
@@ -21625,7 +21625,7 @@
   {
     "name": "Maximum Length Substring With Two Occurrences",
     "link": "https://leetcode.com/problems/maximum-length-substring-with-two-occurrences/",
-    "topic": "SLIDING WINDOW",
+    "topic": "HASH TABLE",
     "difficulty": "EASY",
     "popularity": 102442
   },
@@ -21751,7 +21751,7 @@
   {
     "name": "Minimum Cost Walk in Weighted Graph",
     "link": "https://leetcode.com/problems/minimum-cost-walk-in-weighted-graph/",
-    "topic": "GRAPH THEORY",
+    "topic": "BIT MANIPULATION",
     "difficulty": "HARD",
     "popularity": 157725
   },
@@ -21786,7 +21786,7 @@
   {
     "name": "Find the Number of Subarrays Where Boundary Elements Are Maximum",
     "link": "https://leetcode.com/problems/find-the-number-of-subarrays-where-boundary-elements-are-maximum/",
-    "topic": "BINARY SEARCH",
+    "topic": "STACK",
     "difficulty": "HARD",
     "popularity": 45383
   },
@@ -21814,7 +21814,7 @@
   {
     "name": "Minimum Sum of Values by Dividing Array",
     "link": "https://leetcode.com/problems/minimum-sum-of-values-by-dividing-array/",
-    "topic": "DYNAMIC PROGRAMMING",
+    "topic": "BIT MANIPULATION",
     "difficulty": "HARD",
     "popularity": 26674
   },
@@ -21933,7 +21933,7 @@
   {
     "name": "Find the Median of the Uniqueness Array",
     "link": "https://leetcode.com/problems/find-the-median-of-the-uniqueness-array/",
-    "topic": "SLIDING WINDOW",
+    "topic": "HASH TABLE",
     "difficulty": "HARD",
     "popularity": 30679
   },
@@ -21982,7 +21982,7 @@
   {
     "name": "Maximum Hamming Distances",
     "link": "https://leetcode.com/problems/maximum-hamming-distances/",
-    "topic": "GRAPH THEORY",
+    "topic": "BIT MANIPULATION",
     "difficulty": "HARD",
     "popularity": 1343
   },
@@ -21996,7 +21996,7 @@
   {
     "name": "Maximum Points Inside the Square",
     "link": "https://leetcode.com/problems/maximum-points-inside-the-square/",
-    "topic": "BINARY SEARCH",
+    "topic": "HASH TABLE",
     "difficulty": "MEDIUM",
     "popularity": 55473
   },
@@ -22038,7 +22038,7 @@
   {
     "name": "Find the Minimum Cost Array Permutation",
     "link": "https://leetcode.com/problems/find-the-minimum-cost-array-permutation/",
-    "topic": "DYNAMIC PROGRAMMING",
+    "topic": "BIT MANIPULATION",
     "difficulty": "HARD",
     "popularity": 28863
   },
@@ -22073,7 +22073,7 @@
   {
     "name": "Find Number of Ways to Reach the K-th Stair",
     "link": "https://leetcode.com/problems/find-number-of-ways-to-reach-the-k-th-stair/",
-    "topic": "DYNAMIC PROGRAMMING",
+    "topic": "BIT MANIPULATION",
     "difficulty": "HARD",
     "popularity": 43237
   },
@@ -22094,7 +22094,7 @@
   {
     "name": "Find the Level of Tree with Minimum Sum",
     "link": "https://leetcode.com/problems/find-the-level-of-tree-with-minimum-sum/",
-    "topic": "GRAPH THEORY",
+    "topic": "BINARY TREE",
     "difficulty": "MEDIUM",
     "popularity": 4909
   },
@@ -22192,7 +22192,7 @@
   {
     "name": "Find Subarray With Bitwise OR Closest to K",
     "link": "https://leetcode.com/problems/find-subarray-with-bitwise-or-closest-to-k/",
-    "topic": "TREE",
+    "topic": "BIT MANIPULATION",
     "difficulty": "HARD",
     "popularity": 51833
   },
@@ -22255,14 +22255,14 @@
   {
     "name": "Maximum Total Reward Using Operations I",
     "link": "https://leetcode.com/problems/maximum-total-reward-using-operations-i/",
-    "topic": "DYNAMIC PROGRAMMING",
+    "topic": "BIT MANIPULATION",
     "difficulty": "MEDIUM",
     "popularity": 101857
   },
   {
     "name": "Maximum Total Reward Using Operations II",
     "link": "https://leetcode.com/problems/maximum-total-reward-using-operations-ii/",
-    "topic": "DYNAMIC PROGRAMMING",
+    "topic": "BIT MANIPULATION",
     "difficulty": "HARD",
     "popularity": 40328
   },
@@ -22416,7 +22416,7 @@
   {
     "name": "Find Minimum Diameter After Merging Two Trees",
     "link": "https://leetcode.com/problems/find-minimum-diameter-after-merging-two-trees/",
-    "topic": "GRAPH THEORY",
+    "topic": "TREE",
     "difficulty": "HARD",
     "popularity": 139460
   },
@@ -22458,7 +22458,7 @@
   {
     "name": "Number of Subarrays With AND Value of K",
     "link": "https://leetcode.com/problems/number-of-subarrays-with-and-value-of-k/",
-    "topic": "TREE",
+    "topic": "BIT MANIPULATION",
     "difficulty": "HARD",
     "popularity": 40302
   },
@@ -22472,7 +22472,7 @@
   {
     "name": "Generate Binary Strings Without Adjacent Zeros",
     "link": "https://leetcode.com/problems/generate-binary-strings-without-adjacent-zeros/",
-    "topic": "BACKTRACKING",
+    "topic": "BIT MANIPULATION",
     "difficulty": "MEDIUM",
     "popularity": 102587
   },
@@ -22738,7 +22738,7 @@
   {
     "name": "Count the Number of Good Nodes",
     "link": "https://leetcode.com/problems/count-the-number-of-good-nodes/",
-    "topic": "GRAPH THEORY",
+    "topic": "TREE",
     "difficulty": "MEDIUM",
     "popularity": 57314
   },
@@ -22766,7 +22766,7 @@
   {
     "name": "Construct String with Minimum Cost (Easy)",
     "link": "https://leetcode.com/problems/construct-string-with-minimum-cost-easy/",
-    "topic": null,
+    "topic": "MISCELLANEOUS",
     "difficulty": "MEDIUM",
     "popularity": 1445
   },
@@ -22927,7 +22927,7 @@
   {
     "name": "Select Cells in Grid With Maximum Score",
     "link": "https://leetcode.com/problems/select-cells-in-grid-with-maximum-score/",
-    "topic": "DYNAMIC PROGRAMMING",
+    "topic": "BIT MANIPULATION",
     "difficulty": "HARD",
     "popularity": 80369
   },
@@ -22976,7 +22976,7 @@
   {
     "name": "Maximum Number of Moves to Kill All Pawns",
     "link": "https://leetcode.com/problems/maximum-number-of-moves-to-kill-all-pawns/",
-    "topic": "GRAPH THEORY",
+    "topic": "BIT MANIPULATION",
     "difficulty": "HARD",
     "popularity": 22062
   },
@@ -23004,7 +23004,7 @@
   {
     "name": "Find the Maximum Sequence Value of Array",
     "link": "https://leetcode.com/problems/find-the-maximum-sequence-value-of-array/",
-    "topic": "DYNAMIC PROGRAMMING",
+    "topic": "BIT MANIPULATION",
     "difficulty": "HARD",
     "popularity": 28311
   },
@@ -23074,14 +23074,14 @@
   {
     "name": "Count Substrings That Can Be Rearranged to Contain a String I",
     "link": "https://leetcode.com/problems/count-substrings-that-can-be-rearranged-to-contain-a-string-i/",
-    "topic": "SLIDING WINDOW",
+    "topic": "HASH TABLE",
     "difficulty": "MEDIUM",
     "popularity": 47345
   },
   {
     "name": "Count Substrings That Can Be Rearranged to Contain a String II",
     "link": "https://leetcode.com/problems/count-substrings-that-can-be-rearranged-to-contain-a-string-ii/",
-    "topic": "SLIDING WINDOW",
+    "topic": "HASH TABLE",
     "difficulty": "HARD",
     "popularity": 31739
   },
@@ -23123,28 +23123,28 @@
   {
     "name": "Find the K-th Character in String Game I",
     "link": "https://leetcode.com/problems/find-the-k-th-character-in-string-game-i/",
-    "topic": "RECURSION",
+    "topic": "BIT MANIPULATION",
     "difficulty": "EASY",
     "popularity": 266087
   },
   {
     "name": "Count of Substrings Containing Every Vowel and K Consonants I",
     "link": "https://leetcode.com/problems/count-of-substrings-containing-every-vowel-and-k-consonants-i/",
-    "topic": "SLIDING WINDOW",
+    "topic": "HASH TABLE",
     "difficulty": "MEDIUM",
     "popularity": 80231
   },
   {
     "name": "Count of Substrings Containing Every Vowel and K Consonants II",
     "link": "https://leetcode.com/problems/count-of-substrings-containing-every-vowel-and-k-consonants-ii/",
-    "topic": "SLIDING WINDOW",
+    "topic": "HASH TABLE",
     "difficulty": "MEDIUM",
     "popularity": 284836
   },
   {
     "name": "Find the K-th Character in String Game II",
     "link": "https://leetcode.com/problems/find-the-k-th-character-in-string-game-ii/",
-    "topic": "RECURSION",
+    "topic": "BIT MANIPULATION",
     "difficulty": "HARD",
     "popularity": 183101
   },
@@ -23179,14 +23179,14 @@
   {
     "name": "Sorted GCD Pair Queries",
     "link": "https://leetcode.com/problems/sorted-gcd-pair-queries/",
-    "topic": "BINARY SEARCH",
+    "topic": "HASH TABLE",
     "difficulty": "HARD",
     "popularity": 122781
   },
   {
     "name": "Find the Last Marked Nodes in Tree",
     "link": "https://leetcode.com/problems/find-the-last-marked-nodes-in-tree/",
-    "topic": "GRAPH THEORY",
+    "topic": "TREE",
     "difficulty": "HARD",
     "popularity": 1214
   },
@@ -23221,14 +23221,14 @@
   {
     "name": "Find X-Sum of All K-Long Subarrays I",
     "link": "https://leetcode.com/problems/find-x-sum-of-all-k-long-subarrays-i/",
-    "topic": "SLIDING WINDOW",
+    "topic": "HEAP (PRIORITY QUEUE)",
     "difficulty": "EASY",
     "popularity": 190851
   },
   {
     "name": "K-th Largest Perfect Subtree Size in Binary Tree",
     "link": "https://leetcode.com/problems/k-th-largest-perfect-subtree-size-in-binary-tree/",
-    "topic": "GRAPH THEORY",
+    "topic": "BINARY TREE",
     "difficulty": "MEDIUM",
     "popularity": 49257
   },
@@ -23242,7 +23242,7 @@
   {
     "name": "Find X-Sum of All K-Long Subarrays II",
     "link": "https://leetcode.com/problems/find-x-sum-of-all-k-long-subarrays-ii/",
-    "topic": "SLIDING WINDOW",
+    "topic": "HEAP (PRIORITY QUEUE)",
     "difficulty": "HARD",
     "popularity": 160250
   },
@@ -23270,7 +23270,7 @@
   {
     "name": "Count Substrings With K-Frequency Characters I",
     "link": "https://leetcode.com/problems/count-substrings-with-k-frequency-characters-i/",
-    "topic": "SLIDING WINDOW",
+    "topic": "HASH TABLE",
     "difficulty": "MEDIUM",
     "popularity": 69111
   },
@@ -23284,7 +23284,7 @@
   {
     "name": "Check if DFS Strings Are Palindromes",
     "link": "https://leetcode.com/problems/check-if-dfs-strings-are-palindromes/",
-    "topic": "GRAPH THEORY",
+    "topic": "TREE",
     "difficulty": "HARD",
     "popularity": 34471
   },
@@ -23298,7 +23298,7 @@
   {
     "name": "Count Substrings With K-Frequency Characters II",
     "link": "https://leetcode.com/problems/count-substrings-with-k-frequency-characters-ii/",
-    "topic": "SLIDING WINDOW",
+    "topic": "HASH TABLE",
     "difficulty": "HARD",
     "popularity": 1518
   },
@@ -23312,7 +23312,7 @@
   {
     "name": "Find Subtree Sizes After Changes",
     "link": "https://leetcode.com/problems/find-subtree-sizes-after-changes/",
-    "topic": "GRAPH THEORY",
+    "topic": "TREE",
     "difficulty": "MEDIUM",
     "popularity": 31593
   },
@@ -23578,7 +23578,7 @@
   {
     "name": "Design an Array Statistics Tracker ",
     "link": "https://leetcode.com/problems/design-an-array-statistics-tracker/",
-    "topic": "BINARY SEARCH",
+    "topic": "HEAP (PRIORITY QUEUE)",
     "difficulty": "HARD",
     "popularity": 4223
   },
@@ -23599,14 +23599,14 @@
   {
     "name": "Maximize the Number of Target Nodes After Connecting Trees I",
     "link": "https://leetcode.com/problems/maximize-the-number-of-target-nodes-after-connecting-trees-i/",
-    "topic": "GRAPH THEORY",
+    "topic": "TREE",
     "difficulty": "MEDIUM",
     "popularity": 122266
   },
   {
     "name": "Maximize the Number of Target Nodes After Connecting Trees II",
     "link": "https://leetcode.com/problems/maximize-the-number-of-target-nodes-after-connecting-trees-ii/",
-    "topic": "GRAPH THEORY",
+    "topic": "TREE",
     "difficulty": "HARD",
     "popularity": 96373
   },
@@ -23627,7 +23627,7 @@
   {
     "name": "Minimum Time to Break Locks I",
     "link": "https://leetcode.com/problems/minimum-time-to-break-locks-i/",
-    "topic": "DYNAMIC PROGRAMMING",
+    "topic": "BIT MANIPULATION",
     "difficulty": "MEDIUM",
     "popularity": 44677
   },
@@ -23746,7 +23746,7 @@
   {
     "name": "Count Paths With the Given XOR Value",
     "link": "https://leetcode.com/problems/count-paths-with-the-given-xor-value/",
-    "topic": "DYNAMIC PROGRAMMING",
+    "topic": "BIT MANIPULATION",
     "difficulty": "MEDIUM",
     "popularity": 53756
   },
@@ -23949,7 +23949,7 @@
   {
     "name": "Minimum Operations to Make Subarray Elements Equal",
     "link": "https://leetcode.com/problems/minimum-operations-to-make-subarray-elements-equal/",
-    "topic": "SLIDING WINDOW",
+    "topic": "HEAP (PRIORITY QUEUE)",
     "difficulty": "MEDIUM",
     "popularity": 1639
   },
@@ -23970,7 +23970,7 @@
   {
     "name": "Longest Special Path",
     "link": "https://leetcode.com/problems/longest-special-path/",
-    "topic": "GRAPH THEORY",
+    "topic": "TREE",
     "difficulty": "HARD",
     "popularity": 27196
   },
@@ -24040,7 +24040,7 @@
   {
     "name": "Frequencies of Shortest Supersequences",
     "link": "https://leetcode.com/problems/frequencies-of-shortest-supersequences/",
-    "topic": "GRAPH THEORY",
+    "topic": "BIT MANIPULATION",
     "difficulty": "HARD",
     "popularity": 13586
   },
@@ -24103,7 +24103,7 @@
   {
     "name": "Minimum Increments for Target Multiples in an Array",
     "link": "https://leetcode.com/problems/minimum-increments-for-target-multiples-in-an-array/",
-    "topic": "DYNAMIC PROGRAMMING",
+    "topic": "BIT MANIPULATION",
     "difficulty": "HARD",
     "popularity": 24590
   },
@@ -24397,7 +24397,7 @@
   {
     "name": "Longest Special Path II",
     "link": "https://leetcode.com/problems/longest-special-path-ii/",
-    "topic": "GRAPH THEORY",
+    "topic": "TREE",
     "difficulty": "HARD",
     "popularity": 13888
   },
@@ -24411,7 +24411,7 @@
   {
     "name": "Closest Equal Element Queries",
     "link": "https://leetcode.com/problems/closest-equal-element-queries/",
-    "topic": "BINARY SEARCH",
+    "topic": "HASH TABLE",
     "difficulty": "MEDIUM",
     "popularity": 202247
   },
@@ -24551,7 +24551,7 @@
   {
     "name": "Implement Router",
     "link": "https://leetcode.com/problems/implement-router/",
-    "topic": "BINARY SEARCH",
+    "topic": "QUEUE",
     "difficulty": "MEDIUM",
     "popularity": 231502
   },
@@ -24600,7 +24600,7 @@
   {
     "name": "Shortest Path in a Weighted Tree",
     "link": "https://leetcode.com/problems/shortest-path-in-a-weighted-tree/",
-    "topic": "GRAPH THEORY",
+    "topic": "TREE",
     "difficulty": "HARD",
     "popularity": 17510
   },
@@ -24677,7 +24677,7 @@
   {
     "name": "Range XOR Queries with Subarray Reversals",
     "link": "https://leetcode.com/problems/range-xor-queries-with-subarray-reversals/",
-    "topic": "TREE",
+    "topic": "BINARY SEARCH TREE",
     "difficulty": "HARD",
     "popularity": 685
   },
@@ -24705,7 +24705,7 @@
   {
     "name": "Maximum Profit from Valid Topological Order in DAG",
     "link": "https://leetcode.com/problems/maximum-profit-from-valid-topological-order-in-dag/",
-    "topic": "DYNAMIC PROGRAMMING",
+    "topic": "BIT MANIPULATION",
     "difficulty": "HARD",
     "popularity": 21232
   },
@@ -24726,14 +24726,14 @@
   {
     "name": "Concatenated Divisibility",
     "link": "https://leetcode.com/problems/concatenated-divisibility/",
-    "topic": "DYNAMIC PROGRAMMING",
+    "topic": "BIT MANIPULATION",
     "difficulty": "HARD",
     "popularity": 20672
   },
   {
     "name": "Path Existence Queries in a Graph II",
     "link": "https://leetcode.com/problems/path-existence-queries-in-a-graph-ii/",
-    "topic": "DYNAMIC PROGRAMMING",
+    "topic": "BIT MANIPULATION",
     "difficulty": "HARD",
     "popularity": 100471
   },
@@ -24768,7 +24768,7 @@
   {
     "name": "Find Sum of Array Product of Magical Sequences",
     "link": "https://leetcode.com/problems/find-sum-of-array-product-of-magical-sequences/",
-    "topic": "DYNAMIC PROGRAMMING",
+    "topic": "BIT MANIPULATION",
     "difficulty": "HARD",
     "popularity": 86049
   },
@@ -24866,7 +24866,7 @@
   {
     "name": "Minimum Weighted Subgraph With the Required Paths II",
     "link": "https://leetcode.com/problems/minimum-weighted-subgraph-with-the-required-paths-ii/",
-    "topic": "DYNAMIC PROGRAMMING",
+    "topic": "BIT MANIPULATION",
     "difficulty": "HARD",
     "popularity": 9600
   },
@@ -24901,14 +24901,14 @@
   {
     "name": "Number of Ways to Assign Edge Weights I",
     "link": "https://leetcode.com/problems/number-of-ways-to-assign-edge-weights-i/",
-    "topic": "GRAPH THEORY",
+    "topic": "TREE",
     "difficulty": "MEDIUM",
     "popularity": 153820
   },
   {
     "name": "Number of Ways to Assign Edge Weights II",
     "link": "https://leetcode.com/problems/number-of-ways-to-assign-edge-weights-ii/",
-    "topic": "DYNAMIC PROGRAMMING",
+    "topic": "BIT MANIPULATION",
     "difficulty": "HARD",
     "popularity": 94441
   },
@@ -24957,7 +24957,7 @@
   {
     "name": "Partition Array into Two Equal Product Subsets",
     "link": "https://leetcode.com/problems/partition-array-into-two-equal-product-subsets/",
-    "topic": "RECURSION",
+    "topic": "BIT MANIPULATION",
     "difficulty": "MEDIUM",
     "popularity": 101513
   },
@@ -24971,7 +24971,7 @@
   {
     "name": "Minimum Moves to Clean the Classroom",
     "link": "https://leetcode.com/problems/minimum-moves-to-clean-the-classroom/",
-    "topic": "GRAPH THEORY",
+    "topic": "BIT MANIPULATION",
     "difficulty": "MEDIUM",
     "popularity": 34811
   },
@@ -25020,7 +25020,7 @@
   {
     "name": "Maximum Good Subtree Score",
     "link": "https://leetcode.com/problems/maximum-good-subtree-score/",
-    "topic": "DYNAMIC PROGRAMMING",
+    "topic": "BIT MANIPULATION",
     "difficulty": "HARD",
     "popularity": 11141
   },
@@ -25090,7 +25090,7 @@
   {
     "name": "Find Weighted Median Node in Tree",
     "link": "https://leetcode.com/problems/find-weighted-median-node-in-tree/",
-    "topic": "DYNAMIC PROGRAMMING",
+    "topic": "BIT MANIPULATION",
     "difficulty": "HARD",
     "popularity": 18218
   },
@@ -25118,14 +25118,14 @@
   {
     "name": "Count Prime-Gap Balanced Subarrays",
     "link": "https://leetcode.com/problems/count-prime-gap-balanced-subarrays/",
-    "topic": "SLIDING WINDOW",
+    "topic": "QUEUE",
     "difficulty": "MEDIUM",
     "popularity": 33374
   },
   {
     "name": "Kth Smallest Path XOR Sum",
     "link": "https://leetcode.com/problems/kth-smallest-path-xor-sum/",
-    "topic": "GRAPH THEORY",
+    "topic": "TREE",
     "difficulty": "HARD",
     "popularity": 9796
   },
@@ -25153,7 +25153,7 @@
   {
     "name": "Minimum Time to Transport All Individuals",
     "link": "https://leetcode.com/problems/minimum-time-to-transport-all-individuals/",
-    "topic": "GRAPH THEORY",
+    "topic": "BIT MANIPULATION",
     "difficulty": "HARD",
     "popularity": 12697
   },
@@ -25188,7 +25188,7 @@
   {
     "name": "Partition Array to Minimize XOR",
     "link": "https://leetcode.com/problems/partition-array-to-minimize-xor/",
-    "topic": "DYNAMIC PROGRAMMING",
+    "topic": "BIT MANIPULATION",
     "difficulty": "MEDIUM",
     "popularity": 35489
   },
@@ -25300,7 +25300,7 @@
   {
     "name": "Longest Palindromic Path in Graph",
     "link": "https://leetcode.com/problems/longest-palindromic-path-in-graph/",
-    "topic": "DYNAMIC PROGRAMMING",
+    "topic": "BIT MANIPULATION",
     "difficulty": "HARD",
     "popularity": 34230
   },
@@ -25314,7 +25314,7 @@
   {
     "name": "Find Students with Study Spiral Pattern",
     "link": "https://leetcode.com/problems/find-students-with-study-spiral-pattern/",
-    "topic": null,
+    "topic": "MISCELLANEOUS",
     "difficulty": "HARD",
     "popularity": 18908
   },
@@ -25342,7 +25342,7 @@
   {
     "name": "Number of Integers With Popcount-Depth Equal to K I",
     "link": "https://leetcode.com/problems/number-of-integers-with-popcount-depth-equal-to-k-i/",
-    "topic": "DYNAMIC PROGRAMMING",
+    "topic": "BIT MANIPULATION",
     "difficulty": "HARD",
     "popularity": 21111
   },
@@ -25377,7 +25377,7 @@
   {
     "name": "Find Stores with Inventory Imbalance",
     "link": "https://leetcode.com/problems/find-stores-with-inventory-imbalance/",
-    "topic": null,
+    "topic": "MISCELLANEOUS",
     "difficulty": "MEDIUM",
     "popularity": 20867
   },
@@ -25405,7 +25405,7 @@
   {
     "name": "Partition Array for Maximum XOR and AND",
     "link": "https://leetcode.com/problems/partition-array-for-maximum-xor-and-and/",
-    "topic": "GREEDY",
+    "topic": "BIT MANIPULATION",
     "difficulty": "HARD",
     "popularity": 42254
   },
@@ -25482,14 +25482,14 @@
   {
     "name": "Longest Semi-Repeating Subarray",
     "link": "https://leetcode.com/problems/longest-semi-repeating-subarray/",
-    "topic": "SLIDING WINDOW",
+    "topic": "HASH TABLE",
     "difficulty": "MEDIUM",
     "popularity": 1772
   },
   {
     "name": "Find Books with Polarized Opinions",
     "link": "https://leetcode.com/problems/find-books-with-polarized-opinions/",
-    "topic": null,
+    "topic": "MISCELLANEOUS",
     "difficulty": "MEDIUM",
     "popularity": 27747
   },
@@ -25517,7 +25517,7 @@
   {
     "name": "Next Special Palindrome Number",
     "link": "https://leetcode.com/problems/next-special-palindrome-number/",
-    "topic": "BACKTRACKING",
+    "topic": "BIT MANIPULATION",
     "difficulty": "HARD",
     "popularity": 43010
   },
@@ -25594,7 +25594,7 @@
   {
     "name": "Find Loyal Customers",
     "link": "https://leetcode.com/problems/find-loyal-customers/",
-    "topic": null,
+    "topic": "MISCELLANEOUS",
     "difficulty": "MEDIUM",
     "popularity": 22862
   },
@@ -25685,7 +25685,7 @@
   {
     "name": "Maximum Product of Two Integers With No Common Bits",
     "link": "https://leetcode.com/problems/maximum-product-of-two-integers-with-no-common-bits/",
-    "topic": "DYNAMIC PROGRAMMING",
+    "topic": "BIT MANIPULATION",
     "difficulty": "MEDIUM",
     "popularity": 77624
   },
@@ -25699,14 +25699,14 @@
   {
     "name": "Sum of Weighted Modes in Subarrays",
     "link": "https://leetcode.com/problems/sum-of-weighted-modes-in-subarrays/",
-    "topic": "SLIDING WINDOW",
+    "topic": "HASH TABLE",
     "difficulty": "MEDIUM",
     "popularity": 1046
   },
   {
     "name": "Find Zombie Sessions",
     "link": "https://leetcode.com/problems/find-zombie-sessions/",
-    "topic": null,
+    "topic": "MISCELLANEOUS",
     "difficulty": "HARD",
     "popularity": 16547
   },
@@ -25748,7 +25748,7 @@
   {
     "name": " Minimum Discards to Balance Inventory",
     "link": "https://leetcode.com/problems/minimum-discards-to-balance-inventory/",
-    "topic": "SLIDING WINDOW",
+    "topic": "HASH TABLE",
     "difficulty": "MEDIUM",
     "popularity": 58485
   },
@@ -25762,7 +25762,7 @@
   {
     "name": "Maximum XOR of Subsequences",
     "link": "https://leetcode.com/problems/maximum-xor-of-subsequences/",
-    "topic": "GREEDY",
+    "topic": "BIT MANIPULATION",
     "difficulty": "HARD",
     "popularity": 15536
   },
@@ -25853,7 +25853,7 @@
   {
     "name": "Distinct Points Reachable After Substring Removal",
     "link": "https://leetcode.com/problems/distinct-points-reachable-after-substring-removal/",
-    "topic": "SLIDING WINDOW",
+    "topic": "HASH TABLE",
     "difficulty": "MEDIUM",
     "popularity": 31588
   },
@@ -25930,7 +25930,7 @@
   {
     "name": "Find Golden Hour Customers",
     "link": "https://leetcode.com/problems/find-golden-hour-customers/",
-    "topic": null,
+    "topic": "MISCELLANEOUS",
     "difficulty": "MEDIUM",
     "popularity": 26457
   },
@@ -26000,14 +26000,14 @@
   {
     "name": "Sum of Perfect Square Ancestors",
     "link": "https://leetcode.com/problems/sum-of-perfect-square-ancestors/",
-    "topic": "GRAPH THEORY",
+    "topic": "TREE",
     "difficulty": "HARD",
     "popularity": 17596
   },
   {
     "name": "Find Churn Risk Customers",
     "link": "https://leetcode.com/problems/find-churn-risk-customers/",
-    "topic": null,
+    "topic": "MISCELLANEOUS",
     "difficulty": "MEDIUM",
     "popularity": 18020
   },
@@ -26140,7 +26140,7 @@
   {
     "name": "Lexicographically Smallest String After Reverse II",
     "link": "https://leetcode.com/problems/lexicographically-smallest-string-after-reverse-ii/",
-    "topic": "BINARY SEARCH",
+    "topic": "HASH TABLE",
     "difficulty": "HARD",
     "popularity": 718
   },
@@ -26245,7 +26245,7 @@
   {
     "name": "Minimum Number of Flips to Reverse Binary String",
     "link": "https://leetcode.com/problems/minimum-number-of-flips-to-reverse-binary-string/",
-    "topic": "TWO POINTERS",
+    "topic": "BIT MANIPULATION",
     "difficulty": "EASY",
     "popularity": 45103
   },
@@ -26294,7 +26294,7 @@
   {
     "name": "Number of Effective Subsequences",
     "link": "https://leetcode.com/problems/number-of-effective-subsequences/",
-    "topic": "DYNAMIC PROGRAMMING",
+    "topic": "BIT MANIPULATION",
     "difficulty": "HARD",
     "popularity": 9828
   },
@@ -26343,7 +26343,7 @@
   {
     "name": "Most Common Course Pairs",
     "link": "https://leetcode.com/problems/most-common-course-pairs/",
-    "topic": null,
+    "topic": "MISCELLANEOUS",
     "difficulty": "HARD",
     "popularity": 10214
   },
@@ -26357,7 +26357,7 @@
   {
     "name": "Minimum Operations to Make Binary Palindrome",
     "link": "https://leetcode.com/problems/minimum-operations-to-make-binary-palindrome/",
-    "topic": "TWO POINTERS",
+    "topic": "BIT MANIPULATION",
     "difficulty": "MEDIUM",
     "popularity": 34457
   },
@@ -26441,7 +26441,7 @@
   {
     "name": "Minimum Distance Excluding One Maximum Weighted Edge",
     "link": "https://leetcode.com/problems/minimum-distance-excluding-one-maximum-weighted-edge/",
-    "topic": null,
+    "topic": "MISCELLANEOUS",
     "difficulty": "MEDIUM",
     "popularity": 759
   },
@@ -26497,14 +26497,14 @@
   {
     "name": "Total Sum of Interaction Cost in Tree Groups",
     "link": "https://leetcode.com/problems/total-sum-of-interaction-cost-in-tree-groups/",
-    "topic": "GRAPH THEORY",
+    "topic": "TREE",
     "difficulty": "HARD",
     "popularity": 14228
   },
   {
     "name": "Find Diameter Endpoints of a Tree",
     "link": "https://leetcode.com/problems/find-diameter-endpoints-of-a-tree/",
-    "topic": "GRAPH THEORY",
+    "topic": "TREE",
     "difficulty": "MEDIUM",
     "popularity": 1103
   },
@@ -26546,7 +26546,7 @@
   {
     "name": "Find Users with High Token Usage",
     "link": "https://leetcode.com/problems/find-users-with-high-token-usage/",
-    "topic": null,
+    "topic": "MISCELLANEOUS",
     "difficulty": "EASY",
     "popularity": 25117
   },
@@ -26560,7 +26560,7 @@
   {
     "name": "Minimum Subarray Length With Distinct Sum At Least K",
     "link": "https://leetcode.com/problems/minimum-subarray-length-with-distinct-sum-at-least-k/",
-    "topic": "SLIDING WINDOW",
+    "topic": "HASH TABLE",
     "difficulty": "MEDIUM",
     "popularity": 97288
   },
@@ -26602,14 +26602,14 @@
   {
     "name": "Minimum Cost to Merge Sorted Lists",
     "link": "https://leetcode.com/problems/minimum-cost-to-merge-sorted-lists/",
-    "topic": "DYNAMIC PROGRAMMING",
+    "topic": "BIT MANIPULATION",
     "difficulty": "HARD",
     "popularity": 12781
   },
   {
     "name": "Number of Ways to Paint Sheets",
     "link": "https://leetcode.com/problems/number-of-ways-to-paint-sheets/",
-    "topic": null,
+    "topic": "MISCELLANEOUS",
     "difficulty": "HARD",
     "popularity": 679
   },
@@ -26637,7 +26637,7 @@
   {
     "name": "Maximum Bitwise AND After Increment Operations",
     "link": "https://leetcode.com/problems/maximum-bitwise-and-after-increment-operations/",
-    "topic": "GREEDY",
+    "topic": "BIT MANIPULATION",
     "difficulty": "HARD",
     "popularity": 22018
   },
@@ -26651,7 +26651,7 @@
   {
     "name": "Find Emotionally Consistent Users",
     "link": "https://leetcode.com/problems/find-emotionally-consistent-users/",
-    "topic": null,
+    "topic": "MISCELLANEOUS",
     "difficulty": "MEDIUM",
     "popularity": 14264
   },
@@ -26672,14 +26672,14 @@
   {
     "name": "Number of Alternating XOR Partitions",
     "link": "https://leetcode.com/problems/number-of-alternating-xor-partitions/",
-    "topic": "DYNAMIC PROGRAMMING",
+    "topic": "BIT MANIPULATION",
     "difficulty": "MEDIUM",
     "popularity": 33302
   },
   {
     "name": "Minimum Edge Toggles on a Tree",
     "link": "https://leetcode.com/problems/minimum-edge-toggles-on-a-tree/",
-    "topic": "GRAPH THEORY",
+    "topic": "TREE",
     "difficulty": "HARD",
     "popularity": 9492
   },
@@ -26735,7 +26735,7 @@
   {
     "name": "Pythagorean Distance Nodes in a Tree",
     "link": "https://leetcode.com/problems/pythagorean-distance-nodes-in-a-tree/",
-    "topic": "GRAPH THEORY",
+    "topic": "TREE",
     "difficulty": "MEDIUM",
     "popularity": 38322
   },
@@ -26812,14 +26812,14 @@
   {
     "name": "Median of a Binary Search Tree Level",
     "link": "https://leetcode.com/problems/median-of-a-binary-search-tree-level/",
-    "topic": "GRAPH THEORY",
+    "topic": "BINARY SEARCH TREE",
     "difficulty": "MEDIUM",
     "popularity": 1445
   },
   {
     "name": "Find Users with Persistent Behavior Patterns",
     "link": "https://leetcode.com/problems/find-users-with-persistent-behavior-patterns/",
-    "topic": null,
+    "topic": "MISCELLANEOUS",
     "difficulty": "HARD",
     "popularity": 10898
   },
@@ -26882,7 +26882,7 @@
   {
     "name": "Palindromic Path Queries in a Tree",
     "link": "https://leetcode.com/problems/palindromic-path-queries-in-a-tree/",
-    "topic": "DIVIDE AND CONQUER",
+    "topic": "BIT MANIPULATION",
     "difficulty": "HARD",
     "popularity": 11044
   },
@@ -26938,7 +26938,7 @@
   {
     "name": "Maximum Bitwise XOR After Rearrangement",
     "link": "https://leetcode.com/problems/maximum-bitwise-xor-after-rearrangement/",
-    "topic": "GREEDY",
+    "topic": "BIT MANIPULATION",
     "difficulty": "MEDIUM",
     "popularity": 47419
   },
@@ -27001,14 +27001,14 @@
   {
     "name": "Minimum Bitwise OR From Grid",
     "link": "https://leetcode.com/problems/minimum-bitwise-or-from-grid/",
-    "topic": "GREEDY",
+    "topic": "BIT MANIPULATION",
     "difficulty": "MEDIUM",
     "popularity": 53301
   },
   {
     "name": "Count Subarrays With K Distinct Integers",
     "link": "https://leetcode.com/problems/count-subarrays-with-k-distinct-integers/",
-    "topic": "SLIDING WINDOW",
+    "topic": "HASH TABLE",
     "difficulty": "HARD",
     "popularity": 36956
   },
@@ -27134,7 +27134,7 @@
   {
     "name": "Minimum Removals to Achieve Target XOR",
     "link": "https://leetcode.com/problems/minimum-removals-to-achieve-target-xor/",
-    "topic": "DYNAMIC PROGRAMMING",
+    "topic": "BIT MANIPULATION",
     "difficulty": "MEDIUM",
     "popularity": 54064
   },
@@ -27148,7 +27148,7 @@
   {
     "name": "Maximum Distinct Path Sum in a Binary Tree",
     "link": "https://leetcode.com/problems/maximum-distinct-path-sum-in-a-binary-tree/",
-    "topic": "GRAPH THEORY",
+    "topic": "BINARY TREE",
     "difficulty": "MEDIUM",
     "popularity": 768
   },
@@ -27169,7 +27169,7 @@
   {
     "name": "Minimum XOR Path in a Grid",
     "link": "https://leetcode.com/problems/minimum-xor-path-in-a-grid/",
-    "topic": "DYNAMIC PROGRAMMING",
+    "topic": "BIT MANIPULATION",
     "difficulty": "MEDIUM",
     "popularity": 41935
   },
@@ -27246,7 +27246,7 @@
   {
     "name": "Maximum Team Size with Overlapping Intervals",
     "link": "https://leetcode.com/problems/maximum-team-size-with-overlapping-intervals/",
-    "topic": null,
+    "topic": "MISCELLANEOUS",
     "difficulty": "MEDIUM",
     "popularity": 1492
   },
@@ -27309,7 +27309,7 @@
   {
     "name": "Zigzag Level Sum of Binary Tree",
     "link": "https://leetcode.com/problems/zigzag-level-sum-of-binary-tree/",
-    "topic": "GRAPH THEORY",
+    "topic": "BINARY TREE",
     "difficulty": "MEDIUM",
     "popularity": 654
   },
@@ -27344,7 +27344,7 @@
   {
     "name": "Count Smaller Elements With Opposite Parity",
     "link": "https://leetcode.com/problems/count-smaller-elements-with-opposite-parity/",
-    "topic": null,
+    "topic": "MISCELLANEOUS",
     "difficulty": "MEDIUM",
     "popularity": 469
   },
@@ -27365,7 +27365,7 @@
   {
     "name": "Count Connected Subgraphs with Even Node Sum",
     "link": "https://leetcode.com/problems/count-connected-subgraphs-with-even-node-sum/",
-    "topic": "GRAPH THEORY",
+    "topic": "BIT MANIPULATION",
     "difficulty": "HARD",
     "popularity": 14457
   },
@@ -27533,7 +27533,7 @@
   {
     "name": "Smallest Unique Subarray",
     "link": "https://leetcode.com/problems/smallest-unique-subarray/",
-    "topic": "BINARY SEARCH",
+    "topic": "HASH TABLE",
     "difficulty": "HARD",
     "popularity": 19766
   },
@@ -27673,14 +27673,14 @@
   {
     "name": "Sum of Compatible Numbers in Range I",
     "link": "https://leetcode.com/problems/sum-of-compatible-numbers-in-range-i/",
-    "topic": "DYNAMIC PROGRAMMING",
+    "topic": "BIT MANIPULATION",
     "difficulty": "EASY",
     "popularity": 81045
   },
   {
     "name": "Valid Binary Strings With Cost Limit",
     "link": "https://leetcode.com/problems/valid-binary-strings-with-cost-limit/",
-    "topic": "BACKTRACKING",
+    "topic": "BIT MANIPULATION",
     "difficulty": "MEDIUM",
     "popularity": 45777
   },
@@ -27708,63 +27708,63 @@
   {
     "name": "Check Good Integer",
     "link": "https://leetcode.com/problems/check-good-integer/",
-    "topic": null,
+    "topic": "MISCELLANEOUS",
     "difficulty": "EASY",
     "popularity": 65842
   },
   {
     "name": "Frequency Balance Subarray",
     "link": "https://leetcode.com/problems/frequency-balance-subarray/",
-    "topic": null,
+    "topic": "MISCELLANEOUS",
     "difficulty": "MEDIUM",
     "popularity": 73534
   },
   {
     "name": "Maximize Sum of Device Ratings",
     "link": "https://leetcode.com/problems/maximize-sum-of-device-ratings/",
-    "topic": null,
+    "topic": "MISCELLANEOUS",
     "difficulty": "MEDIUM",
     "popularity": 40241
   },
   {
     "name": "Maximum Subarray Sum After at Most K Swaps",
     "link": "https://leetcode.com/problems/maximum-subarray-sum-after-at-most-k-swaps/",
-    "topic": null,
+    "topic": "MISCELLANEOUS",
     "difficulty": "HARD",
     "popularity": 22268
   },
   {
     "name": "Create Grid With Exactly One Path",
     "link": "https://leetcode.com/problems/create-grid-with-exactly-one-path/",
-    "topic": null,
+    "topic": "MISCELLANEOUS",
     "difficulty": "EASY",
     "popularity": 51759
   },
   {
     "name": "Minimum Lights to Illuminate a Road",
     "link": "https://leetcode.com/problems/minimum-lights-to-illuminate-a-road/",
-    "topic": null,
+    "topic": "MISCELLANEOUS",
     "difficulty": "MEDIUM",
     "popularity": 68918
   },
   {
     "name": "Finish Time of Tasks I",
     "link": "https://leetcode.com/problems/finish-time-of-tasks-i/",
-    "topic": null,
+    "topic": "MISCELLANEOUS",
     "difficulty": "MEDIUM",
     "popularity": 31957
   },
   {
     "name": "Count Good Integers in a Range",
     "link": "https://leetcode.com/problems/count-good-integers-in-a-range/",
-    "topic": null,
+    "topic": "MISCELLANEOUS",
     "difficulty": "HARD",
     "popularity": 17874
   },
   {
     "name": "Finish Time of Tasks II",
     "link": "https://leetcode.com/problems/finish-time-of-tasks-ii/",
-    "topic": null,
+    "topic": "MISCELLANEOUS",
     "difficulty": "HARD",
     "popularity": 828
   },
@@ -27778,7 +27778,7 @@
   {
     "name": "Valid Subarrays With Matching Sum Digits I",
     "link": "https://leetcode.com/problems/valid-subarrays-with-matching-sum-digits-i/",
-    "topic": "SLIDING WINDOW",
+    "topic": "HASH TABLE",
     "difficulty": "MEDIUM",
     "popularity": 83859
   },
@@ -27799,14 +27799,14 @@
   {
     "name": "Valid Subarrays With Matching Sum Digits II",
     "link": "https://leetcode.com/problems/valid-subarrays-with-matching-sum-digits-ii/",
-    "topic": "SLIDING WINDOW",
+    "topic": "HASH TABLE",
     "difficulty": "HARD",
     "popularity": 654
   },
   {
     "name": "Distinct Gate Paths to LCA",
     "link": "https://leetcode.com/problems/distinct-gate-paths-to-lca/",
-    "topic": "DYNAMIC PROGRAMMING",
+    "topic": "BIT MANIPULATION",
     "difficulty": "HARD",
     "popularity": 354
   },
@@ -27841,126 +27841,126 @@
   {
     "name": "Unique Middle Element",
     "link": "https://leetcode.com/problems/unique-middle-element/",
-    "topic": null,
+    "topic": "MISCELLANEOUS",
     "difficulty": "EASY",
     "popularity": 62717
   },
   {
     "name": "Maximum Valid Pair Sum",
     "link": "https://leetcode.com/problems/maximum-valid-pair-sum/",
-    "topic": null,
+    "topic": "MISCELLANEOUS",
     "difficulty": "MEDIUM",
     "popularity": 78291
   },
   {
     "name": "Minimum Operations to Transform Binary String",
     "link": "https://leetcode.com/problems/minimum-operations-to-transform-binary-string/",
-    "topic": null,
+    "topic": "MISCELLANEOUS",
     "difficulty": "MEDIUM",
     "popularity": 39920
   },
   {
     "name": "Count Distinct Ways to Form Target from Two Strings",
     "link": "https://leetcode.com/problems/count-distinct-ways-to-form-target-from-two-strings/",
-    "topic": null,
+    "topic": "MISCELLANEOUS",
     "difficulty": "HARD",
     "popularity": 16070
   },
   {
     "name": "Sum of Integers with Maximum Digit Range",
     "link": "https://leetcode.com/problems/sum-of-integers-with-maximum-digit-range/",
-    "topic": null,
+    "topic": "MISCELLANEOUS",
     "difficulty": "EASY",
     "popularity": 67796
   },
   {
     "name": "Subsequence After One Replacement",
     "link": "https://leetcode.com/problems/subsequence-after-one-replacement/",
-    "topic": null,
+    "topic": "MISCELLANEOUS",
     "difficulty": "MEDIUM",
     "popularity": 93985
   },
   {
     "name": "Divisible Game",
     "link": "https://leetcode.com/problems/divisible-game/",
-    "topic": null,
+    "topic": "MISCELLANEOUS",
     "difficulty": "MEDIUM",
     "popularity": 29235
   },
   {
     "name": "Palindromic Subarray Sum",
     "link": "https://leetcode.com/problems/palindromic-subarray-sum/",
-    "topic": null,
+    "topic": "MISCELLANEOUS",
     "difficulty": "HARD",
     "popularity": 17251
   },
   {
     "name": "Number of Elapsed Seconds Between Two Times",
     "link": "https://leetcode.com/problems/number-of-elapsed-seconds-between-two-times/",
-    "topic": null,
+    "topic": "MISCELLANEOUS",
     "difficulty": "EASY",
     "popularity": 58351
   },
   {
     "name": "Minimum Total Cost to Process All Elements",
     "link": "https://leetcode.com/problems/minimum-total-cost-to-process-all-elements/",
-    "topic": null,
+    "topic": "MISCELLANEOUS",
     "difficulty": "MEDIUM",
     "popularity": 125223
   },
   {
     "name": "Create Grid With Exactly K Paths I",
     "link": "https://leetcode.com/problems/create-grid-with-exactly-k-paths-i/",
-    "topic": null,
+    "topic": "MISCELLANEOUS",
     "difficulty": "MEDIUM",
     "popularity": 24998
   },
   {
     "name": "Maximum Consistent Columns in a Grid",
     "link": "https://leetcode.com/problems/maximum-consistent-columns-in-a-grid/",
-    "topic": null,
+    "topic": "MISCELLANEOUS",
     "difficulty": "HARD",
     "popularity": 14656
   },
   {
     "name": "Create Grid With Exactly K Paths II",
     "link": "https://leetcode.com/problems/create-grid-with-exactly-k-paths-ii/",
-    "topic": null,
+    "topic": "MISCELLANEOUS",
     "difficulty": "HARD",
     "popularity": 199
   },
   {
     "name": "Sort Array Using Prefix Reversals",
     "link": "https://leetcode.com/problems/sort-array-using-prefix-reversals/",
-    "topic": null,
+    "topic": "MISCELLANEOUS",
     "difficulty": "MEDIUM",
     "popularity": 308
   },
   {
     "name": "Rearrange String to Avoid Character Pair",
     "link": "https://leetcode.com/problems/rearrange-string-to-avoid-character-pair/",
-    "topic": null,
+    "topic": "MISCELLANEOUS",
     "difficulty": "EASY",
     "popularity": 40459
   },
   {
     "name": "Maximum Value of an Alternating Sequence",
     "link": "https://leetcode.com/problems/maximum-value-of-an-alternating-sequence/",
-    "topic": null,
+    "topic": "MISCELLANEOUS",
     "difficulty": "MEDIUM",
     "popularity": 73116
   },
   {
     "name": "Minimum Adjacent Swaps to Partition Array",
     "link": "https://leetcode.com/problems/minimum-adjacent-swaps-to-partition-array/",
-    "topic": null,
+    "topic": "MISCELLANEOUS",
     "difficulty": "MEDIUM",
     "popularity": 22848
   },
   {
     "name": "Minimum Cost to Convert String III",
     "link": "https://leetcode.com/problems/minimum-cost-to-convert-string-iii/",
-    "topic": null,
+    "topic": "MISCELLANEOUS",
     "difficulty": "HARD",
     "popularity": 7809
   }

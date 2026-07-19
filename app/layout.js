@@ -1,4 +1,5 @@
 import "./globals.css";
+import Sidebar from "./Sidebar.js";
 
 export const metadata = {
   title: "LeetCode Problems Explorer",
@@ -8,7 +9,12 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <div className="shell">
+          <Sidebar />
+          <main className="content">{children}</main>
+        </div>
+      </body>
     </html>
   );
 }

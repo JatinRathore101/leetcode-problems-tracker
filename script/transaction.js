@@ -95,7 +95,7 @@ function main() {
     for (const p of problems) {
       // topic is REQUIRED (NOT NULL); the parser leaves some unmapped as null,
       // so coalesce those to a sentinel rather than fail the whole insert.
-      const topic = p.topic ?? "UNKNOWN";
+      const topic = p.topic ?? "MISCELLANEOUS";
       if (p.topic == null) coercedTopics += 1;
 
       insert.run({
@@ -109,7 +109,7 @@ function main() {
     }
 
     if (coercedTopics > 0) {
-      log("TOPIC COERCED", `${coercedTopics} null topics set to 'UNKNOWN'`);
+      log("TOPIC COERCED", `${coercedTopics} null topics set to 'MISCELLANEOUS'`);
     }
     log("DATA INSERTED", `${inserted} rows`);
 

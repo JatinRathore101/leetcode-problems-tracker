@@ -11,7 +11,7 @@ const getTopic = (topics) => {
       return topic;
     }
   }
-  return null;
+  return "MISCELLANEOUS";
 };
 
 const main = () => {
@@ -25,7 +25,10 @@ const main = () => {
     }),
   );
 
+  const topics = [...new Set(rows?.map(({topic}) => topic))];
+
   writeJsonFile(rows, "parsed_leetcode_problems.json");
+  writeJsonFile(topics, "topics.json");
 
   console.log(`Exported ${rows.length} problems.`);
 };
