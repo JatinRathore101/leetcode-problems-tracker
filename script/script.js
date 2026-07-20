@@ -5,7 +5,11 @@ import { dirname, join } from "node:path";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const rootDir = join(__dirname, "..");
-const topicsPath = join(__dirname, "topics.json");
+const dbFiles = [
+  join(rootDir, "data", "leetcode.db"),
+  join(rootDir, "data", "leetcode.db-shm"),
+  join(rootDir, "data", "leetcode.db-wal"),
+];
 const url = "http://localhost:3000";
 
 // Log a step banner, e.g. [STEP 1 of 7] ~ "rm -rf .next"
@@ -66,32 +70,35 @@ function startDev() {
 }
 
 async function main() {
-  const needsSetup = !existsSync(topicsPath);
-  const total = needsSetup ? 7 : 2;
+  const needsSetup = !dbFiles.every((file) => existsSync(file));
+  const total = needsSetup ? 8 : 2;
 
   if (needsSetup) {
-    console.log(`"${topicsPath}" not found — running full setup chain.`);
+    console.log("Database files missing — running full setup chain.");
 
     logStep(1, total, "rm -rf .next");
     await run("rm", ["-rf", ".next"]);
 
-    logStep(2, total, "npm install");
+    logStep(2, total, "rm -rf data");
+    await run("rm", ["-rf", "data"]);
+
+    logStep(3, total, "npm install");
     await run("npm", ["install"]);
 
-    logStep(3, total, "node script/scrapper.js");
+    logStep(4, total, "node script/scrapper.js");
     await run("node", ["script/scrapper.js"]);
 
-    logStep(4, total, "node script/parser.js");
+    logStep(5, total, "node script/parser.js");
     await run("node", ["script/parser.js"]);
 
-    logStep(5, total, "node script/transaction.js");
+    logStep(6, total, "node script/transaction.js");
     await run("node", ["script/transaction.js"]);
   } else {
-    console.log(`"${topicsPath}" found — skipping setup chain.`);
+    console.log("Database files found — skipping setup chain.");
   }
 
-  logStep(needsSetup ? 6 : 1, total, "next dev");
-  logStep(needsSetup ? 7 : 2, total, `open ${url}`);
+  logStep(needsSetup ? 7 : 1, total, "next dev");
+  logStep(needsSetup ? 8 : 2, total, `open ${url}`);
   startDev();
 }
 
