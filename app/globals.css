@@ -422,3 +422,362 @@ tbody a:hover {
 .pager button:not(:disabled):hover {
   border-color: var(--accent);
 }
+
+.chip {
+  display: inline-block;
+  width: 100px;
+  padding: 6px 8px;
+  border-radius: 999px;
+  font-size: 12px;
+  user-select: none;
+  white-space: nowrap;
+  text-align: center;
+}
+
+.chip--grey {
+  color: #b8c0cc;
+  border: 1px solid rgba(184, 192, 204, 0.5);
+  background: rgba(184, 192, 204, 0.05);
+}
+
+.chip--red {
+  color: #ff375f;
+  border: 1px solid rgba(255, 55, 95, 0.5);
+  background: rgba(255, 55, 95, 0.05);
+}
+
+.chip--orange {
+  color: #ff9f0a;
+  border: 1px solid rgba(255, 159, 10, 0.5);
+  background: rgba(255, 159, 10, 0.05);
+}
+
+.chip--yellow {
+  color: #ffd60a;
+  border: 1px solid rgba(255, 214, 10, 0.5);
+  background: rgba(255, 214, 10, 0.05);
+}
+
+.chip--green {
+  color: #00b8a3;
+  border: 1px solid rgba(0, 184, 163, 0.5);
+  background: rgba(0, 184, 163, 0.05);
+}
+
+/* ---------------------------------------------------------------------------
+   Row actions: copy / view / update icon buttons
+--------------------------------------------------------------------------- */
+/* Center-align the Actions and Status columns (header + cells). */
+th.col-center,
+td.col-center {
+  text-align: center;
+}
+
+.actions {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background-color: var(--panel);
+  /* Ripple: a radial-gradient dot blown up huge, revealed on press. */
+  background-image: radial-gradient(
+    circle,
+    rgba(159, 168, 255, 0.4) 10%,
+    transparent 10.01%
+  );
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 15000%;
+  color: var(--muted);
+  cursor: pointer;
+  transition:
+    color 0.12s,
+    border-color 0.12s,
+    background-color 0.12s,
+    background-size 0.45s,
+    transform 0.12s;
+}
+
+.icon-btn:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+  background-color: #1c2130;
+}
+
+.icon-btn:active {
+  /* Snap the ripple to its origin and press the button in. */
+  background-size: 100%;
+  transform: scale(0.88);
+  transition:
+    background-size 0s,
+    transform 0.04s;
+}
+
+/* ---------------------------------------------------------------------------
+   Toast / snackbar
+--------------------------------------------------------------------------- */
+.toast {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 200;
+  background: var(--panel);
+  border: 1px solid var(--accent);
+  color: var(--text);
+  padding: 12px 18px;
+  border-radius: 10px;
+  font-size: 14px;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.45);
+  animation: toast-in 0.22s ease-out;
+}
+
+@keyframes toast-in {
+  from {
+    opacity: 0;
+    transform: translate(-50%, 16px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Modal (view details + update form)
+--------------------------------------------------------------------------- */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  z-index: 100;
+}
+
+.modal {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  width: 100%;
+  max-width: 640px;
+  max-height: 85vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  /* The modal renders inside a center-aligned table cell (.col-center); reset
+     so its own content is left-aligned. */
+  text-align: left;
+}
+
+.modal__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--border);
+}
+
+.modal__title {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.modal__close {
+  border: none;
+  background: transparent;
+  color: var(--muted);
+  font-size: 24px;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0 4px;
+}
+
+.modal__close:hover {
+  color: var(--text);
+}
+
+.modal__body {
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.modal__hint {
+  color: var(--muted);
+  font-size: 13px;
+  margin: 0 0 12px;
+}
+
+.modal__error {
+  color: var(--hard);
+  font-size: 13px;
+  margin: 0 0 12px;
+}
+
+/* --- View details --- */
+.details {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px 24px;
+}
+
+/* Long values (link, comment, solution) span the full width. */
+.detail-row--full {
+  grid-column: 1 / -1;
+}
+
+.detail-row__label {
+  color: var(--muted);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 4px;
+}
+
+.detail-row__value {
+  font-size: 14px;
+  word-break: break-word;
+}
+
+.detail-row__value a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.detail-row__value a:hover {
+  text-decoration: underline;
+}
+
+.detail-row__pre {
+  margin: 0;
+  padding: 10px 12px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: 13px;
+  white-space: pre-wrap;
+  word-break: break-word;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+
+/* --- Update form --- */
+.update-form {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px 24px;
+  align-items: start;
+}
+
+/* Full-width rows: the solution field plus the hint/error/actions. */
+.field--full,
+.update-form .modal__hint,
+.update-form .modal__error,
+.update-form__actions {
+  grid-column: 1 / -1;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.field__label {
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.field__req {
+  color: var(--hard);
+}
+
+.field__input {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text);
+  padding: 10px 12px;
+  font-size: 14px;
+  font-family: inherit;
+  resize: vertical;
+}
+
+.field__input:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+.field__input--mono {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 13px;
+}
+
+.update-form__actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 4px;
+}
+
+/* Collapse both modal grids to a single column on narrow screens. */
+@media (max-width: 520px) {
+  .details,
+  .update-form {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.btn {
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  border: 1px solid var(--border);
+  transition: border-color 0.12s, filter 0.12s, transform 0.12s;
+}
+
+.btn:not(:disabled):active {
+  transform: scale(0.96);
+  transition: transform 0.04s;
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn--ghost {
+  background: transparent;
+  color: var(--text);
+}
+
+.btn--ghost:not(:disabled):hover {
+  border-color: var(--accent);
+}
+
+.btn--primary {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #0f1117;
+  font-weight: 600;
+}
+
+.btn--primary:not(:disabled):hover {
+  filter: brightness(1.08);
+}

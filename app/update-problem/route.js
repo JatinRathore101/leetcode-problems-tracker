@@ -14,7 +14,7 @@ const SOLUTION_REQUIRED = ["ERROR", "TLE", "MLE", "SUCCESS"];
 // POST /update-problem
 // Body: {
 //   "link": "https://leetcode.com/problems/two-sum/",  required, identifies the row
-//   "comment": "…",                                    optional, non-empty if present
+//   "comment": "…",                                    optional; empty string clears it (-> NULL)
 //   "status": "SUCCESS",                               optional, one of STATUSES
 //   "solution": "…"                                    see rules below
 // }
@@ -47,15 +47,16 @@ export async function POST(request) {
   // Columns to update, built up as fields are validated.
   const updates = {};
 
-  // --- comment: optional, non-empty string if provided ---
+  // --- comment: optional; an empty/whitespace value clears it (-> NULL) ---
   if (comment !== undefined) {
-    if (typeof comment !== "string" || comment.trim() === "") {
+    if (typeof comment !== "string") {
       return NextResponse.json(
-        { error: "Field 'comment', if provided, must be a non-empty string." },
+        { error: "Field 'comment', if provided, must be a string." },
         { status: 400 },
       );
     }
-    updates.comment = comment.trim();
+    const trimmed = comment.trim();
+    updates.comment = trimmed === "" ? null : trimmed;
   }
 
   // --- status (+ solution): optional ---
