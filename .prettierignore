@@ -1,0 +1,11 @@
+node_modules
+.next
+data
+package-lock.json
+*.db
+*.sqlite
+
+# Generated / scraped data files
+script/scrapped_leetcode_problems.json
+script/parsed_leetcode_problems.json
+script/topics.json

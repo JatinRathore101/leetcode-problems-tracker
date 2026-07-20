@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
-import Link from "next/link";
-import { DIFFICULTIES } from "../../../lib/constants.js";
+import Link from 'next/link';
+import { DIFFICULTIES } from '../../../lib/constants.js';
 
 // Three horizontally stacked tabs at the top of every topic page. Each links to
 // the same topic at a different difficulty, so switching is a client-side
@@ -18,7 +18,7 @@ export default function DifficultyTabs({ topicSlug, activeDifficulty }) {
             role="tab"
             aria-selected={isActive}
             className={`tab tab--${difficulty.toLowerCase()}${
-              isActive ? " tab--active" : ""
+              isActive ? ' tab--active' : ''
             }`}
           >
             {difficulty}

@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { TOPICS, topicToSlug, DEFAULT_DIFFICULTY } from "../lib/constants.js";
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import { TOPICS, topicToSlug, DEFAULT_DIFFICULTY } from '../lib/constants.js';
 
 // The 33-topic navigation rail. Lives in the root layout so it stays mounted
 // across every /:topic/:difficulty navigation (client-side transitions never
@@ -11,7 +11,7 @@ import { TOPICS, topicToSlug, DEFAULT_DIFFICULTY } from "../lib/constants.js";
 export default function Sidebar() {
   const pathname = usePathname();
   // pathname is "/<topicSlug>/<difficulty>" -> grab the topic slug segment.
-  const activeSlug = pathname.split("/").filter(Boolean)[0] ?? "";
+  const activeSlug = pathname.split('/').filter(Boolean)[0] ?? '';
 
   return (
     <nav className="sidebar" aria-label="Topics">
@@ -24,8 +24,8 @@ export default function Sidebar() {
             <li key={topic}>
               <Link
                 href={`/${slug}/${DEFAULT_DIFFICULTY.toLowerCase()}`}
-                className={`sidebar__item${isActive ? " sidebar__item--active" : ""}`}
-                aria-current={isActive ? "page" : undefined}
+                className={`sidebar__item${isActive ? ' sidebar__item--active' : ''}`}
+                aria-current={isActive ? 'page' : undefined}
               >
                 {topic}
               </Link>

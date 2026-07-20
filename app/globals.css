@@ -20,7 +20,13 @@ body {
   padding: 0;
   background: var(--bg);
   color: var(--text);
-  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  font-family:
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    'Segoe UI',
+    Roboto,
+    sans-serif;
 }
 
 /* ---------------------------------------------------------------------------
@@ -213,7 +219,7 @@ body {
   background: #1c2130;
 }
 
-.accordion__header[aria-expanded="true"] {
+.accordion__header[aria-expanded='true'] {
   color: var(--accent);
   border-bottom: 1px solid var(--border);
 }
@@ -344,10 +350,6 @@ tbody td {
   vertical-align: top;
 }
 
-tbody tr:hover {
-  background: #1c2130;
-}
-
 tbody a {
   color: var(--text);
   text-decoration: none;
@@ -475,7 +477,7 @@ td.col-center {
 
 .actions {
   display: flex;
-  gap: 6px;
+  gap: 12px;
   align-items: center;
   justify-content: center;
 }
@@ -491,11 +493,6 @@ td.col-center {
   border-radius: 8px;
   background-color: var(--panel);
   /* Ripple: a radial-gradient dot blown up huge, revealed on press. */
-  background-image: radial-gradient(
-    circle,
-    rgba(159, 168, 255, 0.4) 10%,
-    transparent 10.01%
-  );
   background-repeat: no-repeat;
   background-position: center;
   background-size: 15000%;
@@ -511,8 +508,11 @@ td.col-center {
 
 .icon-btn:hover {
   color: var(--accent);
-  border-color: var(--accent);
-  background-color: #1c2130;
+  background-image: radial-gradient(
+    circle,
+    rgba(159, 168, 255, 0.1) 10%,
+    transparent 10.01%
+  );
 }
 
 .icon-btn:active {
@@ -749,7 +749,10 @@ td.col-center {
   font-size: 14px;
   cursor: pointer;
   border: 1px solid var(--border);
-  transition: border-color 0.12s, filter 0.12s, transform 0.12s;
+  transition:
+    border-color 0.12s,
+    filter 0.12s,
+    transform 0.12s;
 }
 
 .btn:not(:disabled):active {

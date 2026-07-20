@@ -1,5 +1,5 @@
-import problems from "./parsed_leetcode_problems.json" with { type: "json" };
-import { getDb, DB_PATH } from "../lib/db.js";
+import problems from './parsed_leetcode_problems.json' with { type: 'json' };
+import { getDb, DB_PATH } from '../lib/db.js';
 
 // ---------------------------------------------------------------------------
 // Logging
@@ -7,9 +7,9 @@ import { getDb, DB_PATH } from "../lib/db.js";
 
 // Timestamped, stage-tagged logger so every phase of the transaction is
 // traceable in the console output.
-const log = (stage, detail = "") =>
+const log = (stage, detail = '') =>
   console.log(
-    `[${new Date().toISOString()}] [${stage}]${detail ? ` ${detail}` : ""}`,
+    `[${new Date().toISOString()}] [${stage}]${detail ? ` ${detail}` : ''}`,
   );
 
 // ---------------------------------------------------------------------------
@@ -62,25 +62,25 @@ const CREATE_TRIGGER = `
 
 function main() {
   const db = getDb();
-  log("DB CONNECTED", DB_PATH);
+  log('DB CONNECTED', DB_PATH);
 
   // Everything below runs inside a single transaction. If any statement
   // throws, we ROLLBACK and the database is left exactly as it was before.
-  log("TRANSACTION STARTED");
-  db.exec("BEGIN");
+  log('TRANSACTION STARTED');
+  db.exec('BEGIN');
 
   try {
     // QUERY 1a — (re)create the table for a clean, repeatable rebuild.
-    db.exec("DROP TABLE IF EXISTS leetcode_problems");
+    db.exec('DROP TABLE IF EXISTS leetcode_problems');
     db.exec(CREATE_TABLE);
-    log("TABLE CREATED", "leetcode_problems");
+    log('TABLE CREATED', 'leetcode_problems');
 
     // QUERY 1b — indices over topic, difficulty, and (difficulty, topic).
     db.exec(CREATE_INDICES);
-    log("INDICES CREATED", "topic, difficulty, (difficulty, topic)");
+    log('INDICES CREATED', 'topic, difficulty, (difficulty, topic)');
 
     db.exec(CREATE_TRIGGER);
-    log("TRIGGER CREATED", "updated_at auto-touch");
+    log('TRIGGER CREATED', 'updated_at auto-touch');
 
     // QUERY 1c — bulk insert every parsed problem.
     const insert = db.prepare(`
@@ -88,14 +88,14 @@ function main() {
       VALUES (@link, @name, @topic, @difficulty, @popularity)
     `);
 
-    log("INSERTING ROWS", `${problems.length} problems`);
+    log('INSERTING ROWS', `${problems.length} problems`);
 
     let inserted = 0;
     let coercedTopics = 0;
     for (const p of problems) {
       // topic is REQUIRED (NOT NULL); the parser leaves some unmapped as null,
       // so coalesce those to a sentinel rather than fail the whole insert.
-      const topic = p.topic ?? "MISCELLANEOUS";
+      const topic = p.topic ?? 'MISCELLANEOUS';
       if (p.topic == null) coercedTopics += 1;
 
       insert.run({
@@ -109,16 +109,19 @@ function main() {
     }
 
     if (coercedTopics > 0) {
-      log("TOPIC COERCED", `${coercedTopics} null topics set to 'MISCELLANEOUS'`);
+      log(
+        'TOPIC COERCED',
+        `${coercedTopics} null topics set to 'MISCELLANEOUS'`,
+      );
     }
-    log("DATA INSERTED", `${inserted} rows`);
+    log('DATA INSERTED', `${inserted} rows`);
 
-    db.exec("COMMIT");
-    log("TRANSACTION COMMITTED", `${inserted} rows persisted`);
+    db.exec('COMMIT');
+    log('TRANSACTION COMMITTED', `${inserted} rows persisted`);
   } catch (err) {
-    log("FAILED — ABORTING, ROLLING BACK", err.message);
-    db.exec("ROLLBACK");
-    log("ROLLED BACK", "database restored to pre-transaction state");
+    log('FAILED — ABORTING, ROLLING BACK', err.message);
+    db.exec('ROLLBACK');
+    log('ROLLED BACK', 'database restored to pre-transaction state');
     throw err;
   } finally {
     db.close();
@@ -127,7 +130,7 @@ function main() {
 
 try {
   main();
-  log("DONE", "database setup complete");
+  log('DONE', 'database setup complete');
 } catch (err) {
   console.error(err);
   process.exit(1);

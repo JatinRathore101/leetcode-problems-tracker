@@ -1,5 +1,5 @@
-import fs from "fs";
-import path from "path";
+import fs from 'fs';
+import path from 'path';
 
 // Serialize `data` as pretty-printed JSON and write it to `filePath`.
 export function writeJsonFile(data, filename) {

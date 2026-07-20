@@ -1,13 +1,13 @@
-"use client";
+'use client';
 
-import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
-import Chip from "./Chip";
-import { DIFFICULTIES } from "@/lib/constants";
+import { useEffect, useState } from 'react';
+import { useRouter } from 'next/navigation';
+import Chip from './Chip';
+import { DIFFICULTIES } from '@/lib/constants';
 
 // Status options offered in the update form. The form is prefilled with the
 // row's current status, so every option is a real status value.
-const STATUS_OPTIONS = ["CLEAR", "ERROR", "TLE", "MLE", "SUCCESS"];
+const STATUS_OPTIONS = ['CLEAR', 'ERROR', 'TLE', 'MLE', 'SUCCESS'];
 
 // Small inline SVG icons so the component stays dependency-free.
 function CopyIcon() {
@@ -73,10 +73,10 @@ function UpdateIcon() {
 function Modal({ title, onClose, children }) {
   useEffect(() => {
     const onKey = (e) => {
-      if (e.key === "Escape") onClose();
+      if (e.key === 'Escape') onClose();
     };
-    document.addEventListener("keydown", onKey);
-    return () => document.removeEventListener("keydown", onKey);
+    document.addEventListener('keydown', onKey);
+    return () => document.removeEventListener('keydown', onKey);
   }, [onClose]);
 
   return (
@@ -108,11 +108,11 @@ function Modal({ title, onClose, children }) {
 // A single labelled read-only field for the details view. `span` makes the
 // field occupy the full grid width (used for long values: link/comment/solution).
 function DetailRow({ label, value, pre, span }) {
-  if (value === null || value === undefined || value === "") {
+  if (value === null || value === undefined || value === '') {
     return null;
   }
   return (
-    <div className={`detail-row${span ? " detail-row--full" : ""}`}>
+    <div className={`detail-row${span ? ' detail-row--full' : ''}`}>
       <div className="detail-row__label">{label}</div>
       {pre ? (
         <pre className="detail-row__pre">{value}</pre>
@@ -131,14 +131,14 @@ export default function ProblemActions({ problem }) {
   const [viewOpen, setViewOpen] = useState(false);
   const [details, setDetails] = useState(null);
   const [viewLoading, setViewLoading] = useState(false);
-  const [viewError, setViewError] = useState("");
+  const [viewError, setViewError] = useState('');
 
   const [updateOpen, setUpdateOpen] = useState(false);
   const [updateLoading, setUpdateLoading] = useState(false);
-  const [comment, setComment] = useState("");
-  const [status, setStatus] = useState("");
-  const [solution, setSolution] = useState("");
-  const [formError, setFormError] = useState("");
+  const [comment, setComment] = useState('');
+  const [status, setStatus] = useState('');
+  const [solution, setSolution] = useState('');
+  const [formError, setFormError] = useState('');
   const [saving, setSaving] = useState(false);
 
   // --- Copy ---------------------------------------------------------------
@@ -149,14 +149,14 @@ export default function ProblemActions({ problem }) {
       setTimeout(() => setCopied(false), 2000);
     } catch {
       // Fallback for browsers/contexts without the async clipboard API.
-      const ta = document.createElement("textarea");
+      const ta = document.createElement('textarea');
       ta.value = problem.link;
-      ta.style.position = "fixed";
-      ta.style.opacity = "0";
+      ta.style.position = 'fixed';
+      ta.style.opacity = '0';
       document.body.appendChild(ta);
       ta.select();
       try {
-        document.execCommand("copy");
+        document.execCommand('copy');
         setCopied(true);
         setTimeout(() => setCopied(false), 1200);
       } catch {
@@ -170,19 +170,19 @@ export default function ProblemActions({ problem }) {
   async function openView() {
     setViewOpen(true);
     setViewLoading(true);
-    setViewError("");
+    setViewError('');
     setDetails(null);
     try {
-      const res = await fetch("/get-problem-details", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
+      const res = await fetch('/get-problem-details', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ link: problem.link }),
       });
       const data = await res.json();
-      if (!res.ok) throw new Error(data?.error || "Failed to load details.");
+      if (!res.ok) throw new Error(data?.error || 'Failed to load details.');
       setDetails(data);
     } catch (err) {
-      setViewError(err.message || "Failed to load details.");
+      setViewError(err.message || 'Failed to load details.');
     } finally {
       setViewLoading(false);
     }
@@ -194,39 +194,39 @@ export default function ProblemActions({ problem }) {
   async function openUpdate() {
     setUpdateOpen(true);
     setUpdateLoading(true);
-    setFormError("");
-    setComment("");
+    setFormError('');
+    setComment('');
     // Status is already on the row, so prefill it instantly; comment/solution
     // arrive from the fetch below.
-    setStatus(problem.status ?? "CLEAR");
-    setSolution("");
+    setStatus(problem.status ?? 'CLEAR');
+    setSolution('');
     try {
-      const res = await fetch("/get-problem-details", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
+      const res = await fetch('/get-problem-details', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ link: problem.link }),
       });
       const data = await res.json();
-      if (!res.ok) throw new Error(data?.error || "Failed to load problem.");
-      setComment(data.comment ?? "");
-      setStatus(data.status ?? "CLEAR");
-      setSolution(data.solution ?? "");
+      if (!res.ok) throw new Error(data?.error || 'Failed to load problem.');
+      setComment(data.comment ?? '');
+      setStatus(data.status ?? 'CLEAR');
+      setSolution(data.solution ?? '');
     } catch (err) {
-      setFormError(err.message || "Failed to load problem.");
+      setFormError(err.message || 'Failed to load problem.');
     } finally {
       setUpdateLoading(false);
     }
   }
 
   // A non-CLEAR status requires a solution.
-  const solutionRequired = status !== "CLEAR";
+  const solutionRequired = status !== 'CLEAR';
 
   function validate() {
     // Comment may be empty (that clears it). Only the solution rule applies.
-    if (solutionRequired && solution.trim() === "") {
-      return "A solution is required for this status.";
+    if (solutionRequired && solution.trim() === '') {
+      return 'A solution is required for this status.';
     }
-    return "";
+    return '';
   }
 
   async function handleSave(e) {
@@ -245,23 +245,23 @@ export default function ProblemActions({ problem }) {
       comment: comment.trim(),
       status,
     };
-    if (status !== "CLEAR") body.solution = solution;
+    if (status !== 'CLEAR') body.solution = solution;
 
     setSaving(true);
-    setFormError("");
+    setFormError('');
     try {
-      const res = await fetch("/update-problem", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
+      const res = await fetch('/update-problem', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(body),
       });
       const data = await res.json();
-      if (!res.ok) throw new Error(data?.error || "Update failed.");
+      if (!res.ok) throw new Error(data?.error || 'Update failed.');
       setUpdateOpen(false);
       // Re-render the server component so the table reflects the new status.
       router.refresh();
     } catch (err) {
-      setFormError(err.message || "Update failed.");
+      setFormError(err.message || 'Update failed.');
     } finally {
       setSaving(false);
     }
@@ -272,7 +272,7 @@ export default function ProblemActions({ problem }) {
       <button
         type="button"
         className="icon-btn"
-        title={copied ? "Copied!" : "Copy problem link"}
+        title={copied ? 'Copied!' : 'Copy problem link'}
         aria-label="Copy problem link"
         onClick={handleCopy}
       >
@@ -315,7 +315,7 @@ export default function ProblemActions({ problem }) {
                   <Chip
                     text={details.status}
                     state={details.status}
-                    style={{ fontSize: "11px", width: "70px", padding: "4px" }}
+                    style={{ fontSize: '11px', width: '70px', padding: '4px' }}
                   />
                 }
               />
@@ -326,12 +326,12 @@ export default function ProblemActions({ problem }) {
                     text={details.difficulty}
                     state={
                       details.difficulty === DIFFICULTIES[1]
-                        ? "orange"
+                        ? 'orange'
                         : details.difficulty === DIFFICULTIES[2]
-                          ? "red"
-                          : "green"
+                          ? 'red'
+                          : 'green'
                     }
-                    style={{ fontSize: "11px", width: "70px", padding: "4px" }}
+                    style={{ fontSize: '11px', width: '70px', padding: '4px' }}
                   />
                 }
               />
@@ -384,11 +384,11 @@ export default function ProblemActions({ problem }) {
                   ))}
                 </select>
 
-              {status === "CLEAR" && (
-                <p className="modal__hint">
-                  Marking as CLEAR will erase any saved solution.
-                </p>
-              )}
+                {status === 'CLEAR' && (
+                  <p className="modal__hint">
+                    Marking as CLEAR will erase any saved solution.
+                  </p>
+                )}
               </label>
 
               {solutionRequired && (
@@ -422,7 +422,7 @@ export default function ProblemActions({ problem }) {
                   className="btn btn--primary"
                   disabled={saving}
                 >
-                  {saving ? "Saving…" : "Save"}
+                  {saving ? 'Saving…' : 'Save'}
                 </button>
               </div>
             </form>

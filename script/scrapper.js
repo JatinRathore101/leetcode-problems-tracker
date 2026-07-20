@@ -1,7 +1,7 @@
-import axios from "axios";
-import { writeJsonFile } from "./file.utils.js";
+import axios from 'axios';
+import { writeJsonFile } from './file.utils.js';
 
-const GRAPHQL_URL = "https://leetcode.com/graphql";
+const GRAPHQL_URL = 'https://leetcode.com/graphql';
 
 // Optional: set LEETCODE_SESSION (a premium, logged-in cookie) to also populate
 // the "Companies" column. Without it, companyTagStats comes back null.
@@ -45,24 +45,24 @@ query questionDetail($titleSlug: String!) {
 
 // V2 requires a structured filters object; filterCombineType is mandatory.
 const filters = {
-  filterCombineType: "ALL",
-  statusFilter: { questionStatuses: [], operator: "IS" },
-  difficultyFilter: { difficulties: [], operator: "IS" },
-  languageFilter: { languageSlugs: [], operator: "IS" },
-  topicFilter: { topicSlugs: [], operator: "IS" },
+  filterCombineType: 'ALL',
+  statusFilter: { questionStatuses: [], operator: 'IS' },
+  difficultyFilter: { difficulties: [], operator: 'IS' },
+  languageFilter: { languageSlugs: [], operator: 'IS' },
+  topicFilter: { topicSlugs: [], operator: 'IS' },
   acceptanceFilter: {},
   frequencyFilter: {},
   frontendIdFilter: {},
   lastSubmittedFilter: {},
   publishedFilter: {},
-  companyFilter: { companySlugs: [], operator: "IS" },
-  positionFilter: { positionSlugs: [], operator: "IS" },
-  premiumFilter: { premiumStatus: [], operator: "IS" },
+  companyFilter: { companySlugs: [], operator: 'IS' },
+  positionFilter: { positionSlugs: [], operator: 'IS' },
+  premiumFilter: { premiumStatus: [], operator: 'IS' },
 };
 
 function baseHeaders(referer) {
   const headers = {
-    "Content-Type": "application/json",
+    'Content-Type': 'application/json',
     Referer: referer,
   };
   if (COOKIE) headers.Cookie = COOKIE;
@@ -99,9 +99,14 @@ async function fetchProblems() {
     const data = await gqlPost(
       {
         query: listQuery,
-        variables: { categorySlug: "all-code-essentials", skip, limit, filters },
+        variables: {
+          categorySlug: 'all-code-essentials',
+          skip,
+          limit,
+          filters,
+        },
       },
-      "https://leetcode.com/problemset/"
+      'https://leetcode.com/problemset/',
     );
 
     const page = data.problemsetQuestionListV2;
@@ -116,13 +121,13 @@ async function fetchProblems() {
 async function fetchDetail(titleSlug) {
   const data = await gqlPost(
     { query: detailQuery, variables: { titleSlug } },
-    `https://leetcode.com/problems/${titleSlug}/`
+    `https://leetcode.com/problems/${titleSlug}/`,
   );
   const q = data.question || {};
 
   let stats = {};
   try {
-    stats = JSON.parse(q.stats || "{}");
+    stats = JSON.parse(q.stats || '{}');
   } catch (_) {}
 
   // companyTagStats is a JSON string keyed by frequency bucket ("1","2","3");
@@ -176,7 +181,9 @@ async function mapWithConcurrency(items, limit, worker) {
 
 async function main() {
   const problems = await fetchProblems();
-  console.log(`Found ${problems.length} problems. Fetching popularity details...`);
+  console.log(
+    `Found ${problems.length} problems. Fetching popularity details...`,
+  );
 
   const CONCURRENCY = 8;
   const details = await mapWithConcurrency(problems, CONCURRENCY, async (p) => {
@@ -205,7 +212,7 @@ async function main() {
     ...details[i],
   }));
 
-  writeJsonFile(rows, "scrapped_leetcode_problems.json");
+  writeJsonFile(rows, 'scrapped_leetcode_problems.json');
 
   console.log(`Exported ${rows.length} problems.`);
 }

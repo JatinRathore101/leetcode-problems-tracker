@@ -1,17 +1,17 @@
-import data from "./scrapped_leetcode_problems.json" with { type: "json" };
-import { TOPICS_MAPPING, TOPICS_RANKING } from "./topics.utils.js";
-import { writeJsonFile } from "./file.utils.js";
+import data from './scrapped_leetcode_problems.json' with { type: 'json' };
+import { TOPICS_MAPPING, TOPICS_RANKING } from './topics.utils.js';
+import { writeJsonFile } from './file.utils.js';
 
 const getTopic = (topics) => {
   const parsedTopics = topics
-    ?.map((topic) => TOPICS_MAPPING?.[topic?.toUpperCase()?.trim() ?? ""] || "")
+    ?.map((topic) => TOPICS_MAPPING?.[topic?.toUpperCase()?.trim() ?? ''] || '')
     ?.filter(Boolean);
   for (const topic of TOPICS_RANKING) {
     if (parsedTopics?.includes(topic)) {
       return topic;
     }
   }
-  return "MISCELLANEOUS";
+  return 'MISCELLANEOUS';
 };
 
 const main = () => {
@@ -25,10 +25,10 @@ const main = () => {
     }),
   );
 
-  const topics = [...new Set(rows?.map(({topic}) => topic))];
+  const topics = [...new Set(rows?.map(({ topic }) => topic))];
 
-  writeJsonFile(rows, "parsed_leetcode_problems.json");
-  writeJsonFile(topics, "topics.json");
+  writeJsonFile(rows, 'parsed_leetcode_problems.json');
+  writeJsonFile(topics, 'topics.json');
 
   console.log(`Exported ${rows.length} problems.`);
 };

@@ -1,16 +1,16 @@
-import { notFound } from "next/navigation";
-import { getDb } from "../../../lib/db.js";
-import { DIFFICULTIES, slugToTopic } from "../../../lib/constants.js";
-import DifficultyTabs from "./DifficultyTabs.js";
-import ProblemsList from "./ProblemsList.js";
+import { notFound } from 'next/navigation';
+import { getDb } from '../../../lib/db.js';
+import { DIFFICULTIES, slugToTopic } from '../../../lib/constants.js';
+import DifficultyTabs from './DifficultyTabs.js';
+import ProblemsList from './ProblemsList.js';
 
 // better-sqlite3 is a native/synchronous module -> Node.js runtime only.
-export const runtime = "nodejs";
+export const runtime = 'nodejs';
 // Problem status is mutated by /update-problem, so render on demand to always
 // reflect live DB state rather than freezing rows at build time. The [topic] and
 // [difficulty] segments cover all 33 * 3 = 99 routes; loadProblems() validates
 // them and anything outside that set falls through to notFound().
-export const dynamic = "force-dynamic";
+export const dynamic = 'force-dynamic';
 
 // Fetch problems for one topic + difficulty, ordered most popular first.
 // Returns { problems } on success or { error } if the DB isn't reachable yet.
@@ -26,7 +26,7 @@ function loadProblems(topic, difficulty) {
       .all(topic, difficulty);
     return { problems: rows };
   } catch (err) {
-    console.error("Failed to load problems:", err);
+    console.error('Failed to load problems:', err);
     return { error: true };
   }
 }
@@ -47,10 +47,16 @@ export default async function TopicDifficultyPage({ params }) {
   return (
     <div className="topic-page">
       <nav className="breadcrumb" aria-label="Breadcrumb">
-        <span className="breadcrumb__dot" aria-hidden="true">&#9679;</span>
+        <span className="breadcrumb__dot" aria-hidden="true">
+          &#9679;
+        </span>
         <span className="breadcrumb__topic">{topic}</span>
-        <span className="breadcrumb__chevron" aria-hidden="true">&#9654;</span>
-        <span className={`breadcrumb__difficulty breadcrumb__difficulty--${difficulty.toLowerCase()}`}>
+        <span className="breadcrumb__chevron" aria-hidden="true">
+          &#9654;
+        </span>
+        <span
+          className={`breadcrumb__difficulty breadcrumb__difficulty--${difficulty.toLowerCase()}`}
+        >
           {difficulty}
         </span>
       </nav>

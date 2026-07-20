@@ -8,6 +8,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
     "scrape": "node script/scrapper.js",
     "parse": "node script/parser.js",
     "db:setup": "node script/transaction.js"
@@ -21,6 +23,6 @@
   },
   "devDependencies": {
     "axios": "^1.18.1",
-    "csv-writer": "^1.6.0"
+    "prettier": "3.9.5"
   }
 }

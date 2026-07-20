@@ -1,9 +1,10 @@
-import "./globals.css";
-import Sidebar from "./Sidebar.js";
+import './globals.css';
+import Sidebar from './Sidebar.js';
 
 export const metadata = {
-  title: "LeetCode Problems Explorer",
-  description: "Browse, search, and sort LeetCode problems by popularity, difficulty, and topic.",
+  title: 'LeetCode Problems Explorer',
+  description:
+    'Browse, search, and sort LeetCode problems by popularity, difficulty, and topic.',
 };
 
 export default function RootLayout({ children }) {

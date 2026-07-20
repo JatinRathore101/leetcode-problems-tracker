@@ -1,14 +1,5 @@
-import Chip from "./Chip.js";
-import ProblemActions from "./ProblemActions.js";
-
-// Maps a stored status code to its chip label and color modifier.
-const STATUS_CHIPS = {
-  CLEAR: { color: "grey" },
-  ERROR: { color: "red" },
-  TLE: { color: "orange" },
-  MLE: { color: "yellow" },
-  SUCCESS: { color: "green" },
-};
+import Chip from './Chip.js';
+import ProblemActions from './ProblemActions.js';
 
 // Server component: renders the problems table for a single topic + difficulty.
 // Rows come pre-fetched from the caller so this stays a pure presentational
@@ -30,37 +21,35 @@ export default function ProblemsList({ problems, error }) {
   }
 
   return (
-    <>
-      <div className="table-wrap">
-        <table>
-          <thead>
-            <tr>
-              <th></th>
-              <th>Problem</th>
-              <th className="col-center">Actions</th>
-              <th className="col-center">Status</th>
+    <div className="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th></th>
+            <th>Problem</th>
+            <th className="col-center">Actions</th>
+            <th className="col-center">Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          {problems.map((p, i) => (
+            <tr key={p.link}>
+              <td className="num">{i + 1}</td>
+              <td>
+                <a href={p.link} target="_blank" rel="noreferrer">
+                  {p.name}
+                </a>
+              </td>
+              <td className="col-center">
+                <ProblemActions problem={p} />
+              </td>
+              <td className="col-center">
+                <Chip text={p.status} state={p.status} />
+              </td>
             </tr>
-          </thead>
-          <tbody>
-            {problems.map((p, i) => (
-              <tr key={p.link}>
-                <td className="num">{i + 1}</td>
-                <td>
-                  <a href={p.link} target="_blank" rel="noreferrer">
-                    {p.name}
-                  </a>
-                </td>
-                <td className="col-center">
-                  <ProblemActions problem={p} />
-                </td>
-                <td className="col-center">
-                  <Chip text={p.status} state={p.status}/>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-    </>
+          ))}
+        </tbody>
+      </table>
+    </div>
   );
 }
