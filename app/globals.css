@@ -88,9 +88,36 @@ body {
 
 .content {
   flex: 1 1 auto;
-  min-width: 0;
-  max-width: 1100px;
-  padding: 32px 32px 64px;
+  height: 100vh;
+  padding: 0;
+}
+
+/* The whole page is the scroll region; the header stays pinned on top and the
+   table scrolls underneath it, showing through the frosted-glass blur. */
+.topic-page {
+  height: 100%;
+  overflow-y: auto;
+}
+
+.topic-page__header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  padding: 32px 32px 4px;
+  /* Semi-transparent panel + blur = frosted glass over the scrolling table. */
+  background: rgba(23, 26, 35, 0.55);
+  backdrop-filter: blur(14px) saturate(140%);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
+  border-bottom: 1px solid var(--border);
+}
+
+.topic-page__body {
+  padding: 20px 32px 64px;
+}
+
+/* Header row scrolls under the frosted header rather than pinning over it. */
+.topic-page__body thead th {
+  position: static;
 }
 
 /* ---------------------------------------------------------------------------

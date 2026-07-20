@@ -46,24 +46,28 @@ export default async function TopicDifficultyPage({ params }) {
 
   return (
     <div className="topic-page">
-      <nav className="breadcrumb" aria-label="Breadcrumb">
-        <span className="breadcrumb__dot" aria-hidden="true">
-          &#9679;
-        </span>
-        <span className="breadcrumb__topic">{topic}</span>
-        <span className="breadcrumb__chevron" aria-hidden="true">
-          &#9654;
-        </span>
-        <span
-          className={`breadcrumb__difficulty breadcrumb__difficulty--${difficulty.toLowerCase()}`}
-        >
-          {difficulty}
-        </span>
-      </nav>
+      <header className="topic-page__header">
+        <nav className="breadcrumb" aria-label="Breadcrumb">
+          <span className="breadcrumb__dot" aria-hidden="true">
+            &#9679;
+          </span>
+          <span className="breadcrumb__topic">{topic}</span>
+          <span className="breadcrumb__chevron" aria-hidden="true">
+            &#9654;
+          </span>
+          <span
+            className={`breadcrumb__difficulty breadcrumb__difficulty--${difficulty.toLowerCase()}`}
+          >
+            {difficulty}
+          </span>
+        </nav>
 
-      <DifficultyTabs topicSlug={topicSlug} activeDifficulty={difficulty} />
+        <DifficultyTabs topicSlug={topicSlug} activeDifficulty={difficulty} />
+      </header>
 
-      <ProblemsList problems={problems} error={error} />
+      <div className="topic-page__body">
+        <ProblemsList problems={problems} error={error} />
+      </div>
     </div>
   );
 }

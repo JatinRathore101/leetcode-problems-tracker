@@ -15,7 +15,6 @@ export default function Sidebar() {
 
   return (
     <nav className="sidebar" aria-label="Topics">
-      <div className="sidebar__brand">Topics</div>
       <ul className="sidebar__list">
         {TOPICS.map((topic) => {
           const slug = topicToSlug(topic);
