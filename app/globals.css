@@ -123,12 +123,50 @@ body {
 /* ---------------------------------------------------------------------------
    Breadcrumb
 --------------------------------------------------------------------------- */
+/* Breadcrumb (left) + solved-percentage stat (right) share one header row. */
+.topic-page__header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
 .breadcrumb {
   display: flex;
   align-items: center;
   gap: 8px;
   font-size: 14px;
-  margin-bottom: 20px;
+}
+
+/* Percentage of problems on this page with status "SUCCESS". */
+.success-stat {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--muted);
+  background: rgba(0, 184, 163, 0.05);
+  white-space: nowrap;
+}
+
+.success-stat_divider {
+  background-color: var(--muted);
+  padding: 12px 0.5px;
+  height: 100%;
+}
+
+.success-stat__value {
+  font-size: 15px;
+  font-weight: 600;
+  color: #00b8a3;
+}
+
+.success-stat__label {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--muted);
 }
 
 .breadcrumb__dot {

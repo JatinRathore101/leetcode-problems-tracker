@@ -44,23 +44,41 @@ export default async function TopicDifficultyPage({ params }) {
 
   const { problems, error } = loadProblems(topic, difficulty);
 
+  // Share of problems on this page that have been solved (status "SUCCESS").
+  const total = problems?.length ?? 0;
+  const solved = problems?.filter((p) => p.status === 'SUCCESS').length ?? 0;
+  const successPercent = total ? ((solved / total) * 100).toFixed(2) : '0.00';
+
   return (
     <div className="topic-page">
       <header className="topic-page__header">
-        <nav className="breadcrumb" aria-label="Breadcrumb">
-          <span className="breadcrumb__dot" aria-hidden="true">
-            &#9679;
-          </span>
-          <span className="breadcrumb__topic">{topic}</span>
-          <span className="breadcrumb__chevron" aria-hidden="true">
-            &#9654;
-          </span>
-          <span
-            className={`breadcrumb__difficulty breadcrumb__difficulty--${difficulty.toLowerCase()}`}
-          >
-            {difficulty}
-          </span>
-        </nav>
+        <div className="topic-page__header-row">
+          <nav className="breadcrumb" aria-label="Breadcrumb">
+            <span className="breadcrumb__dot" aria-hidden="true">
+              &#9679;
+            </span>
+            <span className="breadcrumb__topic">{topic}</span>
+            <span className="breadcrumb__chevron" aria-hidden="true">
+              &#9654;
+            </span>
+            <span
+              className={`breadcrumb__difficulty breadcrumb__difficulty--${difficulty.toLowerCase()}`}
+            >
+              {difficulty}
+            </span>
+          </nav>
+
+          {!error && total > 0 && (
+            <div
+              className="success-stat"
+              title={`${solved} of ${total} problems solved`}
+            >
+              <span className="success-stat__label">{`${solved} of ${total} solved`}</span>
+              <span className="success-stat_divider"></span>
+              <span className="success-stat__value">{successPercent}%</span>
+            </div>
+          )}
+        </div>
 
         <DifficultyTabs topicSlug={topicSlug} activeDifficulty={difficulty} />
       </header>
