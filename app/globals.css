@@ -38,8 +38,8 @@ body {
 }
 
 .sidebar {
-  flex: 0 0 260px;
-  width: 260px;
+  flex: 0 0 320px;
+  width: 320px;
   height: 100vh;
   position: sticky;
   top: 0;
@@ -65,7 +65,10 @@ body {
 }
 
 .sidebar__item {
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
   padding: 9px 20px;
   color: var(--text);
   text-decoration: none;
@@ -73,6 +76,18 @@ body {
   font-weight: 500;
   letter-spacing: 0.02em;
   border-left: 3px solid transparent;
+}
+
+.sidebar__item-stat {
+  flex: 0 0 auto;
+  font-size: 11px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  color: var(--muted);
+}
+
+.sidebar__item--active .sidebar__item-stat {
+  color: var(--accent);
 }
 
 .sidebar__item:hover {
