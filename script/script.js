@@ -1,16 +1,16 @@
-import { spawn } from "node:child_process";
-import { existsSync } from "node:fs";
-import { fileURLToPath } from "node:url";
-import { dirname, join } from "node:path";
+import { spawn } from 'node:child_process';
+import { existsSync } from 'node:fs';
+import { fileURLToPath } from 'node:url';
+import { dirname, join } from 'node:path';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
-const rootDir = join(__dirname, "..");
+const rootDir = join(__dirname, '..');
 const dbFiles = [
-  join(rootDir, "data", "leetcode.db"),
-  join(rootDir, "data", "leetcode.db-shm"),
-  join(rootDir, "data", "leetcode.db-wal"),
+  join(rootDir, 'data', 'leetcode.db'),
+  join(rootDir, 'data', 'leetcode.db-shm'),
+  join(rootDir, 'data', 'leetcode.db-wal'),
 ];
-const url = "http://localhost:3000";
+const url = 'http://localhost:3000';
 
 // Log a step banner, e.g. [STEP 1 of 7] ~ "rm -rf .next"
 function logStep(step, total, label) {
@@ -22,13 +22,16 @@ function run(command, args) {
   return new Promise((resolve, reject) => {
     const child = spawn(command, args, {
       cwd: rootDir,
-      stdio: "inherit",
-      shell: process.platform === "win32",
+      stdio: 'inherit',
+      shell: process.platform === 'win32',
     });
-    child.on("error", reject);
-    child.on("exit", (code) => {
+    child.on('error', reject);
+    child.on('exit', (code) => {
       if (code === 0) resolve();
-      else reject(new Error(`${command} ${args.join(" ")} exited with code ${code}`));
+      else
+        reject(
+          new Error(`${command} ${args.join(' ')} exited with code ${code}`),
+        );
     });
   });
 }
@@ -36,37 +39,41 @@ function run(command, args) {
 // Open a URL in the default browser (new tab), cross-platform.
 function openBrowser(target) {
   const command =
-    process.platform === "darwin"
-      ? "open"
-      : process.platform === "win32"
-        ? "cmd"
-        : "xdg-open";
-  const args = process.platform === "win32" ? ["/c", "start", "", target] : [target];
-  const child = spawn(command, args, { stdio: "ignore", detached: true });
-  child.on("error", () => {});
+    process.platform === 'darwin'
+      ? 'open'
+      : process.platform === 'win32'
+        ? 'cmd'
+        : 'xdg-open';
+  const args =
+    process.platform === 'win32' ? ['/c', 'start', '', target] : [target];
+  const child = spawn(command, args, { stdio: 'ignore', detached: true });
+  child.on('error', () => {});
   child.unref();
 }
 
 // Start `next dev` and open the browser once the server is listening.
 function startDev() {
-  const child = spawn("next", ["dev"], {
+  const child = spawn('next', ['dev'], {
     cwd: rootDir,
-    stdio: ["inherit", "pipe", "inherit"],
-    shell: process.platform === "win32",
+    stdio: ['inherit', 'pipe', 'inherit'],
+    shell: process.platform === 'win32',
   });
 
   let opened = false;
-  child.stdout.on("data", (chunk) => {
+  child.stdout.on('data', (chunk) => {
     process.stdout.write(chunk);
-    if (!opened && /ready|started server|localhost:3000/i.test(chunk.toString())) {
+    if (
+      !opened &&
+      /ready|started server|localhost:3000/i.test(chunk.toString())
+    ) {
       opened = true;
       openBrowser(url);
     }
   });
 
-  child.on("exit", (code) => process.exit(code ?? 0));
-  process.on("SIGINT", () => child.kill("SIGINT"));
-  process.on("SIGTERM", () => child.kill("SIGTERM"));
+  child.on('exit', (code) => process.exit(code ?? 0));
+  process.on('SIGINT', () => child.kill('SIGINT'));
+  process.on('SIGTERM', () => child.kill('SIGTERM'));
 }
 
 async function main() {
@@ -74,30 +81,30 @@ async function main() {
   const total = needsSetup ? 8 : 2;
 
   if (needsSetup) {
-    console.log("Database files missing — running full setup chain.");
+    console.log('Database files missing — running full setup chain.');
 
-    logStep(1, total, "rm -rf .next");
-    await run("rm", ["-rf", ".next"]);
+    logStep(1, total, 'rm -rf .next');
+    await run('rm', ['-rf', '.next']);
 
-    logStep(2, total, "rm -rf data");
-    await run("rm", ["-rf", "data"]);
+    logStep(2, total, 'rm -rf data');
+    await run('rm', ['-rf', 'data']);
 
-    logStep(3, total, "npm install");
-    await run("npm", ["install"]);
+    logStep(3, total, 'npm install');
+    await run('npm', ['install']);
 
-    logStep(4, total, "node script/scrapper.js");
-    await run("node", ["script/scrapper.js"]);
+    logStep(4, total, 'node script/scrapper.js');
+    await run('node', ['script/scrapper.js']);
 
-    logStep(5, total, "node script/parser.js");
-    await run("node", ["script/parser.js"]);
+    logStep(5, total, 'node script/parser.js');
+    await run('node', ['script/parser.js']);
 
-    logStep(6, total, "node script/transaction.js");
-    await run("node", ["script/transaction.js"]);
+    logStep(6, total, 'node script/transaction.js');
+    await run('node', ['script/transaction.js']);
   } else {
-    console.log("Database files found — skipping setup chain.");
+    console.log('Database files found — skipping setup chain.');
   }
 
-  logStep(needsSetup ? 7 : 1, total, "next dev");
+  logStep(needsSetup ? 7 : 1, total, 'next dev');
   logStep(needsSetup ? 8 : 2, total, `open ${url}`);
   startDev();
 }

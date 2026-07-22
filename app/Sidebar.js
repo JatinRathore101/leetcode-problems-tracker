@@ -13,9 +13,35 @@ export default function Sidebar() {
   // pathname is "/<topicSlug>/<difficulty>" -> grab the topic slug segment.
   const activeSlug = pathname.split('/').filter(Boolean)[0] ?? '';
 
+  const isHome = pathname === '/';
+
   return (
     <nav className="sidebar" aria-label="Topics">
       <ul className="sidebar__list">
+        <li>
+          <Link
+            href="/"
+            className={`sidebar__item${isHome ? ' sidebar__item--active' : ''}`}
+            aria-current={isHome ? 'page' : undefined}
+            aria-label="Search"
+            title="Search"
+          >
+            <svg
+              viewBox="0 0 24 24"
+              width="16"
+              height="16"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              aria-hidden="true"
+            >
+              <circle cx="11" cy="11" r="8" />
+              <path d="M21 21l-4.35-4.35" />
+            </svg>
+          </Link>
+        </li>
         {TOPICS.map((topic) => {
           const slug = topicToSlug(topic);
           const isActive = slug === activeSlug;
