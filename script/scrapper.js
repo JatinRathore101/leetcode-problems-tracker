@@ -3,11 +3,12 @@ import { writeJsonFile } from './file.utils.js';
 
 const GRAPHQL_URL = 'https://leetcode.com/graphql';
 
-// Optional: set LEETCODE_SESSION (a premium, logged-in cookie) to also populate
-// the "Companies" column. Without it, companyTagStats comes back null.
-const COOKIE = process.env.LEETCODE_SESSION
-  ? `LEETCODE_SESSION=${process.env.LEETCODE_SESSION}`
-  : undefined;
+// Optional credential: set LEETCODE_SESSION in .env (see .env.example) to also
+// populate the "Companies" column. Without it, companyTagStats comes back null.
+// `npm run scrape` loads .env via node --env-file-if-exists; it is never
+// hardcoded here, and .env is gitignored.
+const SESSION = process.env.LEETCODE_SESSION?.trim();
+const COOKIE = SESSION ? `LEETCODE_SESSION=${SESSION}` : undefined;
 
 const listQuery = `
 query problemsetQuestionListV2($filters: QuestionFilterInput, $limit: Int, $skip: Int, $categorySlug: String) {
@@ -71,6 +72,18 @@ function baseHeaders(referer) {
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
+// An axios error carries the full request config — including the Cookie header —
+// and printing one would spill LEETCODE_SESSION into stdout, CI logs, or a crash
+// report. Reduce every failure to a plain Error carrying only status + message,
+// and scrub the token from that message in case the server echoed it back.
+function redact(err) {
+  const status = err.response?.status;
+  const message = String(err.message ?? err);
+  const safe = SESSION ? message.split(SESSION).join('[REDACTED]') : message;
+
+  return new Error(status ? `HTTP ${status}: ${safe}` : safe);
+}
+
 // POST with retry + exponential backoff (handles transient 429/5xx/network errors).
 async function gqlPost(body, referer, attempt = 0) {
   try {
@@ -81,7 +94,7 @@ async function gqlPost(body, referer, attempt = 0) {
     if (res.data.errors) throw new Error(JSON.stringify(res.data.errors));
     return res.data.data;
   } catch (err) {
-    if (attempt >= 5) throw err;
+    if (attempt >= 5) throw redact(err);
     const wait = 1000 * Math.pow(2, attempt); // 1s, 2s, 4s, 8s, 16s
     await sleep(wait);
     return gqlPost(body, referer, attempt + 1);
@@ -180,6 +193,12 @@ async function mapWithConcurrency(items, limit, worker) {
 }
 
 async function main() {
+  console.log(
+    SESSION
+      ? 'Using LEETCODE_SESSION from the environment (companies will be populated).'
+      : 'No LEETCODE_SESSION set — scraping anonymously, companies will be empty. See .env.example.',
+  );
+
   const problems = await fetchProblems();
   console.log(
     `Found ${problems.length} problems. Fetching popularity details...`,
@@ -217,4 +236,9 @@ async function main() {
   console.log(`Exported ${rows.length} problems.`);
 }
 
-main().catch(console.error);
+// Print only the message: a raw error object could still carry request config
+// (and with it the Cookie header) into the log.
+main().catch((err) => {
+  console.error(err.message);
+  process.exit(1);
+});

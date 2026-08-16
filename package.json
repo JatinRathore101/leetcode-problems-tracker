@@ -10,7 +10,7 @@
     "lint": "next lint",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "scrape": "node script/scrapper.js",
+    "scrape": "node --env-file-if-exists=.env script/scrapper.js",
     "parse": "node script/parser.js",
     "db:setup": "node script/transaction.js",
     "backup": "node script/backup.js",
