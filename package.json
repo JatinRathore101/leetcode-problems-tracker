@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "node script/script.js",
+    "dev": "(sleep 2 && open http://localhost:3000) & next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
@@ -12,10 +12,14 @@
     "format:check": "prettier --check .",
     "scrape": "node script/scrapper.js",
     "parse": "node script/parser.js",
-    "db:setup": "node script/transaction.js"
+    "db:setup": "node script/transaction.js",
+    "backup": "node script/backup.js",
+    "repopulate": "node script/repopulate.js"
   },
   "dependencies": {
     "better-sqlite3": "^12.11.1",
+    "csv-parse": "^7.0.2",
+    "csv-stringify": "^6.8.3",
     "next": "^15.5.7",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
