@@ -1,10 +1,10 @@
 import { notFound } from 'next/navigation';
-import { getDb } from '../../../lib/db.js';
+import { query } from '../../../lib/db.js';
 import { DIFFICULTIES, slugToTopic } from '../../../lib/constants.js';
 import DifficultyTabs from './DifficultyTabs.js';
 import ProblemsList from './ProblemsList.js';
 
-// better-sqlite3 is a native/synchronous module -> Node.js runtime only.
+// pg is a Node-only module -> Node.js runtime, not Edge.
 export const runtime = 'nodejs';
 // Problem status is mutated by /update-problem, so render on demand to always
 // reflect live DB state rather than freezing rows at build time. The [topic] and
@@ -14,16 +14,15 @@ export const dynamic = 'force-dynamic';
 
 // Fetch problems for one topic + difficulty, ordered most popular first.
 // Returns { problems } on success or { error } if the DB isn't reachable yet.
-function loadProblems(topic, difficulty) {
+async function loadProblems(topic, difficulty) {
   try {
-    const rows = getDb()
-      .prepare(
-        `SELECT name, link, topic, difficulty, status
-           FROM leetcode_problems
-          WHERE topic = ? AND difficulty = ?
-          ORDER BY popularity DESC, link ASC`,
-      )
-      .all(topic, difficulty);
+    const { rows } = await query(
+      `SELECT name, link, topic, difficulty, status
+         FROM leetcode_problems
+        WHERE topic = $1 AND difficulty = $2
+        ORDER BY popularity DESC, link ASC`,
+      [topic, difficulty],
+    );
     return { problems: rows };
   } catch (err) {
     console.error('Failed to load problems:', err);
@@ -42,7 +41,7 @@ export default async function TopicDifficultyPage({ params }) {
     notFound();
   }
 
-  const { problems, error } = loadProblems(topic, difficulty);
+  const { problems, error } = await loadProblems(topic, difficulty);
 
   // Share of problems on this page that have been solved (status "SUCCESS").
   const total = problems?.length ?? 0;

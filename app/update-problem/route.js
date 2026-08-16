@@ -1,8 +1,8 @@
 import { NextResponse } from 'next/server';
-import { getDb } from '../../lib/db.js';
+import { query } from '../../lib/db.js';
 
-// better-sqlite3 is synchronous/native, so this route must run on the Node.js
-// runtime (not the Edge runtime).
+// Talks to remote Postgres via pg (a Node-only module), so this route must
+// run on the Node.js runtime (not the Edge runtime).
 export const runtime = 'nodejs';
 // The result depends on request body, so never statically cache it.
 export const dynamic = 'force-dynamic';
@@ -95,36 +95,30 @@ export async function POST(request) {
   }
 
   try {
-    const db = getDb();
-
-    // Bind every value; always bump updated_at to now.
+    // Bind every value; always bump updated_at to now. RETURNING * hands back
+    // the freshly updated row in the same round trip.
     const columns = Object.keys(updates);
     const setClause = [
-      ...columns.map((c) => `${c} = @${c}`),
+      ...columns.map((c, i) => `${c} = $${i + 1}`),
       'updated_at = CURRENT_TIMESTAMP',
     ].join(', ');
 
-    const result = db
-      .prepare(
-        `UPDATE leetcode_problems
-            SET ${setClause}
-          WHERE link = @link`,
-      )
-      .run({ ...updates, link: link.trim() });
+    const result = await query(
+      `UPDATE leetcode_problems
+          SET ${setClause}
+        WHERE link = $${columns.length + 1}
+        RETURNING *`,
+      [...columns.map((c) => updates[c]), link.trim()],
+    );
 
-    if (result.changes === 0) {
+    if (result.rowCount === 0) {
       return NextResponse.json(
         { error: 'No problem found for the given link.' },
         { status: 404 },
       );
     }
 
-    // Return the freshly updated row.
-    const row = db
-      .prepare('SELECT * FROM leetcode_problems WHERE link = ?')
-      .get(link.trim());
-
-    return NextResponse.json(row, { status: 200 });
+    return NextResponse.json(result.rows[0], { status: 200 });
   } catch (err) {
     console.error('POST /update-problem failed:', err);
     return NextResponse.json(

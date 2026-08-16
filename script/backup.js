@@ -2,7 +2,7 @@ import fs from 'fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 import { stringify } from 'csv-stringify/sync';
-import { getDb, DB_PATH } from '../lib/db.js';
+import { query, closePool, getDbHost } from '../lib/db.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 export const BACKUP_DIR = join(__dirname, '..', 'backup');
@@ -44,10 +44,15 @@ function timestamp(date = new Date()) {
 
 // `quoted_string` makes the dump reloadable without losing NULL semantics: every
 // TEXT value is quoted, so an empty string round-trips as "" while a SQL NULL
-// stays a bare empty field — the exact distinction Postgres COPY relies on.
-// It matters here because /update-problem writes solution = '' on CLEAR while
-// the column default is NULL.
-const CSV_OPTIONS = { header: true, quoted_string: true };
+// stays a bare empty field. It matters here because /update-problem writes
+// solution = '' on CLEAR while the column default is NULL.
+// `cast.date` matters because pg returns timestamptz columns as JS Dates —
+// serialize them as ISO strings so they round-trip cleanly on repopulate.
+const CSV_OPTIONS = {
+  header: true,
+  quoted_string: true,
+  cast: { date: (value) => value.toISOString() },
+};
 
 // Drop NULL/undefined columns so each JSON object carries only the keys it
 // actually has values for. Empty strings are kept — unlike NULL they are a value
@@ -62,38 +67,45 @@ const hasData = (row) =>
   Object.values(row).some((value) => String(value).trim() !== '');
 
 // Assert the table exists, with a message that points at the fix.
-export function assertTableExists(db) {
-  const exists = db
-    .prepare(`SELECT 1 FROM sqlite_master WHERE type = 'table' AND name = ?`)
-    .get(TABLE);
+export async function assertTableExists() {
+  const { rows } = await query('SELECT to_regclass($1) AS reg', [
+    `public.${TABLE}`,
+  ]);
 
-  if (!exists) {
+  if (!rows[0].reg) {
     throw new Error(
-      `table "${TABLE}" not found in ${DB_PATH} — run \`npm run db:setup\` first`,
+      `table "${TABLE}" not found in Postgres (${getDbHost()}) — run \`npm run db:setup\` first`,
     );
   }
 }
 
 // Column names straight off the table, so callers never hardcode the schema.
-export const tableColumns = (db) =>
-  db.pragma(`table_info(${TABLE})`).map((column) => column.name);
+export async function tableColumns() {
+  const { rows } = await query(
+    `SELECT column_name
+       FROM information_schema.columns
+      WHERE table_schema = 'public' AND table_name = $1
+      ORDER BY ordinal_position`,
+    [TABLE],
+  );
+  return rows.map((row) => row.column_name);
+}
 
 // ---------------------------------------------------------------------------
 // Backup
 // ---------------------------------------------------------------------------
 
 // Dump the table to a timestamped .csv/.json pair and return their paths.
-// Takes an already-open connection and deliberately never closes it — the
-// caller owns the handle, and getDb() hands out a cached singleton that would be
-// left dead for the rest of the process (repopulate.js relies on this).
-export function createBackup(db) {
-  assertTableExists(db);
+// Queries go through the shared pool; the caller decides when to closePool()
+// (repopulate.js keeps it open for its own transaction afterwards).
+export async function createBackup() {
+  await assertTableExists();
 
-  const columns = tableColumns(db);
+  const columns = await tableColumns();
   log('SCHEMA READ', `${columns.length} columns: ${columns.join(', ')}`);
 
   // Stable ordering keeps consecutive backups diff-friendly.
-  const rows = db.prepare(`SELECT * FROM ${TABLE} ORDER BY topic, name`).all();
+  const { rows } = await query(`SELECT * FROM ${TABLE} ORDER BY topic, name`);
   log('ROWS READ', `${rows.length} rows`);
 
   if (rows.length === 0) {
@@ -126,17 +138,16 @@ export function createBackup(db) {
 // ---------------------------------------------------------------------------
 
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
-  const db = getDb();
-  log('DB CONNECTED', DB_PATH);
+  log('DB TARGET', getDbHost());
 
   try {
-    createBackup(db);
+    await createBackup();
     log('DONE', 'backup complete');
   } catch (err) {
     log('FAILED', err.message);
     console.error(err);
     process.exit(1);
   } finally {
-    db.close();
+    await closePool();
   }
 }

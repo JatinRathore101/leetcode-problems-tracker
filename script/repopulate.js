@@ -1,7 +1,7 @@
 import fs from 'fs';
 import { join } from 'node:path';
 import { parse } from 'csv-parse/sync';
-import { getDb, DB_PATH } from '../lib/db.js';
+import { query, getPool, closePool, getDbHost } from '../lib/db.js';
 import {
   BACKUP_DIR,
   TABLE,
@@ -15,24 +15,38 @@ const TIMESTAMP_PATTERN =
   /^\d{4}-\d{2}-\d{2}_(0[1-9]|1[0-2])\.[0-5]\d\.[0-5]\d_(AM|PM)$/;
 
 // Mirrors of the CHECK constraints in script/transaction.js. Validating here
-// turns a raw SQLITE_CONSTRAINT into an error that names the offending row.
+// turns a raw Postgres check_violation into an error that names the offending
+// row and line.
 const DIFFICULTIES = ['EASY', 'MEDIUM', 'HARD'];
 const STATUSES = ['CLEAR', 'ERROR', 'TLE', 'MLE', 'SUCCESS'];
+
+// 500 rows per multi-row INSERT keeps each statement's parameter count
+// (500 x 10 columns = 5000) far under pg's 65535 cap while avoiding a network
+// round trip per row.
+const CHUNK_SIZE = 500;
 
 // Which columns may be omitted, and which may hold NULL, both come off the
 // table rather than a hardcoded list: a column is REQUIRED in the header when it
 // is NOT NULL with no default, and NOT NULL columns can never bind null.
-const schemaRules = (db) => {
-  const info = db.pragma(`table_info(${TABLE})`);
+async function schemaRules() {
+  const { rows } = await query(
+    `SELECT column_name, is_nullable, column_default
+       FROM information_schema.columns
+      WHERE table_schema = 'public' AND table_name = $1
+      ORDER BY ordinal_position`,
+    [TABLE],
+  );
 
   return {
-    columns: info.map((column) => column.name),
-    notNull: info.filter((c) => c.notnull === 1).map((c) => c.name),
-    required: info
-      .filter((c) => c.notnull === 1 && c.dflt_value === null)
-      .map((c) => c.name),
+    columns: rows.map((column) => column.column_name),
+    notNull: rows
+      .filter((c) => c.is_nullable === 'NO')
+      .map((c) => c.column_name),
+    required: rows
+      .filter((c) => c.is_nullable === 'NO' && c.column_default === null)
+      .map((c) => c.column_name),
   };
-};
+}
 
 const USAGE =
   'usage: npm run repopulate <timestamp>   e.g. npm run repopulate 2026-08-16_07.19.32_AM';
@@ -192,7 +206,8 @@ function validate(header, records, rules) {
   return errors;
 }
 
-// popularity is the one INTEGER column; everything else is TEXT and binds as-is.
+// popularity is the one INTEGER column; everything else binds as a string and
+// Postgres casts server-side (timestamp strings parse into timestamptz).
 const toBindable = (record, header) =>
   Object.fromEntries(
     header.map((column) => [
@@ -207,17 +222,17 @@ const toBindable = (record, header) =>
 // Repopulate
 // ---------------------------------------------------------------------------
 
-function main() {
+async function main() {
   // Everything that can fail without touching the database happens first.
   const filePath = resolveBackupFile();
   log('BACKUP FILE', filePath);
 
-  const db = getDb();
-  log('DB CONNECTED', DB_PATH);
+  log('DB TARGET', getDbHost());
 
+  let client;
   try {
-    assertTableExists(db);
-    const rules = schemaRules(db);
+    await assertTableExists();
+    const rules = await schemaRules();
 
     const { records, header } = readBackup(filePath);
     log('FILE PARSED', `${records.length} rows, columns: ${header.join(', ')}`);
@@ -236,42 +251,58 @@ function main() {
 
     // Safety net: the transaction below protects against a failed load, not
     // against a successful load of the wrong file. Snapshot first.
-    const snapshot = createBackup(db);
+    const snapshot = await createBackup();
     log('PRE-RESTORE BACKUP', snapshot.csvPath);
 
-    const insert = db.prepare(`
-      INSERT INTO ${TABLE} (${header.join(', ')})
-      VALUES (${header.map((column) => `@${column}`).join(', ')})
-    `);
-
-    // BEGIN IMMEDIATE takes the write lock up front rather than risking a failed
-    // upgrade partway through against a running dev server.
+    // A plain BEGIN is enough in Postgres — it locks rows as it goes, with no
+    // SQLite-style whole-file lock upgrade to pre-empt.
     log('TRANSACTION STARTED');
-    db.exec('BEGIN IMMEDIATE');
+    client = await getPool().connect();
+    await client.query('BEGIN');
 
     try {
       // No WHERE clause: empties the table but leaves it, its indices, and the
       // updated_at trigger in place.
-      const { changes: deleted } = db.prepare(`DELETE FROM ${TABLE}`).run();
+      const { rowCount: deleted } = await client.query(`DELETE FROM ${TABLE}`);
       log('ROWS DELETED', `${deleted} rows removed (table kept)`);
 
-      for (const record of records) insert.run(toBindable(record, header));
+      const width = header.length;
+      for (let i = 0; i < records.length; i += CHUNK_SIZE) {
+        const chunk = records.slice(i, i + CHUNK_SIZE);
+        const placeholders = chunk
+          .map(
+            (_, row) =>
+              `(${header.map((_, col) => `$${row * width + col + 1}`).join(', ')})`,
+          )
+          .join(', ');
+
+        await client.query(
+          `INSERT INTO ${TABLE} (${header.join(', ')})
+           VALUES ${placeholders}`,
+          chunk.flatMap((record) => {
+            const bindable = toBindable(record, header);
+            return header.map((column) => bindable[column]);
+          }),
+        );
+      }
       log('ROWS INSERTED', `${records.length} rows`);
 
-      const { count } = db
-        .prepare(`SELECT COUNT(*) AS count FROM ${TABLE}`)
-        .get();
+      // ::int matters: pg returns COUNT(*) (int8) as a string otherwise,
+      // which would fail the strict !== comparison below.
+      const {
+        rows: [{ count }],
+      } = await client.query(`SELECT COUNT(*)::int AS count FROM ${TABLE}`);
       if (count !== records.length) {
         throw new Error(
           `post-load count mismatch: table has ${count} rows, file had ${records.length}`,
         );
       }
 
-      db.exec('COMMIT');
+      await client.query('COMMIT');
       log('TRANSACTION COMMITTED', `${count} rows persisted`);
     } catch (err) {
       log('FAILED — ABORTING, ROLLING BACK', err.message);
-      db.exec('ROLLBACK');
+      await client.query('ROLLBACK');
       log('ROLLED BACK', 'table restored to its pre-repopulate state');
       throw err;
     }
@@ -279,12 +310,13 @@ function main() {
     log('FAILED', err.message);
     throw err;
   } finally {
-    db.close();
+    if (client) client.release();
+    await closePool();
   }
 }
 
 try {
-  main();
+  await main();
   log('DONE', 'repopulate complete');
 } catch (err) {
   console.error(err.message);

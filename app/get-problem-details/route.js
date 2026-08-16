@@ -1,8 +1,8 @@
 import { NextResponse } from 'next/server';
-import { getDb } from '../../lib/db.js';
+import { query } from '../../lib/db.js';
 
-// better-sqlite3 is synchronous/native, so this route must run on the Node.js
-// runtime (not the Edge runtime).
+// Talks to remote Postgres via pg (a Node-only module), so this route must
+// run on the Node.js runtime (not the Edge runtime).
 export const runtime = 'nodejs';
 // The result depends on request body, so never statically cache it.
 export const dynamic = 'force-dynamic';
@@ -30,10 +30,11 @@ export async function POST(request) {
   }
 
   try {
-    const db = getDb();
-    const row = db
-      .prepare('SELECT * FROM leetcode_problems WHERE link = ?')
-      .get(link.trim());
+    const { rows } = await query(
+      'SELECT * FROM leetcode_problems WHERE link = $1',
+      [link.trim()],
+    );
+    const row = rows[0];
 
     if (!row) {
       return NextResponse.json(

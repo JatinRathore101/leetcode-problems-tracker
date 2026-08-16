@@ -1,9 +1,9 @@
 import { NextResponse } from 'next/server';
-import { getDb } from '../../lib/db.js';
+import { query } from '../../lib/db.js';
 import { topicToSlug } from '../../lib/constants.js';
 
-// better-sqlite3 is synchronous/native, so this route must run on the Node.js
-// runtime (not the Edge runtime).
+// Talks to remote Postgres via pg (a Node-only module), so this route must
+// run on the Node.js runtime (not the Edge runtime).
 export const runtime = 'nodejs';
 // Status is mutated by /update-problem, so always reflect live DB state.
 export const dynamic = 'force-dynamic';
@@ -15,15 +15,15 @@ export const dynamic = 'force-dynamic';
 // is the share as a string fixed to two decimal places ("0.00" when total is 0).
 export async function GET() {
   try {
-    const rows = getDb()
-      .prepare(
-        `SELECT topic,
-                COUNT(*)                                   AS total,
-                SUM(CASE WHEN status = 'SUCCESS' THEN 1 ELSE 0 END) AS solved
-           FROM leetcode_problems
-          GROUP BY topic`,
-      )
-      .all();
+    // ::int casts matter: pg returns COUNT/SUM (int8) as strings otherwise,
+    // and the percent math below needs real numbers.
+    const { rows } = await query(
+      `SELECT topic,
+              COUNT(*)::int                                   AS total,
+              SUM(CASE WHEN status = 'SUCCESS' THEN 1 ELSE 0 END)::int AS solved
+         FROM leetcode_problems
+        GROUP BY topic`,
+    );
 
     const stats = {};
     for (const { topic, total, solved } of rows) {
@@ -34,6 +34,9 @@ export async function GET() {
     return NextResponse.json(stats, { status: 200 });
   } catch (err) {
     console.error('GET /topic-stats failed:', err);
-    return NextResponse.json({ error: 'Internal server error.' }, { status: 500 });
+    return NextResponse.json(
+      { error: 'Internal server error.' },
+      { status: 500 },
+    );
   }
 }

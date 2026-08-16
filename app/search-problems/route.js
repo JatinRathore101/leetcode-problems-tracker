@@ -1,9 +1,9 @@
 import { NextResponse } from 'next/server';
-import { getDb } from '../../lib/db.js';
+import { query as dbQuery } from '../../lib/db.js';
 import { fuzzyRank } from '../../lib/fuzzy.js';
 
-// better-sqlite3 is synchronous/native, so this route must run on the Node.js
-// runtime (not the Edge runtime).
+// Talks to remote Postgres via pg (a Node-only module), so this route must
+// run on the Node.js runtime (not the Edge runtime).
 export const runtime = 'nodejs';
 // The result depends on the request body, so never statically cache it.
 export const dynamic = 'force-dynamic';
@@ -36,13 +36,12 @@ export async function POST(request) {
   }
 
   try {
-    const db = getDb();
     // The table is small (a few thousand rows), so pull the searchable columns
     // and rank in-process — this lets the match be truly fuzzy (subsequence /
     // typo tolerant) rather than a plain SQL LIKE.
-    const rows = db
-      .prepare(`SELECT name, link, status, popularity FROM leetcode_problems`)
-      .all();
+    const { rows } = await dbQuery(
+      `SELECT name, link, status, popularity FROM leetcode_problems`,
+    );
 
     const ranked = fuzzyRank(rows, query);
     const total = ranked.length;

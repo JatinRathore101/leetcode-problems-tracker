@@ -1,5 +1,5 @@
 import problems from './parsed_leetcode_problems.json' with { type: 'json' };
-import { getDb, DB_PATH } from '../lib/db.js';
+import { getPool, closePool, getDbHost } from '../lib/db.js';
 
 // ---------------------------------------------------------------------------
 // Logging
@@ -16,8 +16,8 @@ const log = (stage, detail = '') =>
 // SQL
 // ---------------------------------------------------------------------------
 
-// SQLite has no native ENUM or now() — ENUMs are enforced with CHECK
-// constraints and timestamp defaults use CURRENT_TIMESTAMP.
+// The pseudo-ENUMs are enforced with CHECK constraints so the columns stay
+// plain TEXT (simpler introspection and binding than native Postgres enums).
 const CREATE_TABLE = `
   CREATE TABLE leetcode_problems (
     link       TEXT        NOT NULL PRIMARY KEY,
@@ -29,9 +29,9 @@ const CREATE_TABLE = `
     status     TEXT        NOT NULL DEFAULT 'CLEAR'
                  CHECK (status IN ('CLEAR', 'ERROR', 'TLE', 'MLE', 'SUCCESS')),
     solution   TEXT        DEFAULT NULL,
-    created_at TIMESTAMP   NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    updated_at TIMESTAMP   NOT NULL DEFAULT CURRENT_TIMESTAMP
-  );
+    created_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP
+  )
 `;
 
 const CREATE_INDICES = `
@@ -44,68 +44,90 @@ const CREATE_INDICES = `
 `;
 
 // Keep updated_at honest on every row mutation — the column default only fires
-// on INSERT, so a trigger maintains it for UPDATEs.
+// on INSERT. A BEFORE UPDATE trigger rewrites NEW in place (an AFTER trigger
+// issuing its own UPDATE, as the old SQLite version did, would recurse).
 const CREATE_TRIGGER = `
-  CREATE TRIGGER trg_leetcode_problems_updated_at
-  AFTER UPDATE ON leetcode_problems
-  FOR EACH ROW
+  CREATE OR REPLACE FUNCTION set_leetcode_problems_updated_at()
+  RETURNS trigger AS $$
   BEGIN
-    UPDATE leetcode_problems
-       SET updated_at = CURRENT_TIMESTAMP
-     WHERE link = OLD.link;
+    NEW.updated_at = CURRENT_TIMESTAMP;
+    RETURN NEW;
   END;
+  $$ LANGUAGE plpgsql;
+
+  CREATE TRIGGER trg_leetcode_problems_updated_at
+  BEFORE UPDATE ON leetcode_problems
+  FOR EACH ROW
+  EXECUTE FUNCTION set_leetcode_problems_updated_at();
 `;
+
+const INSERT_COLUMNS = ['link', 'name', 'topic', 'difficulty', 'popularity'];
+// 500 rows x 5 params = 2500 parameters per statement, far under pg's 65535
+// cap, and ~12 network round trips instead of one per row.
+const CHUNK_SIZE = 500;
 
 // ---------------------------------------------------------------------------
 // Transaction
 // ---------------------------------------------------------------------------
 
-function main() {
-  const db = getDb();
-  log('DB CONNECTED', DB_PATH);
+async function main() {
+  log('DB TARGET', getDbHost());
+  const client = await getPool().connect();
 
-  // Everything below runs inside a single transaction. If any statement
-  // throws, we ROLLBACK and the database is left exactly as it was before.
+  // Everything below runs inside a single transaction — Postgres DDL is
+  // transactional, so if any statement throws we ROLLBACK and the database is
+  // left exactly as it was before.
   log('TRANSACTION STARTED');
-  db.exec('BEGIN');
+  await client.query('BEGIN');
 
   try {
     // QUERY 1a — (re)create the table for a clean, repeatable rebuild.
-    db.exec('DROP TABLE IF EXISTS leetcode_problems');
-    db.exec(CREATE_TABLE);
+    await client.query('DROP TABLE IF EXISTS leetcode_problems');
+    await client.query(CREATE_TABLE);
     log('TABLE CREATED', 'leetcode_problems');
 
     // QUERY 1b — indices over topic, difficulty, and (difficulty, topic).
-    db.exec(CREATE_INDICES);
+    await client.query(CREATE_INDICES);
     log('INDICES CREATED', 'topic, difficulty, (difficulty, topic)');
 
-    db.exec(CREATE_TRIGGER);
+    await client.query(CREATE_TRIGGER);
     log('TRIGGER CREATED', 'updated_at auto-touch');
 
     // QUERY 1c — bulk insert every parsed problem.
-    const insert = db.prepare(`
-      INSERT INTO leetcode_problems (link, name, topic, difficulty, popularity)
-      VALUES (@link, @name, @topic, @difficulty, @popularity)
-    `);
-
     log('INSERTING ROWS', `${problems.length} problems`);
 
-    let inserted = 0;
     let coercedTopics = 0;
-    for (const p of problems) {
+    const rows = problems.map((p) => {
       // topic is REQUIRED (NOT NULL); the parser leaves some unmapped as null,
       // so coalesce those to a sentinel rather than fail the whole insert.
-      const topic = p.topic ?? 'MISCELLANEOUS';
       if (p.topic == null) coercedTopics += 1;
 
-      insert.run({
+      return {
         link: p.link,
         name: p.name,
-        topic,
+        topic: p.topic ?? 'MISCELLANEOUS',
         difficulty: p.difficulty,
         popularity: p.popularity ?? 0,
-      });
-      inserted += 1;
+      };
+    });
+
+    let inserted = 0;
+    for (let i = 0; i < rows.length; i += CHUNK_SIZE) {
+      const chunk = rows.slice(i, i + CHUNK_SIZE);
+      const width = INSERT_COLUMNS.length;
+      const placeholders = chunk
+        .map(
+          (_, row) =>
+            `(${INSERT_COLUMNS.map((_, col) => `$${row * width + col + 1}`).join(', ')})`,
+        )
+        .join(', ');
+
+      await client.query(
+        `INSERT INTO leetcode_problems (${INSERT_COLUMNS.join(', ')})
+         VALUES ${placeholders}`,
+        chunk.flatMap((row) => INSERT_COLUMNS.map((column) => row[column])),
+      );
+      inserted += chunk.length;
     }
 
     if (coercedTopics > 0) {
@@ -116,20 +138,21 @@ function main() {
     }
     log('DATA INSERTED', `${inserted} rows`);
 
-    db.exec('COMMIT');
+    await client.query('COMMIT');
     log('TRANSACTION COMMITTED', `${inserted} rows persisted`);
   } catch (err) {
     log('FAILED — ABORTING, ROLLING BACK', err.message);
-    db.exec('ROLLBACK');
+    await client.query('ROLLBACK');
     log('ROLLED BACK', 'database restored to pre-transaction state');
     throw err;
   } finally {
-    db.close();
+    client.release();
+    await closePool();
   }
 }
 
 try {
-  main();
+  await main();
   log('DONE', 'database setup complete');
 } catch (err) {
   console.error(err);
