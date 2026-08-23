@@ -90,6 +90,46 @@ body {
   color: var(--accent);
 }
 
+/* Percentage + concept-covered dot, kept together on the right edge. */
+.sidebar__item-meta {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Concept-covered indicator: grey outlined circle = not covered; blue filled
+   circle with a white tick = covered. It is a real button nested inside the
+   topic <Link>; the click handler stops navigation. */
+.sidebar__dot {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  padding: 0;
+  border-radius: 50%;
+  border: 1.5px solid var(--muted);
+  background: transparent;
+  color: #fff;
+  cursor: pointer;
+}
+
+.sidebar__dot:hover {
+  border-color: var(--text);
+}
+
+.sidebar__dot--covered {
+  background: #3b82f6;
+  border-color: #3b82f6;
+}
+
+.sidebar__dot--covered:hover {
+  background: #2f6fdd;
+  border-color: #2f6fdd;
+}
+
 .sidebar__item:hover {
   background: #1c2130;
 }
@@ -728,6 +768,21 @@ td.col-center {
   margin: 0 0 12px;
 }
 
+/* Compact confirmation dialog (sidebar concept-covered toggle): narrower, and
+   the statement itself is the heading — no divider under it. */
+.modal--confirm {
+  width: min(90vw, 400px);
+}
+
+.modal--confirm .modal__head {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.modal--confirm .modal__body {
+  padding-top: 40px;
+}
+
 /* --- View details --- */
 .details {
   display: grid;
@@ -881,5 +936,30 @@ td.col-center {
 }
 
 .btn--primary:not(:disabled):hover {
+  filter: brightness(1.08);
+}
+
+/* Affirmative confirm (marking a topic as concept covered) — matches the
+   covered dot's blue. */
+.btn--blue {
+  background: #2f6fdd;
+  border-color: #2f6fdd;
+  color: #fff;
+  font-weight: 600;
+}
+
+.btn--blue:not(:disabled):hover {
+  filter: brightness(1.08);
+}
+
+/* Destructive confirm (e.g. un-marking a topic as concept covered). */
+.btn--danger {
+  background: var(--hard);
+  border-color: var(--hard);
+  color: #fff;
+  font-weight: 600;
+}
+
+.btn--danger:not(:disabled):hover {
   filter: brightness(1.08);
 }

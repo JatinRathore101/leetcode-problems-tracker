@@ -48,10 +48,16 @@ function timestamp(date = new Date()) {
 // solution = '' on CLEAR while the column default is NULL.
 // `cast.date` matters because pg returns timestamptz columns as JS Dates —
 // serialize them as ISO strings so they round-trip cleanly on repopulate.
+// `cast.boolean` matters because csv-stringify's default is `value ? '1' : ''`,
+// so a false concept_covered would dump as a bare empty field, which repopulate
+// reads back as SQL NULL — a NOT NULL violation.
 const CSV_OPTIONS = {
   header: true,
   quoted_string: true,
-  cast: { date: (value) => value.toISOString() },
+  cast: {
+    date: (value) => value.toISOString(),
+    boolean: (value) => (value ? 'true' : 'false'),
+  },
 };
 
 // Drop NULL/undefined columns so each JSON object carries only the keys it

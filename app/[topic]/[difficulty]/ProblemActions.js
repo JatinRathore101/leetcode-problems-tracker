@@ -1,8 +1,9 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Chip from './Chip';
+import Modal from '../../Modal';
 import { DIFFICULTIES } from '@/lib/constants';
 
 // Status options offered in the update form. The form is prefilled with the
@@ -64,44 +65,6 @@ function UpdateIcon() {
       <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" />
       <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z" />
     </svg>
-  );
-}
-
-// Overlay + centered panel. Closes on the backdrop click, the cross button, or
-// the Escape key. Clicks inside the panel are stopped so they don't bubble to
-// the backdrop.
-function Modal({ title, onClose, children }) {
-  useEffect(() => {
-    const onKey = (e) => {
-      if (e.key === 'Escape') onClose();
-    };
-    document.addEventListener('keydown', onKey);
-    return () => document.removeEventListener('keydown', onKey);
-  }, [onClose]);
-
-  return (
-    <div className="modal-backdrop" onClick={onClose}>
-      <div
-        className="modal"
-        role="dialog"
-        aria-modal="true"
-        aria-label={title}
-        onClick={(e) => e.stopPropagation()}
-      >
-        <div className="modal__head">
-          <h2 className="modal__title">{title}</h2>
-          <button
-            type="button"
-            className="modal__close"
-            aria-label="Close"
-            onClick={onClose}
-          >
-            &times;
-          </button>
-        </div>
-        <div className="modal__body">{children}</div>
-      </div>
-    </div>
   );
 }
 

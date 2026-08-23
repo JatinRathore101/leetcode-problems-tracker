@@ -19,9 +19,11 @@ const TIMESTAMP_PATTERN =
 // row and line.
 const DIFFICULTIES = ['EASY', 'MEDIUM', 'HARD'];
 const STATUSES = ['CLEAR', 'ERROR', 'TLE', 'MLE', 'SUCCESS'];
+// concept_covered is a BOOLEAN column; backup.js dumps it as 'true'/'false'.
+const BOOLEANS = ['true', 'false'];
 
 // 500 rows per multi-row INSERT keeps each statement's parameter count
-// (500 x 10 columns = 5000) far under pg's 65535 cap while avoiding a network
+// (500 x 11 columns = 5500) far under pg's 65535 cap while avoiding a network
 // round trip per row.
 const CHUNK_SIZE = 500;
 
@@ -201,21 +203,33 @@ function validate(header, records, rules) {
         `line ${line}: popularity "${record.popularity}" is not a number`,
       );
     }
+    if (
+      header.includes('concept_covered') &&
+      record.concept_covered != null &&
+      !BOOLEANS.includes(record.concept_covered)
+    ) {
+      errors.push(
+        `line ${line}: concept_covered "${record.concept_covered}" must be one of ${BOOLEANS.join(', ')}`,
+      );
+    }
   });
 
   return errors;
 }
 
-// popularity is the one INTEGER column; everything else binds as a string and
-// Postgres casts server-side (timestamp strings parse into timestamptz).
+// popularity (INTEGER) and concept_covered (BOOLEAN) get explicit JS types;
+// everything else binds as a string and Postgres casts server-side (timestamp
+// strings parse into timestamptz).
 const toBindable = (record, header) =>
   Object.fromEntries(
-    header.map((column) => [
-      column,
-      column === 'popularity' && record[column] != null
-        ? Number(record[column])
-        : record[column],
-    ]),
+    header.map((column) => {
+      let value = record[column];
+      if (value != null) {
+        if (column === 'popularity') value = Number(value);
+        if (column === 'concept_covered') value = value === 'true';
+      }
+      return [column, value];
+    }),
   );
 
 // ---------------------------------------------------------------------------

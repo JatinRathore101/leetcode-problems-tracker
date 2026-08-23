@@ -29,6 +29,7 @@ const CREATE_TABLE = `
     status     TEXT        NOT NULL DEFAULT 'CLEAR'
                  CHECK (status IN ('CLEAR', 'ERROR', 'TLE', 'MLE', 'SUCCESS')),
     solution   TEXT        DEFAULT NULL,
+    concept_covered BOOLEAN NOT NULL DEFAULT FALSE,
     created_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP
   )
@@ -66,6 +67,11 @@ const INSERT_COLUMNS = ['link', 'name', 'topic', 'difficulty', 'popularity'];
 // cap, and ~12 network round trips instead of one per row.
 const CHUNK_SIZE = 500;
 
+// --schema-only rebuilds the empty table (DDL, indices, trigger) and skips the
+// data insert — used when the table will be reloaded from a backup instead of
+// from parsed_leetcode_problems.json (npm run transaction -- --schema-only).
+const SCHEMA_ONLY = process.argv.includes('--schema-only');
+
 // ---------------------------------------------------------------------------
 // Transaction
 // ---------------------------------------------------------------------------
@@ -92,6 +98,13 @@ async function main() {
 
     await client.query(CREATE_TRIGGER);
     log('TRIGGER CREATED', 'updated_at auto-touch');
+
+    if (SCHEMA_ONLY) {
+      log('SCHEMA ONLY', 'skipping data insert — table left empty');
+      await client.query('COMMIT');
+      log('TRANSACTION COMMITTED', 'empty table persisted');
+      return;
+    }
 
     // QUERY 1c — bulk insert every parsed problem.
     log('INSERTING ROWS', `${problems.length} problems`);
