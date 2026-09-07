@@ -1,6 +1,5 @@
 import fs from 'fs';
 import { join } from 'node:path';
-import { parse } from 'csv-parse/sync';
 import { query, getPool, closePool, getDbHost } from '../lib/db.js';
 import {
   BACKUP_DIR,
@@ -8,6 +7,7 @@ import {
   assertTableExists,
   createBackup,
   log,
+  readBackup,
 } from './backup.js';
 
 // Matches the filenames backup.js produces: YYYY-MM-DD_hh.mm.ss_A.
@@ -18,7 +18,7 @@ const TIMESTAMP_PATTERN =
 // turns a raw Postgres check_violation into an error that names the offending
 // row and line.
 const DIFFICULTIES = ['EASY', 'MEDIUM', 'HARD'];
-const STATUSES = ['CLEAR', 'ERROR', 'TLE', 'MLE', 'SUCCESS'];
+const STATUSES = ['CLEAR', 'ERROR', 'TLE', 'MLE', 'SUCCESS', 'LOCKED'];
 // concept_covered is a BOOLEAN column; backup.js dumps it as 'true'/'false'.
 const BOOLEANS = ['true', 'false'];
 
@@ -100,34 +100,6 @@ function resolveBackupFile() {
 // ---------------------------------------------------------------------------
 // Parse + validate
 // ---------------------------------------------------------------------------
-
-// Read the CSV into plain row objects. A bare empty field is a SQL NULL; a
-// quoted "" is an empty string — the distinction backup.js's `quoted_string`
-// option exists to preserve.
-function readBackup(filePath) {
-  const text = fs.readFileSync(filePath, 'utf8');
-
-  let records;
-  try {
-    records = parse(text, {
-      columns: true,
-      bom: true,
-      cast: (value, context) =>
-        !context.quoting && value === '' ? null : value,
-    });
-  } catch (err) {
-    // csv-parse messages name the line but not the file.
-    throw new Error(`${filePath} is not valid CSV — ${err.message}`);
-  }
-
-  // With `columns: true` the header is only observable through a record, so a
-  // header-only file needs a second, plain parse of the first line.
-  const header = records.length
-    ? Object.keys(records[0])
-    : (parse(text.split('\n')[0] || '')[0] ?? []);
-
-  return { records, header };
-}
 
 // Collect every problem before reporting, so one run surfaces all of them.
 function validate(header, records, rules) {

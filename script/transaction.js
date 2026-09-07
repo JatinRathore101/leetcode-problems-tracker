@@ -27,7 +27,8 @@ const CREATE_TABLE = `
     popularity INTEGER     DEFAULT 0,
     comment    TEXT        DEFAULT NULL,
     status     TEXT        NOT NULL DEFAULT 'CLEAR'
-                 CHECK (status IN ('CLEAR', 'ERROR', 'TLE', 'MLE', 'SUCCESS')),
+                 CHECK (status IN ('CLEAR', 'ERROR', 'TLE', 'MLE', 'SUCCESS',
+                                   'LOCKED')),
     solution   TEXT        DEFAULT NULL,
     concept_covered BOOLEAN NOT NULL DEFAULT FALSE,
     created_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,

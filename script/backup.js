@@ -2,6 +2,7 @@ import fs from 'fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 import { stringify } from 'csv-stringify/sync';
+import { parse } from 'csv-parse/sync';
 import { query, closePool, getDbHost } from '../lib/db.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -26,7 +27,7 @@ const pad = (value) => String(value).padStart(2, '0');
 
 // Local-time stamp in the form YYYY-MM-DD_hh.mm.ss_A (12-hour clock). Time uses
 // dots rather than colons so the filename is checkout-safe on Windows.
-function timestamp(date = new Date()) {
+export function timestamp(date = new Date()) {
   const meridiem = date.getHours() < 12 ? 'AM' : 'PM';
   const hours12 = date.getHours() % 12 || 12;
 
@@ -51,7 +52,7 @@ function timestamp(date = new Date()) {
 // `cast.boolean` matters because csv-stringify's default is `value ? '1' : ''`,
 // so a false concept_covered would dump as a bare empty field, which repopulate
 // reads back as SQL NULL — a NOT NULL violation.
-const CSV_OPTIONS = {
+export const CSV_OPTIONS = {
   header: true,
   quoted_string: true,
   cast: {
@@ -59,6 +60,36 @@ const CSV_OPTIONS = {
     boolean: (value) => (value ? 'true' : 'false'),
   },
 };
+
+// The inverse of CSV_OPTIONS: read a dump back into plain row objects. A bare
+// empty field is a SQL NULL; a quoted "" is an empty string — the distinction
+// `quoted_string` above exists to preserve. Lives here rather than in
+// repopulate.js so merge.js can reuse it: repopulate.js runs `await main()` at
+// the top level, so importing *it* would fire a full restore.
+export function readBackup(filePath) {
+  const text = fs.readFileSync(filePath, 'utf8');
+
+  let records;
+  try {
+    records = parse(text, {
+      columns: true,
+      bom: true,
+      cast: (value, context) =>
+        !context.quoting && value === '' ? null : value,
+    });
+  } catch (err) {
+    // csv-parse messages name the line but not the file.
+    throw new Error(`${filePath} is not valid CSV — ${err.message}`);
+  }
+
+  // With `columns: true` the header is only observable through a record, so a
+  // header-only file needs a second, plain parse of the first line.
+  const header = records.length
+    ? Object.keys(records[0])
+    : (parse(text.split('\n')[0] || '')[0] ?? []);
+
+  return { records, header };
+}
 
 // Drop NULL/undefined columns so each JSON object carries only the keys it
 // actually has values for. Empty strings are kept — unlike NULL they are a value

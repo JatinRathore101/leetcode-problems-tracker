@@ -12,15 +12,21 @@ export const runtime = 'nodejs';
 // them and anything outside that set falls through to notFound().
 export const dynamic = 'force-dynamic';
 
-// Fetch problems for one topic + difficulty, ordered most popular first.
-// Returns { problems } on success or { error } if the DB isn't reachable yet.
+// Fetch problems for one topic + difficulty: everything attemptable first, most
+// popular first within that, and the LOCKED (LeetCode Premium) rows pushed to
+// the bottom. Returns { problems } on success or { error } if the DB isn't
+// reachable yet.
 async function loadProblems(topic, difficulty) {
   try {
     const { rows } = await query(
+      // `status = 'LOCKED'` sorts as a boolean, and Postgres orders false
+      // before true, so the non-LOCKED rows come first. Every other status
+      // shares one rank — only LOCKED is singled out. status is NOT NULL, so
+      // there is no NULL case to place.
       `SELECT name, link, topic, difficulty, status
          FROM leetcode_problems
         WHERE topic = $1 AND difficulty = $2
-        ORDER BY popularity DESC, link ASC`,
+        ORDER BY (status = 'LOCKED'), popularity DESC, link ASC`,
       [topic, difficulty],
     );
     return { problems: rows };
@@ -44,7 +50,10 @@ export default async function TopicDifficultyPage({ params }) {
   const { problems, error } = await loadProblems(topic, difficulty);
 
   // Share of problems on this page that have been solved (status "SUCCESS").
-  const total = problems?.length ?? 0;
+  // LOCKED rows (LeetCode Premium) are excluded from the denominator — they
+  // can't be attempted, so counting them would cap the percent below 100
+  // forever. Matches the `total` that /topic-stats reports.
+  const total = problems?.filter((p) => p.status !== 'LOCKED').length ?? 0;
   const solved = problems?.filter((p) => p.status === 'SUCCESS').length ?? 0;
   const successPercent = total ? ((solved / total) * 100).toFixed(2) : '0.00';
 

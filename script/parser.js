@@ -16,12 +16,16 @@ const getTopic = (topics) => {
 
 const main = () => {
   const rows = data?.map(
-    ({ name, link, topics, difficulty, totalSubmissions }) => ({
+    ({ name, link, topics, difficulty, totalSubmissions, isPaidOnly }) => ({
       name,
       link,
       topic: getTopic(topics),
       difficulty: difficulty?.toUpperCase()?.trim(),
       popularity: totalSubmissions,
+      // Passed straight through for script/merge.js, which turns it into the
+      // LOCKED status. Coalescing to false here would hide a stale scrape, so
+      // keep whatever the scraper wrote (merge.js rejects a file missing it).
+      isPaidOnly,
     }),
   );
 

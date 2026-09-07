@@ -8,6 +8,12 @@ import { DIFFICULTIES } from '@/lib/constants';
 
 // Status options offered in the update form. The form is prefilled with the
 // row's current status, so every option is a real status value.
+//
+// LOCKED is deliberately absent: it is a scraped fact (LeetCode Premium), not a
+// state the user picks, and /update-problem rejects it too. Because it has no
+// <option>, the form must never open on a LOCKED row — the select would fall
+// back to the first option and a save would silently rewrite the status. Hence
+// the disabled Update button below.
 const STATUS_OPTIONS = ['CLEAR', 'ERROR', 'TLE', 'MLE', 'SUCCESS'];
 
 // Small inline SVG icons so the component stays dependency-free.
@@ -184,6 +190,9 @@ export default function ProblemActions({ problem }) {
   // A non-CLEAR status requires a solution.
   const solutionRequired = status !== 'CLEAR';
 
+  // Premium problems can't be attempted, so there is nothing to update.
+  const isLocked = problem.status === 'LOCKED';
+
   function validate() {
     // Comment may be empty (that clears it). Only the solution rule applies.
     if (solutionRequired && solution.trim() === '') {
@@ -253,9 +262,12 @@ export default function ProblemActions({ problem }) {
       <button
         type="button"
         className="icon-btn"
-        title="Update problem"
+        title={
+          isLocked ? 'Locked — LeetCode Premium required' : 'Update problem'
+        }
         aria-label="Update problem"
         onClick={openUpdate}
+        disabled={isLocked}
       >
         <UpdateIcon />
       </button>
@@ -278,7 +290,11 @@ export default function ProblemActions({ problem }) {
                   <Chip
                     text={details.status}
                     state={details.status}
-                    style={{ fontSize: '11px', width: '70px', padding: '4px' }}
+                    style={{
+                      fontSize: '11px',
+                      minWidth: '70px',
+                      padding: '4px',
+                    }}
                   />
                 }
               />
@@ -294,7 +310,11 @@ export default function ProblemActions({ problem }) {
                           ? 'red'
                           : 'green'
                     }
-                    style={{ fontSize: '11px', width: '70px', padding: '4px' }}
+                    style={{
+                      fontSize: '11px',
+                      minWidth: '70px',
+                      padding: '4px',
+                    }}
                   />
                 }
               />

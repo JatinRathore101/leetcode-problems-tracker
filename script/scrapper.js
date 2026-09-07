@@ -24,6 +24,7 @@ query problemsetQuestionListV2($filters: QuestionFilterInput, $limit: Int, $skip
       title
       titleSlug
       difficulty
+      paidOnly
       topicTags {
         name
       }
@@ -228,6 +229,12 @@ async function main() {
     link: `https://leetcode.com/problems/${p.titleSlug}/`,
     topics: p.topicTags.map((t) => t.name),
     difficulty: p.difficulty,
+    // Premium ("Subscribe to unlock") flag. It rides along on the list query,
+    // so it costs no extra request and — unlike everything in `details` — it
+    // survives a failed per-problem detail fetch. Note the naming trap: the
+    // list node calls it `paidOnly`, question(titleSlug:) calls it
+    // `isPaidOnly`.
+    isPaidOnly: p.paidOnly ?? false,
     ...details[i],
   }));
 

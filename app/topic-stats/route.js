@@ -18,9 +18,13 @@ export async function GET() {
   try {
     // ::int casts matter: pg returns COUNT/SUM (int8) as strings otherwise,
     // and the percent math below needs real numbers.
+    // LOCKED rows are LeetCode Premium problems, which can never be attempted,
+    // so counting them in `total` would permanently cap every topic's percent
+    // below 100. `total` is therefore the attemptable count, and the sidebar's
+    // "X of Y solved" reads against that.
     const { rows } = await query(
       `SELECT topic,
-              COUNT(*)::int                                   AS total,
+              COUNT(*) FILTER (WHERE status <> 'LOCKED')::int  AS total,
               SUM(CASE WHEN status = 'SUCCESS' THEN 1 ELSE 0 END)::int AS solved,
               BOOL_OR(concept_covered)                        AS covered
          FROM leetcode_problems

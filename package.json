@@ -13,6 +13,7 @@
     "scrape": "node --env-file-if-exists=.env script/scrapper.js",
     "parse": "node script/parser.js",
     "transaction": "node --env-file-if-exists=.env script/transaction.js",
+    "merge": "node --env-file-if-exists=.env script/merge.js",
     "backup": "node --env-file-if-exists=.env script/backup.js",
     "dump": "node --env-file-if-exists=.env script/repopulate.js"
   },

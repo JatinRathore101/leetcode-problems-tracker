@@ -565,9 +565,14 @@ tbody a:hover {
 }
 
 .chip {
-  display: inline-block;
-  width: 100px;
-  padding: 6px 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: start;
+  gap: 5px;
+  /* min-width, not width: the label + icon must never be clipped. Every status
+     fits inside 100px at 12px, so table chips still all render identically. */
+  min-width: 100px;
+  padding: 6px 0px 6px 12px;
   border-radius: 999px;
   font-size: 12px;
   user-select: none;
@@ -575,6 +580,23 @@ tbody a:hover {
   text-align: center;
 }
 
+/* Sized in em so the icon tracks any font-size override (the View modal drops
+   the chip to 11px). flex-shrink: 0 keeps it square if space runs short. */
+.chip__icon {
+  display: inline-flex;
+  flex-shrink: 0;
+  width: 1.15em;
+  height: 1.15em;
+}
+
+.chip__icon svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* LOCKED — LeetCode Premium. Not a state the user can pick; it comes from the
+   scraper, so grey reads as "not available" rather than pass/fail. */
 .chip--grey {
   color: #b8c0cc;
   border: 1px solid rgba(184, 192, 204, 0.5);
@@ -603,6 +625,14 @@ tbody a:hover {
   color: #00b8a3;
   border: 1px solid rgba(0, 184, 163, 0.5);
   background: rgba(0, 184, 163, 0.05);
+}
+
+/* CLEAR — not attempted yet. Grey now belongs to LOCKED, so an untouched
+   problem reads as an open invitation rather than as disabled. */
+.chip--skyblue {
+  color: #64d2ff;
+  border: 1px solid rgba(100, 210, 255, 0.5);
+  background: rgba(100, 210, 255, 0.05);
 }
 
 /* ---------------------------------------------------------------------------
@@ -661,6 +691,17 @@ td.col-center {
   transition:
     background-size 0s,
     transform 0.04s;
+}
+
+.icon-btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+/* :hover still fires on a disabled button, so mute the ripple explicitly. */
+.icon-btn:disabled:hover {
+  color: var(--muted);
+  background-image: none;
 }
 
 /* ---------------------------------------------------------------------------
