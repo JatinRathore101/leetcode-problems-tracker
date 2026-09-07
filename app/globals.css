@@ -636,72 +636,89 @@ tbody a:hover {
 }
 
 /* ---------------------------------------------------------------------------
-   Row actions: copy / view / update icon buttons
+   Problem cell (name + copy) and the clickable status chip
 --------------------------------------------------------------------------- */
-/* Center-align the Actions and Status columns (header + cells). */
+/* Center-align the Status column (header + cells). */
 th.col-center,
 td.col-center {
   text-align: center;
 }
 
-.actions {
-  display: flex;
-  gap: 12px;
+/* Problem name and its copy button sit on one baseline. */
+.problem-cell {
+  display: inline-flex;
   align-items: center;
-  justify-content: center;
+  gap: 8px;
 }
 
-.icon-btn {
+/* A LOCKED problem can't be opened without Premium, so its name reads muted.
+   The explicit :hover is needed because the base rule ties with `tbody a:hover`
+   on specificity and would otherwise win on source order. */
+tbody a.problem-link--locked {
+  color: var(--muted);
+}
+
+tbody a.problem-link--locked:hover {
+  color: var(--accent);
+}
+
+/* Ghost icon button: no border or background, so it never grows the row. */
+.copy-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 30px;
-  height: 30px;
+  flex-shrink: 0;
+  width: 22px;
+  height: 22px;
   padding: 0;
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  background-color: var(--panel);
-  /* Ripple: a radial-gradient dot blown up huge, revealed on press. */
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: 15000%;
+  border: 0;
+  background: none;
+  border-radius: 6px;
   color: var(--muted);
   cursor: pointer;
   transition:
     color 0.12s,
-    border-color 0.12s,
-    background-color 0.12s,
-    background-size 0.45s,
     transform 0.12s;
 }
 
-.icon-btn:hover {
-  color: var(--accent);
-  background-image: radial-gradient(
-    circle,
-    rgba(159, 168, 255, 0.1) 10%,
-    transparent 10.01%
-  );
+/* Blue on hover: the same blue as the sidebar's concept-covered dot. */
+.copy-btn:hover {
+  color: #3b82f6;
 }
 
-.icon-btn:active {
-  /* Snap the ripple to its origin and press the button in. */
-  background-size: 100%;
+.copy-btn:active {
   transform: scale(0.88);
+}
+
+.copy-btn:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* The status chip doubles as the "update problem" trigger. Colours still come
+   from .chip--<color>, so only the button affordances live here. */
+.chip--button {
+  /* Buttons don't inherit the font family; .chip already fixes the size. */
+  font-family: inherit;
+  cursor: pointer;
   transition:
-    background-size 0s,
-    transform 0.04s;
+    filter 0.12s,
+    box-shadow 0.12s,
+    transform 0.12s;
 }
 
-.icon-btn:disabled {
-  opacity: 0.35;
-  cursor: not-allowed;
+.chip--button:hover {
+  filter: brightness(1.15);
+  box-shadow: 0 0 0 3px rgba(159, 168, 255, 0.1);
 }
 
-/* :hover still fires on a disabled button, so mute the ripple explicitly. */
-.icon-btn:disabled:hover {
-  color: var(--muted);
-  background-image: none;
+.chip--button:active {
+  transform: scale(0.96);
+}
+
+.chip--button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
 }
 
 /* ---------------------------------------------------------------------------
@@ -735,7 +752,7 @@ td.col-center {
 }
 
 /* ---------------------------------------------------------------------------
-   Modal (view details + update form)
+   Modal (update form + confirm dialog)
 --------------------------------------------------------------------------- */
 .modal-backdrop {
   position: fixed;
@@ -824,52 +841,6 @@ td.col-center {
   padding-top: 40px;
 }
 
-/* --- View details --- */
-.details {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 18px 24px;
-}
-
-/* Long values (link, comment, solution) span the full width. */
-.detail-row--full {
-  grid-column: 1 / -1;
-}
-
-.detail-row__label {
-  color: var(--muted);
-  font-size: 12px;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  margin-bottom: 4px;
-}
-
-.detail-row__value {
-  font-size: 14px;
-  word-break: break-word;
-}
-
-.detail-row__value a {
-  color: var(--accent);
-  text-decoration: none;
-}
-
-.detail-row__value a:hover {
-  text-decoration: underline;
-}
-
-.detail-row__pre {
-  margin: 0;
-  padding: 10px 12px;
-  background: var(--bg);
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  font-size: 13px;
-  white-space: pre-wrap;
-  word-break: break-word;
-  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-}
-
 /* --- Update form --- */
 .update-form {
   display: grid;
@@ -930,9 +901,8 @@ td.col-center {
   margin-top: 4px;
 }
 
-/* Collapse both modal grids to a single column on narrow screens. */
+/* Collapse the modal grid to a single column on narrow screens. */
 @media (max-width: 520px) {
-  .details,
   .update-form {
     grid-template-columns: minmax(0, 1fr);
   }

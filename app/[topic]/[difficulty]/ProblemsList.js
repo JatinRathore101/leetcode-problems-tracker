@@ -1,9 +1,8 @@
-import Chip from './Chip.js';
-import ProblemActions from './ProblemActions.js';
+import ProblemRow from './ProblemRow.js';
 
-// Server component: renders the problems table for a single topic + difficulty.
-// Rows come pre-fetched from the caller so this stays a pure presentational
-// component.
+// Renders the problems table for a single topic + difficulty. Rows come
+// pre-fetched from the caller so this stays a pure presentational component;
+// the only interactivity lives inside ProblemRow (a client component).
 export default function ProblemsList({ problems, error }) {
   if (error) {
     return (
@@ -27,26 +26,12 @@ export default function ProblemsList({ problems, error }) {
           <tr>
             <th></th>
             <th>Problem</th>
-            <th className="col-center">Actions</th>
             <th className="col-center">Status</th>
           </tr>
         </thead>
         <tbody>
           {problems.map((p, i) => (
-            <tr key={p.link}>
-              <td className="num">{i + 1}</td>
-              <td>
-                <a href={p.link} target="_blank" rel="noreferrer">
-                  {p.name}
-                </a>
-              </td>
-              <td className="col-center">
-                <ProblemActions problem={p} />
-              </td>
-              <td className="col-center">
-                <Chip text={p.status} state={p.status} />
-              </td>
-            </tr>
+            <ProblemRow key={p.link} problem={p} index={i} />
           ))}
         </tbody>
       </table>

@@ -8,7 +8,7 @@ const STATUS_COLOR_MAPPING = {
 };
 
 // Small inline SVGs so the component stays dependency-free, matching the icon
-// style already used in ProblemActions.js (24x24 box, strokeWidth 2, round
+// style already used in ProblemRow.js (24x24 box, strokeWidth 2, round
 // caps). Every stroke and fill is `currentColor`, so each icon automatically
 // takes the chip's own colour from the .chip--<color> rule.
 //
@@ -23,7 +23,6 @@ function ClearIcon() {
   return (
     <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
       <circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="2" />
-      <circle cx="12" cy="12" r="2.75" fill="currentColor" />
     </svg>
   );
 }
@@ -101,8 +100,8 @@ function LockedIcon() {
       <rect
         x="4.75"
         y="10.5"
-        width="14.5"
-        height="9.75"
+        width="15"
+        height="11"
         rx="2"
         stroke="currentColor"
         strokeWidth="2"
@@ -126,24 +125,45 @@ const STATUS_ICON_MAPPING = {
   LOCKED: LockedIcon,
 };
 
-export default function Chip({ text, state, style = {} }) {
+export default function Chip({ text, state, style = {}, onClick, title }) {
   const color = STATUS_COLOR_MAPPING?.[state] || state || 'grey';
 
   // Keyed off `state`, so only real status values get an icon. Difficulty chips
   // pass a raw colour name ('orange', 'red', 'green') and stay text-only.
   const Icon = STATUS_ICON_MAPPING?.[state];
 
-  return (
-    <span
-      className={`chip chip--${color}`}
-      {...(Object.keys(style || {}).length > 0 && { style })}
-    >
+  const body = (
+    <>
       {Icon && (
         <span className="chip__icon">
           <Icon />
         </span>
       )}
       {text}
+    </>
+  );
+
+  const styleProp = Object.keys(style || {}).length > 0 ? { style } : {};
+
+  // With an onClick the chip becomes a real button (keyboard + focus ring for
+  // free); without one it stays the plain label it has always been.
+  if (onClick) {
+    return (
+      <button
+        type="button"
+        className={`chip chip--${color} chip--button`}
+        title={title}
+        onClick={onClick}
+        {...styleProp}
+      >
+        {body}
+      </button>
+    );
+  }
+
+  return (
+    <span className={`chip chip--${color}`} title={title} {...styleProp}>
+      {body}
     </span>
   );
 }
