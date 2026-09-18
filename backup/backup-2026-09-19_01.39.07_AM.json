@@ -16,10 +16,11 @@
     "topic": "ARRAY",
     "difficulty": "EASY",
     "popularity": 779686,
-    "status": "CLEAR",
+    "status": "SUCCESS",
+    "solution": "class Solution {\npublic:\n    vector<int> addToArrayForm(vector<int>& num, int k) {\n        int n = num.size();\n        reverse(num.begin(), num.end());\n        for (auto& digit : num) {\n            if (k == 0) {\n                break;\n            }\n            k += digit;\n            digit = k % 10;\n            k /= 10;\n        }\n        while (k > 0) {\n            num.push_back(k % 10);\n            k /= 10;\n        }\n        reverse(num.begin(), num.end());\n        return num;\n    }\n};",
     "concept_covered": true,
     "created_at": "2026-07-21T18:50:04.000Z",
-    "updated_at": "2026-08-23T20:28:14.321Z"
+    "updated_at": "2026-09-15T15:34:50.191Z"
   },
   {
     "link": "https://leetcode.com/problems/adding-two-negabinary-numbers/",
@@ -115,10 +116,11 @@
     "topic": "ARRAY",
     "difficulty": "MEDIUM",
     "popularity": 307726,
-    "status": "CLEAR",
+    "status": "SUCCESS",
+    "solution": "class Solution {\npublic:\n    double averageWaitingTime(vector<vector<int>>& customers) {\n        int n = customers.size();\n        int last_delivery_time = 0;\n        double average = 0;\n        for(int i = 0; i < n; i++){\n            int arrival = customers[i][0];\n            int time = customers[i][1];\n            int waiting = max(last_delivery_time, arrival) + time -  arrival;\n            average = (average*i + waiting)/(i+1);\n            last_delivery_time = arrival + waiting;\n        }\n        return average;\n    }\n};",
     "concept_covered": true,
     "created_at": "2026-07-21T18:50:04.000Z",
-    "updated_at": "2026-08-23T20:28:14.321Z"
+    "updated_at": "2026-09-12T21:12:40.005Z"
   },
   {
     "link": "https://leetcode.com/problems/beautiful-arrangement-ii/",
@@ -273,10 +275,11 @@
     "topic": "ARRAY",
     "difficulty": "EASY",
     "popularity": 740825,
-    "status": "CLEAR",
+    "status": "SUCCESS",
+    "solution": "class Solution {\npublic:\n    bool arrayStringsAreEqual(vector<string>& word1, vector<string>& word2) {\n        string word = \"\";\n        for (auto w : word1) {\n            word += w;\n        }\n        int i = 0;\n        for (auto w : word2) {\n            for (auto ch : w) {\n                if (ch != word[i]) {\n                    return false;\n                }\n                i++;\n            }\n        }\n        int n = word.size();\n        if (n > i) {\n            return false;\n        }\n        return true;\n    }\n};",
     "concept_covered": true,
     "created_at": "2026-07-21T18:50:04.000Z",
-    "updated_at": "2026-08-23T20:28:14.321Z"
+    "updated_at": "2026-09-15T15:45:17.506Z"
   },
   {
     "link": "https://leetcode.com/problems/collecting-chocolates/",
@@ -561,10 +564,10 @@
     "difficulty": "MEDIUM",
     "popularity": 3745527,
     "status": "TLE",
-    "solution": "class Solution {\npublic:\n    int countPrimes(int n) {\n        if(n < 3){\n            return 0;\n        }\n        vector<int> primes(1,2);\n        \n        int i = 3;\n        while(i < n){\n            bool prime = true;\n            for(auto f: primes){\n                if(i%f == 0){\n                    prime = false;\n                    break;\n                }\n            }\n            if(prime){\n                primes.push_back(i);\n            }\n            i++;\n        }\n\n        return primes.size();\n    }\n};",
+    "solution": "class Solution {\npublic:\n    int countPrimes(int n) {\n        if (n < 3) {\n            return 0;\n        }\n        vector<bool> arr(n, true);\n        arr[0] = false;\n        arr[1] = false;\n        for (int i = 2; i*i < n; i++) {\n            if (arr[i]) {\n                int j = 2;\n                while (j * i < n) {\n                    arr[j * i] = false;\n                    j++;\n                }\n            }\n        }\n        int ans = 0;\n        for(auto isPrime:arr){\n            ans += isPrime ? 1 : 0;\n        }\n        return ans;\n    }\n};",
     "concept_covered": true,
     "created_at": "2026-07-21T18:50:04.000Z",
-    "updated_at": "2026-09-01T21:44:14.286Z"
+    "updated_at": "2026-09-16T20:20:38.534Z"
   },
   {
     "link": "https://leetcode.com/problems/count-subarrays-of-length-three-with-a-condition/",
@@ -649,10 +652,11 @@
     "topic": "ARRAY",
     "difficulty": "MEDIUM",
     "popularity": 306958,
-    "status": "CLEAR",
+    "status": "TLE",
+    "solution": "class Solution {\npublic:\n    bool is_vowel(char ch) {\n        if (ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u') {\n            return true;\n        }\n        return false;\n    }\n    vector<int> vowelStrings(vector<string>& words,\n                             vector<vector<int>>& queries) {\n        for (auto& word : words) {\n            int m = word.size();\n            if (m > 0 && is_vowel(word[0]) && is_vowel(word[m - 1])) {\n                word = \"vow\";\n            } else {\n                word = \"con\";\n            }\n        }\n        vector<int> ans;\n        for (auto range : queries) {\n            int i = range[0], j = range[1], freq = 0;\n            while (i <= j) {\n                freq += words[i++] == \"vow\" ? 1 : 0;\n            }\n            ans.push_back(freq);\n        }\n        return ans;\n    }\n};",
     "concept_covered": true,
     "created_at": "2026-07-21T18:50:04.000Z",
-    "updated_at": "2026-08-23T20:28:14.321Z"
+    "updated_at": "2026-09-12T21:33:56.291Z"
   },
   {
     "link": "https://leetcode.com/problems/counting-words-with-a-given-prefix/",
@@ -991,10 +995,11 @@
     "topic": "ARRAY",
     "difficulty": "MEDIUM",
     "popularity": 307411,
-    "status": "CLEAR",
+    "status": "SUCCESS",
+    "solution": "class Solution {\npublic:\n    vector<int> missingRolls(vector<int>& rolls, int mean, int n) {\n        int m = rolls.size();\n        int sum = mean * (m + n);\n        for (auto val : rolls) {\n            sum -= val;\n        }\n        if (sum < n || sum > 6*n) {\n            return {};\n        }\n        int whole = sum/n;\n        int left = sum - whole*n;\n        vector<int> ans(n, whole);\n        while(left > 0){\n            ans[--left]++;\n        }\n        return ans;\n    }\n};",
     "concept_covered": true,
     "created_at": "2026-07-21T18:50:04.000Z",
-    "updated_at": "2026-08-23T20:28:14.321Z"
+    "updated_at": "2026-09-15T18:36:19.145Z"
   },
   {
     "link": "https://leetcode.com/problems/find-n-unique-integers-sum-up-to-zero/",
@@ -1269,10 +1274,11 @@
     "topic": "ARRAY",
     "difficulty": "MEDIUM",
     "popularity": 301858,
-    "status": "CLEAR",
+    "status": "SUCCESS",
+    "solution": "class Solution {\npublic:\n    int triangularSum(vector<int>& nums) {\n        int n = nums.size();\n        while(n > 1){\n            for(int i = 0; i < n-1; i++){\n                nums[i]+=nums[i+1];\n                nums[i]%=10;\n            }\n            n--;\n        }   \n        return nums[0];\n    }\n};",
     "concept_covered": true,
     "created_at": "2026-07-21T18:50:04.000Z",
-    "updated_at": "2026-08-23T20:28:14.321Z"
+    "updated_at": "2026-09-15T18:41:24.106Z"
   },
   {
     "link": "https://leetcode.com/problems/find-words-containing-character/",
@@ -1548,11 +1554,11 @@
     "topic": "ARRAY",
     "difficulty": "MEDIUM",
     "popularity": 589847,
-    "status": "ERROR",
-    "solution": "class Solution {\npublic:\n    int maxDistToClosest(vector<int>& seats) {\n        int n = seats.size();\n        seats.push_back(-1);\n        for (int i = 0; i < n; i++) {\n            if (seats[i] == 1) {\n                seats.push_back(i);\n            }\n        }\n        seats.push_back(n);\n        int i = n, ans = 0;\n        n = seats.size();\n        for(auto it:seats){\n            cout<<it<<\" \";\n        }\n        while (i < n - 1) {\n            ans = max(ans, (seats[i + 1] - seats[i] - 2) / 2);\n            i++;\n        }\n        return ans + 1;\n    }\n};",
+    "status": "SUCCESS",
+    "solution": "class Solution {\npublic:\n    int maxDistToClosest(vector<int>& seats) {\n\n        vector<int> filled;\n        int n = seats.size();\n\n        for (int i = 0; i < n; i++) {\n            if (seats[i] == 1) {\n                filled.push_back(i);\n            }\n        }\n        int m = filled.size();\n\n        int ans = max(filled[0], n - 1 - filled[m - 1]);\n\n        if (m > 1) {\n            for (int j = 1; j < m; j++) {\n                ans = max(ans, (filled[j] - filled[j - 1]) / 2);\n            }\n        }\n        return ans;\n    }\n};",
     "concept_covered": true,
     "created_at": "2026-07-21T18:50:04.000Z",
-    "updated_at": "2026-08-23T20:28:14.321Z"
+    "updated_at": "2026-09-11T21:41:51.806Z"
   },
   {
     "link": "https://leetcode.com/problems/maximize-pair-strength-using-gcd/",
@@ -1981,10 +1987,11 @@
     "topic": "ARRAY",
     "difficulty": "MEDIUM",
     "popularity": 387452,
-    "status": "CLEAR",
+    "status": "SUCCESS",
+    "solution": "class Solution {\npublic:\n    vector<int> minOperations(string boxes) {\n        int n = boxes.size();\n\n        if (n < 2) {\n            return {0};\n        }\n\n        int N = 0, P = 0, NS = 0, PS = 0;\n        \n        for (int i = 1; i < n; i++) {\n            if (boxes[i] == '1') {\n                P++;\n                PS += i;\n            }\n        }\n\n        vector<int> ans(n, 0);\n\n        if(boxes[0] == '0' && PS == 0){\n            return ans;\n        }\n\n        for(int i = 0; i < n; i++){\n\n            ans[i] = abs(NS) + abs(PS);\n\n            if(boxes[i] == '1'){\n                N++;\n            }\n            NS+=N;\n            PS-=P;\n            if(i < n-1 && boxes[i+1] == '1'){\n                P--;\n            }\n        }\n\n        return ans;\n    }\n};",
     "concept_covered": true,
     "created_at": "2026-07-21T18:50:04.000Z",
-    "updated_at": "2026-08-23T20:28:14.321Z"
+    "updated_at": "2026-09-17T20:58:18.140Z"
   },
   {
     "link": "https://leetcode.com/problems/minimum-number-of-operations-to-reinitialize-a-permutation/",
@@ -2069,10 +2076,11 @@
     "topic": "ARRAY",
     "difficulty": "MEDIUM",
     "popularity": 338603,
-    "status": "CLEAR",
+    "status": "SUCCESS",
+    "solution": "class Solution {\npublic:\n    int bestClosingTime(string customers) {\n        int n = customers.size();\n        vector<int> No(n,0), Yes(n,0);\n        int N = 0, Y = 0;\n\n        for(int i = 0; i < n; i++){\n            No[i] = N;\n            if(customers[i] == 'N'){\n                N++;\n            }\n            if(customers[n-i-1] == 'Y'){\n                Y++;\n            }\n            Yes[n-i-1] = Y;\n        }\n\n        No.push_back(N);\n        Yes.push_back(0);\n        n++;\n\n        int ans = 0, mini = No[0] + Yes[0];\n        for(int i = 1; i < n; i++){\n            if(mini > No[i] + Yes[i]){\n                ans = i;\n                mini = No[i] + Yes[i];\n            }\n        }\n        return ans;\n    }\n};",
     "concept_covered": true,
     "created_at": "2026-07-21T18:50:04.000Z",
-    "updated_at": "2026-08-23T20:28:14.321Z"
+    "updated_at": "2026-09-12T16:47:05.342Z"
   },
   {
     "link": "https://leetcode.com/problems/minimum-prefix-removal-to-make-array-strictly-increasing/",
@@ -2526,10 +2534,11 @@
     "topic": "ARRAY",
     "difficulty": "MEDIUM",
     "popularity": 425353,
-    "status": "CLEAR",
+    "status": "SUCCESS",
+    "solution": "class ProductOfNumbers {\n    vector<int> prod;\n    int n;\n\npublic:\n    ProductOfNumbers() { n = 0; }\n\n    void add(int num) {\n        n++;\n        prod.push_back(num);\n    }\n\n    int getProduct(int k) {\n        k = n - k;\n        int ans = 1;\n        while (k < n) {\n            ans *= prod[k++];\n        }\n        return ans;\n    }\n};\n\n/**\n * Your ProductOfNumbers object will be instantiated and called as such:\n * ProductOfNumbers* obj = new ProductOfNumbers();\n * obj->add(num);\n * int param_2 = obj->getProduct(k);\n */",
     "concept_covered": true,
     "created_at": "2026-07-21T18:50:04.000Z",
-    "updated_at": "2026-08-23T20:28:14.321Z"
+    "updated_at": "2026-09-11T21:53:57.301Z"
   },
   {
     "link": "https://leetcode.com/problems/queries-on-number-of-points-inside-a-circle/",
@@ -2738,10 +2747,11 @@
     "topic": "ARRAY",
     "difficulty": "MEDIUM",
     "popularity": 307637,
-    "status": "CLEAR",
+    "status": "SUCCESS",
+    "solution": "class Solution {\npublic:\n    string shiftingLetters(string s, vector<int>& shifts) {\n        int n = shifts.size();\n        if(n > 1){\n            int j = n-2;\n            while(j >= 0){\n                shifts[j]+=shifts[j+1];\n                shifts[j]%=26;\n                j--;\n            }\n        }\n        int i = 0;\n        for(auto &ch:s){\n            shifts[i]+=ch-'a';\n            shifts[i]%=26;\n            ch = 'a'+shifts[i];\n            i++;\n        }\n        return s;\n    }\n};",
     "concept_covered": true,
     "created_at": "2026-07-21T18:50:04.000Z",
-    "updated_at": "2026-08-23T20:28:14.321Z"
+    "updated_at": "2026-09-12T21:20:50.024Z"
   },
   {
     "link": "https://leetcode.com/problems/shifting-letters-ii/",
@@ -2794,10 +2804,11 @@
     "topic": "ARRAY",
     "difficulty": "MEDIUM",
     "popularity": 674250,
-    "status": "CLEAR",
+    "status": "SUCCESS",
+    "solution": "class Solution {\n    vector<int> nums;\n    vector<int> nums_const;\npublic:\n    Solution(vector<int>& nums) {\n        this->nums_const= nums;\n        this->nums= nums;\n    }\n    \n    vector<int> reset() {\n        nums = nums_const;\n        return nums;\n    }\n    \n    vector<int> shuffle() {\n        int n = nums.size();\n        while(n > 0){\n            int i = rand()%n;\n            int temp = nums[i];\n            nums[i] = nums[n-1];\n            nums[n-1] = temp;\n            n--;\n        }\n        return nums;\n    }\n};\n\n/**\n * Your Solution object will be instantiated and called as such:\n * Solution* obj = new Solution(nums);\n * vector<int> param_1 = obj->reset();\n * vector<int> param_2 = obj->shuffle();\n */",
     "concept_covered": true,
     "created_at": "2026-07-21T18:50:04.000Z",
-    "updated_at": "2026-08-23T20:28:14.321Z"
+    "updated_at": "2026-09-11T16:12:38.094Z"
   },
   {
     "link": "https://leetcode.com/problems/shuffle-string/",
@@ -4241,11 +4252,11 @@
     "topic": "BINARY SEARCH",
     "difficulty": "EASY",
     "popularity": 4727170,
-    "status": "ERROR",
-    "solution": "// The API isBadVersion is defined for you.\n// bool isBadVersion(int version);\n\nclass Solution {\npublic:\n    int firstBadVersion(int n) {\n        int i = 1, j = n;\n        int bv = 0;\n        while (i <= j) {\n            int k = i + (j - i) / 2;\n            bool isBad = isBadVersion(k);\n            if (isBad) {\n                bv = k;\n                j = k - 1;\n            } else {\n                if (bv > 0) {\n                    break;\n                } else {\n                    i = k + 1;\n                }\n            }\n        }\n        return bv;\n    }\n};",
+    "status": "SUCCESS",
+    "solution": "// The API isBadVersion is defined for you.\n// bool isBadVersion(int version);\n\nclass Solution {\npublic:\n    int firstBadVersion(int n) {\n        int i = 0, j = n, k;\n        while(i <= j){\n            k = i + (j-i)/2;\n            bool flag = isBadVersion(k);\n            if(flag){\n                if(k == 0 || !isBadVersion(k-1)){\n                    return k;\n                }\n                j = k-1;\n            }else{\n                i = k+1;\n            }\n\n        }\n        return k;\n    }\n};",
     "concept_covered": true,
     "created_at": "2026-07-21T18:50:04.000Z",
-    "updated_at": "2026-08-23T20:28:34.922Z"
+    "updated_at": "2026-09-12T12:54:43.889Z"
   },
   {
     "link": "https://leetcode.com/problems/fixed-point/",
@@ -4836,10 +4847,12 @@
     "topic": "BINARY SEARCH",
     "difficulty": "MEDIUM",
     "popularity": 2261047,
-    "status": "CLEAR",
+    "comment": "ZOR (a^a = 0)",
+    "status": "SUCCESS",
+    "solution": "class Solution {\npublic:\n    int singleNonDuplicate(vector<int>& nums) {\n        int x = 0;\n        for (auto num : nums) {\n            x ^= num;\n        }\n        return x;\n    }\n};",
     "concept_covered": true,
     "created_at": "2026-07-21T18:50:04.000Z",
-    "updated_at": "2026-08-23T20:28:34.922Z"
+    "updated_at": "2026-09-13T16:54:24.280Z"
   },
   {
     "link": "https://leetcode.com/problems/smallest-good-base/",
@@ -27457,10 +27470,11 @@
     "topic": "HASH TABLE",
     "difficulty": "MEDIUM",
     "popularity": 689789,
-    "status": "CLEAR",
+    "status": "SUCCESS",
+    "solution": "class Solution {\npublic:\n    int fourSumCount(vector<int>& nums1, vector<int>& nums2, vector<int>& nums3,\n                     vector<int>& nums4) {\n\n        int n = nums1.size();\n        unordered_map<int, int> mp1, mp2;\n\n        for (int i = 0; i < n; i++) {\n            for (int j = 0; j < n; j++) {\n                mp1[nums1[i] + nums2[j]]++;\n                mp2[-nums3[i] - nums4[j]]++;\n            }\n        }\n\n        int ans = 0;\n        for (auto p : mp1) {\n            int key = p.first;\n            if (mp2.contains(key)) {\n                ans += mp2[key] * (p.second);\n            }\n        }\n        return ans;\n    }\n};",
     "concept_covered": true,
     "created_at": "2026-07-21T18:50:04.000Z",
-    "updated_at": "2026-08-23T20:28:18.563Z"
+    "updated_at": "2026-09-13T18:00:51.533Z"
   },
   {
     "link": "https://leetcode.com/problems/alert-using-same-key-card-three-or-more-times-in-a-one-hour-period/",
@@ -28869,10 +28883,11 @@
     "topic": "HASH TABLE",
     "difficulty": "MEDIUM",
     "popularity": 368643,
-    "status": "CLEAR",
+    "status": "SUCCESS",
+    "solution": "class Solution {\n    int count;\n    unordered_map<string, string> encoded;\n    unordered_map<string, string> decoded;\n\npublic:\n    Solution() { count = 0; }\n\n    // Encodes a URL to a shortened URL.\n    string encode(string longUrl) {\n        string shortUrl = \"https://my-domain/\" + to_string(count++);\n        encoded[longUrl] = shortUrl;\n        decoded[shortUrl] = longUrl;\n        return shortUrl;\n    }\n\n    // Decodes a shortened URL to its original URL.\n    string decode(string shortUrl) { return decoded[shortUrl]; }\n};\n\n// Your Solution object will be instantiated and called as such:\n// Solution solution;\n// solution.decode(solution.encode(url));",
     "concept_covered": true,
     "created_at": "2026-07-21T18:50:04.000Z",
-    "updated_at": "2026-08-23T20:28:18.563Z"
+    "updated_at": "2026-09-10T20:42:46.774Z"
   },
   {
     "link": "https://leetcode.com/problems/equal-row-and-column-pairs/",
@@ -28957,10 +28972,11 @@
     "topic": "HASH TABLE",
     "difficulty": "MEDIUM",
     "popularity": 1419785,
-    "status": "CLEAR",
+    "status": "SUCCESS",
+    "solution": "class Solution {\npublic:\n    vector<int> findDuplicates(vector<int>& nums) {\n        vector<int> ans;\n        int n = nums.size();\n\n        for (int i = 0; i < n; i++) {\n            int j = abs(nums[i]) - 1;\n            if (nums[j] < 0) {\n                ans.push_back(j + 1);\n            } else {\n                nums[j] *= -1;\n            }\n        }\n\n        return ans;\n    }\n};",
     "concept_covered": true,
     "created_at": "2026-07-21T18:50:04.000Z",
-    "updated_at": "2026-08-23T20:28:18.563Z"
+    "updated_at": "2026-09-12T10:56:33.775Z"
   },
   {
     "link": "https://leetcode.com/problems/find-all-lonely-numbers-in-the-array/",
@@ -31343,10 +31359,11 @@
     "topic": "HASH TABLE",
     "difficulty": "MEDIUM",
     "popularity": 622716,
-    "status": "CLEAR",
+    "status": "TLE",
+    "solution": "class Solution {\npublic:\n    int numPairsDivisibleBy60(vector<int>& time) {\n        int n = time.size();\n        if (n < 2) {\n            return 0;\n        }\n        int ans = 0;\n        for (int i = 0; i < n - 1; i++) {\n            for (int j = i + 1; j < n; j++) {\n                ans += (time[i] + time[j]) % 60 == 0 ? 1 : 0;\n            }\n        }\n        return ans;\n    }\n};",
     "concept_covered": true,
     "created_at": "2026-07-21T18:50:04.000Z",
-    "updated_at": "2026-08-23T20:28:18.563Z"
+    "updated_at": "2026-09-13T18:04:22.189Z"
   },
   {
     "link": "https://leetcode.com/problems/palindrome-rearrangement-queries/",
@@ -32028,10 +32045,11 @@
     "topic": "HASH TABLE",
     "difficulty": "MEDIUM",
     "popularity": 952929,
-    "status": "CLEAR",
+    "status": "TLE",
+    "solution": "class Solution {\npublic:\n    int subarraysDivByK(vector<int>& nums, int k) {\n        int n = nums.size();\n        if (n == 1) {\n            return nums[0] % k == 0 ? 1 : 0;\n        }\n        int sum = 0;\n        for (auto& num : nums) {\n            sum += num;\n            num = sum;\n        }\n        int ans = 0;\n        for (int i = 0; i < n; i++) {\n            for (int j = i; j < n; j++) {\n                sum = i == 0 ? nums[j] : nums[j] - nums[i - 1];\n                ans += sum % k == 0 ? 1 : 0;\n            }\n        }\n        return ans;\n    }\n};",
     "concept_covered": true,
     "created_at": "2026-07-21T18:50:04.000Z",
-    "updated_at": "2026-08-23T20:28:18.563Z"
+    "updated_at": "2026-09-13T15:12:08.596Z"
   },
   {
     "link": "https://leetcode.com/problems/subarrays-with-k-different-integers/",
@@ -32272,10 +32290,10 @@
     "popularity": 1572128,
     "comment": "The accepted solution can be optimized further, and the key insight is recognizing that the timestamps are already inserted in sorted order, making a map unnecessary.",
     "status": "TLE",
-    "solution": "class TimeMap {\n    unordered_map<string, map<int, string>> mp;\n\npublic:\n    TimeMap() {}\n\n    void set(string key, string value, int timestamp) {\n        if (!mp.contains(key)) {\n            map<int, string> me;\n            mp[key] = me;\n        }\n        mp[key][timestamp] = value;\n    }\n\n    string get(string key, int timestamp) {\n        if (mp.contains(key)) {\n\n            auto it = mp[key].end();\n            it--; // RCA: map.end() points past the last element, so it cannot\n                  // be dereferenced (it->first); decrement it first to access\n                  // the last element.\n\n            while (it->first > timestamp) {\n                if (it == mp[key].begin()) {\n                    return \"\";\n                }\n                it--;\n            }\n\n            return it->second;\n        }\n        return \"\";\n    }\n};\n\n/**\n * Your TimeMap object will be instantiated and called as such:\n * TimeMap* obj = new TimeMap();\n * obj->set(key,value,timestamp);\n * string param_2 = obj->get(key,timestamp);\n */",
+    "solution": "class TimeMap {\n    map<int, unordered_map<string, string>> mp;\n\npublic:\n    TimeMap() {}\n\n    void set(string key, string value, int timestamp) {\n        if (mp.contains(timestamp)) {\n            mp[timestamp][key] = value;\n        } else {\n            unordered_map<string, string> temp;\n            mp[timestamp] = temp;\n            mp[timestamp][key] = value;\n        }\n    }\n\n    // TLE ////////////////////////////////////\n    // string get(string key, int timestamp) {\n    //     string value = \"\";\n    //     for (auto p : mp) {\n    //         if (p.first > timestamp) {\n    //             break;\n    //         }\n    //         if (p.second.contains(key)) {\n    //             value = p.second[key];\n    //         }\n    //     }\n    //     return value;\n    // }\n\n    string get(string key, int timestamp) { // STILL TLE\n        string value = \"\";\n        while (timestamp > 0) {\n            if (mp.contains(timestamp)) {\n                if (mp[timestamp].contains(key)) {\n                    return mp[timestamp][key];\n                }\n            }\n            timestamp--;\n        }\n        return value;\n    }\n};\n\n/**\n * Your TimeMap object will be instantiated and called as such:\n * TimeMap* obj = new TimeMap();\n * obj->set(key,value,timestamp);\n * string param_2 = obj->get(key,timestamp);\n */",
     "concept_covered": true,
     "created_at": "2026-07-21T18:50:04.000Z",
-    "updated_at": "2026-08-29T08:26:23.482Z"
+    "updated_at": "2026-09-09T18:16:34.993Z"
   },
   {
     "link": "https://leetcode.com/problems/toggle-light-bulbs/",
@@ -32462,10 +32480,11 @@
     "topic": "HASH TABLE",
     "difficulty": "MEDIUM",
     "popularity": 4055495,
-    "status": "CLEAR",
+    "status": "SUCCESS",
+    "solution": "class Solution {\n\npublic:\n    bool hasDuplicates(vector<vector<char>>& board, int x1, int x2, int y1,\n                       int y2) {\n        unordered_map<char, int> freq;\n        for (int y = y1; y <= y2; y++) {\n            for (int x = x1; x <= x2; x++) {\n                char ch = board[y][x];\n                freq[ch]++;\n                if (isdigit(ch) && freq[ch] > 1) {\n                    return true;\n                }\n            }\n        }\n        return false;\n    }\n    bool isValidSudoku(vector<vector<char>>& board) {\n        for (int i = 0; i < 9; i++) {\n            bool rowCheck = hasDuplicates(board, 0, 8, i, i);\n            bool colCheck = hasDuplicates(board, i, i, 0, 8);\n            bool blockCkeck = hasDuplicates(board, 3 * (i % 3), 3 * (i % 3) + 2,\n                                            3 * (i / 3), 3 * (i / 3) + 2);\n            if (rowCheck || colCheck || blockCkeck) {\n                return false;\n            }\n        }\n        return true;\n    }\n};\n",
     "concept_covered": true,
     "created_at": "2026-07-21T18:50:04.000Z",
-    "updated_at": "2026-08-23T20:28:18.563Z"
+    "updated_at": "2026-09-12T09:38:44.026Z"
   },
   {
     "link": "https://leetcode.com/problems/verifying-an-alien-dictionary/",
@@ -32838,10 +32857,11 @@
     "topic": "HEAP (PRIORITY QUEUE)",
     "difficulty": "MEDIUM",
     "popularity": 1163654,
-    "status": "CLEAR",
+    "status": "TLE",
+    "solution": "class Solution {\npublic:\n    vector<vector<int>> kSmallestPairs(vector<int>& nums1, vector<int>& nums2,\n                                       int k) {\n        int n = nums1.size();\n        n = min(k, n);\n        int m = nums2.size();\n        m = min(k, m);\n\n        priority_queue<pair<int, pair<int, int>>> pq;\n        \n        for (int i = 0; i < n; i++) {\n            for (int j = 0; j < m; j++) {\n                pq.push({nums1[i] + nums2[j], {nums1[i], nums2[j]}});\n                if(pq.size() > k){\n                    pq.pop();\n                }\n            }\n        }\n\n        vector<vector<int>> ans;\n        \n        while (pq.size() > 0) {\n            ans.push_back({pq.top().second.first, pq.top().second.second});\n            pq.pop();\n        }\n\n        return ans;\n    }\n};",
     "concept_covered": false,
     "created_at": "2026-07-21T18:50:04.000Z",
-    "updated_at": "2026-07-21T18:50:04.000Z"
+    "updated_at": "2026-09-08T18:00:03.135Z"
   },
   {
     "link": "https://leetcode.com/problems/find-score-of-an-array-after-marking-all-elements/",
@@ -32970,10 +32990,11 @@
     "topic": "HEAP (PRIORITY QUEUE)",
     "difficulty": "MEDIUM",
     "popularity": 1299040,
-    "status": "CLEAR",
+    "status": "TLE",
+    "solution": "class Solution {\npublic:\n    int kthSmallest(vector<vector<int>>& matrix, int k) {\n        priority_queue<int> pq;\n        for(auto arr:matrix){\n            for(auto num:arr){\n                pq.push(num);\n            }\n        } \n        while(pq.size() > k){\n            pq.pop();\n        }\n        return pq.top();\n    }\n};",
     "concept_covered": false,
     "created_at": "2026-07-21T18:50:04.000Z",
-    "updated_at": "2026-07-21T18:50:04.000Z"
+    "updated_at": "2026-09-07T21:55:47.412Z"
   },
   {
     "link": "https://leetcode.com/problems/largest-number-after-digit-swaps-by-parity/",
@@ -32992,10 +33013,11 @@
     "topic": "HEAP (PRIORITY QUEUE)",
     "difficulty": "EASY",
     "popularity": 1511480,
-    "status": "CLEAR",
+    "status": "SUCCESS",
+    "solution": "class Solution {\npublic:\n    int lastStoneWeight(vector<int>& stones) {\n        priority_queue<int> pq;\n        for (auto num : stones) {\n            pq.push(num);\n        }\n        while (pq.size() > 1) {\n            int w1 = pq.top();\n            pq.pop();\n            int w2 = pq.top();\n            pq.pop();\n            if (w1 > w2) {\n                pq.push(w1 - w2);\n            }\n        }\n        if (pq.empty()) {\n            return 0;\n        }\n        return pq.top();\n    }\n};",
     "concept_covered": false,
     "created_at": "2026-07-21T18:50:04.000Z",
-    "updated_at": "2026-07-21T18:50:04.000Z"
+    "updated_at": "2026-09-07T21:25:50.537Z"
   },
   {
     "link": "https://leetcode.com/problems/longest-continuous-subarray-with-absolute-diff-less-than-or-equal-to-limit/",
@@ -33003,10 +33025,11 @@
     "topic": "HEAP (PRIORITY QUEUE)",
     "difficulty": "MEDIUM",
     "popularity": 572451,
-    "status": "CLEAR",
+    "status": "ERROR",
+    "solution": "class Solution {\npublic:\n    int longestSubarray(vector<int>& nums, int limit) {\n        priority_queue<int, vector<int>, greater<int>> min_heap;\n        priority_queue<int> max_heap;\n        int ans = 1;\n        for (auto it : nums) {\n            min_heap.push(it);\n            max_heap.push(it);\n            if (max_heap.top() - min_heap.top() <= limit) {\n                int m = max_heap.size();\n                ans = max(ans, m);\n            } else {\n                min_heap = priority_queue<int, vector<int>, greater<int>>();\n                max_heap = priority_queue<int>();\n                min_heap.push(it);\n                max_heap.push(it);\n            }\n        }\n        if (max_heap.top() - min_heap.top() <= limit) {\n            int m = max_heap.size();\n            ans = max(ans, m);\n        }\n        return ans;\n    }\n};",
     "concept_covered": false,
     "created_at": "2026-07-21T18:50:04.000Z",
-    "updated_at": "2026-07-21T18:50:04.000Z"
+    "updated_at": "2026-09-07T23:47:58.089Z"
   },
   {
     "link": "https://leetcode.com/problems/mark-elements-on-array-by-performing-queries/",
@@ -33025,10 +33048,11 @@
     "topic": "HEAP (PRIORITY QUEUE)",
     "difficulty": "MEDIUM",
     "popularity": 386196,
-    "status": "CLEAR",
+    "status": "SUCCESS",
+    "solution": "class Solution {\npublic:\n    int digit_sum(int num) {\n        int sum = 0;\n        while (num > 0) {\n            sum += num % 10;\n            num /= 10;\n        }\n        return sum;\n    }\n    int maximumSum(vector<int>& nums) {\n        int ans = -1;\n        unordered_map<int, int> mp;\n        for (auto num : nums) {\n            int sum = digit_sum(num);\n            if (mp.contains(sum)) {\n                ans = max(ans, num + mp[sum]);\n                mp[sum] = max(mp[sum], num);\n            } else {\n                mp[sum] = num;\n            }\n        }\n        return ans;\n    }\n};\n",
     "concept_covered": false,
     "created_at": "2026-07-21T18:50:04.000Z",
-    "updated_at": "2026-07-21T18:50:04.000Z"
+    "updated_at": "2026-09-08T19:28:32.131Z"
   },
   {
     "link": "https://leetcode.com/problems/max-value-of-equation/",
@@ -33058,10 +33082,11 @@
     "topic": "HEAP (PRIORITY QUEUE)",
     "difficulty": "EASY",
     "popularity": 828079,
-    "status": "CLEAR",
+    "status": "SUCCESS",
+    "solution": "class Solution {\npublic:\n    int maxProduct(vector<int>& nums) {\n        priority_queue<int> pq;\n        for (auto it : nums) {\n            pq.push(it);\n        }\n        int a = pq.top() - 1;\n        pq.pop();\n        int b = pq.top() - 1;\n        pq.pop();\n        return a * b;\n    }\n};",
     "concept_covered": false,
     "created_at": "2026-07-21T18:50:04.000Z",
-    "updated_at": "2026-07-21T18:50:04.000Z"
+    "updated_at": "2026-09-07T21:30:46.208Z"
   },
   {
     "link": "https://leetcode.com/problems/meeting-rooms-iii/",
@@ -33289,10 +33314,11 @@
     "topic": "HEAP (PRIORITY QUEUE)",
     "difficulty": "MEDIUM",
     "popularity": 1588852,
-    "status": "CLEAR",
+    "status": "SUCCESS",
+    "solution": "class Solution {\npublic:\n    string frequencySort(string s) {\n        unordered_map<char, int> freq;\n        for (auto ch : s) {\n            freq[ch]++;\n        }\n        priority_queue<pair<int, char>> pq;\n        for (auto it : freq) {\n            pq.push({it.second, it.first});\n        }\n        int i = 0;\n        while (!pq.empty()) {\n            int f = pq.top().first;\n            char ch = pq.top().second;\n            pq.pop();\n            while (f > 0) {\n                s[i++] = ch;\n                f--;\n            }\n        }\n        return s;\n    }\n};",
     "concept_covered": false,
     "created_at": "2026-07-21T18:50:04.000Z",
-    "updated_at": "2026-07-21T18:50:04.000Z"
+    "updated_at": "2026-09-07T21:38:02.297Z"
   },
   {
     "link": "https://leetcode.com/problems/stock-price-fluctuation/",
@@ -33563,10 +33589,11 @@
     "topic": "LINKED LIST",
     "difficulty": "MEDIUM",
     "popularity": 440694,
-    "status": "CLEAR",
+    "status": "SUCCESS",
+    "solution": "#define MAX_INT 100001\n/**\n * Definition for singly-linked list.\n * struct ListNode {\n *     int val;\n *     ListNode *next;\n *     ListNode() : val(0), next(nullptr) {}\n *     ListNode(int x) : val(x), next(nullptr) {}\n *     ListNode(int x, ListNode *next) : val(x), next(next) {}\n * };\n */\nclass Solution {\npublic:\n    vector<int> nodesBetweenCriticalPoints(ListNode* head) {\n        vector<int> extremas;\n        if (head == nullptr) {\n            return {-1, -1};\n        }\n        int last_val = head->val, i = 1;\n\n        vector<int> ans = {MAX_INT, -1};\n\n        head = head->next;\n        while (head->next != nullptr) {\n            int val = head->val;\n            int next_val = head->next->val;\n            if ((last_val < val && next_val < val) ||\n                (last_val > val && next_val > val)) {\n                extremas.push_back(i);\n                int n = extremas.size();\n                if (n > 1) {\n                    ans[0] = min(ans[0], extremas[n - 1] - extremas[n - 2]);\n                    ans[1] = extremas[n - 1] - extremas[0];\n                }\n            }\n            last_val = val;\n            i++;\n            head = head->next;\n        }\n        if (ans[0] == MAX_INT) {\n            ans[0] = -1;\n        }\n        return ans;\n    }\n};",
     "concept_covered": true,
     "created_at": "2026-07-21T18:50:04.000Z",
-    "updated_at": "2026-09-02T14:41:47.233Z"
+    "updated_at": "2026-09-10T17:28:13.299Z"
   },
   {
     "link": "https://leetcode.com/problems/insert-greatest-common-divisors-in-linked-list/",
@@ -33831,10 +33858,12 @@
     "topic": "LINKED LIST",
     "difficulty": "MEDIUM",
     "popularity": 2697812,
-    "status": "CLEAR",
+    "comment": "# Reverse Linked List II — Approach\n\n## Problem\n\nGiven a singly linked list and two positions `left` and `right`, reverse the nodes from position `left` to position `right` in-place.\n\nExample:\n\n```text\n1 → 2 → 3 → 4 → 5\n    └─────────┘\n    left=2, right=4\n\n1 → 4 → 3 → 2 → 5\n```\n\n## Approach\n\nUse **in-place pointer manipulation** instead of splitting the list into multiple parts.\n\n### 1. Use a dummy node\n\nCreate a dummy node before `head`.\n\n```text\ndummy → 1 → 2 → 3 → 4 → 5\n```\n\nThis makes the `left = 1` case much easier because every reversal has a node before it.\n\n---\n\n### 2. Find the node before `left`\n\nMaintain a pointer called `prev`.\n\nMove `prev` until it points to the node immediately **before** position `left`.\n\nFor:\n\n```text\n1 → 2 → 3 → 4 → 5\n    ↑\n   left\n```\n\n`prev` should point to `1`.\n\n---\n\n### 3. Keep a pointer to the first node being reversed\n\nLet:\n\n```text\ncurr = prev->next\n```\n\nSo:\n\n```text\nprev → curr → next → ...\n```\n\n`curr` will eventually become the **last node** of the reversed section.\n\n---\n\n### 4. Reverse using head insertion\n\nInstead of reversing the entire section using the traditional three-pointer reversal, repeatedly take the node immediately after `curr` and move it to the front of the reversing section.\n\nInitially:\n\n```text\nprev → curr → X → Y → after\n```\n\nMove `X` to immediately after `prev`:\n\n```text\nprev → X → curr → Y → after\n```\n\nThen move `Y`:\n\n```text\nprev → Y → X → curr → after\n```\n\nContinue this `right - left` times.\n\n---\n\n### 5. Why `curr` doesn't move\n\nThis is the key idea.\n\n`curr` always remains at the beginning of the original sublist.\n\nAfter every operation, another node is extracted from after `curr` and inserted immediately after `prev`.\n\nFor example:\n\n```text\n1 → 2 → 3 → 4 → 5\n    ↑\n   curr\n```\n\nAfter moving `3`:\n\n```text\n1 → 3 → 2 → 4 → 5\n         ↑\n        curr\n```\n\nAfter moving `4`:\n\n```text\n1 → 4 → 3 → 2 → 5\n            ↑\n           curr\n```\n\nSo the section is reversed without needing to disconnect it from the rest of the list.\n\n---\n\n## Number of Operations\n\nThe reversal needs exactly:\n\n```text\nright - left\n```\n\niterations.\n\nEach iteration moves one node to the front.\n\n---\n\n## Complexity\n\n### Time\n\n```text\nO(n)\n```\n\nWe traverse to `left` and then perform `right - left` pointer operations.\n\n### Space\n\n```text\nO(1)\n```\n\nOnly a constant number of pointers are used.\n\n---\n\n## Key Pointer Relationships\n\nRemember these three pointers:\n\n```text\nprev → curr → temp\n```\n\nWhere:\n\n* `prev` = node immediately before the reversed section\n* `curr` = first node of the reversed section; stays fixed\n* `temp` = node being moved to the front\n\nEach iteration essentially performs:\n\n```text\nprev → curr → temp → ...\n```\n\ninto:\n\n```text\nprev → temp → curr → ...\n```\n\nwithout creating or deleting any nodes.\n\n## Important Edge Cases\n\n* `left == right` → nothing to reverse.\n* `left == 1` → dummy node makes this case work naturally.\n* `right == list length` → reversed section ends at the tail.\n* Entire list reversed → `left = 1`, `right = n`.",
+    "status": "SUCCESS",
+    "solution": "/**\n * Definition for singly-linked list.\n * struct ListNode {\n *     int val;\n *     ListNode *next;\n *     ListNode() : val(0), next(nullptr) {}\n *     ListNode(int x) : val(x), next(nullptr) {}\n *     ListNode(int x, ListNode *next) : val(x), next(next) {}\n * };\n */\nclass Solution {\npublic:\n    ListNode* join(vector<ListNode*> nodes) {\n        ListNode* head = nullptr;\n        ListNode* tail = nullptr;\n        for (auto temp : nodes) {\n            while (temp != nullptr) {\n                if (head == nullptr) {\n                    head = temp;\n                } else {\n                    tail->next = temp;\n                }\n                tail = temp;\n                temp = temp->next;\n            }\n        }\n        return head;\n    }\n    ListNode* reverse(ListNode* head) {\n        ListNode* rev = nullptr;\n        ListNode* temp = nullptr;\n        while (head != nullptr) {\n            temp = head;\n            head = head->next;\n            temp->next = rev;\n            rev = temp;\n        }\n        return rev;\n    }\n    ListNode* reverseBetween(ListNode* head, int left, int right) {\n        if (left == right) {\n            return head;\n        }\n\n        ListNode* A = head;\n        ListNode* B = head;\n        ListNode* C = head;\n        ListNode* temp = nullptr;\n\n        while (right > 1) {\n            C = C->next;\n            right--;\n        }\n        temp = C;\n        C = C->next;\n        temp->next = nullptr;\n        if (left == 1) {\n            A = nullptr;\n        } else {\n            while (left > 2) {\n                B = B->next;\n                left--;\n            }\n            temp = B;\n            B = B->next;\n            temp->next = nullptr;\n        }\n        B = reverse(B);\n        return join({A, B, C});\n    }\n};",
     "concept_covered": true,
     "created_at": "2026-07-21T18:50:04.000Z",
-    "updated_at": "2026-09-02T14:41:47.233Z"
+    "updated_at": "2026-09-09T17:42:12.193Z"
   },
   {
     "link": "https://leetcode.com/problems/reverse-nodes-in-even-length-groups/",
@@ -33876,10 +33905,11 @@
     "topic": "LINKED LIST",
     "difficulty": "MEDIUM",
     "popularity": 228960,
-    "status": "CLEAR",
+    "status": "SUCCESS",
+    "solution": "/**\n * Definition for singly-linked list.\n * struct ListNode {\n *     int val;\n *     ListNode *next;\n *     ListNode() : val(0), next(nullptr) {}\n *     ListNode(int x) : val(x), next(nullptr) {}\n *     ListNode(int x, ListNode *next) : val(x), next(next) {}\n * };\n */\nclass Solution {\npublic:\n    vector<vector<int>> spiralMatrix(int m, int n, ListNode* head) {\n        vector<int> values;\n        while(head!=nullptr){\n            values.push_back(head->val);\n            head = head->next;\n        }\n\n        int x, y, x1 = 0, y1 = 0, x2 = n - 1, y2 = m - 1, v = values.size(), k = 0;\n        \n        vector<vector<int>> ans(m, vector<int>(n, -1));\n\n        while(k < v){\n            x = x1, y = y1;\n            while(x <= x2 && k < v){\n                ans[y][x++] = values[k++];\n            }\n            y1++;\n            x = x2, y = y1;\n            while(y <= y2 && k < v){\n                ans[y++][x] = values[k++];\n            }\n            x2--;\n            x = x2, y = y2;\n            while(x >= x1 && k < v){\n                ans[y][x--] = values[k++];\n            }\n            y2--;\n            x = x1, y = y2;\n            while(y >= y1 && k < v){\n                ans[y--][x] = values[k++];\n            }\n            x1++;\n        }\n\n        return ans;\n    }\n};",
     "concept_covered": true,
     "created_at": "2026-07-21T18:50:04.000Z",
-    "updated_at": "2026-09-02T14:41:47.233Z"
+    "updated_at": "2026-09-11T22:54:05.167Z"
   },
   {
     "link": "https://leetcode.com/problems/split-a-circular-linked-list/",
