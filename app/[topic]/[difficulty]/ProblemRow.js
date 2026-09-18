@@ -220,6 +220,21 @@ export default function ProblemRow({ problem, index }) {
               <form className="update-form" onSubmit={handleSave}>
                 <div className="field-row">
                   <label className="field">
+                    <span className="field__label">Topic</span>
+                    <select
+                      className="field__input"
+                      value={topic}
+                      onChange={(e) => setTopic(e.target.value)}
+                    >
+                      {TOPIC_OPTIONS.map((t) => (
+                        <option key={t} value={t}>
+                          {t}
+                        </option>
+                      ))}
+                    </select>
+                  </label>
+
+                  <label className="field">
                     <span className="field__label">Status</span>
                     <select
                       className="field__input"
@@ -238,21 +253,6 @@ export default function ProblemRow({ problem, index }) {
                         Marking as CLEAR will erase any saved solution.
                       </p>
                     )}
-                  </label>
-
-                  <label className="field">
-                    <span className="field__label">Topic</span>
-                    <select
-                      className="field__input"
-                      value={topic}
-                      onChange={(e) => setTopic(e.target.value)}
-                    >
-                      {TOPIC_OPTIONS.map((t) => (
-                        <option key={t} value={t}>
-                          {t}
-                        </option>
-                      ))}
-                    </select>
                   </label>
                 </div>
 
