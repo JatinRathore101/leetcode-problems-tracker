@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import { query } from '../../lib/db.js';
+import { TOPICS } from '../../lib/constants.js';
 
 // Talks to remote Postgres via pg (a Node-only module), so this route must
 // run on the Node.js runtime (not the Edge runtime).
@@ -16,6 +17,7 @@ const SOLUTION_REQUIRED = ['ERROR', 'TLE', 'MLE', 'SUCCESS'];
 //   "link": "https://leetcode.com/problems/two-sum/",  required, identifies the row
 //   "comment": "…",                                    optional; empty string clears it (-> NULL)
 //   "status": "SUCCESS",                               optional, one of STATUSES
+//   "topic": "HASH TABLE",                             optional, one of TOPICS
 //   "solution": "…"                                    see rules below
 // }
 //
@@ -34,7 +36,7 @@ export async function POST(request) {
     );
   }
 
-  const { link, comment, status, solution } = body ?? {};
+  const { link, comment, status, topic, solution } = body ?? {};
 
   // --- link: required, non-empty string ---
   if (typeof link !== 'string' || link.trim() === '') {
@@ -57,6 +59,17 @@ export async function POST(request) {
     }
     const trimmed = comment.trim();
     updates.comment = trimmed === '' ? null : trimmed;
+  }
+
+  // --- topic: optional; must be one of the canonical topics ---
+  if (topic !== undefined) {
+    if (!TOPICS.includes(topic)) {
+      return NextResponse.json(
+        { error: "Field 'topic' must be one of the canonical topic names." },
+        { status: 400 },
+      );
+    }
+    updates.topic = topic;
   }
 
   // --- status (+ solution): optional ---
@@ -89,7 +102,10 @@ export async function POST(request) {
   // Nothing to change beyond the row identifier.
   if (Object.keys(updates).length === 0) {
     return NextResponse.json(
-      { error: "Provide at least one of 'comment' or 'status' to update." },
+      {
+        error:
+          "Provide at least one of 'comment', 'topic' or 'status' to update.",
+      },
       { status: 400 },
     );
   }

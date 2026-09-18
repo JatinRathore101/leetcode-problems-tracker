@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Chip from './Chip';
 import Modal from '../../Modal';
+import { TOPICS } from '../../../lib/constants.js';
 
 // Status options offered in the update form. The form is prefilled with the
 // row's current status, so every option is a real status value.
@@ -14,6 +15,10 @@ import Modal from '../../Modal';
 // back to the first option and a save would silently rewrite the status. Hence
 // the non-clickable status chip below.
 const STATUS_OPTIONS = ['CLEAR', 'ERROR', 'TLE', 'MLE', 'SUCCESS'];
+
+// TOPICS is ordered for the home page accordions; a dropdown is easier to scan
+// alphabetically, so keep a sorted copy here and leave the canonical list alone.
+const TOPIC_OPTIONS = [...TOPICS].sort((a, b) => a.localeCompare(b));
 
 // Small inline SVG icon so the component stays dependency-free.
 function CopyIcon() {
@@ -47,6 +52,7 @@ export default function ProblemRow({ problem, index }) {
   const [updateLoading, setUpdateLoading] = useState(false);
   const [comment, setComment] = useState('');
   const [status, setStatus] = useState('');
+  const [topic, setTopic] = useState('');
   const [solution, setSolution] = useState('');
   const [formError, setFormError] = useState('');
   const [saving, setSaving] = useState(false);
@@ -84,9 +90,10 @@ export default function ProblemRow({ problem, index }) {
     setUpdateLoading(true);
     setFormError('');
     setComment('');
-    // Status is already on the row, so prefill it instantly; comment/solution
-    // arrive from the fetch below.
+    // Status and topic are already on the row, so prefill them instantly;
+    // comment/solution arrive from the fetch below.
     setStatus(problem.status ?? 'CLEAR');
+    setTopic(problem.topic ?? '');
     setSolution('');
     try {
       const res = await fetch('/get-problem-details', {
@@ -98,6 +105,7 @@ export default function ProblemRow({ problem, index }) {
       if (!res.ok) throw new Error(data?.error || 'Failed to load problem.');
       setComment(data.comment ?? '');
       setStatus(data.status ?? 'CLEAR');
+      setTopic(data.topic ?? '');
       setSolution(data.solution ?? '');
     } catch (err) {
       setFormError(err.message || 'Failed to load problem.');
@@ -113,9 +121,13 @@ export default function ProblemRow({ problem, index }) {
   const isLocked = problem.status === 'LOCKED';
 
   function validate() {
-    // Comment may be empty (that clears it). Only the solution rule applies.
+    // Comment may be empty (that clears it); the solution and topic rules are
+    // the only real constraints.
     if (solutionRequired && solution.trim() === '') {
       return 'A solution is required for this status.';
+    }
+    if (!TOPICS.includes(topic)) {
+      return 'Pick a topic for this problem.';
     }
     return '';
   }
@@ -135,6 +147,7 @@ export default function ProblemRow({ problem, index }) {
       link: problem.link,
       comment: comment.trim(),
       status,
+      topic,
     };
     if (status !== 'CLEAR') body.solution = solution;
 
@@ -205,40 +218,46 @@ export default function ProblemRow({ problem, index }) {
               <p className="modal__hint">Loading…</p>
             ) : (
               <form className="update-form" onSubmit={handleSave}>
-                <label className="field">
-                  <span className="field__label">Comment</span>
-                  <textarea
-                    className="field__input"
-                    rows={3}
-                    value={comment}
-                    onChange={(e) => setComment(e.target.value)}
-                    placeholder="Leave a note about this problem"
-                  />
-                </label>
+                <div className="field-row">
+                  <label className="field">
+                    <span className="field__label">Status</span>
+                    <select
+                      className="field__input"
+                      value={status}
+                      onChange={(e) => setStatus(e.target.value)}
+                    >
+                      {STATUS_OPTIONS.map((s) => (
+                        <option key={s} value={s}>
+                          {s}
+                        </option>
+                      ))}
+                    </select>
 
-                <label className="field">
-                  <span className="field__label">Status</span>
-                  <select
-                    className="field__input"
-                    value={status}
-                    onChange={(e) => setStatus(e.target.value)}
-                  >
-                    {STATUS_OPTIONS.map((s) => (
-                      <option key={s} value={s}>
-                        {s}
-                      </option>
-                    ))}
-                  </select>
+                    {status === 'CLEAR' && (
+                      <p className="modal__hint">
+                        Marking as CLEAR will erase any saved solution.
+                      </p>
+                    )}
+                  </label>
 
-                  {status === 'CLEAR' && (
-                    <p className="modal__hint">
-                      Marking as CLEAR will erase any saved solution.
-                    </p>
-                  )}
-                </label>
+                  <label className="field">
+                    <span className="field__label">Topic</span>
+                    <select
+                      className="field__input"
+                      value={topic}
+                      onChange={(e) => setTopic(e.target.value)}
+                    >
+                      {TOPIC_OPTIONS.map((t) => (
+                        <option key={t} value={t}>
+                          {t}
+                        </option>
+                      ))}
+                    </select>
+                  </label>
+                </div>
 
                 {solutionRequired && (
-                  <label className="field field--full">
+                  <label className="field field--solution">
                     <span className="field__label">
                       Solution <span className="field__req">*</span>
                     </span>
@@ -251,6 +270,17 @@ export default function ProblemRow({ problem, index }) {
                     />
                   </label>
                 )}
+
+                <label className="field">
+                  <span className="field__label">Comment</span>
+                  <textarea
+                    className="field__input"
+                    rows={3}
+                    value={comment}
+                    onChange={(e) => setComment(e.target.value)}
+                    placeholder="Leave a note about this problem"
+                  />
+                </label>
 
                 {formError && <p className="modal__error">{formError}</p>}
 

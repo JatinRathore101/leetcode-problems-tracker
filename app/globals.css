@@ -842,25 +842,44 @@ tbody a.problem-link--locked:hover {
 }
 
 /* --- Update form --- */
+/* One full-width column, stacked top to bottom: status, solution, comment. */
 .update-form {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 18px 24px;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 18px;
   align-items: start;
-}
-
-/* Full-width rows: the solution field plus the hint/error/actions. */
-.field--full,
-.update-form .modal__hint,
-.update-form .modal__error,
-.update-form__actions {
-  grid-column: 1 / -1;
 }
 
 .field {
   display: flex;
   flex-direction: column;
   gap: 6px;
+}
+
+/* Status and topic sit side by side, half the width each; a hint appearing
+   under one must not drag the other down, hence align-items: start. */
+.field-row {
+  display: flex;
+  gap: 24px;
+  align-items: start;
+}
+
+.field-row .field {
+  flex: 1;
+  min-width: 0;
+}
+
+/* The solution box is the one field that needs real room: a tall, fixed 40vh
+   editor that scrolls internally, rather than growing the modal itself. */
+.field--solution .field__input {
+  height: 40vh;
+}
+
+@media (max-width: 520px) {
+  .field-row {
+    flex-direction: column;
+    gap: 18px;
+  }
 }
 
 .field__label {
@@ -899,13 +918,6 @@ tbody a.problem-link--locked:hover {
   justify-content: flex-end;
   gap: 10px;
   margin-top: 4px;
-}
-
-/* Collapse the modal grid to a single column on narrow screens. */
-@media (max-width: 520px) {
-  .update-form {
-    grid-template-columns: minmax(0, 1fr);
-  }
 }
 
 .btn {
