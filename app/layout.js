@@ -5,6 +5,7 @@ export const metadata = {
   title: 'LeetCode Problems Explorer',
   description:
     'Browse, search, and sort LeetCode problems by popularity, difficulty, and topic.',
+  icons: { icon: '/favicon.ico?v=2' },
 };
 
 export default function RootLayout({ children }) {
