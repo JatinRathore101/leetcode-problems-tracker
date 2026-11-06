@@ -22,7 +22,7 @@ const CREATE_TABLE = `
   CREATE TABLE leetcode_problems (
     link       TEXT        NOT NULL PRIMARY KEY,
     name       TEXT        NOT NULL,
-    topic      VARCHAR(40) NOT NULL,
+    topic      TEXT        NOT NULL,
     difficulty TEXT        NOT NULL CHECK (difficulty IN ('EASY', 'MEDIUM', 'HARD')),
     popularity INTEGER     DEFAULT 0,
     comment    TEXT        DEFAULT NULL,
@@ -63,9 +63,16 @@ const CREATE_TRIGGER = `
   EXECUTE FUNCTION set_leetcode_problems_updated_at();
 `;
 
-const INSERT_COLUMNS = ['link', 'name', 'topic', 'difficulty', 'popularity'];
-// 500 rows x 5 params = 2500 parameters per statement, far under pg's 65535
-// cap, and ~12 network round trips instead of one per row.
+const INSERT_COLUMNS = [
+  'link',
+  'name',
+  'topic',
+  'difficulty',
+  'popularity',
+  'status',
+];
+// 500 rows x 6 params = 3000 parameters per statement, far under pg's 65535
+// cap, and ~9 network round trips instead of one per row.
 const CHUNK_SIZE = 500;
 
 // --schema-only rebuilds the empty table (DDL, indices, trigger) and skips the
@@ -110,20 +117,26 @@ async function main() {
     // QUERY 1c — bulk insert every parsed problem.
     log('INSERTING ROWS', `${problems.length} problems`);
 
-    let coercedTopics = 0;
-    const rows = problems.map((p) => {
-      // topic is REQUIRED (NOT NULL); the parser leaves some unmapped as null,
-      // so coalesce those to a sentinel rather than fail the whole insert.
-      if (p.topic == null) coercedTopics += 1;
+    // A parsed file without the premium flag would load every problem as
+    // free, so refuse it (checked as a missing key: `false` is valid).
+    const stale = problems.filter((p) => !('isPaidOnly' in p)).length;
+    if (stale > 0) {
+      throw new Error(
+        `${stale}/${problems.length} parsed rows have no "isPaidOnly" key — run \`npm run scrape && npm run parse\` first`,
+      );
+    }
 
-      return {
-        link: p.link,
-        name: p.name,
-        topic: p.topic ?? 'MISCELLANEOUS',
-        difficulty: p.difficulty,
-        popularity: p.popularity ?? 0,
-      };
-    });
+    const rows = problems.map((p) => ({
+      link: p.link,
+      name: p.name,
+      // Pipe-separated tags, e.g. "ARRAY|HASH TABLE"; '' for untagged
+      // problems (topic is NOT NULL, so never bind null).
+      topic: p.topic ?? '',
+      difficulty: p.difficulty,
+      popularity: p.popularity ?? 0,
+      // Premium is a scraped fact; everything else starts at the default.
+      status: p.isPaidOnly ? 'LOCKED' : 'CLEAR',
+    }));
 
     let inserted = 0;
     for (let i = 0; i < rows.length; i += CHUNK_SIZE) {
@@ -144,13 +157,8 @@ async function main() {
       inserted += chunk.length;
     }
 
-    if (coercedTopics > 0) {
-      log(
-        'TOPIC COERCED',
-        `${coercedTopics} null topics set to 'MISCELLANEOUS'`,
-      );
-    }
-    log('DATA INSERTED', `${inserted} rows`);
+    const locked = rows.filter((row) => row.status === 'LOCKED').length;
+    log('DATA INSERTED', `${inserted} rows (${locked} LOCKED)`);
 
     await client.query('COMMIT');
     log('TRANSACTION COMMITTED', `${inserted} rows persisted`);

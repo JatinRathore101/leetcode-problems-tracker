@@ -111,7 +111,7 @@ export async function assertTableExists() {
 
   if (!rows[0].reg) {
     throw new Error(
-      `table "${TABLE}" not found in Postgres (${getDbHost()}) — run \`npm run db:setup\` first`,
+      `table "${TABLE}" not found in Postgres (${getDbHost()}) — run \`npm run transaction\` first`,
     );
   }
 }

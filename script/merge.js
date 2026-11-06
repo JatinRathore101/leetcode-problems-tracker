@@ -94,7 +94,7 @@ function resolveBackupFile() {
 // ---------------------------------------------------------------------------
 
 // A parsed file produced before the premium flag existed would silently mark
-// every problem as free and wipe 782 LOCKED statuses, so refuse to run on one.
+// every problem as free and wipe every LOCKED status, so refuse to run on one.
 // Checked as a missing *key*, not a falsy value: `false` is a valid answer.
 function loadFreshScrape() {
   const rerun = 'run `npm run scrape && npm run parse` first';
@@ -162,7 +162,8 @@ function mergeRow(fresh, backup, nowIso) {
     // From the scrape — this is what the refresh is for.
     link: fresh.link,
     name: fresh.name,
-    topic: fresh.topic ?? 'MISCELLANEOUS',
+    // Pipe-separated tags, e.g. "ARRAY|HASH TABLE"; '' for untagged problems.
+    topic: fresh.topic ?? '',
     difficulty: fresh.difficulty,
     popularity: fresh.popularity ?? 0,
 

@@ -31,8 +31,27 @@ to `.env`.
 | `LEETCODE_SESSION` | No       | `npm run scrape`     | LeetCode session cookie. Without it the scrape still works, but `companies` comes back empty. |
 
 `npm run dev` / `build` / `start` load `.env` automatically (Next.js), and
-`npm run scrape` / `db:setup` / `backup` / `repopulate` load it via
+`npm run scrape` / `transaction` / `merge` / `backup` / `dump` load it via
 `node --env-file-if-exists=.env`.
+
+### Data refresh pipeline
+
+```bash
+npm run scrape                          # LeetCode -> script/scrapped_leetcode_problems.json (raw)
+npm run parse                           # -> script/parsed_leetcode_problems.json + script/topics.json
+npm run backup                          # snapshot the live table (backup/backup-<ts>.csv/.json)
+npm run merge <ts>                      # fresh scrape + user work from that backup -> backup/backup-<ts2>.csv
+npm run transaction -- --schema-only    # drop + recreate the empty table
+npm run dump <ts2>                      # load the merged CSV
+```
+
+- `topic` holds every LeetCode tag of a problem, trimmed, uppercased and
+  pipe-joined (`"ARRAY|HASH TABLE"`); `''` when LeetCode has no tags. The
+  column is `TEXT` (longest value today is 223 chars).
+- `script/topics.json` lists every distinct tag, most frequent first.
+- Premium problems (`isPaidOnly`) load as `status = 'LOCKED'`; `merge` keeps
+  the user's `SUCCESS`/`ERROR`/`TLE`/`MLE`, `solution`, `comment` and
+  `concept_covered` from the backup.
 
 The table-rebuild script accepts a schema-only mode —
 `npm run transaction -- --schema-only` — which recreates an empty
