@@ -116,6 +116,18 @@ body {
   cursor: pointer;
 }
 
+.sidebar__dot-spacer {
+  flex: 0 0 16px;
+  width: 16px;
+}
+
+/* Loading / error placeholder shown until /topic-stats first answers. */
+.sidebar__note {
+  padding: 9px 20px;
+  font-size: 13px;
+  color: var(--muted);
+}
+
 .sidebar__dot:hover {
   border-color: var(--text);
 }
@@ -856,30 +868,10 @@ tbody a.problem-link--locked:hover {
   gap: 6px;
 }
 
-/* Status and topic sit side by side, half the width each; a hint appearing
-   under one must not drag the other down, hence align-items: start. */
-.field-row {
-  display: flex;
-  gap: 24px;
-  align-items: start;
-}
-
-.field-row .field {
-  flex: 1;
-  min-width: 0;
-}
-
 /* The solution box is the one field that needs real room: a tall, fixed 40vh
    editor that scrolls internally, rather than growing the modal itself. */
 .field--solution .field__input {
   height: 40vh;
-}
-
-@media (max-width: 520px) {
-  .field-row {
-    flex-direction: column;
-    gap: 18px;
-  }
 }
 
 .field__label {

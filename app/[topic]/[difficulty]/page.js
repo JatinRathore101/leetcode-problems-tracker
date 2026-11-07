@@ -1,6 +1,6 @@
 import { notFound } from 'next/navigation';
 import { query } from '../../../lib/db.js';
-import { DIFFICULTIES } from '../../../lib/constants.js';
+import { DIFFICULTIES, UNTAGGED_TOPIC } from '../../../lib/constants.js';
 import { resolveTopicSlug } from '../../../lib/topics.js';
 import DifficultyTabs from './DifficultyTabs.js';
 import ProblemsList from './ProblemsList.js';
@@ -9,7 +9,8 @@ import ProblemsList from './ProblemsList.js';
 export const runtime = 'nodejs';
 // Problem status is mutated by /update-problem, so render on demand to always
 // reflect live DB state rather than freezing rows at build time. [topic] must be
-// the slug of a dsa_topics row and [difficulty] one of DIFFICULTIES; anything
+// the slug of a dsa_topics row (or "untagged") and [difficulty] one of
+// DIFFICULTIES; anything
 // else falls through to notFound().
 export const dynamic = 'force-dynamic';
 
@@ -19,20 +20,22 @@ export const dynamic = 'force-dynamic';
 // reachable yet.
 async function loadProblems(topic, difficulty) {
   try {
+    // topic is pipe-joined ("ARRAY|HASH TABLE"): substring-match it with '|'
+    // on both sides so "TREE" does not also match "BINARY TREE"; strpos (not
+    // LIKE) matches the topic literally, never as a pattern. The UNTAGGED
+    // pseudo-topic lists the problems LeetCode gives no tags (topic = '').
+    const untagged = topic === UNTAGGED_TOPIC;
     const { rows } = await query(
       // `status = 'LOCKED'` sorts as a boolean, and Postgres orders false
       // before true, so the non-LOCKED rows come first. Every other status
       // shares one rank — only LOCKED is singled out. status is NOT NULL, so
       // there is no NULL case to place.
-      // topic is pipe-joined ("ARRAY|HASH TABLE"): substring-match it with
-      // '|' on both sides so "TREE" does not also match "BINARY TREE"; strpos
-      // (not LIKE) matches the topic literally, never as a pattern.
       `SELECT name, link, topic, difficulty, status
          FROM leetcode_problems
-        WHERE strpos('|' || topic || '|', '|' || $1 || '|') > 0
-          AND difficulty = $2
+        WHERE ${untagged ? `topic = ''` : `strpos('|' || topic || '|', '|' || $2 || '|') > 0`}
+          AND difficulty = $1
         ORDER BY (status = 'LOCKED'), popularity DESC, link ASC`,
-      [topic, difficulty],
+      untagged ? [difficulty] : [difficulty, topic],
     );
     return { problems: rows };
   } catch (err) {

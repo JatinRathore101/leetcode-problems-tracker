@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useCallback, useEffect, useState } from 'react';
 import Modal from './Modal';
-import { TOPICS, topicToSlug, DEFAULT_DIFFICULTY } from '../lib/constants.js';
+import { DEFAULT_DIFFICULTY, UNTAGGED_SLUG } from '../lib/constants.js';
 
 // White tick shown inside a covered topic's dot.
 function TickIcon() {
@@ -25,10 +25,12 @@ function TickIcon() {
   );
 }
 
-// The 33-topic navigation rail. Lives in the root layout so it stays mounted
+// The topic navigation rail. Lives in the root layout so it stays mounted
 // across every /:topic/:difficulty navigation (client-side transitions never
-// remount it — no flicker, no scroll reset). Each option links to the topic's
-// EASY page; the active topic is derived from the first path segment.
+// remount it — no flicker, no scroll reset). The list itself comes from
+// /topic-stats: every dsa_topics row in script/topics.json order, then the
+// UNTAGGED pseudo-topic. Each option links to the topic's EASY page; the
+// active topic is derived from the first path segment.
 export default function Sidebar() {
   const pathname = usePathname();
   // pathname is "/<topicSlug>/<difficulty>" -> grab the topic slug segment.
@@ -36,16 +38,24 @@ export default function Sidebar() {
 
   const isHome = pathname === '/';
 
-  // Per-topic success rates keyed by slug
-  // ({ [slug]: { total, solved, percent, covered } }).
+  // Per-topic success rates keyed by slug, in display order
+  // ({ [slug]: { topic, total, solved, percent, covered } }).
+  // loadState drives the list: 'loading' until the first response, then
+  // 'ready'. A failed refetch keeps the last good list; only a failure with
+  // nothing loaded yet shows 'error'.
   const [stats, setStats] = useState({});
+  const [loadState, setLoadState] = useState('loading');
   const loadStats = useCallback(() => {
     fetch('/topic-stats')
       .then((res) => (res.ok ? res.json() : null))
       .then((data) => {
-        if (data && !data.error) setStats(data);
+        if (!data || data.error) throw new Error('topic-stats failed');
+        setStats(data);
+        setLoadState('ready');
       })
-      .catch(() => {});
+      .catch(() => {
+        setLoadState((prev) => (prev === 'ready' ? prev : 'error'));
+      });
   }, []);
 
   // The sidebar stays mounted across client navigations, so refetch on every
@@ -118,26 +128,33 @@ export default function Sidebar() {
             </svg>
           </Link>
         </li>
-        {TOPICS.map((topic) => {
-          const slug = topicToSlug(topic);
+        {loadState === 'loading' && (
+          <li className="sidebar__note">Loading topics…</li>
+        )}
+        {loadState === 'error' && (
+          <li className="sidebar__note">Couldn&apos;t load topics.</li>
+        )}
+        {Object.entries(stats).map(([slug, stat]) => {
+          const { topic } = stat;
           const isActive = slug === activeSlug;
-          const stat = stats[slug];
+          // UNTAGGED has no dsa_topics row, so there is no flag to toggle.
+          const togglable = slug !== UNTAGGED_SLUG;
           return (
-            <li key={topic}>
+            <li key={slug}>
               <Link
                 href={`/${slug}/${DEFAULT_DIFFICULTY.toLowerCase()}`}
                 className={`sidebar__item${isActive ? ' sidebar__item--active' : ''}`}
                 aria-current={isActive ? 'page' : undefined}
               >
                 <span className="sidebar__item-name">{topic}</span>
-                {stat && (
-                  <span className="sidebar__item-meta">
-                    <span
-                      className="sidebar__item-stat"
-                      title={`${stat.solved} of ${stat.total} solved`}
-                    >
-                      {stat.percent}%
-                    </span>
+                <span className="sidebar__item-meta">
+                  <span
+                    className="sidebar__item-stat"
+                    title={`${stat.solved} of ${stat.total} solved`}
+                  >
+                    {stat.percent}%
+                  </span>
+                  {togglable ? (
                     <button
                       type="button"
                       className={`sidebar__dot${stat.covered ? ' sidebar__dot--covered' : ''}`}
@@ -158,8 +175,11 @@ export default function Sidebar() {
                     >
                       {stat.covered && <TickIcon />}
                     </button>
-                  </span>
-                )}
+                  ) : (
+                    // Keeps the percent aligned with the rows that have a dot.
+                    <span className="sidebar__dot-spacer" aria-hidden="true" />
+                  )}
+                </span>
               </Link>
             </li>
           );

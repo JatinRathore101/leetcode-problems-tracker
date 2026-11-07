@@ -8,7 +8,7 @@ export default function ProblemsList({ problems, error }) {
     return (
       <p className="empty">
         Couldn&apos;t load problems. Make sure the database is set up (
-        <code>npm run db:setup</code>).
+        <code>npm run transaction</code>).
       </p>
     );
   }
