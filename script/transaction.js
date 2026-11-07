@@ -1,4 +1,5 @@
 import problems from './parsed_leetcode_problems.json' with { type: 'json' };
+import topics from './topics.json' with { type: 'json' };
 import { getPool, closePool, getDbHost } from '../lib/db.js';
 
 // ---------------------------------------------------------------------------
@@ -30,19 +31,17 @@ const CREATE_TABLE = `
                  CHECK (status IN ('CLEAR', 'ERROR', 'TLE', 'MLE', 'SUCCESS',
                                    'LOCKED')),
     solution   TEXT        DEFAULT NULL,
-    concept_covered BOOLEAN NOT NULL DEFAULT FALSE,
     created_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP
   )
 `;
 
+// topic is pipe-joined and always filtered by substring (strpos), which a
+// B-tree on topic cannot serve, so only difficulty is indexed. At ~4k rows the
+// topic match is a cheap scan of the difficulty-filtered rows.
 const CREATE_INDICES = `
-  CREATE INDEX idx_leetcode_problems_topic
-    ON leetcode_problems (topic);
   CREATE INDEX idx_leetcode_problems_difficulty
     ON leetcode_problems (difficulty);
-  CREATE INDEX idx_leetcode_problems_difficulty_topic
-    ON leetcode_problems (difficulty, topic);
 `;
 
 // Keep updated_at honest on every row mutation — the column default only fires
@@ -63,6 +62,24 @@ const CREATE_TRIGGER = `
   EXECUTE FUNCTION set_leetcode_problems_updated_at();
 `;
 
+// One row per individual LeetCode tag (script/topics.json), holding the
+// user's per-topic concept-covered flag. Unlike leetcode_problems this table
+// is NEVER dropped by this script: it is created if missing and new tags are
+// added, so concept_covered survives every rebuild.
+const CREATE_TOPICS_TABLE = `
+  CREATE TABLE IF NOT EXISTS dsa_topics (
+    topic           TEXT    NOT NULL PRIMARY KEY,
+    concept_covered BOOLEAN NOT NULL DEFAULT FALSE
+  )
+`;
+
+// Add any tag not yet in dsa_topics; existing rows (and their flag) are kept.
+const SEED_TOPICS = `
+  INSERT INTO dsa_topics (topic)
+  SELECT unnest($1::text[])
+  ON CONFLICT (topic) DO NOTHING
+`;
+
 const INSERT_COLUMNS = [
   'link',
   'name',
@@ -75,9 +92,10 @@ const INSERT_COLUMNS = [
 // cap, and ~9 network round trips instead of one per row.
 const CHUNK_SIZE = 500;
 
-// --schema-only rebuilds the empty table (DDL, indices, trigger) and skips the
-// data insert — used when the table will be reloaded from a backup instead of
-// from parsed_leetcode_problems.json (npm run transaction -- --schema-only).
+// --schema-only rebuilds the empty table (DDL, indices, trigger, dsa_topics
+// seed) and skips the problem insert — used when the table will be reloaded
+// from a backup instead of from parsed_leetcode_problems.json
+// (npm run transaction -- --schema-only).
 const SCHEMA_ONLY = process.argv.includes('--schema-only');
 
 // ---------------------------------------------------------------------------
@@ -100,12 +118,20 @@ async function main() {
     await client.query(CREATE_TABLE);
     log('TABLE CREATED', 'leetcode_problems');
 
-    // QUERY 1b — indices over topic, difficulty, and (difficulty, topic).
+    // QUERY 1b — index over difficulty.
     await client.query(CREATE_INDICES);
-    log('INDICES CREATED', 'topic, difficulty, (difficulty, topic)');
+    log('INDICES CREATED', 'difficulty');
 
     await client.query(CREATE_TRIGGER);
     log('TRIGGER CREATED', 'updated_at auto-touch');
+
+    // QUERY 1c — dsa_topics: create if missing, add new tags, keep flags.
+    await client.query(CREATE_TOPICS_TABLE);
+    const { rowCount: addedTopics } = await client.query(SEED_TOPICS, [topics]);
+    log(
+      'TOPICS SEEDED',
+      `dsa_topics: ${addedTopics} new of ${topics.length} in topics.json`,
+    );
 
     if (SCHEMA_ONLY) {
       log('SCHEMA ONLY', 'skipping data insert — table left empty');
@@ -114,7 +140,7 @@ async function main() {
       return;
     }
 
-    // QUERY 1c — bulk insert every parsed problem.
+    // QUERY 1d — bulk insert every parsed problem.
     log('INSERTING ROWS', `${problems.length} problems`);
 
     // A parsed file without the premium flag would load every problem as

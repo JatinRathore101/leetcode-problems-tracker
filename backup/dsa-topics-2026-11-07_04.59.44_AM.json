@@ -1,0 +1,706 @@
+[
+  {
+    "topic": "0-1 BFS",
+    "concept_covered": false
+  },
+  {
+    "topic": "0-1 KNAPSACK",
+    "concept_covered": false
+  },
+  {
+    "topic": "A* SEARCH",
+    "concept_covered": false
+  },
+  {
+    "topic": "AHO–CORASICK ALGORITHM",
+    "concept_covered": false
+  },
+  {
+    "topic": "ALGORITHM X",
+    "concept_covered": false
+  },
+  {
+    "topic": "ARRAY",
+    "concept_covered": false
+  },
+  {
+    "topic": "ARTICULATION POINT",
+    "concept_covered": false
+  },
+  {
+    "topic": "BACKTRACKING",
+    "concept_covered": false
+  },
+  {
+    "topic": "BELLMAN–FORD ALGORITHM",
+    "concept_covered": false
+  },
+  {
+    "topic": "BÉZOUT'S LEMMA",
+    "concept_covered": false
+  },
+  {
+    "topic": "BICONNECTED COMPONENT",
+    "concept_covered": false
+  },
+  {
+    "topic": "BIDIRECTIONAL SEARCH",
+    "concept_covered": false
+  },
+  {
+    "topic": "BINARY INDEXED TREE",
+    "concept_covered": false
+  },
+  {
+    "topic": "BINARY LIFTING",
+    "concept_covered": false
+  },
+  {
+    "topic": "BINARY SEARCH",
+    "concept_covered": false
+  },
+  {
+    "topic": "BINARY SEARCH TREE",
+    "concept_covered": false
+  },
+  {
+    "topic": "BINARY TREE",
+    "concept_covered": false
+  },
+  {
+    "topic": "BIPARTITE GRAPH",
+    "concept_covered": false
+  },
+  {
+    "topic": "BIT MANIPULATION",
+    "concept_covered": false
+  },
+  {
+    "topic": "BITMASK",
+    "concept_covered": false
+  },
+  {
+    "topic": "BORŮVKA'S ALGORITHM",
+    "concept_covered": false
+  },
+  {
+    "topic": "BOYER–MOORE MAJORITY VOTE ALGORITHM",
+    "concept_covered": false
+  },
+  {
+    "topic": "BOYER–MOORE STRING-SEARCH ALGORITHM",
+    "concept_covered": false
+  },
+  {
+    "topic": "BRACKET SEQUENCES",
+    "concept_covered": false
+  },
+  {
+    "topic": "BRAINTEASER",
+    "concept_covered": false
+  },
+  {
+    "topic": "BREADTH-FIRST SEARCH",
+    "concept_covered": false
+  },
+  {
+    "topic": "BRIDGE (GRAPH)",
+    "concept_covered": false
+  },
+  {
+    "topic": "BRUTE-FORCE SEARCH",
+    "concept_covered": false
+  },
+  {
+    "topic": "BUBBLE SORT",
+    "concept_covered": false
+  },
+  {
+    "topic": "BUCKET SORT",
+    "concept_covered": false
+  },
+  {
+    "topic": "CARTESIAN TREE",
+    "concept_covered": false
+  },
+  {
+    "topic": "COMBINATORICS",
+    "concept_covered": false
+  },
+  {
+    "topic": "COMPLETE KNAPSACK",
+    "concept_covered": false
+  },
+  {
+    "topic": "CONCURRENCY",
+    "concept_covered": false
+  },
+  {
+    "topic": "CONVEX HULL",
+    "concept_covered": false
+  },
+  {
+    "topic": "COUNTING",
+    "concept_covered": false
+  },
+  {
+    "topic": "COUNTING SORT",
+    "concept_covered": false
+  },
+  {
+    "topic": "DANCING LINKS",
+    "concept_covered": false
+  },
+  {
+    "topic": "DATA STREAM",
+    "concept_covered": false
+  },
+  {
+    "topic": "DATABASE",
+    "concept_covered": false
+  },
+  {
+    "topic": "DEPTH-FIRST SEARCH",
+    "concept_covered": false
+  },
+  {
+    "topic": "DESIGN",
+    "concept_covered": false
+  },
+  {
+    "topic": "DIJKSTRA'S ALGORITHM",
+    "concept_covered": false
+  },
+  {
+    "topic": "DINIC'S ALGORITHM",
+    "concept_covered": false
+  },
+  {
+    "topic": "DIRECTED ACYCLIC GRAPH",
+    "concept_covered": false
+  },
+  {
+    "topic": "DIVIDE AND CONQUER",
+    "concept_covered": false
+  },
+  {
+    "topic": "DOUBLY-LINKED LIST",
+    "concept_covered": false
+  },
+  {
+    "topic": "DP ON TREES",
+    "concept_covered": false
+  },
+  {
+    "topic": "DYNAMIC PROGRAMMING",
+    "concept_covered": false
+  },
+  {
+    "topic": "EDMONDS–KARP ALGORITHM",
+    "concept_covered": false
+  },
+  {
+    "topic": "ENUMERATION",
+    "concept_covered": false
+  },
+  {
+    "topic": "EUCLIDEAN ALGORITHM",
+    "concept_covered": false
+  },
+  {
+    "topic": "EULER'S THEOREM",
+    "concept_covered": false
+  },
+  {
+    "topic": "EULER'S TOTIENT FUNCTION",
+    "concept_covered": false
+  },
+  {
+    "topic": "EULERIAN CIRCUIT",
+    "concept_covered": false
+  },
+  {
+    "topic": "EULERIAN GRAPH",
+    "concept_covered": false
+  },
+  {
+    "topic": "EULERIAN PATH",
+    "concept_covered": false
+  },
+  {
+    "topic": "EXTENDED EUCLIDEAN ALGORITHM",
+    "concept_covered": false
+  },
+  {
+    "topic": "FERMAT'S LITTLE THEOREM",
+    "concept_covered": false
+  },
+  {
+    "topic": "FLOW NETWORK",
+    "concept_covered": false
+  },
+  {
+    "topic": "FLOYD–WARSHALL ALGORITHM",
+    "concept_covered": false
+  },
+  {
+    "topic": "FLOYD'S CYCLE FINDING ALGORITHM",
+    "concept_covered": false
+  },
+  {
+    "topic": "GAME THEORY",
+    "concept_covered": false
+  },
+  {
+    "topic": "GEOMETRY",
+    "concept_covered": false
+  },
+  {
+    "topic": "GRAPH COLORING",
+    "concept_covered": false
+  },
+  {
+    "topic": "GRAPH THEORY",
+    "concept_covered": false
+  },
+  {
+    "topic": "GREATEST COMMON DIVISOR",
+    "concept_covered": false
+  },
+  {
+    "topic": "GREEDY",
+    "concept_covered": false
+  },
+  {
+    "topic": "HAMILTONIAN PATH",
+    "concept_covered": false
+  },
+  {
+    "topic": "HASH FUNCTION",
+    "concept_covered": false
+  },
+  {
+    "topic": "HASH TABLE",
+    "concept_covered": false
+  },
+  {
+    "topic": "HEAP",
+    "concept_covered": false
+  },
+  {
+    "topic": "HEAP (PRIORITY QUEUE)",
+    "concept_covered": false
+  },
+  {
+    "topic": "HEURISTIC SEARCH",
+    "concept_covered": false
+  },
+  {
+    "topic": "HUNGARIAN ALGORITHM",
+    "concept_covered": false
+  },
+  {
+    "topic": "IMPARTIAL GAME",
+    "concept_covered": false
+  },
+  {
+    "topic": "INCLUSION-EXCLUSION PRINCIPLE",
+    "concept_covered": false
+  },
+  {
+    "topic": "INTERACTIVE",
+    "concept_covered": false
+  },
+  {
+    "topic": "ITERATOR",
+    "concept_covered": false
+  },
+  {
+    "topic": "K SHORTEST PATH",
+    "concept_covered": false
+  },
+  {
+    "topic": "K-D TREE",
+    "concept_covered": false
+  },
+  {
+    "topic": "KNAPSACK PROBLEM",
+    "concept_covered": false
+  },
+  {
+    "topic": "KNUTH–MORRIS–PRATT ALGORITHM",
+    "concept_covered": false
+  },
+  {
+    "topic": "KOSARAJU'S ALGORITHM",
+    "concept_covered": false
+  },
+  {
+    "topic": "KRUSKAL'S ALGORITHM",
+    "concept_covered": false
+  },
+  {
+    "topic": "LEAST COMMON MULTIPLE",
+    "concept_covered": false
+  },
+  {
+    "topic": "LEXICOGRAPHICALLY MINIMAL STRING ROTATION",
+    "concept_covered": false
+  },
+  {
+    "topic": "LI CHAO TREE",
+    "concept_covered": false
+  },
+  {
+    "topic": "LINEAR ALGEBRA",
+    "concept_covered": false
+  },
+  {
+    "topic": "LINKED LIST",
+    "concept_covered": false
+  },
+  {
+    "topic": "LONGEST COMMON SUBSEQUENCE",
+    "concept_covered": false
+  },
+  {
+    "topic": "LONGEST INCREASING SUBSEQUENCE",
+    "concept_covered": false
+  },
+  {
+    "topic": "LOWEST COMMON ANCESTOR",
+    "concept_covered": false
+  },
+  {
+    "topic": "LYNDON FACTORIZATION",
+    "concept_covered": false
+  },
+  {
+    "topic": "MANACHER",
+    "concept_covered": false
+  },
+  {
+    "topic": "MATCHING (GRAPH)",
+    "concept_covered": false
+  },
+  {
+    "topic": "MATH",
+    "concept_covered": false
+  },
+  {
+    "topic": "MATRIX",
+    "concept_covered": false
+  },
+  {
+    "topic": "MAXIMUM FLOW",
+    "concept_covered": false
+  },
+  {
+    "topic": "MAXIMUM MATCHING",
+    "concept_covered": false
+  },
+  {
+    "topic": "MEET IN THE MIDDLE",
+    "concept_covered": false
+  },
+  {
+    "topic": "MEMOIZATION",
+    "concept_covered": false
+  },
+  {
+    "topic": "MERGE SORT",
+    "concept_covered": false
+  },
+  {
+    "topic": "MINIMAX",
+    "concept_covered": false
+  },
+  {
+    "topic": "MINIMUM CUT",
+    "concept_covered": false
+  },
+  {
+    "topic": "MINIMUM ENCLOSING CIRCLE",
+    "concept_covered": false
+  },
+  {
+    "topic": "MINIMUM SPANNING TREE",
+    "concept_covered": false
+  },
+  {
+    "topic": "MINIMUM-COST FLOW",
+    "concept_covered": false
+  },
+  {
+    "topic": "MIXED KNAPSACK",
+    "concept_covered": false
+  },
+  {
+    "topic": "MONOTONIC QUEUE",
+    "concept_covered": false
+  },
+  {
+    "topic": "MONOTONIC STACK",
+    "concept_covered": false
+  },
+  {
+    "topic": "MPM ALGORITHM",
+    "concept_covered": false
+  },
+  {
+    "topic": "MULTIPLE KNAPSACK",
+    "concept_covered": false
+  },
+  {
+    "topic": "NEAREST PAIR OF POINTS",
+    "concept_covered": false
+  },
+  {
+    "topic": "NEWTON'S METHOD",
+    "concept_covered": false
+  },
+  {
+    "topic": "NIM GAME",
+    "concept_covered": false
+  },
+  {
+    "topic": "NUMBER THEORY",
+    "concept_covered": false
+  },
+  {
+    "topic": "ORDERED SET",
+    "concept_covered": false
+  },
+  {
+    "topic": "PALINDROMIC TREE",
+    "concept_covered": false
+  },
+  {
+    "topic": "PERFECT MATCHING",
+    "concept_covered": false
+  },
+  {
+    "topic": "PERSISTENT DATA STRUCTURE",
+    "concept_covered": false
+  },
+  {
+    "topic": "PIGEONHOLE PRINCIPLE",
+    "concept_covered": false
+  },
+  {
+    "topic": "PLANAR GRAPH",
+    "concept_covered": false
+  },
+  {
+    "topic": "POLYGONS",
+    "concept_covered": false
+  },
+  {
+    "topic": "PREFIX SUM",
+    "concept_covered": false
+  },
+  {
+    "topic": "PRIM'S ALGORITHM",
+    "concept_covered": false
+  },
+  {
+    "topic": "PRIMALITY TEST",
+    "concept_covered": false
+  },
+  {
+    "topic": "PRIME FACTORIZATION",
+    "concept_covered": false
+  },
+  {
+    "topic": "PRIME NUMBER SIEVE",
+    "concept_covered": false
+  },
+  {
+    "topic": "PROBABILITY AND STATISTICS",
+    "concept_covered": false
+  },
+  {
+    "topic": "PUSH-RELABEL ALGORITHM",
+    "concept_covered": false
+  },
+  {
+    "topic": "QUEUE",
+    "concept_covered": false
+  },
+  {
+    "topic": "QUICKSELECT",
+    "concept_covered": false
+  },
+  {
+    "topic": "QUICKSORT",
+    "concept_covered": false
+  },
+  {
+    "topic": "RADIX SORT",
+    "concept_covered": false
+  },
+  {
+    "topic": "RANDOMIZED",
+    "concept_covered": false
+  },
+  {
+    "topic": "RANGE MINIMUM/MAXIMUM QUERY",
+    "concept_covered": false
+  },
+  {
+    "topic": "RECURSION",
+    "concept_covered": false
+  },
+  {
+    "topic": "REJECTION SAMPLING",
+    "concept_covered": false
+  },
+  {
+    "topic": "RESERVOIR SAMPLING",
+    "concept_covered": false
+  },
+  {
+    "topic": "ROLLING HASH",
+    "concept_covered": false
+  },
+  {
+    "topic": "SEGMENT TREE",
+    "concept_covered": false
+  },
+  {
+    "topic": "SEMI-EULERIAN GRAPH",
+    "concept_covered": false
+  },
+  {
+    "topic": "SHELL",
+    "concept_covered": false
+  },
+  {
+    "topic": "SHORTEST PATH",
+    "concept_covered": false
+  },
+  {
+    "topic": "SIEVE THEORY",
+    "concept_covered": false
+  },
+  {
+    "topic": "SIMULATION",
+    "concept_covered": false
+  },
+  {
+    "topic": "SLIDING WINDOW",
+    "concept_covered": false
+  },
+  {
+    "topic": "SORT",
+    "concept_covered": false
+  },
+  {
+    "topic": "SORTING",
+    "concept_covered": false
+  },
+  {
+    "topic": "SPARSE TABLE",
+    "concept_covered": false
+  },
+  {
+    "topic": "SPLAY TREE",
+    "concept_covered": false
+  },
+  {
+    "topic": "SPRAGUE–GRUNDY THEOREM",
+    "concept_covered": false
+  },
+  {
+    "topic": "SQRT DECOMPOSITION",
+    "concept_covered": false
+  },
+  {
+    "topic": "STACK",
+    "concept_covered": false
+  },
+  {
+    "topic": "STRING",
+    "concept_covered": false
+  },
+  {
+    "topic": "STRING MATCHING",
+    "concept_covered": false
+  },
+  {
+    "topic": "STRONGLY CONNECTED COMPONENT",
+    "concept_covered": false
+  },
+  {
+    "topic": "SUCCESSIVE SHORTEST PATH ALGORITHM",
+    "concept_covered": false
+  },
+  {
+    "topic": "SUFFIX ARRAY",
+    "concept_covered": false
+  },
+  {
+    "topic": "SUFFIX AUTOMATON",
+    "concept_covered": false
+  },
+  {
+    "topic": "SUFFIX TREE",
+    "concept_covered": false
+  },
+  {
+    "topic": "SWEEP LINE",
+    "concept_covered": false
+  },
+  {
+    "topic": "TARJAN'S SCC ALGORITHM",
+    "concept_covered": false
+  },
+  {
+    "topic": "TERNARY SEARCH",
+    "concept_covered": false
+  },
+  {
+    "topic": "TIMSORT",
+    "concept_covered": false
+  },
+  {
+    "topic": "TOPOLOGICAL SORT",
+    "concept_covered": false
+  },
+  {
+    "topic": "TOURNAMENT SORT",
+    "concept_covered": false
+  },
+  {
+    "topic": "TREAP",
+    "concept_covered": false
+  },
+  {
+    "topic": "TREE",
+    "concept_covered": false
+  },
+  {
+    "topic": "TRIANGULATION",
+    "concept_covered": false
+  },
+  {
+    "topic": "TRIE",
+    "concept_covered": false
+  },
+  {
+    "topic": "TWO POINTERS",
+    "concept_covered": false
+  },
+  {
+    "topic": "UNION-FIND",
+    "concept_covered": false
+  },
+  {
+    "topic": "Z ALGORITHM",
+    "concept_covered": false
+  },
+  {
+    "topic": "ZERO-SUM GAME",
+    "concept_covered": false
+  }
+]

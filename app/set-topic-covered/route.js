@@ -8,9 +8,8 @@ export const dynamic = 'force-dynamic';
 
 // POST /set-topic-covered
 // Body: { topic: "MATRIX", covered: true }
-// Marks every row of the topic as concept-covered (or not). A topic counts as
-// covered in /topic-stats when any of its rows is true, so flipping all rows
-// keeps the flag stable as problems are added or re-scraped.
+// Sets the concept-covered flag of one individual topic in dsa_topics (one row
+// per LeetCode tag, seeded from script/topics.json by `npm run transaction`).
 export async function POST(request) {
   let body;
   try {
@@ -39,23 +38,21 @@ export async function POST(request) {
   }
 
   try {
-    // updated_at is maintained by the BEFORE UPDATE trigger.
-    const result = await query(
-      `UPDATE leetcode_problems
+    const { rows } = await query(
+      `UPDATE dsa_topics
           SET concept_covered = $1
-        WHERE topic = $2`,
-      [covered, topic.trim()],
+        WHERE topic = $2
+        RETURNING topic, concept_covered`,
+      // dsa_topics stores topics trimmed + uppercased (script/parser.js).
+      [covered, topic.trim().toUpperCase()],
     );
 
-    if (result.rowCount === 0) {
-      return NextResponse.json(
-        { error: 'No problems found for the given topic.' },
-        { status: 404 },
-      );
+    if (rows.length === 0) {
+      return NextResponse.json({ error: 'No such topic.' }, { status: 404 });
     }
 
     return NextResponse.json(
-      { topic: topic.trim(), covered, updated: result.rowCount },
+      { topic: rows[0].topic, covered: rows[0].concept_covered },
       { status: 200 },
     );
   } catch (err) {

@@ -8,6 +8,7 @@ import { query, closePool, getDbHost } from '../lib/db.js';
 const __dirname = dirname(fileURLToPath(import.meta.url));
 export const BACKUP_DIR = join(__dirname, '..', 'backup');
 export const TABLE = 'leetcode_problems';
+export const TOPICS_TABLE = 'dsa_topics';
 
 // ---------------------------------------------------------------------------
 // Logging
@@ -45,13 +46,13 @@ export function timestamp(date = new Date()) {
 
 // `quoted_string` makes the dump reloadable without losing NULL semantics: every
 // TEXT value is quoted, so an empty string round-trips as "" while a SQL NULL
-// stays a bare empty field. It matters here because /update-problem writes
-// solution = '' on CLEAR while the column default is NULL.
+// stays a bare empty field. The app stores "no value" as NULL, but older dumps
+// may carry '' solutions, so the distinction is kept rather than collapsed.
 // `cast.date` matters because pg returns timestamptz columns as JS Dates —
 // serialize them as ISO strings so they round-trip cleanly on repopulate.
 // `cast.boolean` matters because csv-stringify's default is `value ? '1' : ''`,
-// so a false concept_covered would dump as a bare empty field, which repopulate
-// reads back as SQL NULL — a NOT NULL violation.
+// so a false BOOLEAN would dump as a bare empty field, which repopulate reads
+// back as SQL NULL — a NOT NULL violation.
 export const CSV_OPTIONS = {
   header: true,
   quoted_string: true,
@@ -92,8 +93,8 @@ export function readBackup(filePath) {
 }
 
 // Drop NULL/undefined columns so each JSON object carries only the keys it
-// actually has values for. Empty strings are kept — unlike NULL they are a value
-// the app writes deliberately (solution = '' on CLEAR).
+// actually has values for. Empty strings are kept — unlike NULL they are a real
+// value, so a dump never silently turns one into the other.
 const compact = (row) =>
   Object.fromEntries(Object.entries(row).filter(([, value]) => value != null));
 
@@ -149,9 +150,10 @@ export async function createBackup() {
     log('TABLE EMPTY', 'writing a header-only CSV and an empty JSON array');
   }
 
-  // One timestamp for both files so the .csv and .json of a single run always
-  // share a name — taking it twice could straddle a second boundary.
-  const basePath = join(BACKUP_DIR, `backup-${timestamp()}`);
+  // One timestamp for every file so all outputs of a single run share a name —
+  // taking it twice could straddle a second boundary.
+  const stamp = timestamp();
+  const basePath = join(BACKUP_DIR, `backup-${stamp}`);
   fs.mkdirSync(BACKUP_DIR, { recursive: true });
 
   const csvPath = `${basePath}.csv`;
@@ -166,7 +168,32 @@ export async function createBackup() {
   fs.writeFileSync(jsonPath, `${JSON.stringify(records, null, 2)}\n`);
   log('JSON WRITTEN', `${records.length} records -> ${jsonPath}`);
 
-  return { csvPath, jsonPath, rows };
+  const topicsPath = await backupTopics(stamp);
+
+  return { csvPath, jsonPath, topicsPath, rows };
+}
+
+// dsa_topics holds the user's per-topic concept_covered flags, so it is dumped
+// alongside the problems as dsa-topics-<stamp>.json. Skipped (null) when the
+// table does not exist yet. Kept out of the backup-*.csv naming on purpose:
+// repopulate/merge list and load only those.
+async function backupTopics(stamp) {
+  const { rows: exists } = await query('SELECT to_regclass($1) AS reg', [
+    `public.${TOPICS_TABLE}`,
+  ]);
+  if (!exists[0].reg) {
+    log('TOPICS SKIPPED', `table "${TOPICS_TABLE}" not found`);
+    return null;
+  }
+
+  const { rows } = await query(
+    `SELECT topic, concept_covered FROM ${TOPICS_TABLE} ORDER BY topic`,
+  );
+  const topicsPath = join(BACKUP_DIR, `dsa-topics-${stamp}.json`);
+  fs.writeFileSync(topicsPath, `${JSON.stringify(rows, null, 2)}\n`);
+  log('TOPICS WRITTEN', `${rows.length} topics -> ${topicsPath}`);
+
+  return topicsPath;
 }
 
 // ---------------------------------------------------------------------------

@@ -9,11 +9,14 @@ export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
 
 // GET /topic-stats
-// Returns each topic's success rate keyed by URL slug, e.g.
-//   { "array": { total: 40, solved: 12, percent: "30.00", covered: false }, ... }
-// "solved" counts rows with status 'SUCCESS' across all difficulties; "percent"
-// is the share as a string fixed to two decimal places ("0.00" when total is 0).
-// "covered" is true when ANY row of the topic has concept_covered set.
+// Returns each topic's success rate keyed by URL slug, most problems first, e.g.
+//   { "array": { topic: "ARRAY", total: 40, solved: 12, percent: "30.00", covered: false }, ... }
+// `topic` is the exact dsa_topics name — the value /set-topic-covered expects.
+// One entry per row of dsa_topics. A problem counts toward every topic in its
+// pipe-joined `topic` string. "solved" counts rows with status 'SUCCESS'
+// across all difficulties; "percent" is the share as a string fixed to two
+// decimal places ("0.00" when total is 0). "covered" is the topic's
+// dsa_topics.concept_covered flag.
 export async function GET() {
   try {
     // ::int casts matter: pg returns COUNT/SUM (int8) as strings otherwise,
@@ -22,19 +25,28 @@ export async function GET() {
     // so counting them in `total` would permanently cap every topic's percent
     // below 100. `total` is therefore the attemptable count, and the sidebar's
     // "X of Y solved" reads against that.
+    // LEFT JOIN keeps a topic with no problems (total 0) in the result.
     const { rows } = await query(
-      `SELECT topic,
-              COUNT(*) FILTER (WHERE status <> 'LOCKED')::int  AS total,
-              SUM(CASE WHEN status = 'SUCCESS' THEN 1 ELSE 0 END)::int AS solved,
-              BOOL_OR(concept_covered)                        AS covered
-         FROM leetcode_problems
-        GROUP BY topic`,
+      `SELECT t.topic,
+              COUNT(p.link) FILTER (WHERE p.status <> 'LOCKED')::int  AS total,
+              COUNT(p.link) FILTER (WHERE p.status = 'SUCCESS')::int  AS solved,
+              t.concept_covered                                       AS covered
+         FROM dsa_topics t
+         LEFT JOIN leetcode_problems p
+           -- Substring match on the pipe-joined topic, wrapped in '|' on both
+           -- sides so "TREE" does not also match "BINARY TREE". strpos (not
+           -- LIKE) so a topic is matched literally, never as a pattern.
+           ON strpos('|' || p.topic || '|', '|' || t.topic || '|') > 0
+        GROUP BY t.topic, t.concept_covered
+        ORDER BY total DESC, t.topic`,
     );
 
+    // JSON object keys keep insertion order, so the ORDER BY above carries
+    // through to the response.
     const stats = {};
     for (const { topic, total, solved, covered } of rows) {
       const percent = total ? ((solved / total) * 100).toFixed(2) : '0.00';
-      stats[topicToSlug(topic)] = { total, solved, percent, covered };
+      stats[topicToSlug(topic)] = { topic, total, solved, percent, covered };
     }
 
     return NextResponse.json(stats, { status: 200 });

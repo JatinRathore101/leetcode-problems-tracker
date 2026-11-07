@@ -4,6 +4,7 @@ import { query, getPool, closePool, getDbHost } from '../lib/db.js';
 import {
   BACKUP_DIR,
   TABLE,
+  TOPICS_TABLE,
   assertTableExists,
   createBackup,
   log,
@@ -19,11 +20,9 @@ const TIMESTAMP_PATTERN =
 // row and line.
 const DIFFICULTIES = ['EASY', 'MEDIUM', 'HARD'];
 const STATUSES = ['CLEAR', 'ERROR', 'TLE', 'MLE', 'SUCCESS', 'LOCKED'];
-// concept_covered is a BOOLEAN column; backup.js dumps it as 'true'/'false'.
-const BOOLEANS = ['true', 'false'];
 
 // 500 rows per multi-row INSERT keeps each statement's parameter count
-// (500 x 11 columns = 5500) far under pg's 65535 cap while avoiding a network
+// (500 x 10 columns = 5000) far under pg's 65535 cap while avoiding a network
 // round trip per row.
 const CHUNK_SIZE = 500;
 
@@ -175,30 +174,58 @@ function validate(header, records, rules) {
         `line ${line}: popularity "${record.popularity}" is not a number`,
       );
     }
-    if (
-      header.includes('concept_covered') &&
-      record.concept_covered != null &&
-      !BOOLEANS.includes(record.concept_covered)
-    ) {
-      errors.push(
-        `line ${line}: concept_covered "${record.concept_covered}" must be one of ${BOOLEANS.join(', ')}`,
-      );
-    }
   });
 
   return errors;
 }
 
-// popularity (INTEGER) and concept_covered (BOOLEAN) get explicit JS types;
-// everything else binds as a string and Postgres casts server-side (timestamp
-// strings parse into timestamptz).
+// backup.js writes dsa-topics-<stamp>.json beside backup-<stamp>.csv. When it
+// exists its concept_covered flags are restored with the problems; when it
+// does not (older backups) dsa_topics is left untouched. Validated up front so
+// a bad file fails before anything is written.
+function readTopicFlags(csvPath) {
+  const topicsPath = csvPath.replace(
+    /backup-([^/\\]+)\.csv$/,
+    'dsa-topics-$1.json',
+  );
+  if (!fs.existsSync(topicsPath)) {
+    log('TOPIC FLAGS', `no ${topicsPath} — ${TOPICS_TABLE} left as is`);
+    return null;
+  }
+
+  let rows;
+  try {
+    rows = JSON.parse(fs.readFileSync(topicsPath, 'utf8'));
+  } catch (err) {
+    throw new Error(`${topicsPath} is not valid JSON — ${err.message}`);
+  }
+  const bad = Array.isArray(rows)
+    ? rows.filter(
+        (r) =>
+          typeof r?.topic !== 'string' ||
+          r.topic.trim() === '' ||
+          typeof r.concept_covered !== 'boolean',
+      )
+    : [rows];
+  if (bad.length) {
+    throw new Error(
+      `${topicsPath}: ${bad.length} invalid entr${bad.length === 1 ? 'y' : 'ies'} (need { topic: string, concept_covered: boolean })`,
+    );
+  }
+
+  log('TOPIC FLAGS', `${rows.length} topics from ${topicsPath}`);
+  return rows.map((r) => ({ topic: r.topic, covered: r.concept_covered }));
+}
+
+// popularity (INTEGER) gets an explicit JS type; everything else binds as a
+// string and Postgres casts server-side (timestamp strings parse into
+// timestamptz).
 const toBindable = (record, header) =>
   Object.fromEntries(
     header.map((column) => {
       let value = record[column];
       if (value != null) {
         if (column === 'popularity') value = Number(value);
-        if (column === 'concept_covered') value = value === 'true';
       }
       return [column, value];
     }),
@@ -230,6 +257,8 @@ async function main() {
       );
     }
     log('FILE VALIDATED', 'no problems found');
+
+    const topicFlags = readTopicFlags(filePath);
 
     if (records.length === 0) {
       log('EMPTY BACKUP', 'this run will leave the table with zero rows');
@@ -281,6 +310,21 @@ async function main() {
       if (count !== records.length) {
         throw new Error(
           `post-load count mismatch: table has ${count} rows, file had ${records.length}`,
+        );
+      }
+
+      // Same transaction: a failed flag restore rolls the problems back too.
+      if (topicFlags) {
+        const { rowCount } = await client.query(
+          `INSERT INTO ${TOPICS_TABLE} (topic, concept_covered)
+           SELECT * FROM unnest($1::text[], $2::boolean[])
+           ON CONFLICT (topic) DO UPDATE
+             SET concept_covered = EXCLUDED.concept_covered`,
+          [topicFlags.map((t) => t.topic), topicFlags.map((t) => t.covered)],
+        );
+        log(
+          'TOPIC FLAGS RESTORED',
+          `${rowCount} ${TOPICS_TABLE} rows upserted`,
         );
       }
 

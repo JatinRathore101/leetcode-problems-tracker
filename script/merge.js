@@ -22,7 +22,7 @@ const PARSED_FILE = join(__dirname, 'parsed_leetcode_problems.json');
 // The scrape is authoritative about what LeetCode looks like today (which
 // problems exist, their topic/difficulty/popularity, and whether they are
 // premium). The backup is authoritative about everything the user typed
-// (solution, comment, status, concept_covered). This script joins the two on
+// (solution, comment, status). This script joins the two on
 // `link` and writes the result as a backup-format CSV — it never touches the
 // database. Load it afterwards with:
 //
@@ -154,8 +154,8 @@ function mergeStatus(fresh, backup) {
   return DEFAULT_STATUS;
 }
 
-// `null` and `''` are different values in this table (/update-problem writes
-// solution = '' on CLEAR while the column default is NULL), and readBackup
+// `null` and `''` are different values (the app writes NULL, but older backups
+// may hold '' solutions from before /update-problem switched), and readBackup
 // preserves the distinction, so pass the backup value straight through.
 function mergeRow(fresh, backup, nowIso) {
   return {
@@ -170,7 +170,6 @@ function mergeRow(fresh, backup, nowIso) {
     // From the backup — the user's work, never derived from the scrape.
     comment: backup ? backup.comment : null,
     solution: backup ? backup.solution : null,
-    concept_covered: backup ? backup.concept_covered === 'true' : false,
     created_at: backup?.created_at ?? nowIso,
     updated_at: backup?.updated_at ?? nowIso,
 
@@ -218,9 +217,6 @@ function assertNoDataLoss(merged, backupRecords, expectedCount) {
     }
     if ((backup.comment ?? '') !== (row.comment ?? '')) {
       errors.push(`comment not carried across for ${backup.link}`);
-    }
-    if ((backup.concept_covered === 'true') !== row.concept_covered) {
-      errors.push(`concept_covered not carried across for ${backup.link}`);
     }
   }
 

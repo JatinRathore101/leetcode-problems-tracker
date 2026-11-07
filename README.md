@@ -7,9 +7,9 @@ database.
 
 Each topic in the sidebar also carries a concept-covered marker (the dot next to
 the success percentage): grey outline = not covered, blue with a tick = covered.
-Clicking it opens a confirmation and then flips the `concept_covered` boolean on
-every row of that topic via `POST /set-topic-covered` (`{ topic, covered }`); a
-topic counts as covered when any of its rows is true.
+Clicking it opens a confirmation and then flips that topic's `concept_covered`
+flag in the `dsa_topics` table via `POST /set-topic-covered`
+(`{ topic, covered }`).
 
 ## Setup and run
 
@@ -39,9 +39,9 @@ to `.env`.
 ```bash
 npm run scrape                          # LeetCode -> script/scrapped_leetcode_problems.json (raw)
 npm run parse                           # -> script/parsed_leetcode_problems.json + script/topics.json
-npm run backup                          # snapshot the live table (backup/backup-<ts>.csv/.json)
+npm run backup                          # snapshot problems (backup/backup-<ts>.csv/.json) + dsa_topics (backup/dsa-topics-<ts>.json)
 npm run merge <ts>                      # fresh scrape + user work from that backup -> backup/backup-<ts2>.csv
-npm run transaction -- --schema-only    # drop + recreate the empty table
+npm run transaction -- --schema-only    # drop + recreate the empty problems table; add new tags to dsa_topics
 npm run dump <ts2>                      # load the merged CSV
 ```
 
@@ -49,9 +49,12 @@ npm run dump <ts2>                      # load the merged CSV
   pipe-joined (`"ARRAY|HASH TABLE"`); `''` when LeetCode has no tags. The
   column is `TEXT` (longest value today is 223 chars).
 - `script/topics.json` lists every distinct tag, most frequent first.
+- `dsa_topics` (`topic` PK, `concept_covered`) has one row per individual tag.
+  `transaction` never drops it: it only inserts tags missing from it, so the
+  flags survive every rebuild.
 - Premium problems (`isPaidOnly`) load as `status = 'LOCKED'`; `merge` keeps
-  the user's `SUCCESS`/`ERROR`/`TLE`/`MLE`, `solution`, `comment` and
-  `concept_covered` from the backup.
+  the user's `SUCCESS`/`ERROR`/`TLE`/`MLE`, `solution` and `comment` from the
+  backup.
 
 The table-rebuild script accepts a schema-only mode —
 `npm run transaction -- --schema-only` — which recreates an empty

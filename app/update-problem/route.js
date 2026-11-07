@@ -1,6 +1,5 @@
 import { NextResponse } from 'next/server';
 import { query } from '../../lib/db.js';
-import { TOPICS } from '../../lib/constants.js';
 
 // Talks to remote Postgres via pg (a Node-only module), so this route must
 // run on the Node.js runtime (not the Edge runtime).
@@ -17,13 +16,14 @@ const SOLUTION_REQUIRED = ['ERROR', 'TLE', 'MLE', 'SUCCESS'];
 //   "link": "https://leetcode.com/problems/two-sum/",  required, identifies the row
 //   "comment": "…",                                    optional; empty string clears it (-> NULL)
 //   "status": "SUCCESS",                               optional, one of STATUSES
-//   "topic": "HASH TABLE",                             optional, one of TOPICS
 //   "solution": "…"                                    see rules below
 // }
+// topic is not editable: it mirrors LeetCode's own tags and only changes on a
+// re-scrape. A 'topic' key in the body is ignored.
 //
 // solution rules (only relevant when 'status' is present):
 //   - no status          -> solution is ignored, not updated
-//   - status === CLEAR   -> solution is cleared (set to "")
+//   - status === CLEAR   -> solution is cleared (set to NULL, like comment)
 //   - status in ERROR/TLE/MLE/SUCCESS -> solution must be a non-empty string
 export async function POST(request) {
   let body;
@@ -36,7 +36,7 @@ export async function POST(request) {
     );
   }
 
-  const { link, comment, status, topic, solution } = body ?? {};
+  const { link, comment, status, solution } = body ?? {};
 
   // --- link: required, non-empty string ---
   if (typeof link !== 'string' || link.trim() === '') {
@@ -61,17 +61,6 @@ export async function POST(request) {
     updates.comment = trimmed === '' ? null : trimmed;
   }
 
-  // --- topic: optional; must be one of the canonical topics ---
-  if (topic !== undefined) {
-    if (!TOPICS.includes(topic)) {
-      return NextResponse.json(
-        { error: "Field 'topic' must be one of the canonical topic names." },
-        { status: 400 },
-      );
-    }
-    updates.topic = topic;
-  }
-
   // --- status (+ solution): optional ---
   if (status !== undefined) {
     if (!STATUSES.includes(status)) {
@@ -84,7 +73,7 @@ export async function POST(request) {
 
     if (status === 'CLEAR') {
       // CLEAR wipes any existing solution.
-      updates.solution = '';
+      updates.solution = null;
     } else {
       // ERROR / TLE / MLE / SUCCESS require a non-empty solution.
       if (typeof solution !== 'string' || solution.trim() === '') {
@@ -103,8 +92,7 @@ export async function POST(request) {
   if (Object.keys(updates).length === 0) {
     return NextResponse.json(
       {
-        error:
-          "Provide at least one of 'comment', 'topic' or 'status' to update.",
+        error: "Provide at least one of 'comment' or 'status' to update.",
       },
       { status: 400 },
     );
